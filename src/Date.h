@@ -1,15 +1,8 @@
-//
-//  Temps.h
-//  LO21-PluriNotes
-//
-//  Created by Vincent Baheux on 17/05/2017.
-//  Copyright © 2017 Vincent Baheux. All rights reserved.
-//
-
-#ifndef Temps_h
-#define Temps_h
+#ifndef Date_h
+#define Date_h
 
 #include <iostream>
+#include <QString>
 
 using namespace std;
 
@@ -17,10 +10,10 @@ namespace TEMPS {
     
     class TimeException{
     private:
-        string info;
+        QString info;
     public:
-        TimeException(const string& s): info("Erreur : " + s) {}
-        const string& getInfo() const { return info; }
+        TimeException(const QString& s): info("Erreur : " + s) {}
+        const QString& getInfo() const { return info; }
     };
     
     class Date {
@@ -57,4 +50,4 @@ namespace TEMPS {
     ostream& operator<<(ostream& f, const Date& d);
 }
 
-#endif /* Temps_h */
+#endif /* Date_h */

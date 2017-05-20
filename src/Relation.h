@@ -39,8 +39,8 @@ public:
     //RelationIterator* createIterator(const Relation* rel) { relation = rel; }
     void first() { index = 0; }
     void next() { index++; }
-    //bool isDone() { if (relation->nbCouples == 0) return 'TRUE'; else return (index + 1 == relation->nbCouples); }
-    // TO DO : currentItem
+    bool isDone() { if (relation->nbCouples == 0) return 'TRUE'; else return (index + 1 == relation->nbCouples); }
+    Couple* currentItem(){ return relation->couples[index]; }
 };
 
 #endif // RELATION_H

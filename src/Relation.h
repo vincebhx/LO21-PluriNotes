@@ -2,15 +2,25 @@
 #define RELATION_H
 
 #include "Note.h"
+#include "Relation.h"
 #include <QString>
+
+// Notes : On interdit la recopie.
 
 class Relation {
 private:
     QString titre;
     QString description;
     bool oriente;
-    Note** notes[2];
+    unsigned int nbCouples; // nombre de couples de type x, y (x, y et y, x) comptent pour deux
+    unsigned int nbMaxCouples;
+    Note** notesX;
+    Note** notesY;
+    void operator=(const Relation& r){}
+    Relation(const Relation& r){}
+
 public:
+    friend class RelationIterator;
     static Relation reference;
     Relation(QString t, QString d = NULL, bool o = true): titre(t), description(d), oriente(o) {}
     void setDescription(QString d) { description = d; }
@@ -18,6 +28,19 @@ public:
     QString getTitre() const { return titre; }
     QString getDescription() const { return description; }
     bool estOriente() const { return oriente; }
+    void addCouple(Note *note1, Note *note2);
+};
+
+class RelationIterator{
+private:
+    const Relation* relation;
+    unsigned int index;
+public:
+    RelationIterator* createIterator(const Relation* rel) { relation = rel; }
+    void first() { index = 0; }
+    void next() { index++; }
+    void isDone() { if (relation->nbCouples == 0) return TRUE; else return (index + 1 == relation->nbCouples); }
+    // TO DO : currentItem
 };
 
 #endif // RELATION_H

@@ -1,30 +1,24 @@
 #include "Relation.h"
 #include "Note.h"
+#include "Couple.h"
 #include <iostream>
 
 using namespace std;
 
-void Relation::addCouple(Note* note1, Note* note2){
+void Relation::addCouple(Couple& c){
     if (nbCouples == nbMaxCouples){
         nbMaxCouples += 5;
-        Note** newNotesX = new Note* [nbMaxCouples];
-        Note** newNotesY = new Note* [nbMaxCouples];
+        Couple** newCouples = new Couple* [nbMaxCouples];
         for (unsigned int i = 0; i < nbCouples; i++){
-            newNotesX[i] = notesX[i];
-            newNotesY[i] = notesY[i];
+            newCouples[i] = couples[i];
         }
-        Note** oldNotesX = notesX;
-        Note** oldNotesY = notesY;
+        Couple** oldCouples = couples;
 
-        notesX = newNotesX;
-        notesY = newNotesY;
+        couples = newCouples;
 
-        if (oldNotesX && oldNotesY){
-            delete[] oldNotesX;
-            delete[] oldNotesY;
+        if (oldCouples){
+            delete[] oldCouples;
         }
     }
-    nbCouples++;
-    notesX[nbCouples] = note1;
-    notesY[nbCouples] = note2;
+    couples[nbCouples++] = &c;
 };

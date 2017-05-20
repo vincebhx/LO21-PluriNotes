@@ -6,7 +6,7 @@
 class NotesManager {
 friend class NoteIterator;
 private:
-    vector<Note*> notes;
+    Note** notes;
     unsigned int nbNotes;
     unsigned int nbMaxNotes;
     static NotesManager* INSTANCE;
@@ -18,7 +18,6 @@ public:
             INSTANCE = new NotesManager;
         return INSTANCE;
     }
-    /*
     class NoteIterator {
     friend class NotesManager;
     private:
@@ -32,7 +31,6 @@ public:
         Note* current() { return instance()->notes[index]; }
     };
     NoteIterator iterator() const { return NoteIterator(nbNotes); }
-    */
 };
 
 #endif // NOTESMANAGER_H

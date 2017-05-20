@@ -1,4 +1,4 @@
-QT += widgets
+QT += core gui widgets
 QT += xml
 macx {
     QMAKE_MAC_SDK = macosx10.12

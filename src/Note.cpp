@@ -35,6 +35,7 @@ QWidget* Note::getNoteView() {
 QFormLayout* Article::getLayout() {
     //Texte
     QTextEdit* textEdit = new QTextEdit(texte);
+    textEdit->setFixedWidth(300);
 
     //Layout et retour
     QFormLayout* layout = new QFormLayout;
@@ -71,9 +72,11 @@ QFormLayout* Tache::getLayout() {
 QFormLayout* Media::getLayout() {
     //Description
     QLineEdit* descEdit = new QLineEdit(description);
+    descEdit->setFixedWidth(300);
 
     //Fichier
     QLineEdit* fileEdit = new QLineEdit(filePath);
+    fileEdit->setFixedWidth(300);
 
     //Layout et retour
     QFormLayout* layout = new QFormLayout;

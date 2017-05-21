@@ -1,4 +1,5 @@
 #include <iomanip>
+#include <sstream>
 #include "Date.h"
 
 using namespace std;
@@ -29,6 +30,15 @@ namespace TEMPS {
         f<<setfill('0')<<setw(2)<<jour<<"/"<<setw(2)<<mois<<"/"<<annee<<" "
         <<setw(2)<<heure<<":"<<setw(2)<<minute<<":"<<setw(2)<<seconde<<setfill(' ');
     }
+
+    string Date::toString() const {
+        ostringstream buffer;
+        this->afficher(buffer);
+        return buffer.str();
+    }
     
-    ostream& operator<<(ostream& f, const Date& d){ d.afficher(f); return f; }
+    ostream& operator<<(ostream& f, const Date& d){
+        d.afficher(f);
+        return f;
+    }
 }

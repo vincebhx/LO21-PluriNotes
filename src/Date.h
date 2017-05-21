@@ -45,6 +45,7 @@ namespace TEMPS {
                      unsigned short int s);
         
         void afficher(std::ostream& f=std::cout) const;
+        string toString() const;
     };
     
     ostream& operator<<(ostream& f, const Date& d);

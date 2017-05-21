@@ -2,8 +2,10 @@
 #define Note_h
 
 #include <iostream>
+#include <Qt>
 #include <QString>
 #include <QWidget>
+#include <QDateTime>
 #include <QFormLayout>
 #include "Date.h"
 
@@ -17,16 +19,22 @@ class Note {
 protected:
     const QString id;
     QString titre;
-    Date dateCreation;
-    Date dateLastModification;
-    Note(const QString i, QString t = NULL): id(i), titre(t) {}
+    const QDateTime dateCreation;
+    QDateTime dateLastModification;
+
     virtual QFormLayout* getLayout() = 0;
+    Note(const QString i, QString t = NULL): id(i), titre(t), dateCreation(QDateTime::currentDateTime()) {
+        dateLastModification = dateCreation;
+    }
 public:
+    static const QString dateFormat;
+
     void setTitre(QString t) { titre = t; }
+
     const QString& getId() const { return id; }
     QString getTitre() const { return titre; }
-    Date getDateCreat() const { return dateCreation; }
-    Date getDateLastModif() const { return dateLastModification; }
+    const QDateTime& getDateCreat() const { return dateCreation; }
+    QDateTime getDateLastModif() const { return dateLastModification; }
     QWidget* getNoteView();
 };
 

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <QString>
+#include <QDateTime>
 
 using namespace std;
 
@@ -46,6 +47,7 @@ namespace TEMPS {
         
         void afficher(std::ostream& f=std::cout) const;
         string toString() const;
+        QDateTime toQDateTime();
     };
     
     ostream& operator<<(ostream& f, const Date& d);

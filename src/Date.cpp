@@ -36,6 +36,11 @@ namespace TEMPS {
         this->afficher(buffer);
         return buffer.str();
     }
+
+    QDateTime Date::toQDateTime() {
+        QDateTime date = QDateTime::fromString(QString::fromStdString(this->toString()), "dd/MM/yyyy hh:mm:ss");
+        return date;
+    }
     
     ostream& operator<<(ostream& f, const Date& d){
         d.afficher(f);

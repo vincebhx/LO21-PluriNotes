@@ -2,6 +2,8 @@
 #define NOTEVIEWER_H
 
 #include <QWidget>
+#include <QVBoxLayout>
+#include "../src/Note.h"
 
 class NoteViewer: public QWidget {
 private:
@@ -10,7 +12,7 @@ private:
     /*Widgets*/
     /*Signaux*/
 public:
-    NoteViewer() {}
+    NoteViewer();
 };
 
 #endif // NOTEVIEWER_H

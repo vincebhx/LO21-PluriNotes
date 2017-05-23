@@ -9,7 +9,7 @@ private:
 public:
     typedef vector<Note*>::iterator VersionIterator;
 
-    Version();
+    Version() {}
     Note* currentNote();
     void addNote(Note* n);
     void parcourir();

@@ -1,9 +1,5 @@
 #include "Version.h"
 
-Version::Version() {
-
-}
-
 Note* Version::currentNote() {
     return notes.front();
 }

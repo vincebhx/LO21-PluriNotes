@@ -9,16 +9,10 @@ Note* Version::currentNote() {
 }
 
 void Version::addNote(Note* n) {
-    notes.push_front(n);
+    notes.insert(notes.begin(), n);
 }
 
 void Version::parcourir() {
-for(list<Note*>::iterator it = notes.begin(); it != notes.end(); ++it)
+for(VersionIterator it = notes.begin(); it != notes.end(); ++it)
     std::cout<<(*it)->getId().toStdString()<<std::endl;
-}
-
-Note* Version::getNoteByVersion(int version) {
-    list<Note*>::iterator it = notes.begin();
-    std::advance(it, version);
-    return *it;
 }

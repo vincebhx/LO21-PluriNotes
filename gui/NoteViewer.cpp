@@ -9,7 +9,8 @@ NoteViewer::NoteViewer() {
    Version v;
    v.addNote(&n);
    v.addNote(&n2);
-   v.parcourir();
+   for(VersionIterator it = v.begin(); it != v.end(); it++)
+       std::cout<<(*it)->getId().toStdString()<<std::endl;
    std::cout<<v.getNoteByVersion(0)->getId().toStdString()<<std::endl;
 
    QVBoxLayout* layout = new QVBoxLayout;

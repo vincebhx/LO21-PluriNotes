@@ -3,17 +3,17 @@
 
 #include "Note.h"
 
+typedef vector<Note*>::iterator VersionIterator;
+
 class Version {
 private:
     vector<Note*> notes;
 public:
-    typedef vector<Note*>::iterator VersionIterator;
-
     Version() {}
     Note* currentNote();
     void addNote(Note* n);
-    void parcourir();
-    vector<Note*> getNotes() { return notes; }
+    VersionIterator begin() { return notes.begin(); }
+    VersionIterator end() { return notes.end(); }
     Note* getNoteByVersion(int version) { return notes.at(version); }
     unsigned int numberOfVersions() { return notes.size(); }
 };

@@ -14,7 +14,7 @@ using namespace TEMPS;
 
 enum Statut {enAttente, enCours, termine};
 
-//Note est une classe abstraite, utilisée comme interface.
+///Décrit une Note (interface, classe abstraite)
 class Note {
 protected:
     const QString id;
@@ -38,6 +38,7 @@ public:
     QWidget* getNoteView();
 };
 
+///Décrit un Article
 class Article: public Note {
 private:
     QString texte;
@@ -48,6 +49,7 @@ public:
     QString getTexte() const { return texte; }
 };
 
+///Décrit une Tâche
 class Tache: public Note {
 private:
     QString action;
@@ -68,6 +70,7 @@ public:
     Statut getStatut() const { return statut; }
 };
 
+///Décrit un Média
 class Media: public Note {
 protected:
     QString description;
@@ -81,16 +84,19 @@ public:
     QString getFilePath() const { return filePath; }
 };
 
+///Décrit une image
 class Image: public Media {
 public:
     Image(const QString id, QString t = NULL, QString desc = NULL, QString file = NULL): Media(id, t, desc, file) {}
 };
 
+///Décrit un fichier audio
 class Audio: public Media {
 public:
     Audio(const QString id, QString t = NULL, QString desc = NULL, QString file = NULL): Media(id, t, desc, file) {}
 };
 
+///Décrit un fichier vidéo
 class Video: public Media {
 public:
     Video(const QString id, QString t = NULL, QString desc = NULL, QString file = NULL): Media(id, t, desc, file) {}

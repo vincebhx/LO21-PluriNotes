@@ -1,11 +1,15 @@
-#ifndef APPLICATIONGUI_H
-#define APPLICATIONGUI_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QObject>
 
-class ApplicationGui: public QMainWindow {
+class MainWindow: public QMainWindow {
+    Q_OBJECT
 public:
-    ApplicationGui();
+    MainWindow();
+public slots:
+    void onClose();
 };
 
-#endif // APPLICATIONGUI_H
+#endif // MAINWINDOW_H

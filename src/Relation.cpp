@@ -21,4 +21,4 @@ void Relation::addCouple(Couple& c){
         }
     }
     couples[nbCouples++] = &c;
-};
+}

@@ -2,11 +2,12 @@
 #define NOTESMANAGER_H
 
 #include "Note.h"
+#include "Version.h"
 
 class NotesManager {
 friend class NoteIterator;
 private:
-    Note** notes;
+    Version** notes;
     unsigned int nbNotes;
     unsigned int nbMaxNotes;
     static NotesManager* INSTANCE;
@@ -28,7 +29,8 @@ public:
         void first() { index = 0; }
         void next() { index++; }
         bool isDone();
-        Note* current() { return instance()->notes[index]; }
+        Note* currentNote() { return instance()->notes[index]->currentNote(); }
+        Version* currentVersion() { return instance()->notes[index]; }
     };
     NoteIterator iterator() const { return NoteIterator(nbNotes); }
 };

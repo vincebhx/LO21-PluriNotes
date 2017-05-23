@@ -13,7 +13,8 @@ HEADERS += \
     src/Relation.h \
     gui/NoteViewer.h \
     src/Couple.h \
-    gui/MainWindow.h
+    gui/MainWindow.h \
+    src/Version.h
 
 SOURCES += \
     src/Application.cpp \
@@ -23,7 +24,8 @@ SOURCES += \
     src/Relation.cpp \
     gui/NoteViewer.cpp \
     src/Couple.cpp \
-    gui/MainWindow.cpp
+    gui/MainWindow.cpp \
+    src/Version.cpp
 
 DISTFILES += \
     README.md

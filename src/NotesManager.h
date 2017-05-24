@@ -14,11 +14,16 @@ private:
     NotesManager(): notes(nullptr), nbNotes(0), nbMaxNotes(0) {}
     ~NotesManager();
 public:
+    ///Singleton accessor
     static NotesManager* instance() {
         if(!INSTANCE)
             INSTANCE = new NotesManager;
         return INSTANCE;
     }
+
+    void addNote(Version* n);
+
+    ///Iterator class
     class NoteIterator {
     friend class NotesManager;
     private:

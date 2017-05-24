@@ -14,7 +14,8 @@ HEADERS += \
     gui/NoteViewer.h \
     src/Couple.h \
     gui/MainWindow.h \
-    src/Version.h
+    src/Version.h \
+    src/NoteException.h
 
 SOURCES += \
     src/Application.cpp \

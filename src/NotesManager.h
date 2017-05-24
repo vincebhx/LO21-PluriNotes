@@ -3,6 +3,8 @@
 
 #include "Note.h"
 #include "Version.h"
+#include "NoteException.h"
+#include <QFileDialog>
 
 class NotesManager {
 friend class NoteIterator;
@@ -10,18 +12,13 @@ private:
     Version** notes;
     unsigned int nbNotes;
     unsigned int nbMaxNotes;
-    static NotesManager* INSTANCE;
+    QString filePath;
+    static NotesManager* _instance;
     NotesManager(): notes(nullptr), nbNotes(0), nbMaxNotes(0) {}
     ~NotesManager();
 public:
     ///Singleton accessor
-    static NotesManager* instance() {
-        if(!INSTANCE)
-            INSTANCE = new NotesManager;
-        return INSTANCE;
-    }
-
-    void addNote(Version* n);
+    static NotesManager& instance();
 
     ///Iterator class
     class NoteIterator {
@@ -34,10 +31,13 @@ public:
         void first() { index = 0; }
         void next() { index++; }
         bool isDone();
-        Note* currentNote() { return instance()->notes[index]->currentNote(); }
-        Version* currentVersion() { return instance()->notes[index]; }
+        Note* currentNote() { return instance().notes[index]->currentNote(); }
+        Version* currentVersion() { return instance().notes[index]; }
     };
+
     NoteIterator iterator() const { return NoteIterator(nbNotes); }
+    void addNote(Version* n);
+    void load();
 };
 
 #endif // NOTESMANAGER_H

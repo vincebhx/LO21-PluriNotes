@@ -1,6 +1,12 @@
 #include "NotesManager.h"
-#include "NoteException.h"
 #define DYN_ALLOC_STEP 5
+
+NotesManager* NotesManager::_instance = 0;
+
+NotesManager& NotesManager::instance() {
+    if(_instance == 0) _instance = new NotesManager;
+    return *_instance;
+}
 
 NotesManager::~NotesManager() {
     for(unsigned int i = 0; i < nbMaxNotes; i++)
@@ -29,4 +35,8 @@ void NotesManager::addNote(Version* n) {
     }
 
     notes[nbNotes++] = n;
+}
+
+void NotesManager::load() {
+    filePath = QFileDialog::getOpenFileName();
 }

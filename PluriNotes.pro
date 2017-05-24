@@ -1,4 +1,4 @@
-QT += core gui widgets xml
+QT += core gui widgets xml sql
 macx {
     QMAKE_MAC_SDK = macosx10.12
     INCLUDEPATH += /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include

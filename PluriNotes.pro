@@ -15,7 +15,8 @@ HEADERS += \
     src/Couple.h \
     gui/MainWindow.h \
     src/Version.h \
-    src/NoteException.h
+    src/NoteException.h \
+    src/DbManager.h
 
 SOURCES += \
     src/Application.cpp \
@@ -26,7 +27,8 @@ SOURCES += \
     gui/NoteViewer.cpp \
     src/Couple.cpp \
     gui/MainWindow.cpp \
-    src/Version.cpp
+    src/Version.cpp \
+    src/DbManager.cpp
 
 DISTFILES += \
     README.md

@@ -12,7 +12,6 @@ private:
     Version** notes;
     unsigned int nbNotes;
     unsigned int nbMaxNotes;
-    QString filePath;
     static NotesManager* _instance;
     NotesManager(): notes(nullptr), nbNotes(0), nbMaxNotes(0) {}
     ~NotesManager();
@@ -37,7 +36,6 @@ public:
 
     NoteIterator iterator() const { return NoteIterator(nbNotes); }
     void addNote(Version* n);
-    void load();
 };
 
 #endif // NOTESMANAGER_H

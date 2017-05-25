@@ -4,7 +4,6 @@
 
 NoteViewer::NoteViewer() {
    NotesManager& nm = NotesManager::instance();
-   nm.load();
 
    Article n("testarticle", "Ceci est un test.", "Bienvenue dans ce test. Ca marche bien, n'est-ce pas ? ");
    Tache n2("testtache", "Ceci est un test de tâche.", "Coder le projet d'LO21", 42, Date(13, 6, 2017, 23, 59, 59), enCours);
@@ -13,7 +12,7 @@ NoteViewer::NoteViewer() {
    Version v;
    v.addNote(&n);
    v.addNote(&n2);
-   //nm->addNote(&v);
+   nm.addNote(&v);
 
    for(VersionIterator it = v.begin(); it != v.end(); it++)
        std::cout<<(*it)->getId().toStdString()<<std::endl;

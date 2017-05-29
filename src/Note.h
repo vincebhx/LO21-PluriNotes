@@ -6,6 +6,7 @@
 #include <QString>
 #include <QWidget>
 #include <QDateTime>
+#include <QSqlQuery>
 #include <QFormLayout>
 #include "Date.h"
 
@@ -19,6 +20,7 @@ class Note {
 protected:
     const QString id;
     QString titre;
+    unsigned int version;
     const QDateTime dateCreation;
     QDateTime dateLastModification;
 
@@ -26,16 +28,20 @@ protected:
     Note(const QString i, QString t = NULL): id(i), titre(t), dateCreation(QDateTime::currentDateTime()) {
         dateLastModification = dateCreation;
     }
+    virtual QSqlQuery prepareQuery() = 0;
 public:
     static const QString dateFormat;
 
     void setTitre(QString t) { titre = t; }
+    void setVersion(unsigned int i) { version = i; }
 
     const QString& getId() const { return id; }
     QString getTitre() const { return titre; }
+    unsigned int getVersion() const { return version; }
     const QDateTime& getDateCreat() const { return dateCreation; }
     QDateTime getDateLastModif() const { return dateLastModification; }
     QWidget* getNoteView();
+    QSqlQuery getQuery();
 };
 
 ///Décrit un Article
@@ -43,6 +49,7 @@ class Article: public Note {
 private:
     QString texte;
     QFormLayout* getLayout();
+    QSqlQuery prepareQuery();
 public:
     Article(const QString id, QString t = NULL, QString te = NULL): Note(id, t), texte(te) {}
     void setTexte(QString t) { texte = t; }
@@ -57,6 +64,7 @@ private:
     Date dateEcheance;
     Statut statut;
     QFormLayout* getLayout();
+    QSqlQuery prepareQuery();
 public:
     Tache(const QString id, QString t = NULL, QString act = NULL, int pr = 0, Date de = Date(), Statut s = enAttente):
         Note(id, t), action(act), priorite(pr), dateEcheance(de), statut(s) {}
@@ -77,29 +85,34 @@ protected:
     QString filePath;
     Media(const QString id, QString t = NULL, QString desc = NULL, QString file = NULL): Note(id, t), description(desc), filePath(file) {}
     QFormLayout* getLayout();
+    QSqlQuery prepareQuery();
 public:
     void setDescription(QString d) { description = d; }
     void setFilePath(QString f) { filePath = f; }
     QString getDescription() const { return description; }
     QString getFilePath() const { return filePath; }
+    virtual QString typeToString() const = 0;
 };
 
 ///Décrit une image
 class Image: public Media {
 public:
     Image(const QString id, QString t = NULL, QString desc = NULL, QString file = NULL): Media(id, t, desc, file) {}
+    QString typeToString() const { return "image"; }
 };
 
 ///Décrit un fichier audio
 class Audio: public Media {
 public:
     Audio(const QString id, QString t = NULL, QString desc = NULL, QString file = NULL): Media(id, t, desc, file) {}
+    QString typeToString() const { return "audio"; }
 };
 
 ///Décrit un fichier vidéo
 class Video: public Media {
 public:
     Video(const QString id, QString t = NULL, QString desc = NULL, QString file = NULL): Media(id, t, desc, file) {}
+    QString typeToString() const { return "video"; }
 };
 
 #endif /* Note_h */

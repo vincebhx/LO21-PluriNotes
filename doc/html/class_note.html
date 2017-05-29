@@ -114,12 +114,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab96d62ae2bc6bc4079b2ca61c547f0d6"><td class="memItemLeft" align="right" valign="top"><a id="ab96d62ae2bc6bc4079b2ca61c547f0d6"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setTitre</b> (QString t)</td></tr>
 <tr class="separator:ab96d62ae2bc6bc4079b2ca61c547f0d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01d9c513e45b80c01b409b7c0eb43f25"><td class="memItemLeft" align="right" valign="top"><a id="a01d9c513e45b80c01b409b7c0eb43f25"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setVersion</b> (unsigned int i)</td></tr>
+<tr class="separator:a01d9c513e45b80c01b409b7c0eb43f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff851c4b14e763f5e00755a3a12fbe76"><td class="memItemLeft" align="right" valign="top"><a id="aff851c4b14e763f5e00755a3a12fbe76"></a>
 const QString &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td></tr>
 <tr class="separator:aff851c4b14e763f5e00755a3a12fbe76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeca9a3994f11f8f4f8995954d5bc4147"><td class="memItemLeft" align="right" valign="top"><a id="aeca9a3994f11f8f4f8995954d5bc4147"></a>
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>getTitre</b> () const</td></tr>
 <tr class="separator:aeca9a3994f11f8f4f8995954d5bc4147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae537a08aed5a92a902063491a579f3f5"><td class="memItemLeft" align="right" valign="top"><a id="ae537a08aed5a92a902063491a579f3f5"></a>
+unsigned int &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getVersion</b> () const</td></tr>
+<tr class="separator:ae537a08aed5a92a902063491a579f3f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe53f247ed427b2f35f37302efcc99ba"><td class="memItemLeft" align="right" valign="top"><a id="abe53f247ed427b2f35f37302efcc99ba"></a>
 const QDateTime &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getDateCreat</b> () const</td></tr>
 <tr class="separator:abe53f247ed427b2f35f37302efcc99ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,6 +135,9 @@ QDateTime&#160;</td><td class="memItemRight" valign="bottom"><b>getDateLastModif
 <tr class="memitem:ab09c1be290c8a1910ead8880782065fe"><td class="memItemLeft" align="right" valign="top"><a id="ab09c1be290c8a1910ead8880782065fe"></a>
 QWidget *&#160;</td><td class="memItemRight" valign="bottom"><b>getNoteView</b> ()</td></tr>
 <tr class="separator:ab09c1be290c8a1910ead8880782065fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b25ea9f3071a454cf59ab7dcd300601"><td class="memItemLeft" align="right" valign="top"><a id="a1b25ea9f3071a454cf59ab7dcd300601"></a>
+QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><b>getQuery</b> ()</td></tr>
+<tr class="separator:a1b25ea9f3071a454cf59ab7dcd300601"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -144,6 +153,9 @@ virtual QFormLayout *&#160;</td><td class="memItemRight" valign="bottom"><b>getL
 <tr class="memitem:a70ffdb3b7e31ae7f4225167c93dc17fe"><td class="memItemLeft" align="right" valign="top"><a id="a70ffdb3b7e31ae7f4225167c93dc17fe"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Note</b> (const QString i, QString t=NULL)</td></tr>
 <tr class="separator:a70ffdb3b7e31ae7f4225167c93dc17fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaab15fc26ba7bd354dd68367549514f7"><td class="memItemLeft" align="right" valign="top"><a id="aaab15fc26ba7bd354dd68367549514f7"></a>
+virtual QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><b>prepareQuery</b> ()=0</td></tr>
+<tr class="separator:aaab15fc26ba7bd354dd68367549514f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -153,6 +165,9 @@ const QString&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td><
 <tr class="memitem:a4f3aceb1ee03caa1f37a08880fe44f47"><td class="memItemLeft" align="right" valign="top"><a id="a4f3aceb1ee03caa1f37a08880fe44f47"></a>
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>titre</b></td></tr>
 <tr class="separator:a4f3aceb1ee03caa1f37a08880fe44f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d40f017d6f24cad4ae1f7c8046234df"><td class="memItemLeft" align="right" valign="top"><a id="a4d40f017d6f24cad4ae1f7c8046234df"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>version</b></td></tr>
+<tr class="separator:a4d40f017d6f24cad4ae1f7c8046234df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05add78a3ca4d5f549db96ddb77dba71"><td class="memItemLeft" align="right" valign="top"><a id="a05add78a3ca4d5f549db96ddb77dba71"></a>
 const QDateTime&#160;</td><td class="memItemRight" valign="bottom"><b>dateCreation</b></td></tr>
 <tr class="separator:a05add78a3ca4d5f549db96ddb77dba71"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,8 +178,8 @@ QDateTime&#160;</td><td class="memItemRight" valign="bottom"><b>dateLastModifica
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Décrit une <a class="el" href="class_note.html" title="Décrit une Note (interface, classe abstraite) ">Note</a> (interface, classe abstraite) </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/vbaheux/Desktop/PluriNotes/src/<a class="el" href="_note_8h_source.html">Note.h</a></li>
-<li>/Users/vbaheux/Desktop/PluriNotes/src/Note.cpp</li>
+<li>src/<a class="el" href="_note_8h_source.html">Note.h</a></li>
+<li>src/Note.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

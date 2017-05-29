@@ -84,3 +84,44 @@ QFormLayout* Media::getLayout() {
     layout->addRow("Fichier", fileEdit);
     return layout;
 }
+
+QSqlQuery Note::getQuery() {
+    QSqlQuery query = prepareQuery();
+    query.bindValue(":id", id);
+    query.bindValue(":version", version);
+    query.bindValue(":titre", titre);
+    query.bindValue(":dateCreation", dateCreation.toString("dd/MM/yyyy hh:mm:ss"));
+    query.bindValue(":dateModification", dateLastModification.toString("dd/MM/yyyy hh:mm:ss"));
+    return query;
+}
+
+QSqlQuery Article::prepareQuery() {
+    QSqlQuery query;
+    query.prepare("INSERT INTO Article VALUES (:id, :version, :titre, :dateCreation, :dateModification, :texte)");
+    query.bindValue(":texte", texte);
+    return query;
+}
+
+QSqlQuery Tache::prepareQuery() {
+    QSqlQuery query;
+    query.prepare("INSERT INTO Tache VALUES (:id, :version, :titre, :dateCreation, :dateModification, :action, :priorite, :statut)");
+    query.bindValue(":action", action);
+    query.bindValue(":priorite", priorite);
+
+    QString s;
+    if (statut == enAttente) s = "enAttente";
+    else if (statut == enCours) s = "enCours";
+    else s = "termine";
+    query.bindValue(":statut", s);
+
+    return query;
+}
+
+QSqlQuery Media::prepareQuery() {
+    QSqlQuery query;
+    query.prepare("INSERT INTO Media VALUES (:id, :version, :type, :titre, :dateCreation, :dateModification, :description, :filepath)");
+    query.bindValue(":type", typeToString());
+    query.bindValue(":description", description);
+    query.bindValue(":filepath", filePath);
+    return query;
+}

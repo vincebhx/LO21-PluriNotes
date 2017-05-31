@@ -19,11 +19,7 @@ void NotesManager::addNote(Version* n) {
             throw NoteException("Une note possédant cet id existe déjà.");
     notes.push_back(n);
 }
-
-
-void NotesManager::load() {
-    std::cout<<"Chargement des données..."<<std::endl;
-
+void NotesManager::loadArticles() {
     QSqlQuery query("SELECT * FROM Article ORDER BY id, version ASC");
 
     int id = query.record().indexOf("id");
@@ -60,6 +56,21 @@ void NotesManager::load() {
         v->addNote(a);
     }
     addNote(v);
+}
+
+void NotesManager::loadTaches() {
+
+}
+
+void NotesManager::loadMedia() {
+
+}
+
+
+void NotesManager::load() {
+    std::cout<<"Chargement des données..."<<std::endl;
+
+    loadArticles();
 
     std::cout<<"Chargement effectué."<<std::endl;
 }

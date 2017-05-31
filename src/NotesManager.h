@@ -8,6 +8,9 @@
 #include <QFileDialog>
 #include <QString>
 #include <QDateTime>
+#include <QSqlRecord>
+#include <QVariant>
+#include <iostream>
 
 class NotesManager {
 friend class NoteIterator;
@@ -16,7 +19,10 @@ private:
     unsigned int nbNotes;
     unsigned int nbMaxNotes;
     static NotesManager* _instance;
-    NotesManager(): notes(nullptr), nbNotes(0), nbMaxNotes(0) {}
+    NotesManager(): notes(nullptr), nbNotes(0), nbMaxNotes(0) {
+        DbManager::instance();
+        NotesManager::load();
+    }
     ~NotesManager();
 public:
     ///Singleton accessor
@@ -30,8 +36,8 @@ public:
         unsigned int nbNotes;
         NoteIterator(unsigned int n): nbNotes(n) {}
     public:
-        void first() { index = 0; }
-        void next() { index++; }
+        void first() { index = 0; std::cout<<"index = 0 - nbNotes = "<<nbNotes<<" "; }
+        void next() { index++; std::cout<<"index = "<<index<<" "; }
         bool isDone();
         Note* currentNote() { return instance().notes[index]->currentNote(); }
         Version* currentVersion() { return instance().notes[index]; }
@@ -39,7 +45,7 @@ public:
 
     NoteIterator iterator() const { return NoteIterator(nbNotes); }
     void addNote(Version* n);
-    //void load();
+    void load();
 };
 
 #endif // NOTESMANAGER_H

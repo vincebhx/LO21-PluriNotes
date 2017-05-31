@@ -17,7 +17,7 @@ NotesManager::~NotesManager() {
 
 bool NotesManager::NoteIterator::isDone() {
     if (nbNotes == 0) return true;
-    return nbNotes == index + 1;
+    return nbNotes == index - 1;
 }
 
 void NotesManager::addNote(Version* n) {
@@ -39,29 +39,40 @@ void NotesManager::addNote(Version* n) {
 }
 
 
-/*void loadArticle(DbManager& d) {
-    QString id;
-    int version;
-    QString titre;
-    QDateTime creation;
-    QDateTime modification;
-    QString texte;
-
+void load() {
     QSqlQuery query("SELECT * FROM Article ORDER BY id, version ASC");
+
+    int id = query.record().indexOf("id");
+    int version = query.record().indexOf("version");
+    int titre = query.record().indexOf("titre");
+    int creat = query.record().indexOf("dateCreation");
+    int modif = query.record().indexOf("dateModification");
+    int texte = query.record().indexOf("texte");
+    Version *v = new Version;
+
     while (query.next())
     {
-       //while (meme id) {
+           //while (meme id) {
+            /*
+           id = query.value(id).toString();
+           version = query.value(version);
+           titre = query.value(titre);
+                  texte = query.value(texte).toString();
+           creation = creation.fromString(query.value(dateCreation).toString(), "dd/MM/yyyy hh:mm:ss");
+           modification = modification.fromString(query.value(dateModification).toString(), "dd/MM/yyyy hh:mm:ss");
 
-       id = query.value(id).toString();
-       version = query.value(version);
-       titre = query.value(titre);
-       creation = creation.fromString(query.value(dateCreation).toString());
-       modification = modification.fromString(query.value(dateModification).toString());
-       texte = query.value(texte).toString();
-
-       Article* a = new Article()
-       //}
+    */
+        std::cout<<query.value(id).toString().toStdString()<<" "<<query.value(version).toInt()<<std::endl;
+        Article* a = new Article(
+            query.value(id).toString(),
+            query.value(version).toInt(),
+            query.value(titre).toString(),
+            query.value(texte).toString(),
+            QDateTime::fromString(query.value(creat).toString(), "dd/MM/yyyy hh:mm:ss"),
+            QDateTime::fromString(query.value(modif).toString(), "dd/MM/yyyy hh:mm:ss")
+        );
+           //}
+        v->addNote(a);
     }
-
-
-}*/
+    NotesManager::instance().addNote(v);
+}

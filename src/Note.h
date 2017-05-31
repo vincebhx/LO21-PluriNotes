@@ -19,15 +19,15 @@ enum Statut {enAttente, enCours, termine};
 class Note {
 protected:
     const QString id;
-    QString titre;
     unsigned int version;
+    QString titre;
     const QDateTime dateCreation;
     QDateTime dateLastModification;
 
     virtual QFormLayout* getLayout() = 0;
-    Note(const QString i, QString t = NULL): id(i), titre(t), dateCreation(QDateTime::currentDateTime()) {
-        dateLastModification = dateCreation;
-    }
+    Note(const QString i, unsigned int vers = 0, QString t = NULL,
+         QDateTime creat = QDateTime::currentDateTime(), QDateTime modif = QDateTime::currentDateTime()):
+        id(i), version(vers), titre(t), dateCreation(creat), dateLastModification(modif) {}
     virtual QSqlQuery prepareQuery() = 0;
 public:
     static const QString dateFormat;
@@ -51,7 +51,9 @@ private:
     QFormLayout* getLayout();
     QSqlQuery prepareQuery();
 public:
-    Article(const QString id, QString t = NULL, QString te = NULL): Note(id, t), texte(te) {}
+    Article(const QString id, unsigned int version = 0, QString t = NULL, QString te = NULL,
+            QDateTime creat = QDateTime::currentDateTime(), QDateTime modif = QDateTime::currentDateTime()):
+        Note(id, version, t, creat, modif), texte(te) {}
     void setTexte(QString t) { texte = t; }
     QString getTexte() const { return texte; }
 };
@@ -66,8 +68,9 @@ private:
     QFormLayout* getLayout();
     QSqlQuery prepareQuery();
 public:
-    Tache(const QString id, QString t = NULL, QString act = NULL, int pr = 0, Date de = Date(), Statut s = enAttente):
-        Note(id, t), action(act), priorite(pr), dateEcheance(de), statut(s) {}
+    Tache(const QString id, unsigned int version = 0, QString t = NULL, QString act = NULL, int pr = 0, Date de = Date(), Statut s = enAttente,
+          QDateTime creat = QDateTime::currentDateTime(), QDateTime modif = QDateTime::currentDateTime()):
+        Note(id, version, t, creat, modif), action(act), priorite(pr), dateEcheance(de), statut(s) {}
     void setAction(QString a) { action = a; }
     void setPriorite(int p) { priorite = p; }
     void setDateEcheance(Date d) { dateEcheance = d; }
@@ -83,7 +86,9 @@ class Media: public Note {
 protected:
     QString description;
     QString filePath;
-    Media(const QString id, QString t = NULL, QString desc = NULL, QString file = NULL): Note(id, t), description(desc), filePath(file) {}
+    Media(const QString id, unsigned int version = 0, QString t = NULL, QString desc = NULL, QString file = NULL,
+          QDateTime creat = QDateTime::currentDateTime(), QDateTime modif = QDateTime::currentDateTime()):
+        Note(id, version, t, creat, modif), description(desc), filePath(file) {}
     QFormLayout* getLayout();
     QSqlQuery prepareQuery();
 public:
@@ -97,21 +102,27 @@ public:
 ///Décrit une image
 class Image: public Media {
 public:
-    Image(const QString id, QString t = NULL, QString desc = NULL, QString file = NULL): Media(id, t, desc, file) {}
+    Image(const QString id, unsigned int version = 0, QString t = NULL, QString desc = NULL, QString file = NULL,
+          QDateTime creat = QDateTime::currentDateTime(), QDateTime modif = QDateTime::currentDateTime()):
+        Media(id, version, t, desc, file, creat, modif) {}
     QString typeToString() const { return "image"; }
 };
 
 ///Décrit un fichier audio
 class Audio: public Media {
 public:
-    Audio(const QString id, QString t = NULL, QString desc = NULL, QString file = NULL): Media(id, t, desc, file) {}
+    Audio(const QString id, unsigned int version = 0, QString t = NULL, QString desc = NULL, QString file = NULL,
+          QDateTime creat = QDateTime::currentDateTime(), QDateTime modif = QDateTime::currentDateTime()):
+        Media(id, version, t, desc, file, creat, modif) {}
     QString typeToString() const { return "audio"; }
 };
 
 ///Décrit un fichier vidéo
 class Video: public Media {
 public:
-    Video(const QString id, QString t = NULL, QString desc = NULL, QString file = NULL): Media(id, t, desc, file) {}
+    Video(const QString id, unsigned int version = 0, QString t = NULL, QString desc = NULL, QString file = NULL,
+          QDateTime creat = QDateTime::currentDateTime(), QDateTime modif = QDateTime::currentDateTime()):
+        Media(id, version, t, desc, file, creat, modif) {}
     QString typeToString() const { return "video"; }
 };
 

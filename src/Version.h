@@ -10,7 +10,8 @@ private:
     vector<Note*> notes;
 public:
     Version() {}
-    Note* currentNote();
+    Note* firstNote();  ///Renvoie la première version de la note.
+    Note* currentNote();    ///Renvoie la version courante de la note.
     void addNote(Note* n);
     VersionIterator begin() { return notes.begin(); }
     VersionIterator end() { return notes.end(); }

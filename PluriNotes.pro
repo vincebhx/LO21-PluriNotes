@@ -3,6 +3,9 @@ macx {
     QMAKE_MAC_SDK = macosx10.12
     INCLUDEPATH += /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include
     QMAKE_LFLAGS = -std=c++11 -framework opengl
+    target_db.path = $$[OUT_PWD]/PluriNotes.app/Contents/MacOS/
+    target_db.files = $$[_PRO_FILE_PWD_]/notes.db
+    INSTALLS += target_db
 }
 QMAKE_CXXFLAGS = -Wall -Wextra -std=c++11 -pedantic -Werror
 
@@ -31,4 +34,5 @@ SOURCES += \
     src/DbManager.cpp
 
 DISTFILES += \
-    README.md
+    README.md \
+    notes.db

@@ -3,11 +3,13 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include <QFileDialog>
 
 DbManager* DbManager::_instance = 0;
 
 DbManager& DbManager::instance() {
-    if(_instance == 0) _instance = new DbManager("notes.db");
+    QString database = QFileDialog::getOpenFileName();
+    if(_instance == 0) _instance = new DbManager(database);
     return *_instance;
 }
 
@@ -32,21 +34,4 @@ bool DbManager::addNote(Note &n) {
         qDebug() << "Erreur - DbManager::addNote : "<< query.lastError();
 
     return success;
-}
-
-bool DbManager::loadAll() {
-    QSqlQuery queryArticle("SELECT * FROM Article ORDER BY id, version ASC;");
-
-
-    /*
-    QSqlQuery queryTache("SELECT * FROM Tache ORDER BY id, version ASC;");
-    QSqlQuery queryImage("SELECT * FROM Media WHERE type = 'image' ORDER BY id, version ASC;");
-    QSqlQuery queryAudio("SELECT * FROM Media WHERE type = 'audio' ORDER BY id, version ASC;");
-    QSqlQuery queryVideo("SELECT * FROM Media WHERE type = 'video' ORDER BY id, version ASC;");
-    */
-    return true;
-}
-
-bool DbManager::saveAll() {
-    return true;
 }

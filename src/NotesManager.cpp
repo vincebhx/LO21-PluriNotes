@@ -1,5 +1,5 @@
 #include "NotesManager.h"
-
+#include <QDebug>
 #define DYN_ALLOC_STEP 5
 
 NotesManager* NotesManager::_instance = 0;
@@ -10,36 +10,20 @@ NotesManager& NotesManager::instance() {
 }
 
 NotesManager::~NotesManager() {
-    for(unsigned int i = 0; i < nbMaxNotes; i++)
-        delete notes[i];
-    delete [] notes;
-}
-
-bool NotesManager::NoteIterator::isDone() {
-    if (nbNotes == 0) return true;
-    return nbNotes == index - 1;
+    notes.clear();
 }
 
 void NotesManager::addNote(Version* n) {
-    for(unsigned int i = 0; i < nbNotes; i++)
-        if (notes[i]->currentNote()->getId() == n->currentNote()->getId())
+    for(unsigned int i = 0; i < notes.size(); i++)
+        if (notes.at(i)->currentNote()->getId() == n->currentNote()->getId())
             throw NoteException("Une note possédant cet id existe déjà.");
-
-    if (nbNotes == nbMaxNotes) {
-        Version** newNotes = new Version*[nbMaxNotes + DYN_ALLOC_STEP];
-        for(unsigned int i = 0; i < nbNotes; i++)
-            newNotes[i] = notes[i];
-        Version** oldNotes = notes;
-        notes = newNotes;
-        nbMaxNotes += DYN_ALLOC_STEP;
-        if(oldNotes) delete[] oldNotes;
-    }
-
-    notes[nbNotes++] = n;
+    notes.push_back(n);
 }
 
 
-void load() {
+void NotesManager::load() {
+    std::cout<<"Chargement des données..."<<std::endl;
+
     QSqlQuery query("SELECT * FROM Article ORDER BY id, version ASC");
 
     int id = query.record().indexOf("id");
@@ -48,21 +32,23 @@ void load() {
     int creat = query.record().indexOf("dateCreation");
     int modif = query.record().indexOf("dateModification");
     int texte = query.record().indexOf("texte");
+
     Version *v = new Version;
+    QString currentId = 0;
 
     while (query.next())
     {
-           //while (meme id) {
-            /*
-           id = query.value(id).toString();
-           version = query.value(version);
-           titre = query.value(titre);
-                  texte = query.value(texte).toString();
-           creation = creation.fromString(query.value(dateCreation).toString(), "dd/MM/yyyy hh:mm:ss");
-           modification = modification.fromString(query.value(dateModification).toString(), "dd/MM/yyyy hh:mm:ss");
+        if(currentId != query.value(id).toString()) {
+            cout<<"Nouvelle note :"<<endl;
+            if(currentId != 0) {
+                addNote(v);
+                v = new Version;
+            }
+            currentId = query.value(id).toString();
+        }
 
-    */
-        std::cout<<query.value(id).toString().toStdString()<<" "<<query.value(version).toInt()<<std::endl;
+        cout<<"Chargement de "<<query.value(id).toString().toStdString()<<" v"<<query.value(version).toInt()<<endl;
+
         Article* a = new Article(
             query.value(id).toString(),
             query.value(version).toInt(),
@@ -71,8 +57,9 @@ void load() {
             QDateTime::fromString(query.value(creat).toString(), "dd/MM/yyyy hh:mm:ss"),
             QDateTime::fromString(query.value(modif).toString(), "dd/MM/yyyy hh:mm:ss")
         );
-           //}
         v->addNote(a);
     }
-    NotesManager::instance().addNote(v);
+    addNote(v);
+
+    std::cout<<"Chargement effectué."<<std::endl;
 }

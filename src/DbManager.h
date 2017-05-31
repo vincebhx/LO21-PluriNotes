@@ -12,6 +12,7 @@ private:
 public:
     DbManager(const QString& path);
     bool addNote(Note& n);
+
 };
 
 #endif // DBMANAGER_H

@@ -1,4 +1,5 @@
 #include "NotesManager.h"
+
 #define DYN_ALLOC_STEP 5
 
 NotesManager* NotesManager::_instance = 0;
@@ -36,3 +37,32 @@ void NotesManager::addNote(Version* n) {
 
     notes[nbNotes++] = n;
 }
+
+
+
+/*void loadArticle(DbManager& d) {
+    QString id;
+    int version;
+    QString titre;
+    QDateTime creation;
+    QDateTime modification;
+    QString texte;
+
+    QSqlQuery query("SELECT * FROM Article ORDER BY id, version ASC");
+    while (query.next())
+    {
+       //while (meme id) {
+
+       id = query.value(id).toString();
+       version = query.value(version);
+       titre = query.value(titre);
+       creation = creation.fromString(query.value(dateCreation).toString());
+       modification = modification.fromString(query.value(dateModification).toString());
+       texte = query.value(texte).toString();
+
+       Article* a = new Article()
+       //}
+    }
+
+
+}*/

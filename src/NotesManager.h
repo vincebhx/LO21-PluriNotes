@@ -4,7 +4,10 @@
 #include "Note.h"
 #include "Version.h"
 #include "NoteException.h"
+#include "DbManager.h"
 #include <QFileDialog>
+#include <QString>
+#include <QDateTime>
 
 class NotesManager {
 friend class NoteIterator;
@@ -36,6 +39,7 @@ public:
 
     NoteIterator iterator() const { return NoteIterator(nbNotes); }
     void addNote(Version* n);
+    //void load();
 };
 
 #endif // NOTESMANAGER_H

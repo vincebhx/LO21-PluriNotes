@@ -44,8 +44,9 @@ bool DbManager::loadAll() {
     QSqlQuery queryAudio("SELECT * FROM Media WHERE type = 'audio' ORDER BY id, version ASC;");
     QSqlQuery queryVideo("SELECT * FROM Media WHERE type = 'video' ORDER BY id, version ASC;");
     */
+    return true;
 }
 
 bool DbManager::saveAll() {
-
+    return true;
 }

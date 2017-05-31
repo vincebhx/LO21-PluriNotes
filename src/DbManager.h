@@ -15,6 +15,7 @@ private:
 public:
     static DbManager& instance();
     bool addNote(Note& n);
+
     bool loadAll(); ///Charge la base de données dans le NotesManager.
     bool saveAll(); ///Sauvegarde le NotesManager dans la base de données.
 };

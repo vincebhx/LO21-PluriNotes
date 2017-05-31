@@ -57,3 +57,11 @@ CREATE TABLE RelationNote(
 );
 
 INSERT INTO Tache VALUES ("tache1", 1, "toto", "aujourdhui", "aujourdhui", "coder en c++", 42, "enCours");
+INSERT INTO Tache VALUES ("tache1", 3, "toto", "aujourdhui", "aujourdhui", "coder en c++", 42, "enCours");
+INSERT INTO Tache VALUES ("tache1", 2, "toto", "aujourdhui", "aujourdhui", "coder en c++", 42, "enCours");
+INSERT INTO Tache VALUES ("tache1", 4, "toto", "aujourdhui", "aujourdhui", "coder en c++", 42, "enCours");
+
+INSERT INTO Tache VALUES ("tache2", 1, "toto", "aujourdhui", "aujourdhui", "coder en c++", 42, "enCours");
+INSERT INTO Tache VALUES ("tache2", 2, "toto", "aujourdhui", "aujourdhui", "coder en c++", 42, "enCours");
+
+SELECT * FROM Tache ORDER BY id, version ASC;

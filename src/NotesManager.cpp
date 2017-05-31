@@ -36,3 +36,7 @@ void NotesManager::addNote(Version* n) {
 
     notes[nbNotes++] = n;
 }
+
+void NotesManager::load() {
+
+}

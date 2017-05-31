@@ -10,7 +10,7 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    DbManager("notes.db");
+    DbManager::instance();
     QApplication app(argc, argv);
     MainWindow fenetre;
     QObject::connect(&app, SIGNAL(aboutToQuit()), &fenetre, SLOT(onClose()));

@@ -5,20 +5,26 @@
 #include "../src/Note.h"
 #include "NoteSelector.h"
 #include <QTableView>
+#include <QHBoxLayout>
 
 MainWindow::MainWindow()
 {
     NotesManager& nm = NotesManager::instance();
     NoteSelector* noteselec = new NoteSelector(nm);
     QTableView* view = new QTableView;
+    QHBoxLayout* layoutH = new QHBoxLayout;
 
     view->setModel(noteselec);
 
-    view->show();
+    //view->show();
 
 
     NoteViewer* nv = new NoteViewer;
-    setCentralWidget(nv);
+    //setCentralWidget(nv);
+
+    layoutH->addWidget(view);
+    layoutH->addWidget(nv);
+
 
 }
 

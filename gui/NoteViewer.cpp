@@ -7,9 +7,11 @@ NoteViewer::NoteViewer() {
    QVBoxLayout* layout = new QVBoxLayout;
 
    for(NMIterator it = nm.begin(); it != nm.end(); it++) {
-       layout->addWidget((*it)->currentNote()->getNoteView());
-       cout<<"toto"<<endl;
+       cout << (*it)->currentNote()->getId().toStdString();
    }
+
+   layout->addWidget(nm.currentNote()->getNoteView());
+   cout<<"Layout++"<<endl;
 
    setLayout(layout);
 }

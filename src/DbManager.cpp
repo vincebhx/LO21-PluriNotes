@@ -25,8 +25,10 @@ DbManager::DbManager(const QString& path)
 }
 
 DbManager::~DbManager() {
-    if (db.isOpen())
+    if (db.isOpen()) {
         db.close();
+        std::cout<<"Fermeture de la connexion avec la base de données."<<endl;
+    }
 }
 
 bool DbManager::addNote(Note &n) {

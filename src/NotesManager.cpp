@@ -36,7 +36,6 @@ void NotesManager::load() {
     load(audio);
     load(video);*/
 
-
     std::cout<<"Chargement effectué."<<std::endl;
 }
 

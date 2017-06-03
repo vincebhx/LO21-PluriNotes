@@ -26,8 +26,6 @@ private:
     }
     ~NotesManager();
     void loadArticles();
-    void loadTaches();
-    void loadMedia();
 public:
     ///Singleton accessor
     static NotesManager& instance();

@@ -58,14 +58,6 @@ void NotesManager::loadArticles() {
     addNote(v);
 }
 
-void NotesManager::loadTaches() {
-
-}
-
-void NotesManager::loadMedia() {
-
-}
-
 
 void NotesManager::load() {
     std::cout<<"Chargement des données..."<<std::endl;

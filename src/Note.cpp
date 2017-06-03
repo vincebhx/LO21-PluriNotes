@@ -58,7 +58,7 @@ QFormLayout* Tache::getLayout() {
     actionEdit->setFixedWidth(300);
 
     //Date d'échéance
-    QDateTimeEdit* echeanceEdit = new QDateTimeEdit(dateEcheance.toQDateTime());
+    QDateTimeEdit* echeanceEdit = new QDateTimeEdit(dateEcheance);
     echeanceEdit->setFixedWidth(300);
 
     //Layout et retour

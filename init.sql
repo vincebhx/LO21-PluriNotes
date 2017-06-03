@@ -24,6 +24,7 @@ CREATE TABLE Tache(
   dateModification TEXT,
   action TEXT,
   priorite INT,
+  dateEcheance TEXT,
   statut VARCHAR(9),
   PRIMARY KEY (id, version),
   CHECK (statut IN ("enAttente", "enCours", "termine"))
@@ -64,13 +65,13 @@ INSERT INTO Article VALUES ("tache1", 4, "c++", "26/05/2017 14:00:00", "26/05/20
 INSERT INTO Article VALUES ("tache2", 1, "js", "28/05/2017 11:00:00", "26/05/2017 10:00:00", "coder en js v1");
 INSERT INTO Article VALUES ("tache2", 2, "js", "28/05/2017 12:00:00", "26/05/2017 10:00:00", "coder en js v2");
 
-INSERT INTO Tache VALUES ("tache3", 1, "toto", "aujourdhui", "aujourdhui", "coder en c++", 42, "enCours");
-INSERT INTO Tache VALUES ("tache3", 3, "toto", "aujourdhui", "aujourdhui", "coder en c++", 42, "enCours");
-INSERT INTO Tache VALUES ("tache3", 2, "toto", "aujourdhui", "aujourdhui", "coder en c++", 42, "enCours");
-INSERT INTO Tache VALUES ("tache3", 4, "toto", "aujourdhui", "aujourdhui", "coder en c++", 42, "enCours");
+INSERT INTO Tache VALUES ("tache3", 1, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en c++", 42, "28/05/2017 10:00:00", "enCours");
+INSERT INTO Tache VALUES ("tache3", 3, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en c++", 42, "28/05/2017 10:00:00", "enCours");
+INSERT INTO Tache VALUES ("tache3", 2, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en c++", 42, "28/05/2017 10:00:00", "enCours");
+INSERT INTO Tache VALUES ("tache3", 4, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en c++", 42, "28/05/2017 10:00:00", "enCours");
 
-INSERT INTO Tache VALUES ("tache4", 1, "toto", "aujourdhui", "aujourdhui", "coder en c++", 42, "enCours");
-INSERT INTO Tache VALUES ("tache4", 2, "toto", "aujourdhui", "aujourdhui", "coder en c++", 42, "enCours");
+INSERT INTO Tache VALUES ("tache4", 1, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en js", 42, "28/05/2017 10:00:00", "enCours");
+INSERT INTO Tache VALUES ("tache4", 2, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en js", 42, "28/05/2017 10:00:00", "enCours");
 
 
 SELECT * FROM Tache ORDER BY id, version ASC;

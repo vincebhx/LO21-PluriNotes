@@ -63,21 +63,21 @@ class Tache: public Note {
 private:
     QString action;
     int priorite;
-    Date dateEcheance;
+    QDateTime dateEcheance;
     Statut statut;
     QFormLayout* getLayout();
     QSqlQuery prepareQuery();
 public:
-    Tache(const QString id, unsigned int version = 0, QString t = NULL, QString act = NULL, int pr = 0, Date de = Date(), Statut s = enAttente,
-          QDateTime creat = QDateTime::currentDateTime(), QDateTime modif = QDateTime::currentDateTime()):
-        Note(id, version, t, creat, modif), action(act), priorite(pr), dateEcheance(de), statut(s) {}
+    Tache(const QString id, unsigned int version = 0, QString t = NULL, QString act = NULL, int pr = 0, QDateTime dateEch = QDateTime::currentDateTime(),
+          Statut s = enAttente, QDateTime creat = QDateTime::currentDateTime(), QDateTime modif = QDateTime::currentDateTime()):
+        Note(id, version, t, creat, modif), action(act), priorite(pr), dateEcheance(dateEch), statut(s) {}
     void setAction(QString a) { action = a; }
     void setPriorite(int p) { priorite = p; }
-    void setDateEcheance(Date d) { dateEcheance = d; }
+    void setDateEcheance(QDateTime d) { dateEcheance = d; }
     void setStatut(Statut s) { statut = s; }
     QString getAction() const { return action; }
     int getPriorite() const { return priorite; }
-    Date getDateEcheance() const { return dateEcheance; }
+    QDateTime getDateEcheance() const { return dateEcheance; }
     Statut getStatut() const { return statut; }
 };
 

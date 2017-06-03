@@ -24,6 +24,11 @@ DbManager::DbManager(const QString& path)
       std::cout<<"Base de données : connexion ok."<<endl;
 }
 
+DbManager::~DbManager() {
+    if (db.isOpen())
+        db.close();
+}
+
 bool DbManager::addNote(Note &n) {
     bool success = false;
     QSqlQuery query = n.getQuery();

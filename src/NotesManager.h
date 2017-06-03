@@ -12,6 +12,7 @@
 #include <QVariant>
 #include <iostream>
 
+enum NoteType {article = 1, tache = 2, image = 3, audio = 4, video = 5};
 
 typedef vector<Version*>::iterator NMIterator;
 
@@ -25,13 +26,13 @@ private:
         NotesManager::load();
     }
     ~NotesManager();
-    void loadArticles();
+    void load();
+    void load(NoteType nt);
 public:
     ///Singleton accessor
     static NotesManager& instance();
 
     void addNote(Version* n);
-    void load();
     Note* currentNote() { return notes.back()->currentNote(); }
     Version* currentVersion() { return notes.back(); }
     NMIterator begin() { return notes.begin(); }

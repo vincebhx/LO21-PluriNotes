@@ -24,10 +24,10 @@ void NotesManager::load() {
     std::cout<<"Chargement des données..."<<std::endl;
 
     load(article);
-    load(tache);
+    /*load(tache);
     load(image);
     load(audio);
-    load(video);
+    load(video);*/
 
 
     std::cout<<"Chargement effectué."<<std::endl;

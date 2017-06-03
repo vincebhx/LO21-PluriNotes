@@ -21,9 +21,9 @@ namespace TEMPS {
                 else throw TimeException("jour invalide");
                 break;
         }
-        if (0 <= h && h <= 23) heure = h; else throw TimeException("heure invalide");
-        if (0 <= min && min <= 59) minute = min; else throw TimeException("minute invalide");
-        if (0 <= s && s <= 59) seconde = s; else throw TimeException("seconde invalide");
+        if (h <= 23) heure = h; else throw TimeException("heure invalide");
+        if (min <= 59) minute = min; else throw TimeException("minute invalide");
+        if (s <= 59) seconde = s; else throw TimeException("seconde invalide");
     }
     
     void Date::afficher(ostream& f) const {

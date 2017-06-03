@@ -7,7 +7,7 @@ macx {
     target_db.files = $$[_PRO_FILE_PWD_]/notes.db
     INSTALLS += target_db
 }
-QMAKE_CXXFLAGS = -Wall -Wextra -std=c++11 -pedantic -Werror
+QMAKE_CXXFLAGS = -std=c++11
 
 HEADERS += \
     src/Date.h \
@@ -19,7 +19,8 @@ HEADERS += \
     gui/MainWindow.h \
     src/Version.h \
     src/NoteException.h \
-    src/DbManager.h
+    src/DbManager.h \
+    gui/NoteSelector.h
 
 SOURCES += \
     src/Application.cpp \
@@ -31,7 +32,8 @@ SOURCES += \
     src/Couple.cpp \
     gui/MainWindow.cpp \
     src/Version.cpp \
-    src/DbManager.cpp
+    src/DbManager.cpp \
+    gui/NoteSelector.cpp
 
 DISTFILES += \
     README.md \

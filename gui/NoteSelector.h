@@ -17,7 +17,7 @@ private :
 public:
     NoteSelector(NotesManager& nm, QObject* parent = 0);
 
-    int rowCount(const QModelIndex &parent = QModelIndex()) const
+   int rowCount(const QModelIndex &parent = QModelIndex()) const
     { return this->id.count(); }
    int columnCount(const QModelIndex &parent = QModelIndex()) const {
        return 5;

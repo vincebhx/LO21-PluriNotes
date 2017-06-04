@@ -4,6 +4,8 @@
 #include <QSqlError>
 #include <QTextEdit>
 
+using namespace std;
+
 QFormLayout* Article::getLayout() {
     //Texte
     QTextEdit* textEdit = new QTextEdit(texte);
@@ -49,11 +51,11 @@ bool Article::load(NotesManager& nm)
         id = query.value(index[0]).toString();
 
         if(currentId != id) {
-            cout<<"Nouvelle note :"<<endl;
             if (currentId != 0) {
-                nm.addNote(v);
+               nm.addNote(v);
                v = new Version;
             }
+            cout<<"Nouvelle note :"<<endl;
             currentId = id;
         }
 

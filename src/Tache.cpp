@@ -5,6 +5,8 @@
 #include <QLineEdit>
 #include <QSqlRecord>
 
+using namespace std;
+
 QFormLayout* Tache::getLayout() {
     //Sélection du statut
     QComboBox* statutBox = new QComboBox;

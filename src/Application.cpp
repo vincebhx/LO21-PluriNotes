@@ -16,18 +16,16 @@ int main(int argc, char* argv[]) {
     cout<<"1 ";
     try {
         DbManager& db = DbManager::instance();
-        cout<<"2 ";
+        cout<<"2 "<<endl;
         NotesManager& nm = NotesManager::instance();
-        cout<<"3 ";
-        MainWindow window(nm);
-
-        //C'est là qu'il crashe
-
-        cout<<"4 ";
-        QObject::connect(&app, SIGNAL(aboutToQuit()), &window, SLOT(onClose()));
-        cout<<"5 ";
-        window.show();
-        cout<<"6 ";
+        cout<<"Note courante : "<<nm.currentNote()->getId().toStdString()<<" v"<<nm.currentNote()->getVersion()<<endl;
+        cout<<"3 "<<endl;;
+        MainWindow windaube(nm);
+        cout<<"4 "<<endl;
+        QObject::connect(&app, SIGNAL(aboutToQuit()), &windaube, SLOT(onClose()));
+        cout<<"5 "<<endl;
+        windaube.show();
+        cout<<"6 "<<endl;
     } catch (NoteException e) { cout << e.getInfo(); }
       catch (QSqlError e) { cout << e.driverText().toStdString(); }
     return app.exec();

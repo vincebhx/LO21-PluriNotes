@@ -6,6 +6,8 @@
 #include <QDebug>
 #include <QFileDialog>
 
+using namespace std;
+
 DbManager* DbManager::_instance = 0;
 
 DbManager& DbManager::instance() {

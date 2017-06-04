@@ -9,6 +9,8 @@
 
 #define DYN_ALLOC_STEP 5
 
+using namespace std;
+
 NotesManager* NotesManager::_instance = 0;
 
 NotesManager& NotesManager::instance() {
@@ -19,9 +21,9 @@ NotesManager& NotesManager::instance() {
 }
 
 NotesManager::NotesManager() {
-    cout<<"Construction du NotesManager...";
+    cout<<"Construction du NotesManager..."<<endl;
     load();
-    cout<<"NotesManager construit.";
+    cout<<"NotesManager construit."<<endl;
 }
 
 NotesManager::~NotesManager() {
@@ -33,6 +35,7 @@ void NotesManager::addNote(Version* n) {
         if (notes.at(i)->currentNote()->getId() == n->currentNote()->getId())
             throw NoteException("Une note possédant cet id existe déjà.");
     notes.push_back(n);
+    cout<<"NotesManager::addNote : ok."<<endl;
 }
 
 void NotesManager::free() {
@@ -47,8 +50,7 @@ void NotesManager::load() {
     cout<<"Chargement des articles."<<endl;
     Article::load(*this);
     cout<<"Chargement des tâches."<<endl;
-    Tache::load(*this);
-
+    //Tache::load(*this);
     //Media::load(*this, "image");
     //Media::load(*this, "audio");
     //Media::load(*this, "video");

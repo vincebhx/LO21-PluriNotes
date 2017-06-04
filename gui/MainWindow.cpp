@@ -5,14 +5,13 @@
 #include <QTableView>
 #include <QHBoxLayout>
 
+using namespace std;
+
 MainWindow::MainWindow(NotesManager& nm)
 {
-    /*
-    NoteSelector* noteselec = new NoteSelector(nm);
     NoteViewer* nv = new NoteViewer(nm);
-
     setCentralWidget(nv);
-    */
+    cout<<"MainWindow : c'est tout bon !"<<endl;
 }
 
 void MainWindow::onClose() {

@@ -4,6 +4,8 @@
 #include <QLineEdit>
 #include <QSqlRecord>
 
+const QString Media::TypeStr[3] = { "image", "audio", "video" };
+
 QFormLayout* Media::getLayout() {
     //Description
     QLineEdit* descEdit = new QLineEdit(description);
@@ -29,9 +31,9 @@ QSqlQuery Media::prepareQuery() {
     return query;
 }
 
-bool Media::load(NotesManager& nm, QString type)
+bool Media::load(NotesManager& nm, Type type) ///Type prend comme valeur "audio", "image" ou "video"
 {
-    QSqlQuery query("SELECT * FROM Media WHERE type = '" + type + "' ORDER BY id, version ASC");
+    QSqlQuery query("SELECT * FROM Media WHERE type = '" + TypeStr[type] + "' ORDER BY id, version ASC");
 
     int* index = new int;
     index[0] = query.record().indexOf("id");
@@ -61,7 +63,9 @@ bool Media::load(NotesManager& nm, QString type)
             currentId = id;
         }
 
-        if (type == "image")
+        switch(type)
+        {
+        case IMAGE:
             n = new Image(
                 id,  //ID
                 query.value(index[1]).toInt(),     //Version
@@ -72,7 +76,8 @@ bool Media::load(NotesManager& nm, QString type)
                 QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
                 QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss")     //Date de modification
             );
-        else if (type == "audio")
+            break;
+        case AUDIO:
             n = new Audio(
                 id,  //ID
                 query.value(index[1]).toInt(),     //Version
@@ -83,7 +88,8 @@ bool Media::load(NotesManager& nm, QString type)
                 QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
                 QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss")     //Date de modification
             );
-        else if (type == "video")
+            break;
+        case VIDEO:
             n = new Video(
                 id,  //ID
                 query.value(index[1]).toInt(),     //Version
@@ -94,8 +100,10 @@ bool Media::load(NotesManager& nm, QString type)
                 QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
                 QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss")     //Date de modification
             );
-        else throw NoteException("Erreur de chargement des objets Médias depuis la base de données.");
-
+            break;
+        default:
+            throw NoteException("Erreur de chargement des objets Médias depuis la base de données.");
+        }
         cout<<"Chargement de "<<id.toStdString()<<" v"<<query.value(index[1]).toInt()<<endl;
         v->addNote(n);
     }

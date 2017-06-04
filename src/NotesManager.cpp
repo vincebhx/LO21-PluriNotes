@@ -50,8 +50,9 @@ void NotesManager::load() {
     cout<<"Chargement des articles."<<endl;
     Article::load(*this);
     cout<<"Chargement des tâches."<<endl;
-    //Tache::load(*this);
-    //Media::load(*this, "image");
+    Tache::load(*this);
+    cout << "before load" << std::endl;
+    Media::load(*this, IMAGE);
     //Media::load(*this, "audio");
     //Media::load(*this, "video");
 

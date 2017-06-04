@@ -4,6 +4,9 @@
 #include "Note.h"
 #include "NotesManager.h"
 
+typedef enum { IMAGE = 0, AUDIO = 1, VIDEO = 2 } Type;
+
+
 ///Décrit un Média
 class Media: public Note {
 protected:
@@ -23,13 +26,15 @@ protected:
     QSqlQuery prepareQuery();
 
 public:
+    static const QString TypeStr[3];
+
     void setDescription(QString d) { description = d; }
     void setFilePath(QString f) { filePath = f; }
     QString getDescription() const { return description; }
     QString getFilePath() const { return filePath; }
 
     virtual QString typeToString() const = 0;
-    static bool load(NotesManager& nm, QString type);
+    static bool load(NotesManager& nm, Type type);
 };
 
 ///Décrit une image

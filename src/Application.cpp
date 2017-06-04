@@ -23,6 +23,5 @@ int main(int argc, char* argv[]) {
         fenetre2.show();
     } catch (NoteException e) { cout << e.getInfo(); }
       catch (QSqlError e) { cout << e.driverText().toStdString(); }
-
     return app.exec();
 }

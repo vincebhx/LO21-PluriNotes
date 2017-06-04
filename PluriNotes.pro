@@ -23,7 +23,8 @@ HEADERS += \
     src/Article.h \
     src/Tache.h \
     src/Media.h \
-    gui/createnote.h
+    gui/createnote.h \
+    src/Couple.h
 
 SOURCES += \
     src/Application.cpp \

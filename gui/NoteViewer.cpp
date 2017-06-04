@@ -3,13 +3,11 @@
 #include "../src/NotesManager.h"
 
 NoteViewer::NoteViewer(NotesManager& nm) {
-   QVBoxLayout* layout = new QVBoxLayout;
-
-   nm.currentNote()->getId().toStdString();
+   QLayout* layout = new QVBoxLayout();
 
    layout->addWidget(nm.currentNote()->getNoteView());
-   cout<<"Layout++"<<endl;
+   cout<<"NoteViewer : Ajout du layout"<<endl;
 
-   setLayout(layout);
+   this->setLayout(layout);
 }
 

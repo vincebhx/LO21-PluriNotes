@@ -3,7 +3,7 @@
 #include <QString>
 #include "Note.h"
 
-class Couple{
+class Couple {
 private:
     QString label;
     Note* noteX;

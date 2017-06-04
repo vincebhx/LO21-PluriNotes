@@ -1,14 +1,15 @@
 #ifndef Note_h
 #define Note_h
 
+#include "Date.h"
 #include <iostream>
+
 #include <Qt>
+#include <QDateTime>
+#include <QFormLayout>
+#include <QSqlQuery>
 #include <QString>
 #include <QWidget>
-#include <QDateTime>
-#include <QSqlQuery>
-#include <QFormLayout>
-#include "Date.h"
 
 using namespace std;
 using namespace TEMPS;

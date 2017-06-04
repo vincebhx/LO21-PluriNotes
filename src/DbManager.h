@@ -15,6 +15,7 @@ private:
 public:
     static DbManager& instance();
     bool addNote(Note& n);
+    void free();
 };
 
 #endif // DBMANAGER_H

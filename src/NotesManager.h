@@ -14,18 +14,15 @@ friend class NoteIterator;
 private:
     vector<Version*> notes;
     static NotesManager* _instance;
-    NotesManager() {
-        DbManager::instance();
-        NotesManager::load();
-    }
+    NotesManager();
     ~NotesManager();
     void load();
-    void load(NoteType nt);
 public:
     ///Singleton accessor
     static NotesManager& instance();
-
     void addNote(Version* n);
+    void free();
+
     Note* currentNote() { return notes.back()->currentNote(); }
     Version* currentVersion() { return notes.back(); }
     NMIterator begin() { return notes.begin(); }

@@ -2,6 +2,7 @@
 #define TACHE_H
 
 #include "Note.h"
+#include "NotesManager.h"
 
 ///Décrit une Tâche
 class Tache: public Note {
@@ -24,6 +25,8 @@ public:
     int getPriorite() const { return priorite; }
     QDateTime getDateEcheance() const { return dateEcheance; }
     Statut getStatut() const { return statut; }
+
+    static bool load(NotesManager& nm);
 };
 
 #endif // TACHE_H

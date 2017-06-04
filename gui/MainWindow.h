@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "../src/NotesManager.h"
+
 #include <QMainWindow>
 
 namespace Ui {
@@ -17,6 +19,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+public slots:
+    void onClose();
 };
 
 #endif // MAINWINDOW_H

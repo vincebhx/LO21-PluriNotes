@@ -1,6 +1,8 @@
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
 #include "../src/NotesManager.h"
+#include "NoteViewer.h"
+#include <QDockWidget>
 #include "NoteSelector.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -19,4 +21,10 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::onClose() {
+    DbManager::instance().free();
+    NotesManager::instance().free();
+    cout<<"Fin de l'exécution."<<endl;
 }

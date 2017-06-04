@@ -1,4 +1,5 @@
 #include "DbManager.h"
+#include "NoteException.h"
 #include <iostream>
 #include <QSqlQuery>
 #include <QSqlError>
@@ -8,8 +9,10 @@
 DbManager* DbManager::_instance = 0;
 
 DbManager& DbManager::instance() {
-    QString database = QFileDialog::getOpenFileName();
-    if(_instance == 0) _instance = new DbManager(database);
+    if(_instance == 0) {
+        QString database = QFileDialog::getOpenFileName();
+        _instance = new DbManager(database);
+    }
     return *_instance;
 }
 
@@ -19,9 +22,9 @@ DbManager::DbManager(const QString& path)
     db.setDatabaseName(path);
 
     if (!db.open())
-      std::cout<<"Erreur : la connexion à la base de données a échoué."<<endl;
+      throw NoteException("Erreur : échec de la connexion à la base de données.");
     else
-      std::cout<<"Base de données : connexion ok."<<endl;
+      std::cout<<"Succès de la connexion à la base de données."<<endl;
 }
 
 DbManager::~DbManager() {
@@ -41,4 +44,8 @@ bool DbManager::addNote(Note &n) {
         qDebug() << "Erreur - DbManager::addNote : "<< query.lastError();
 
     return success;
+}
+
+void DbManager::free() {
+    delete this;
 }

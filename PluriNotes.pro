@@ -15,7 +15,6 @@ HEADERS += \
     src/NotesManager.h \
     src/Relation.h \
     gui/NoteViewer.h \
-    src/Couple.h \
     gui/MainWindow.h \
     src/Version.h \
     src/NoteException.h \
@@ -24,7 +23,7 @@ HEADERS += \
     src/Article.h \
     src/Tache.h \
     src/Media.h \
-    mainwindow.h
+    gui/createnote.h
 
 SOURCES += \
     src/Application.cpp \
@@ -41,11 +40,12 @@ SOURCES += \
     src/Article.cpp \
     src/Tache.cpp \
     src/Media.cpp \
-    mainwindow.cpp
+    gui/CreateNote.cpp
 
 DISTFILES += \
     README.md \
     notes.db
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    gui/createnote.ui

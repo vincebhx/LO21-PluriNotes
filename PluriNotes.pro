@@ -20,7 +20,10 @@ HEADERS += \
     src/Version.h \
     src/NoteException.h \
     src/DbManager.h \
-    gui/NoteSelector.h
+    gui/NoteSelector.h \
+    src/Article.h \
+    src/Tache.h \
+    src/Media.h
 
 SOURCES += \
     src/Application.cpp \
@@ -33,7 +36,10 @@ SOURCES += \
     gui/MainWindow.cpp \
     src/Version.cpp \
     src/DbManager.cpp \
-    gui/NoteSelector.cpp
+    gui/NoteSelector.cpp \
+    src/Article.cpp \
+    src/Tache.cpp \
+    src/Media.cpp
 
 DISTFILES += \
     README.md \

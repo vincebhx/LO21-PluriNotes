@@ -1,16 +1,9 @@
 #ifndef NOTESMANAGER_H
 #define NOTESMANAGER_H
 
+#include "DbManager.h"
 #include "Note.h"
 #include "Version.h"
-#include "NoteException.h"
-#include "DbManager.h"
-#include <QFileDialog>
-#include <QString>
-#include <QDateTime>
-#include <QSqlRecord>
-#include <QVariant>
-#include <iostream>
 
 enum NoteType {article = 1, tache = 2, image = 3, audio = 4, video = 5};
 

@@ -10,21 +10,29 @@
 MainWindow::MainWindow()
 {
     NotesManager& nm = NotesManager::instance();
+
     NoteSelector* noteselec = new NoteSelector(nm);
-    QTableView* view = new QTableView;
+    NoteViewer* nv = new NoteViewer;
+
+    QDockWidget *dockWidget = new QDockWidget(tr("Dock Widget"), this);
+    QTableView* view = new QTableView(dockWidget);
+
     QHBoxLayout* layoutH = new QHBoxLayout;
 
     view->setModel(noteselec);
-
     //view->show();
 
+    setCentralWidget(nv);
+    addDockWidget(Qt::LeftDockWidgetArea, dockWidget);
 
-    NoteViewer* nv = new NoteViewer;
-    //setCentralWidget(nv);
+    //dockWidget->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    //dockWidget->setWidget(noteselec);
 
+    /*
     layoutH->addWidget(view);
     layoutH->addWidget(nv);
-
+    noteselec->setLayout(layoutH);
+    */
 
 }
 

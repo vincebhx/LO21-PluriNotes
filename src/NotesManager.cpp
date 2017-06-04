@@ -1,5 +1,12 @@
+#include "Article.h"
+#include "Media.h"
+#include "NoteException.h"
 #include "NotesManager.h"
-#include <QDebug>
+#include "Tache.h"
+
+#include <QSqlRecord>
+#include <QVariant>
+
 #define DYN_ALLOC_STEP 5
 
 NotesManager* NotesManager::_instance = 0;
@@ -23,7 +30,7 @@ void NotesManager::addNote(Version* n) {
 void NotesManager::load() {
     std::cout<<"Chargement des données..."<<std::endl;
 
-    load(article);
+    //load(article);
     /*load(tache);
     load(image);
     load(audio);
@@ -34,6 +41,51 @@ void NotesManager::load() {
 }
 
 void NotesManager::load(NoteType nt) {
+    QSqlQuery query("SELECT * FROM Article ORDER BY id, version ASC");
+    int* index = new int;
+    index[0] = query.record().indexOf("id");
+    index[1] = query.record().indexOf("version");
+    index[2] = query.record().indexOf("titre");
+    index[3] = query.record().indexOf("dateCreation");
+    index[4] = query.record().indexOf("dateModification");
+    index[5] = query.record().indexOf("texte");
+
+    Version* v = new Version;
+    QString currentId = 0;
+    unsigned int sizeCount = 0;
+    QString id;
+    Note* n;
+
+
+    while (query.next())
+    {
+        sizeCount++;
+        id = query.value(index[0]).toString();
+
+        if(currentId != id) {
+            cout<<"Nouvelle note :"<<endl;
+            if (currentId != 0) {
+                addNote(v);
+               v = new Version;
+            }
+            currentId = id;
+        }
+
+        n = new Article(
+            id,  //ID
+            query.value(index[1]).toInt(),     //Version
+            query.value(index[2]).toString(),  //Titre
+            query.value(index[5]).toString(),  //Texte
+            QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
+            QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss")     //Date de modification
+        );
+
+        cout<<"Chargement de "<<id.toStdString()<<" v"<<query.value(index[1]).toInt()<<endl;
+        v->addNote(n);
+    }
+    if (sizeCount != 0) addNote(v);
+
+    /*
      QString q;
      switch (nt) {
      case article:
@@ -166,4 +218,5 @@ void NotesManager::load(NoteType nt) {
          v->addNote(n);
      }
      if (sizeCount != 0) addNote(v);
+     */
 }

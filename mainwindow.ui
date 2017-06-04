@@ -1,10 +1,10 @@
-<ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
+<ui version="4.0">
+ <author/>
+ <comment/>
+ <exportmacro/>
  <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow" >
-  <property name="geometry" >
+ <widget name="MainWindow" class="QMainWindow">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -12,13 +12,13 @@
     <height>600</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QMenuBar" name="menubar" />
-  <widget class="QWidget" name="centralwidget" />
-  <widget class="QStatusBar" name="statusbar" />
+  <widget name="menubar" class="QMenuBar"/>
+  <widget name="centralwidget" class="QWidget"/>
+  <widget name="statusbar" class="QStatusBar"/>
  </widget>
- <pixmapfunction></pixmapfunction>
+ <pixmapfunction/>
  <connections/>
 </ui>

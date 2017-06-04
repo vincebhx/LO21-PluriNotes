@@ -23,7 +23,8 @@ HEADERS += \
     gui/NoteSelector.h \
     src/Article.h \
     src/Tache.h \
-    src/Media.h
+    src/Media.h \
+    mainwindow.h
 
 SOURCES += \
     src/Application.cpp \
@@ -39,8 +40,12 @@ SOURCES += \
     gui/NoteSelector.cpp \
     src/Article.cpp \
     src/Tache.cpp \
-    src/Media.cpp
+    src/Media.cpp \
+    mainwindow.cpp
 
 DISTFILES += \
     README.md \
     notes.db
+
+FORMS += \
+    mainwindow.ui

@@ -21,7 +21,7 @@ NotesManager& NotesManager::instance() {
 NotesManager::NotesManager() {
     cout<<"Construction du NotesManager...";
     load();
-    cout<<"NotesManager construit.";
+    cout<<"NotesManager construit."<<endl;
 }
 
 NotesManager::~NotesManager() {
@@ -47,7 +47,7 @@ void NotesManager::load() {
     cout<<"Chargement des articles."<<endl;
     Article::load(*this);
     cout<<"Chargement des tâches."<<endl;
-    Tache::load(*this);
+    //Tache::load(*this);
 
     //Media::load(*this, "image");
     //Media::load(*this, "audio");

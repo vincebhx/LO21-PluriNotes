@@ -18,17 +18,19 @@ int main(int argc, char* argv[]) {
         DbManager& db = DbManager::instance();
         cout<<"2 ";
         NotesManager& nm = NotesManager::instance();
-        cout<<"3 ";
+        cout<<"3 "<<endl;
         MainWindow window(nm);
 
         //C'est là qu'il crashe
 
-        cout<<"4 ";
+        cout<<"4 "<<endl;
         QObject::connect(&app, SIGNAL(aboutToQuit()), &window, SLOT(onClose()));
-        cout<<"5 ";
+        cout<<"5 "<<endl;
         window.show();
-        cout<<"6 ";
-    } catch (NoteException e) { cout << e.getInfo(); }
-      catch (QSqlError e) { cout << e.driverText().toStdString(); }
+        cout<<"6 "<<endl;
+    } catch (NoteException e) { cout << e.getInfo()<<endl; }
+      catch (QSqlError e) { cout << e.driverText().toStdString()<<endl; }
+
+    cout<<"Imma cut a bitch"<<endl;
     return app.exec();
 }

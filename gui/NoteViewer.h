@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
-#include "../src/Note.h"
+#include "../src/NotesManager.h"
 
 class NoteViewer: public QWidget {
 private:
@@ -12,7 +12,7 @@ private:
     /*Widgets*/
     /*Signaux*/
 public:
-    NoteViewer();
+    NoteViewer(NotesManager& nm);
 };
 
 #endif // NOTEVIEWER_H

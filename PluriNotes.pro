@@ -39,6 +39,7 @@ SOURCES += \
     src/note/versionindex.cpp \
     src/note/notesmanager.cpp \
     src/relation/relation.cpp \
+    src/relation/relationsmanager.cpp \
     src/relation/couple.cpp \
     src/dbmanager.cpp
 
@@ -52,6 +53,7 @@ HEADERS  += \
     src/note/versionindex.h \
     src/note/notesmanager.h \
     src/relation/relation.h \
+    src/relation/relationsmanager.h \
     src/relation/couple.h \
     src/dbmanager.h
 

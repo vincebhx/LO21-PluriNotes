@@ -1,8 +1,8 @@
 #ifndef RELATION_H
 #define RELATION_H
 
-#include "Note.h"
-#include "Couple.h"
+#include "./src/note/note.h"
+#include "couple.h"
 #include <QString>
 #include <QPair>
 

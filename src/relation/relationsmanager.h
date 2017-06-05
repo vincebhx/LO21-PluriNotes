@@ -2,8 +2,8 @@
 #define RELATIONSMANAGER_H
 
 #include <QPair>
-#include "Relation.h"
-#include "DbManager.h"
+#include "relation.h"
+#include "./src/dbmanager.h"
 
 class RelationsManager {
 

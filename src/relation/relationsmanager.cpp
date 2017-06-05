@@ -1,4 +1,5 @@
-#include "RelationsManager.h"
+#include "relationsmanager.h"
+#include <iostream>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QVariant>
@@ -20,7 +21,7 @@ void RelationsManager::loadRelations(){
     int oriente = query.record().indexOf("oriente");
 
     while (query.next()){
-        cout<<"Chargement de la relation "<<query.value(titre).toString().toStdString()<<endl;
+        std::cout<<"Chargement de la relation "<<query.value(titre).toString().toStdString()<<std::endl;
         Relation* r = new Relation(
                     query.value(titre).toString(),
                     query.value(description).toString(),

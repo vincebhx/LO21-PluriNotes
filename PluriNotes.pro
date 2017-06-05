@@ -11,7 +11,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets designer
 macx {
     QMAKE_MAC_SDK = macosx10.12
     INCLUDEPATH += /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include
-    QMAKE_LFLAGS = -std=c++11 -framework opengl
 }
 
 TARGET = PluriNotes
@@ -59,6 +58,3 @@ HEADERS  += \
 
 FORMS    += \
     ui/mainwindow.ui
-
- target.path = $$[QT_INSTALL_PLUGINS]/designer
- INSTALLS += target

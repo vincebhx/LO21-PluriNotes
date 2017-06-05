@@ -23,9 +23,9 @@ int main(int argc, char *argv[])
         QObject::connect(&app, SIGNAL(aboutToQuit()), &window, SLOT(onClose()));
     }
     catch(QSqlError e) { std::cout<<"Erreur : "<<e.driverText().toStdString()<<" - "<<e.databaseText().toStdString()<<std::endl;
-                         DbManager::instance().free(); }
+                         NotesManager::instance().free(); DbManager::instance().free(); }
     catch (...) { std::cout<<"ERREUR"<<std::endl;
-                  DbManager::instance().free(); }
+                  NotesManager::instance().free(); DbManager::instance().free(); }
 
     return app.exec();
 }

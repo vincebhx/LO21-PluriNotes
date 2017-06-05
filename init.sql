@@ -65,13 +65,13 @@ INSERT INTO Article VALUES ("article1", 4, "c++", "26/05/2017 14:00:00", "26/05/
 INSERT INTO Article VALUES ("article2", 1, "js", "28/05/2017 11:00:00", "26/05/2017 10:00:00", "coder en js v1");
 INSERT INTO Article VALUES ("article2", 2, "js", "28/05/2017 12:00:00", "26/05/2017 10:00:00", "coder en js v2");
 
-INSERT INTO Tache VALUES ("tache1", 1, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en c++", 42, "28/05/2017 10:00:00", "enCours");
+INSERT INTO Tache VALUES ("tache1", 1, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en c++", 42, "28/05/2017 10:00:00", "enAttente");
 INSERT INTO Tache VALUES ("tache1", 3, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en c++", 42, "28/05/2017 10:00:00", "enCours");
 INSERT INTO Tache VALUES ("tache1", 2, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en c++", 42, "28/05/2017 10:00:00", "enCours");
 INSERT INTO Tache VALUES ("tache1", 4, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en c++", 42, "28/05/2017 10:00:00", "enCours");
 
 INSERT INTO Tache VALUES ("tache2", 1, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en js", 42, "28/05/2017 10:00:00", "enCours");
-INSERT INTO Tache VALUES ("tache2", 2, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en js", 42, "28/05/2017 10:00:00", "enCours");
+INSERT INTO Tache VALUES ("tache2", 2, "toto", "26/05/2017 10:00:00", "27/05/2017 10:00:00", "coder en js", 42, "28/05/2017 10:00:00", "termine");
 
 INSERT INTO Media VALUES ("audio1", 1, "audio", "Stardust - Music Sounds Better With You", "28/05/2017 10:00:00", "29/05/2017 10:00:00", "Le premier hit de l'année 1997 !", "/Users/vbaheux/Documents/stardust.mp3");
 INSERT INTO Media VALUES ("audio1", 2, "audio", "Stardust - Music Sounds Better With You", "28/05/2017 10:00:00", "29/05/2017 10:00:00", "Le deuxième hit de l'année 1997 ! (finalement Mariah Carey était devant)", "/Users/vbaheux/Documents/stardust.mp3");
@@ -81,5 +81,3 @@ INSERT INTO Media VALUES ("image1", 2, "image", "Patate", "28/05/2017 10:00:00",
 
 INSERT INTO Media VALUES ("video1", 1, "video", "Lolcat", "28/05/2017 10:00:00", "29/05/2017 10:00:00", "Internet was made for cats.", "/Users/vbaheux/Documents/lolcat.avi");
 INSERT INTO Media VALUES ("video1", 2, "video", "Lolcat", "28/05/2017 10:00:00", "29/05/2017 11:00:00", "Internet was made for cats, right ?", "/Users/vbaheux/Documents/lolcat.avi");
-
-SELECT * FROM Tache ORDER BY id, version ASC;

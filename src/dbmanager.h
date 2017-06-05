@@ -9,13 +9,13 @@
 class DbManager
 {
 private:
-    QSqlDatabase db;
 
     static DbManager* _instance;
     DbManager(const QString& path);
     ~DbManager();
 
 public:
+    QSqlDatabase db;
     static DbManager& instance();
     void free();
     bool addNote(Note& n);

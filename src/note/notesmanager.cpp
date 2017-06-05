@@ -40,13 +40,11 @@ void NotesManager::addNote(VersionIndex* n) {
 void NotesManager::load() {
     std::cout<<"Chargement des données depuis la base..."<<std::endl;
 
-    /*
     Article::load(*this);
     Media::load(*this, IMAGE);
     Media::load(*this, AUDIO);
     Media::load(*this, VIDEO);
     Tache::load(*this);
-    */
 
     std::cout<<"Chargement effectué."<<std::endl;
 }

@@ -35,8 +35,7 @@ QSqlQuery Media::prepareQuery() {
 
 void Media::load(NotesManager &nm, Type type) {
     QSqlQuery query;
-    query.prepare("SELECT * FROM Media WHERE type = ':type' ORDER BY id, version ASC");
-    query.bindValue(":type", TypeStr[type]);
+    query.prepare("SELECT * FROM Media WHERE type = " + TypeStr[type] + " ORDER BY id, version ASC");
     bool success = query.exec();
     if(!success) throw query.lastError();
 

@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "noteviewer.h"
 #include "../src/dbmanager.h"
 #include "../src/note/notesmanager.h"
 #include "ui_mainwindow.h"

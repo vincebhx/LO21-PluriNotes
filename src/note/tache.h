@@ -2,6 +2,7 @@
 #define TACHE_H
 
 #include "note.h"
+#include "notesmanager.h"
 
 typedef enum {EN_ATTENTE = 0, EN_COURS = 1, TERMINE = 2} Statut;
 static const QString StatutStr[3] = {"enAttente", "enCours", "termine"};
@@ -39,7 +40,7 @@ public:
     QDateTime getDateEcheance() const { return dateEcheance; }
     Statut getStatut() const { return statut; }
 
-    static void load();
+    static void load(NotesManager& nm);
 };
 
 #endif // TACHE_H

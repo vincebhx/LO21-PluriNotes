@@ -9,18 +9,6 @@
 
 DbManager* DbManager::_instance = 0;
 
-DbManager& DbManager::instance() {
-    if (_instance == 0) {
-        QString database = QFileDialog::getOpenFileName();
-        _instance = new DbManager(database);
-    }
-    return *_instance;
-}
-
-void DbManager::free() {
-    delete this;
-}
-
 DbManager::DbManager(const QString& path)
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -37,6 +25,18 @@ DbManager::~DbManager() {
         db.close();
         std::cout<<"Fermeture de la connexion avec la base de données."<<std::endl;
     }
+}
+
+DbManager& DbManager::instance() {
+    if (_instance == 0) {
+        QString database = QFileDialog::getOpenFileName();
+        _instance = new DbManager(database);
+    }
+    return *_instance;
+}
+
+void DbManager::free() {
+    delete this;
 }
 
 bool DbManager::addNote(Note &n) {

@@ -6,15 +6,13 @@
 
 QT       += core gui sql
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets designer
 
 macx {
     QMAKE_MAC_SDK = macosx10.12
     INCLUDEPATH += /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include
     QMAKE_LFLAGS = -std=c++11 -framework opengl
 }
-
-QMAKE_CXXFLAGS = -std=c++11
 
 TARGET = PluriNotes
 TEMPLATE = app
@@ -42,7 +40,6 @@ SOURCES += \
     src/note/notesmanager.cpp \
     src/relation/relation.cpp \
     src/relation/couple.cpp \
-    ui/noteviewer.cpp \
     src/dbmanager.cpp
 
 HEADERS  += \
@@ -56,8 +53,10 @@ HEADERS  += \
     src/note/notesmanager.h \
     src/relation/relation.h \
     src/relation/couple.h \
-    ui/noteviewer.h \
     src/dbmanager.h
 
 FORMS    += \
     ui/mainwindow.ui
+
+ target.path = $$[QT_INSTALL_PLUGINS]/designer
+ INSTALLS += target

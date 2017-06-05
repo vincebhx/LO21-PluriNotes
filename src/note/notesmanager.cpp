@@ -8,17 +8,6 @@
 
 NotesManager* NotesManager::_instance = 0;
 
-NotesManager& NotesManager::instance() {
-    if(_instance == 0) {
-        _instance = new NotesManager;
-    }
-    return *_instance;
-}
-
-void NotesManager::free() {
-    delete this;
-}
-
 NotesManager::NotesManager() {
     std::cout<<"Construction du NotesManager..."<<std::endl;
     load();
@@ -28,6 +17,17 @@ NotesManager::NotesManager() {
 NotesManager::~NotesManager() {
     notes.clear();
     std::cout<<"NotesManager détruit."<<std::endl;
+}
+
+NotesManager& NotesManager::instance() {
+    if(_instance == 0) {
+        _instance = new NotesManager;
+    }
+    return *_instance;
+}
+
+void NotesManager::free() {
+    delete this;
 }
 
 void NotesManager::addNote(VersionIndex* n) {
@@ -40,11 +40,13 @@ void NotesManager::addNote(VersionIndex* n) {
 void NotesManager::load() {
     std::cout<<"Chargement des données depuis la base..."<<std::endl;
 
-    Article::load();
-    Media::load(IMAGE);
-    Media::load(AUDIO);
-    Media::load(VIDEO);
-    Tache::load();
+    /*
+    Article::load(*this);
+    Media::load(*this, IMAGE);
+    Media::load(*this, AUDIO);
+    Media::load(*this, VIDEO);
+    Tache::load(*this);
+    */
 
     std::cout<<"Chargement effectué."<<std::endl;
 }

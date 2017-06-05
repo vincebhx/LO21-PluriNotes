@@ -2,6 +2,7 @@
 #define MEDIA_H
 
 #include "note.h"
+#include "notesmanager.h"
 
 typedef enum { IMAGE = 0, AUDIO = 1, VIDEO = 2 } Type;
 static const QString TypeStr[3] = {"image", "audio", "video"};
@@ -32,7 +33,7 @@ public:
     QString getDescription() const { return description; }
     QString getFilePath() const {return filepath; }
 
-    static void load(Type type);
+    static void load(NotesManager& nm, Type type);
 
     virtual const QString getTypeStr() const = 0;
 };

@@ -25,7 +25,7 @@ public:
     void setTexte(QString t) { texte = t; }
     QString getTexte() const { return texte; }
 
-    static void load();
+    static void load(NotesManager& nm);
 };
 
 #endif // ARTICLE_H

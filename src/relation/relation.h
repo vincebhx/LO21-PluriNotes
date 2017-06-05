@@ -1,6 +1,5 @@
 #ifndef RELATION_H
 #define RELATION_H
-
 #include "./src/note/note.h"
 #include "couple.h"
 #include <QString>

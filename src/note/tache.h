@@ -31,7 +31,7 @@ public:
         Note(id, version, titre, dateCreat, dateModif), action(action), priorite(priorite), dateEcheance(dateEch), statut(statut) {}
 
     void setAction(QString a) { action = a; }
-    void setPriorite(unsigned int p) {priorite = p; }
+    void setPriorite(unsigned int p) { priorite = p; }
     void setDateEcheance(QDateTime d) { dateEcheance = d; }
     void setStatut(Statut s) { statut = s; }
 

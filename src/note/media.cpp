@@ -5,6 +5,8 @@
 #include <QSqlError>
 #include <QSqlRecord>
 
+#include <iostream>
+
 QFormLayout* Media::getLayout() {
     //Description
     QLineEdit* descEdit = new QLineEdit(description);
@@ -33,9 +35,9 @@ QSqlQuery Media::prepareQuery() {
     return query;
 }
 
-void Media::load(NotesManager &nm, Type type) {
+void Image::load(NotesManager &nm) {
     QSqlQuery query;
-    query.prepare("SELECT * FROM Media WHERE type = " + TypeStr[type] + " ORDER BY id, version ASC");
+    query.prepare("SELECT * FROM Media WHERE type = 'image' ORDER BY id, version ASC");
     bool success = query.exec();
     if(!success) throw query.lastError();
 
@@ -57,43 +59,15 @@ void Media::load(NotesManager &nm, Type type) {
         do {
             id = query.value(index[0]).toString();
 
-            switch(type) {
-            case IMAGE:
-                n = new Image(
-                    id,  //ID
-                    query.value(index[1]).toInt(),     //Version
-                    query.value(index[2]).toString(),  //Titre
-                    QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
-                    QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de modification
-                    query.value(index[5]).toString(),  //Description
-                    query.value(index[6]).toString()  //Filepath
-                );
-                break;
-            case AUDIO:
-                n = new Audio(
-                    id,  //ID
-                    query.value(index[1]).toInt(),     //Version
-                    query.value(index[2]).toString(),  //Titre
-                    QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
-                    QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de modification
-                    query.value(index[5]).toString(),  //Description
-                    query.value(index[6]).toString()  //Filepath
-                );
-                break;
-            case VIDEO:
-                n = new Video(
-                    id,  //ID
-                    query.value(index[1]).toInt(),     //Version
-                    query.value(index[2]).toString(),  //Titre
-                    QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
-                    QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de modification
-                    query.value(index[5]).toString(),  //Description
-                    query.value(index[6]).toString()  //Filepath
-                );
-                break;
-            default:
-                throw Exception("Erreur de chargement des objets Médias depuis la base de données.");
-            }
+            n = new Image(
+                id,  //ID
+                query.value(index[1]).toInt(),     //Version
+                query.value(index[2]).toString(),  //Titre
+                QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
+                QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de modification
+                query.value(index[5]).toString(),  //Description
+                query.value(index[6]).toString()  //Filepath
+            );
 
             if (id != currentId) {
                 currentId = id;
@@ -101,6 +75,103 @@ void Media::load(NotesManager &nm, Type type) {
                 vindex = new VersionIndex;
             }
 
+            std::cout<<"AddVersion "<<n->getId().toStdString()<<" v"<<n->getVersion()<<std::endl;
+            vindex->addVersion(n);
+        } while (query.next());
+    }
+
+    query.finish();
+}
+
+void Audio::load(NotesManager &nm) {
+    QSqlQuery query;
+    query.prepare("SELECT * FROM Media WHERE type = 'audio' ORDER BY id, version ASC");
+    bool success = query.exec();
+    if(!success) throw query.lastError();
+
+    int* index = new int;
+    index[0] = query.record().indexOf("id");
+    index[1] = query.record().indexOf("version");
+    index[2] = query.record().indexOf("titre");
+    index[3] = query.record().indexOf("dateCreation");
+    index[4] = query.record().indexOf("dateModification");
+    index[5] = query.record().indexOf("description");
+    index[6] = query.record().indexOf("filePath");
+
+    if (query.first()) {
+        QString id;
+        QString currentId = query.value(index[0]).toString();
+        VersionIndex* vindex = new VersionIndex;
+        Note* n;
+
+        do {
+            id = query.value(index[0]).toString();
+
+            n = new Audio(
+                id,  //ID
+                query.value(index[1]).toInt(),     //Version
+                query.value(index[2]).toString(),  //Titre
+                QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
+                QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de modification
+                query.value(index[5]).toString(),  //Description
+                query.value(index[6]).toString()  //Filepath
+            );
+
+            if (id != currentId) {
+                currentId = id;
+                nm.addNote(vindex);
+                vindex = new VersionIndex;
+            }
+
+            std::cout<<"AddVersion "<<n->getId().toStdString()<<" v"<<n->getVersion()<<std::endl;
+            vindex->addVersion(n);
+        } while (query.next());
+    }
+
+    query.finish();
+}
+
+void Video::load(NotesManager &nm) {
+    QSqlQuery query;
+    query.prepare("SELECT * FROM Media WHERE type = 'video' ORDER BY id, version ASC");
+    bool success = query.exec();
+    if(!success) throw query.lastError();
+
+    int* index = new int;
+    index[0] = query.record().indexOf("id");
+    index[1] = query.record().indexOf("version");
+    index[2] = query.record().indexOf("titre");
+    index[3] = query.record().indexOf("dateCreation");
+    index[4] = query.record().indexOf("dateModification");
+    index[5] = query.record().indexOf("description");
+    index[6] = query.record().indexOf("filePath");
+
+    if (query.first()) {
+        QString id;
+        QString currentId = query.value(index[0]).toString();
+        VersionIndex* vindex = new VersionIndex;
+        Note* n;
+
+        do {
+            id = query.value(index[0]).toString();
+
+            n = new Video(
+                id,  //ID
+                query.value(index[1]).toInt(),     //Version
+                query.value(index[2]).toString(),  //Titre
+                QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
+                QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de modification
+                query.value(index[5]).toString(),  //Description
+                query.value(index[6]).toString()  //Filepath
+            );
+
+            if (id != currentId) {
+                currentId = id;
+                nm.addNote(vindex);
+                vindex = new VersionIndex;
+            }
+
+            std::cout<<"AddVersion "<<n->getId().toStdString()<<" v"<<n->getVersion()<<std::endl;
             vindex->addVersion(n);
         } while (query.next());
     }

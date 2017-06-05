@@ -41,9 +41,9 @@ void NotesManager::load() {
     std::cout<<"Chargement des données depuis la base..."<<std::endl;
 
     Article::load(*this);
-    Media::load(*this, IMAGE);
-    Media::load(*this, AUDIO);
-    Media::load(*this, VIDEO);
+    Image::load(*this);
+    Audio::load(*this);
+    Video::load(*this);
     Tache::load(*this);
 
     std::cout<<"Chargement effectué."<<std::endl;

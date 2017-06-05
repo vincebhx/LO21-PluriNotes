@@ -14,9 +14,11 @@ int main(int argc, char *argv[])
         DbManager& db = DbManager::instance();
         NotesManager& nm = NotesManager::instance();
 
+/*
         for (NMIterator it = nm.begin(); it != nm.end(); it++)
-            for(VersionIterator it2 = (*it)->begin(); it2 != (*it)->end(); it2++)
-                std::cout<<(*it2)->getId().toStdString()<<" v"<<(*it2)->getVersion()<<" - "<<(*it2)->getTitre().toStdString()<<std::endl;
+            std::cout<<(*it)->currentVersion()->getId().toStdString()<<" v"<<(*it)->currentVersion()->getVersion()
+                    <<" - "<<(*it)->currentVersion()->getTitre().toStdString()<<std::endl;
+*/
 
     }
     catch(Exception e) { std::cout<<"Erreur standard: "<<e.getInfo().toStdString()<<std::endl; }
@@ -26,7 +28,7 @@ int main(int argc, char *argv[])
     MainWindow window;
     window.show();
 
-    //QObject::connect(&app, SIGNAL(aboutToQuit()), &window, SLOT(onClose()));
+    QObject::connect(&app, SIGNAL(aboutToQuit()), &window, SLOT(onClose()));
 
     return app.exec();
 }

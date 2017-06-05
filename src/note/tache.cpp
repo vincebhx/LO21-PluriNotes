@@ -7,6 +7,8 @@
 #include <QSqlError>
 #include <QSqlRecord>
 
+#include <iostream>
+
 QFormLayout* Tache::getLayout() {
     //Sélection du statut
     QComboBox* statutBox = new QComboBox;
@@ -78,16 +80,16 @@ void Tache::load(NotesManager &nm) {
         QString currentId = query.value(index[0]).toString();
         VersionIndex* vindex = new VersionIndex;
         Note* n;
-        QString sStr;
-        Statut st;
+        QString statStr;
+        Statut stat;
 
         do {
             id = query.value(index[0]).toString();
 
-            sStr = query.value(index[8]).toString();
-            if (sStr == StatutStr[EN_COURS]) st = EN_COURS;
-            else if (sStr == StatutStr[TERMINE]) st = TERMINE;
-            else st = EN_ATTENTE;
+            statStr = query.value(index[8]).toString();
+            if(statStr == StatutStr[EN_COURS]) stat = EN_COURS;
+            else if (statStr == StatutStr[TERMINE]) stat = TERMINE;
+            else stat = EN_ATTENTE;
 
             n = new Tache(
                 id,  //ID
@@ -96,9 +98,9 @@ void Tache::load(NotesManager &nm) {
                 QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
                 QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de modification
                 query.value(index[5]).toString(),  //Action
-                query.value(index[6]).toInt(),     //Priorité
-                QDateTime::fromString(query.value(index[7]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date d'échéance
-                st //Statut
+                query.value(index[6]).toInt(),  //Priorité
+                QDateTime::fromString(query.value(index[7]).toString(), "dd/MM/yyyy hh:mm:ss"), //Date d'échéance
+                stat    //Statut
             );
 
             if (id != currentId) {
@@ -107,6 +109,7 @@ void Tache::load(NotesManager &nm) {
                 vindex = new VersionIndex;
             }
 
+            std::cout<<"AddVersion "<<n->getId().toStdString()<<" v"<<n->getVersion()<<std::endl;
             vindex->addVersion(n);
         } while (query.next());
     }

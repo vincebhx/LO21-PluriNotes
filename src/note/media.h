@@ -33,8 +33,6 @@ public:
     QString getDescription() const { return description; }
     QString getFilePath() const {return filepath; }
 
-    static void load(NotesManager& nm, Type type);
-
     virtual const QString getTypeStr() const = 0;
 };
 
@@ -51,6 +49,7 @@ public:
         Media(id, version, titre, dateCreat, dateModif, description, filepath) {}
 
     const QString getTypeStr() const { return TypeStr[IMAGE]; }
+    static void load(NotesManager& nm);
 };
 
 ///Décrit un fichier audio
@@ -66,6 +65,7 @@ public:
         Media(id, version, titre, dateCreat, dateModif, description, filepath) {}
 
     const QString getTypeStr() const { return TypeStr[AUDIO]; }
+    static void load(NotesManager& nm);
 };
 
 ///Décrit un fichier vidéo
@@ -81,6 +81,7 @@ public:
         Media(id, version, titre, dateCreat, dateModif, description, filepath) {}
 
     const QString getTypeStr() const { return TypeStr[VIDEO]; }
+    static void load(NotesManager& nm);
 };
 
 #endif // MEDIA_H

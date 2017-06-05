@@ -65,6 +65,7 @@ void Article::load(NotesManager &nm) {
                 vindex = new VersionIndex;
             }
 
+            std::cout<<"AddVersion "<<n->getId().toStdString()<<" v"<<n->getVersion()<<std::endl;
             vindex->addVersion(n);
         } while (query.next());
     }

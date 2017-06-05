@@ -1,6 +1,6 @@
-#include "Relation.h"
-#include "Note.h"
-#include "Couple.h"
+#include "relation.h"
+#include "../note/note.h"
+#include "couple.h"
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QString>

@@ -1,27 +1,31 @@
 #ifndef ARTICLE_H
 #define ARTICLE_H
 
-#include "Note.h"
-#include "NotesManager.h"
+#include "note.h"
+#include "notesmanager.h"
 
-///Décrit un Article
-class Article: public Note {
+///Décrit un article
+class Article: public Note
+{
 private:
     QString texte;
+
     QFormLayout* getLayout();
     QSqlQuery prepareQuery();
+
 public:
     Article(const QString id,
-            unsigned int version = 0,
-            QString titre = NULL,
-            QString texte = NULL,
+            unsigned int version,
+            QString titre,
             QDateTime dateCreat = QDateTime::currentDateTime(),
-            QDateTime dateModif = QDateTime::currentDateTime()):
+            QDateTime dateModif = QDateTime::currentDateTime(),
+            QString texte = ""):
         Note(id, version, titre, dateCreat, dateModif), texte(texte) {}
+
     void setTexte(QString t) { texte = t; }
     QString getTexte() const { return texte; }
 
-    static bool load(NotesManager& nm);
+    static void load();
 };
 
 #endif // ARTICLE_H

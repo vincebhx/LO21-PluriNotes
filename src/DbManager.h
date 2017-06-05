@@ -1,21 +1,24 @@
 #ifndef DBMANAGER_H
 #define DBMANAGER_H
 
-#include <QString>
+#include "note/note.h"
+
 #include <QSqlDatabase>
-#include "Note.h"
+#include <QString>
 
 class DbManager
 {
 private:
     QSqlDatabase db;
+
     static DbManager* _instance;
     DbManager(const QString& path);
     ~DbManager();
+
 public:
     static DbManager& instance();
-    bool addNote(Note& n);
     void free();
+    bool addNote(Note& n);
 };
 
 #endif // DBMANAGER_H

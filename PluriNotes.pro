@@ -1,52 +1,63 @@
-QT += core gui widgets xml sql
+#-------------------------------------------------
+#
+# Project created by QtCreator 2017-06-04T23:17:39
+#
+#-------------------------------------------------
+
+QT       += core gui sql
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
 macx {
     QMAKE_MAC_SDK = macosx10.12
     INCLUDEPATH += /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include
     QMAKE_LFLAGS = -std=c++11 -framework opengl
-    target_db.path = $$[OUT_PWD]/PluriNotes.app/Contents/MacOS/
-    target_db.files = $$[_PRO_FILE_PWD_]/notes.db
-    INSTALLS += target_db
 }
+
 QMAKE_CXXFLAGS = -std=c++11
 
-HEADERS += \
-    src/Date.h \
-    src/Note.h \
-    src/NotesManager.h \
-    src/Relation.h \
-    gui/NoteViewer.h \
-    gui/MainWindow.h \
-    src/Version.h \
-    src/NoteException.h \
-    src/DbManager.h \
-    gui/NoteSelector.h \
-    src/Article.h \
-    src/Tache.h \
-    src/Media.h \
-    gui/createnote.h \
-    src/Couple.h
+TARGET = PluriNotes
+TEMPLATE = app
+
+# The following define makes your compiler emit warnings if you use
+# any feature of Qt which as been marked as deprecated (the exact warnings
+# depend on your compiler). Please consult the documentation of the
+# deprecated API in order to know how to port your code away from it.
+DEFINES += QT_DEPRECATED_WARNINGS
+
+# You can also make your code fail to compile if you use deprecated APIs.
+# In order to do so, uncomment the following line.
+# You can also select to disable deprecated APIs only up to a certain version of Qt.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
 
 SOURCES += \
-    src/Application.cpp \
-    src/Date.cpp \
-    src/Note.cpp \
-    src/NotesManager.cpp \
-    src/Relation.cpp \
-    gui/NoteViewer.cpp \
-    src/Couple.cpp \
-    gui/MainWindow.cpp \
-    src/Version.cpp \
-    src/DbManager.cpp \
-    gui/NoteSelector.cpp \
-    src/Article.cpp \
-    src/Tache.cpp \
-    src/Media.cpp \
-    gui/CreateNote.cpp
+    src/main.cpp \
+    ui/mainwindow.cpp \
+    src/note/note.cpp \
+    src/note/article.cpp \
+    src/note/tache.cpp \
+    src/note/media.cpp \
+    src/note/versionindex.cpp \
+    src/note/notesmanager.cpp \
+    src/relation/relation.cpp \
+    src/relation/couple.cpp \
+    ui/noteviewer.cpp \
+    src/dbmanager.cpp
 
-DISTFILES += \
-    README.md \
-    notes.db
+HEADERS  += \
+    ui/mainwindow.h \
+    src/exception.h \
+    src/note/note.h \
+    src/note/article.h \
+    src/note/tache.h \
+    src/note/media.h \
+    src/note/versionindex.h \
+    src/note/notesmanager.h \
+    src/relation/relation.h \
+    src/relation/couple.h \
+    ui/noteviewer.h \
+    src/dbmanager.h
 
-FORMS += \
-    mainwindow.ui \
-    gui/createnote.ui
+FORMS    += \
+    ui/mainwindow.ui

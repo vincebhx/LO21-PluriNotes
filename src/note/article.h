@@ -4,6 +4,10 @@
 #include "note.h"
 #include "notesmanager.h"
 
+#include <QSqlDatabase>
+#include <QSqlTableModel>
+#include <QTableView>
+
 ///Décrit un article
 class Article: public Note
 {
@@ -26,6 +30,8 @@ public:
     QString getTexte() const { return texte; }
 
     static void load(NotesManager& nm);
+    static QSqlTableModel* getTableModel(QSqlDatabase db);
+    static QTableView* getTableView(QSqlTableModel* table);
 };
 
 #endif // ARTICLE_H

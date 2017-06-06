@@ -4,6 +4,10 @@
 #include "note.h"
 #include "notesmanager.h"
 
+#include <QSqlDatabase>
+#include <QSqlTableModel>
+#include <QTableView>
+
 typedef enum {EN_ATTENTE = 0, EN_COURS = 1, TERMINE = 2} Statut;
 static const QString StatutStr[3] = {"enAttente", "enCours", "termine"};
 
@@ -41,6 +45,8 @@ public:
     Statut getStatut() const { return statut; }
 
     static void load(NotesManager& nm);
+    static QSqlTableModel* getTableModel(QSqlDatabase db);
+    static QTableView* getTableView(QSqlTableModel* table);
 };
 
 #endif // TACHE_H

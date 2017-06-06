@@ -35,6 +35,23 @@ QSqlQuery Media::prepareQuery() {
     return query;
 }
 
+QSqlTableModel* Media::getTableModel(QSqlDatabase db) {
+    QSqlTableModel* modelMedia = new QSqlTableModel(0, db);
+    modelMedia->setTable("Media");
+    modelMedia->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    modelMedia->select();
+    modelMedia->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    modelMedia->setHeaderData(1, Qt::Horizontal, QObject::tr("Titre"));
+    return modelMedia;
+}
+
+QTableView* Media::getTableView(QSqlTableModel *table) {
+    QTableView *viewMedia = new QTableView;
+    viewMedia->setModel(table);
+    viewMedia->hideColumn(0); // don't show the ID
+    return viewMedia;
+}
+
 void Image::load(NotesManager &nm) {
     QSqlQuery query;
     query.prepare("SELECT * FROM Media WHERE type = 'image' ORDER BY id, version ASC");

@@ -27,6 +27,23 @@ QSqlQuery Article::prepareQuery() {
     return query;
 }
 
+QSqlTableModel* Article::getTableModel(QSqlDatabase db) {
+    QSqlTableModel* modelArticle = new QSqlTableModel(0, db);
+    modelArticle->setTable("Article");
+    modelArticle->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    modelArticle->select();
+    modelArticle->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    modelArticle->setHeaderData(1, Qt::Horizontal, QObject::tr("Titre"));
+    return modelArticle;
+}
+
+QTableView* Article::getTableView(QSqlTableModel *table) {
+    QTableView *viewArticle = new QTableView;
+    viewArticle->setModel(table);
+    viewArticle->hideColumn(0); // don't show the ID
+    return viewArticle;
+}
+
 void Article::load(NotesManager &nm) {
     QSqlQuery query;
     query.prepare("SELECT * FROM Article ORDER BY id, version ASC");

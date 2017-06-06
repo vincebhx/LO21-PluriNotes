@@ -4,6 +4,10 @@
 #include "note.h"
 #include "notesmanager.h"
 
+#include <QSqlDatabase>
+#include <QSqlTableModel>
+#include <QTableView>
+
 typedef enum { IMAGE = 0, AUDIO = 1, VIDEO = 2 } Type;
 static const QString TypeStr[3] = {"image", "audio", "video"};
 
@@ -34,6 +38,8 @@ public:
     QString getFilePath() const {return filepath; }
 
     virtual const QString getTypeStr() const = 0;
+    static QSqlTableModel* getTableModel(QSqlDatabase db);
+    static QTableView* getTableView(QSqlTableModel* table);
 };
 
 ///Décrit une image

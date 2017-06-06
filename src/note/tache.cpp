@@ -58,6 +58,23 @@ QSqlQuery Tache::prepareQuery() {
     return query;
 }
 
+QSqlTableModel* Tache::getTableModel(QSqlDatabase db) {
+    QSqlTableModel* modelTache = new QSqlTableModel(0, db);
+    modelTache->setTable("Tache");
+    modelTache->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    modelTache->select();
+    modelTache->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    modelTache->setHeaderData(1, Qt::Horizontal, QObject::tr("Titre"));
+    return modelTache;
+}
+
+QTableView* Tache::getTableView(QSqlTableModel *table) {
+    QTableView *viewTache = new QTableView;
+    viewTache->setModel(table);
+    viewTache->hideColumn(0); // don't show the ID
+    return viewTache;
+}
+
 void Tache::load(NotesManager &nm) {
     QSqlQuery query;
     query.prepare("SELECT * FROM Tache ORDER BY id, version ASC");

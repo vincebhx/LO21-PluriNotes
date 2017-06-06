@@ -24,9 +24,11 @@ NoteViewer* Note::getNoteView() {
     //Layout
     QFormLayout* formLayout = getLayout();
     formLayout->insertRow(0, "Identificateur", new QLabel(id, view));
-    formLayout->insertRow(1, "Création", dateCreatEdit);
-    formLayout->insertRow(2, "Dernière modification", dateModifEdit);
-    formLayout->insertRow(3, "Titre", titreEdit);
+    formLayout->insertRow(1, "Version", new QLabel(QString::number(version), view));
+    formLayout->insertRow(2, "Création", dateCreatEdit);
+    formLayout->insertRow(3, "Dernière modification", dateModifEdit);
+    formLayout->insertRow(4, "Titre", titreEdit);
+    formLayout->setHorizontalSpacing(10);
 
     QVBoxLayout* layout = new QVBoxLayout;
     layout->addItem(formLayout);

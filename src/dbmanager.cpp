@@ -29,8 +29,8 @@ DbManager::~DbManager() {
 
 DbManager& DbManager::instance() {
     if (_instance == 0) {
-        QString database = QFileDialog::getOpenFileName();
-        //QString database("./notes.db");
+        //QString database = QFileDialog::getOpenFileName();
+        QString database("./notes.db");
         _instance = new DbManager(database);
     }
     return *_instance;

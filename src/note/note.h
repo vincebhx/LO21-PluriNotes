@@ -1,6 +1,8 @@
 #ifndef NOTE_H
 #define NOTE_H
 
+#include "../../ui/noteviewer.h"
+
 #include <Qt>
 #include <QDateTime>
 #include <QFormLayout>
@@ -40,7 +42,7 @@ public:
     const QDateTime& getDateCreat() const {return dateCreation; }
     QDateTime getDateLastMOdif() const {return dateModification; }
 
-    QWidget* getNoteView();
+    NoteViewer* getNoteView();
     QSqlQuery getQuery();
 };
 

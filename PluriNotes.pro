@@ -40,7 +40,8 @@ SOURCES += \
     src/relation/relation.cpp \
     src/relation/relationsmanager.cpp \
     src/relation/couple.cpp \
-    src/dbmanager.cpp
+    src/dbmanager.cpp \
+    ui/noteviewer.cpp
 
 HEADERS  += \
     ui/mainwindow.h \
@@ -54,7 +55,8 @@ HEADERS  += \
     src/relation/relation.h \
     src/relation/relationsmanager.h \
     src/relation/couple.h \
-    src/dbmanager.h
+    src/dbmanager.h \
+    ui/noteviewer.h
 
 FORMS    += \
     ui/mainwindow.ui

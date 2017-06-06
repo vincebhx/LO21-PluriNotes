@@ -9,9 +9,7 @@
 NotesManager* NotesManager::_instance = 0;
 
 NotesManager::NotesManager() {
-    std::cout<<"Construction du NotesManager..."<<std::endl;
-    load();
-    std::cout<<"NotesManager construit."<<std::endl;
+    std::cout<<"Construction du NotesManager."<<std::endl;
 }
 
 NotesManager::~NotesManager() {

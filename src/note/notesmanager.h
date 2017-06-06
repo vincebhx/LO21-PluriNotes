@@ -14,8 +14,6 @@ private:
     NotesManager();
     ~NotesManager();
 
-    void load();
-
 public:
     static NotesManager& instance();
     void free();
@@ -29,6 +27,7 @@ public:
     unsigned int nbOfNotes() { return notes.size(); }
 
     void addNote(VersionIndex* v);
+    void load();
 };
 
 #endif // NOTESMANAGER_H

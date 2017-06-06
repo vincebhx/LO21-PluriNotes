@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
 
 
         DbManager& dbM = DbManager::instance();
+        NotesManager& nm = NotesManager::instance();
+        nm.load();
 
         QSqlTableModel *modelArticle = new QSqlTableModel(0, dbM.db);
             modelArticle->setTable("Article");
@@ -68,6 +70,8 @@ int main(int argc, char *argv[])
     catch (...) { std::cout<<"ERREUR"<<std::endl; }
 
     MainWindow window;
+    NoteViewer* nv = NotesManager::instance().currentVersion()->getNoteView();
+    window.setCentralWidget(nv);
     window.show();
 
     QObject::connect(&app, SIGNAL(aboutToQuit()), &window, SLOT(onClose()));

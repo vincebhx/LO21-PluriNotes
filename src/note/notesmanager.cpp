@@ -3,6 +3,7 @@
 #include "notesmanager.h"
 #include "tache.h"
 #include "../exception.h"
+#include "versionindex.h"
 
 #include <iostream>
 

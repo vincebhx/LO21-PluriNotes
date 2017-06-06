@@ -1,13 +1,17 @@
 #include "dbmanager.h"
 #include "exception.h"
 #include "note/notesmanager.h"
-#include "../ui/mainwindow.h"
+#include "../gui/mainwindow.h"
 
 #include <QApplication>
 #include <QSqlError>
 #include <QSqlTableModel>
 #include <QTableView>
 #include <iostream>
+#include <QString>
+#include <QModelIndex>
+#include <QDataStream>
+#include <QObject>
 
 int main(int argc, char *argv[])
 {
@@ -17,8 +21,14 @@ int main(int argc, char *argv[])
 
         DbManager& dbM = DbManager::instance();
         NotesManager& nm = NotesManager::instance();
-        nm.load();
-
+        //nm.load();
+        int  i;
+        QString id;               ///Identifiant de la note
+        unsigned int version;           ///Numéro de version
+        QString titre;                  ///Titre de la note
+        QDateTime dateCreation;   ///Date de création
+        QDateTime dateModification;
+        QString texte;
         QSqlTableModel *modelArticle = new QSqlTableModel(0, dbM.db);
             modelArticle->setTable("Article");
             modelArticle->setEditStrategy(QSqlTableModel::OnManualSubmit);
@@ -30,6 +40,19 @@ int main(int argc, char *argv[])
             viewArticle->setModel(modelArticle);
             viewArticle->hideColumn(0); // don't show the ID
             viewArticle->show();
+
+            for (i= 0; i < modelArticle->rowCount(); i++) {
+                id = viewArticle->model()->data(viewArticle->model()->index(i,0)).toString();
+                version = viewArticle->model()->data(viewArticle->model()->index(i,1)).toInt();
+                titre = viewArticle->model()->data(viewArticle->model()->index(i,2)).toString();
+                dateCreation = viewArticle->model()->data(viewArticle->model()->index(i,3)).toDateTime();
+                dateModification = viewArticle->model()->data(viewArticle->model()->index(i,4)).toDateTime();
+                texte = viewArticle->model()->data(viewArticle->model()->index(i,5)).toString();
+                //Article(id, version, titre, dateCreation, dateModification, texte);
+
+            }
+
+
 
         QSqlTableModel *modelTache = new QSqlTableModel(0, dbM.db);
             modelTache->setTable("Tache");
@@ -70,8 +93,6 @@ int main(int argc, char *argv[])
     catch (...) { std::cout<<"ERREUR"<<std::endl; }
 
     MainWindow window;
-    NoteViewer* nv = NotesManager::instance().currentVersion()->getNoteView();
-    window.setCentralWidget(nv);
     window.show();
 
     QObject::connect(&app, SIGNAL(aboutToQuit()), &window, SLOT(onClose()));

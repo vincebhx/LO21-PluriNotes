@@ -1,5 +1,4 @@
 #include "note.h"
-#include "../../ui/noteviewer.h"
 
 #include <QLabel>
 #include <QLineEdit>
@@ -8,17 +7,17 @@
 const QString Note::dateDisplayFormat = "ddd dd MMMM yyyy à hh:mm:ss";
 const QString Note::dateStorageFormat = "dd/MM/yyyy hh:mm:ss";
 
-NoteViewer* Note::getNoteView() {
-    NoteViewer* view = new NoteViewer;
+QWidget* Note::getNoteView() {
+    QWidget* view = new QWidget;
 
     //Date de création
-    QLabel* dateCreatEdit = new QLabel(dateCreation.toString(dateDisplayFormat), view);
+    QLabel* dateCreatEdit = new QLabel(dateCreation.toString(dateDisplayFormat));
 
     //Date de modification
-    QLabel* dateModifEdit = new QLabel(dateModification.toString(dateDisplayFormat), view);
+    QLabel* dateModifEdit = new QLabel(dateModification.toString(dateDisplayFormat));
 
     //Titre
-    QLineEdit* titreEdit = new QLineEdit(titre, view);
+    QLineEdit* titreEdit = new QLineEdit(titre);
     titreEdit->setFixedWidth(300);
 
     //Layout
@@ -36,7 +35,8 @@ NoteViewer* Note::getNoteView() {
     //Bouton
     QPushButton* saveButton = new QPushButton("Sauver", view);
     layout->addWidget(saveButton);
-    QObject::connect(saveButton, SIGNAL(clicked()), view, SLOT(saveNote()));
+    //Le slot saveNote() n'est pas encore défini
+    //QObject::connect(saveButton, SIGNAL(clicked()), view, SLOT(saveNote()));
 
     //Vue et retour
     view->setLayout(layout);

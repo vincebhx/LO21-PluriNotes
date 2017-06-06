@@ -65,6 +65,8 @@ QSqlTableModel* Tache::getTableModel(QSqlDatabase db) {
     modelTache->select();
     modelTache->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
     modelTache->setHeaderData(1, Qt::Horizontal, QObject::tr("Titre"));
+    modelTache->sort(1, Qt::AscendingOrder);    //ORDER BY version ASC
+    modelTache->sort(0, Qt::AscendingOrder);    //ORDER BY id ASC
     return modelTache;
 }
 
@@ -73,63 +75,4 @@ QTableView* Tache::getTableView(QSqlTableModel *table) {
     viewTache->setModel(table);
     viewTache->hideColumn(0); // don't show the ID
     return viewTache;
-}
-
-void Tache::load(NotesManager &nm) {
-    QSqlQuery query;
-    query.prepare("SELECT * FROM Tache ORDER BY id, version ASC");
-    bool success = query.exec();
-    if(!success) throw query.lastError();
-
-    int* index = new int;
-    index[0] = query.record().indexOf("id");
-    index[1] = query.record().indexOf("version");
-    index[2] = query.record().indexOf("titre");
-    index[3] = query.record().indexOf("dateCreation");
-    index[4] = query.record().indexOf("dateModification");
-    index[5] = query.record().indexOf("action");
-    index[6] = query.record().indexOf("priorite");
-    index[7] = query.record().indexOf("dateEcheance");
-    index[8] = query.record().indexOf("statut");
-
-    if (query.first()) {
-        QString id;
-        QString currentId = query.value(index[0]).toString();
-        VersionIndex* vindex = new VersionIndex;
-        Note* n;
-        QString statStr;
-        Statut stat;
-
-        do {
-            id = query.value(index[0]).toString();
-
-            statStr = query.value(index[8]).toString();
-            if(statStr == StatutStr[EN_COURS]) stat = EN_COURS;
-            else if (statStr == StatutStr[TERMINE]) stat = TERMINE;
-            else stat = EN_ATTENTE;
-
-            n = new Tache(
-                id,  //ID
-                query.value(index[1]).toInt(),     //Version
-                query.value(index[2]).toString(),  //Titre
-                QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
-                QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de modification
-                query.value(index[5]).toString(),  //Action
-                query.value(index[6]).toInt(),  //Priorité
-                QDateTime::fromString(query.value(index[7]).toString(), "dd/MM/yyyy hh:mm:ss"), //Date d'échéance
-                stat    //Statut
-            );
-
-            if (id != currentId) {
-                currentId = id;
-                nm.addNote(vindex);
-                vindex = new VersionIndex;
-            }
-
-            std::cout<<"AddVersion "<<n->getId().toStdString()<<" v"<<n->getVersion()<<std::endl;
-            vindex->addVersion(n);
-        } while (query.next());
-    }
-
-    query.finish();
 }

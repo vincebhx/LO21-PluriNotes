@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
         DbManager& dbM = DbManager::instance();
         NotesManager& nm = NotesManager::instance();
-        //nm.load();
+        nm.load();
         int  i;
         QString id;               ///Identifiant de la note
         unsigned int version;           ///Numéro de version
@@ -55,6 +55,14 @@ int main(int argc, char *argv[])
         QSqlTableModel* modelMedia = Media::getTableModel(dbM.db);
         QTableView* viewMedia = Media::getTableView(modelMedia);
         viewMedia->show();
+
+        std::string id1;
+        unsigned int ver1;
+        for(NMIterator it = nm.begin(); it!= nm.end(); it++) {
+            id1 = (*it)->currentVersion()->getId().toStdString();
+            ver1 = (*it)->currentVersion()->getVersion();
+            std::cout<<id1<<" v"<<ver1<<std::endl;
+        }
 
     }
     catch(Exception e) { std::cout<<"Erreur standard: "<<e.getInfo().toStdString()<<std::endl; }

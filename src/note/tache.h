@@ -44,7 +44,6 @@ public:
     QDateTime getDateEcheance() const { return dateEcheance; }
     Statut getStatut() const { return statut; }
 
-    static void load(NotesManager& nm);
     static QSqlTableModel* getTableModel(QSqlDatabase db);
     static QTableView* getTableView(QSqlTableModel* table);
 };

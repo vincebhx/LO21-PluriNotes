@@ -34,6 +34,8 @@ QSqlTableModel* Article::getTableModel(QSqlDatabase db) {
     modelArticle->select();
     modelArticle->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
     modelArticle->setHeaderData(1, Qt::Horizontal, QObject::tr("Titre"));
+    modelArticle->sort(1, Qt::AscendingOrder);    //ORDER BY version ASC
+    modelArticle->sort(0, Qt::AscendingOrder);    //ORDER BY id ASC
     return modelArticle;
 }
 
@@ -42,51 +44,5 @@ QTableView* Article::getTableView(QSqlTableModel *table) {
     viewArticle->setModel(table);
     viewArticle->hideColumn(0); // don't show the ID
     return viewArticle;
-}
-
-void Article::load(NotesManager &nm) {
-    QSqlQuery query;
-    query.prepare("SELECT * FROM Article ORDER BY id, version ASC");
-    bool success = query.exec();
-    if(!success) throw query.lastError();
-
-    int* index = new int;
-    index[0] = query.record().indexOf("id");
-    index[1] = query.record().indexOf("version");
-    index[2] = query.record().indexOf("titre");
-    index[3] = query.record().indexOf("dateCreation");
-    index[4] = query.record().indexOf("dateModification");
-    index[5] = query.record().indexOf("texte");
-
-    if (query.first()) {
-        QString id;
-        QString currentId = query.value(index[0]).toString();
-        VersionIndex* vindex = new VersionIndex;
-        Note* n;
-
-        do {
-            id = query.value(index[0]).toString();
-
-            n = new Article(
-                id,  //ID
-                query.value(index[1]).toInt(),     //Version
-                query.value(index[2]).toString(),  //Titre
-                QDateTime::fromString(query.value(index[3]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de création
-                QDateTime::fromString(query.value(index[4]).toString(), "dd/MM/yyyy hh:mm:ss"),    //Date de modification
-                query.value(index[5]).toString()  //Texte
-            );
-
-            if (id != currentId) {
-                currentId = id;
-                nm.addNote(vindex);
-                vindex = new VersionIndex;
-            }
-
-            std::cout<<"AddVersion "<<n->getId().toStdString()<<" v"<<n->getVersion()<<std::endl;
-            vindex->addVersion(n);
-        } while (query.next());
-    }
-
-    query.finish();
 }
 

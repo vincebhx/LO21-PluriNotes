@@ -29,7 +29,6 @@ public:
     void setTexte(QString t) { texte = t; }
     QString getTexte() const { return texte; }
 
-    static void load(NotesManager& nm);
     static QSqlTableModel* getTableModel(QSqlDatabase db);
     static QTableView* getTableView(QSqlTableModel* table);
 };

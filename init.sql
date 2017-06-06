@@ -44,14 +44,14 @@ CREATE TABLE Media(
 );
 
 CREATE TABLE Relation(
-  titre TEXT NOT NULL,
+  titre TEXT PRIMARY KEY,
   description TEXT,
-  oriente INT,
+  oriente INT NOT NULL,
   CHECK (oriente IN (0, 1))
 );
 
 CREATE TABLE RelationNote(
-  relation TEXT NOT NULL,
+  relation TEXT,
   note1 TEXT NOT NULL,
   note2 TEXT NOT NULL,
   PRIMARY KEY (relation, note1, note2)
@@ -81,3 +81,10 @@ INSERT INTO Media VALUES ("image1", 2, "image", "Patate", "28/05/2017 10:00:00",
 
 INSERT INTO Media VALUES ("video1", 1, "video", "Lolcat", "28/05/2017 10:00:00", "29/05/2017 10:00:00", "Internet was made for cats.", "/Users/vbaheux/Documents/lolcat.avi");
 INSERT INTO Media VALUES ("video1", 2, "video", "Lolcat", "28/05/2017 10:00:00", "29/05/2017 11:00:00", "Internet was made for cats, right ?", "/Users/vbaheux/Documents/lolcat.avi");
+
+INSERT INTO Relation VALUES ("mon apprentissage du c++", "pour m aider a apprendre le c++", 1);
+INSERT INTO Relation VALUES ("mon contenu internet de qualite", "garder les contenus cool que je trouve", 0);
+
+
+INSERT INTO RelationNote VALUES("mon apprentissage du c++", "article1", "tache1");
+INSERT INTO RelationNote VALUES ("mon contenu internet de qualite", "image1", "video1"); 

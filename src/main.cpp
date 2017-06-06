@@ -5,6 +5,8 @@
 #include "../gui/mainwindow.h"
 #include "../src/note/media.h"
 #include "../src/note/tache.h"
+#include "../src/relation/relation.h"
+#include "../src/relation/relationsmanager.h"
 
 #include <QApplication>
 #include <QSqlError>
@@ -24,7 +26,9 @@ int main(int argc, char *argv[])
 
         DbManager& dbM = DbManager::instance();
         NotesManager& nm = NotesManager::instance();
+        RelationsManager& rm = RelationsManager::instance();
         nm.load();
+        //rm.load();
         int  i;
         QString id;               ///Identifiant de la note
         unsigned int version;           ///Numéro de version

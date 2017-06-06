@@ -4,6 +4,8 @@
 #include "couple.h"
 #include <QString>
 #include <QPair>
+#include <QTableView>
+#include <QSqlTableModel>
 
 // Notes : On interdit la recopie.
 
@@ -20,6 +22,8 @@ private:
 
 public:
     static Relation reference;
+    static QSqlTableModel* getTableModel(QSqlDatabase db);
+    static QTableView* getRelationView(QSqlTableModel *table);
     Relation(QString t, QString d = NULL, bool o = true): titre(t), description(d), oriente(o) {}
     void setDescription(QString d) { description = d; }
     void orienter(bool o) { oriente = o; }

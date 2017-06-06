@@ -11,22 +11,20 @@ friend class RMIterator;
 
 private:
     static RelationsManager* _instance;
-    RelationsManager() {
-        DbManager::instance();
-        RelationsManager::load();
-    }
+    RelationsManager();
     ~RelationsManager();
 
     Relation** relations;
     unsigned int nbMaxRelations;
     unsigned int nbRelations;
 
-    void loadCouples(){}
+    void loadCouples();
     void loadRelations();
 public:
     ///Singleton accessor
     static RelationsManager& instance();
     void load();
+    void free();
 
     void addRelation(Relation* r);
 

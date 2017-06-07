@@ -49,17 +49,18 @@ void NotesManager::load() {
     VersionIndex* vIndex;
     Note* n;
     QString id;
+    Etat etat;
 
     /*ARTICLES*/
     bool newVIndex = true;
     QString currentId = "\0";
-
     QSqlTableModel* articles = Article::getTableModel(DbManager::instance().db);
 
     for (int i = 0; i < articles->rowCount(); i++) {
         newVIndex = false;
         rec = articles->record(i);
         id = rec.value(1).toString();
+
         n = new Article(
                     id,
                     rec.value(2).toInt(),
@@ -72,14 +73,15 @@ void NotesManager::load() {
         if(currentId != id) {
             currentId = id;
             if(i != 0) {
-                NotesManager::instance().addNote(ACTIVES, vIndex);
+                NotesManager::instance().addNote(etat, vIndex);
                 newVIndex = true;
             }
             vIndex = new VersionIndex;
         }
         vIndex->addVersion(n);
+        etat = toEtat(rec.value(0).toInt());
     }
-    if(!newVIndex) NotesManager::instance().addNote(ACTIVES, vIndex);
+    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
 
     /*MEDIAS*/
     QString type;
@@ -128,14 +130,15 @@ void NotesManager::load() {
         if(currentId != id) {
             currentId = id;
             if(i != 0) {
-                NotesManager::instance().addNote(ACTIVES, vIndex);
+                NotesManager::instance().addNote(etat, vIndex);
                 newVIndex = true;
             }
             vIndex = new VersionIndex;
         }
         vIndex->addVersion(n);
+        etat = toEtat(rec.value(0).toInt());
     }
-    if(!newVIndex) NotesManager::instance().addNote(ACTIVES, vIndex);
+    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
 
     /*TACHES*/
     Statut stat;
@@ -170,14 +173,15 @@ void NotesManager::load() {
         if(currentId != id) {
             currentId = id;
             if(i != 0) {
-                NotesManager::instance().addNote(ACTIVES, vIndex);
+                NotesManager::instance().addNote(etat, vIndex);
                 newVIndex = true;
             }
             vIndex = new VersionIndex;
         }
         vIndex->addVersion(n);
+        etat = toEtat(rec.value(0).toInt());
     }
-    if(!newVIndex) NotesManager::instance().addNote(ACTIVES, vIndex);
+    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
 
 
     /*FIN*/

@@ -89,7 +89,7 @@ void RelationsManager::loadCouples(){
         QString note2 = rec.value(2).toString();
         QString label = rec.value(3).toString();
 
-        std::cout<<"--->"<<relation.toStdString()<<"("<<note1.toStdString()<<", "<<note2.toStdString()<<"); \n";
+        std::cout<<"--->"<<relation.toStdString()<<"(("<<note1.toStdString()<<", "<<note2.toStdString()<<")"<<label.toStdString()<<")\n";
         //std::cout<<note1.toStdString()<<std::endl;
         //std::cout<<note2.toStdString()<<std::endl;
 

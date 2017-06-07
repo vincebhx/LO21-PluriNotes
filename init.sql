@@ -76,8 +76,9 @@ CREATE TABLE RelationNote(
   relation TEXT,
   note1 TEXT NOT NULL,
   note2 TEXT NOT NULL,
+  label TEXT,
   PRIMARY KEY (relation, note1, note2)
 );
-INSERT INTO RelationNote VALUES('mon apprentissage du c++','article1','tache1');
-INSERT INTO RelationNote VALUES('mon contenu internet de qualite','image1','video1');
+INSERT INTO RelationNote VALUES('mon apprentissage du c++','article1','tache1', 'digerer toutes ces infos');
+INSERT INTO RelationNote VALUES('mon contenu internet de qualite','image1','video1', 'categorie extra drole');
 COMMIT;

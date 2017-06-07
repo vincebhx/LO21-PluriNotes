@@ -10,6 +10,7 @@ QSqlTableModel* Couple::getTableModel(QSqlDatabase db){
         modelCouple->setHeaderData(0, Qt::Horizontal, QObject::tr("relation"));
         modelCouple->setHeaderData(1, Qt::Horizontal, QObject::tr("note1"));
         modelCouple->setHeaderData(2, Qt::Horizontal, QObject::tr("note2"));
+        modelCouple->setHeaderData(3, Qt::Horizontal, QObject::tr("label"));
         return modelCouple;
 };
 

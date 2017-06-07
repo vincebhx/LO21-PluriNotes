@@ -33,23 +33,3 @@ QTableView* Relation::getRelationView(QSqlTableModel *table) {
     return viewRelation;
 }
 
-
-/*
-void Relation::addCouple(QPair<Note*, Note*> c){
-    if (nbCouples == nbMaxCouples){
-        nbMaxCouples += 5;
-        QPair* newCouples = new QPair [nbMaxCouples];
-        for (unsigned int i = 0; i < nbCouples; i++){
-            newCouples[i] = couples[i];
-        }
-        QPair* oldCouples = couples;
-
-        couples = newCouples;
-
-        if (oldCouples){
-            delete[] oldCouples;
-        }
-    }
-    couples[nbCouples++] = &c;
-}
-*/

@@ -1,4 +1,5 @@
 #include "relationsmanager.h"
+#include "./src/note/notesmanager.h"
 #include <iostream>
 #include <QString>
 #include <QSqlQuery>
@@ -32,32 +33,26 @@ void RelationsManager::free() {
 }
 
 void RelationsManager::load() {
-    std::cout<<"Chargement des relations..."<<std::endl;
+    std::cout<<"Chargement des relations et de leurs couples..."<<std::endl;
 
     RelationsManager::loadRelations();
-    //RelationsManager::loadCouples();
+    RelationsManager::loadCouples();
 
-    std::cout<<"Chargement des relations effectué."<<std::endl;
+    std::cout<<"Chargement des relations et de leurs couples effectué.\n\n"<<std::endl;
 }
 
 void RelationsManager::loadRelations(){
     QSqlRecord rec;
     QSqlTableModel* rel = Relation::getTableModel(DbManager::instance().db);
 
-    // -- On devrait en avoir 2... -- //
-    std::cout<<"Relations à charger: "<<rel->rowCount()<<std::endl;
-
     for (int i = 0; i < rel->rowCount(); i++){
         rec = rel->record(i);
         QString titre = rec.value(0).toString();
-        std::cout<<"Chargement de la relation "<<titre.toStdString()<<std::endl;
         Relation* r = new Relation(titre,
                          rec.value(1).toString(),
                          rec.value(2).toBool());
-        //addRelation(r);
-        //loadCouples(r);
+        addRelation(r);
     }
-    std::cout<<"Fin de loadRelations()"<<std::endl;
 }
 
 void RelationsManager::addRelation(Relation* r){
@@ -66,25 +61,24 @@ void RelationsManager::addRelation(Relation* r){
 
 Relation* RelationsManager::findRelation(QString titre){
     Relation* resultat = nullptr;
-    int trouve = 0;
 
-    // -- RECHERCHE DE LA NOTE DANS LES ACTIVES -- //
     for(RMIterator it = this->begin(); it!= this->end(); it++){
         Relation* r = (*it);
         if (r->getTitre() == titre){
-            trouve = 1;
             resultat = r;
         }
     }
     return resultat;
 }
 
-/*
+
 void RelationsManager::loadCouples(){
-    //std::cout<<"Chargement des couples des relations...\n";
+
     NotesManager& nm = NotesManager::instance();
     QSqlTableModel* couples = Couple::getTableModel(DbManager::instance().db);
     QSqlRecord rec;
+
+    std::cout<<"\n\nOn va charger "<<couples->rowCount()<<" tuples."<<std::endl;
 
     for (int i = 0; i < couples->rowCount(); i++){
         rec = couples->record(i);
@@ -93,15 +87,43 @@ void RelationsManager::loadCouples(){
         QString relation = rec.value(0).toString();
         QString note1 = rec.value(1).toString();
         QString note2 = rec.value(2).toString();
+        QString label = rec.value(3).toString();
+
+        std::cout<<"--->"<<relation.toStdString()<<"("<<note1.toStdString()<<", "<<note2.toStdString()<<"); \n";
+        //std::cout<<note1.toStdString()<<std::endl;
+        //std::cout<<note2.toStdString()<<std::endl;
 
         // -- RECUPERATION DE LA RELATION IMPLIQUEE -- //
-
+        Relation* rel = findRelation(relation);
+        //std::cout<<"Couples de la relation = "<<rel->getTitre().toStdString()<<std::endl;
 
         // -- RECUPERATION DE LA NOTE1 -- //
+        Note* n1 = nm.findNote(note1);
+        //std::cout<<"Note 1 = "<<n1->getId().toStdString()<<std::endl;
+
 
         // -- RECUPERATION DE LA NOTE2 -- //
+        Note* n2 = nm.findNote(note2);
+        //std::cout<<"Note 2 = "<<n2->getId().toStdString()<<std::endl;
 
+        //addCouple(n1, n2, label);
     }
 }
-*/
+
+QSqlTableModel* RelationsManager::getTableModel(QSqlDatabase db){
+        QSqlTableModel* modelCouple = new QSqlTableModel(0, db);
+        modelCouple->setTable("RelationNote");
+        modelCouple->setEditStrategy(QSqlTableModel::OnManualSubmit);
+        modelCouple->select();
+        modelCouple->setHeaderData(0, Qt::Horizontal, QObject::tr("relation"));
+        modelCouple->setHeaderData(1, Qt::Horizontal, QObject::tr("note1"));
+        modelCouple->setHeaderData(2, Qt::Horizontal, QObject::tr("note2"));
+        return modelCouple;
+};
+
+QTableView* RelationsManager::getCoupleView(QSqlTableModel *table) {
+    QTableView *viewCouple = new QTableView;
+    viewCouple->setModel(table);
+    return viewCouple;
+}
 

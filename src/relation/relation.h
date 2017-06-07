@@ -31,22 +31,7 @@ public:
     QString getDescription() const { return description; }
     bool estOriente() const { return oriente; }
 
-    void addCouple(QPair<Note*, Note*> c);
-
-    /*class RelationIterator{
-        friend class Relation;
-    private:
-        const Relation* relation;
-        unsigned int index;
-        RelationIterator(const Relation* rel): relation(rel), index(0) {}
-    public:
-        void first() { index = 0; }
-        void next() { index++; }
-        bool isDone() { if (relation->nbCouples == 0) return true; else return (index + 1 == relation->nbCouples); }
-        QPair<Note*, Note*> currentItem(){ return relation->couples[index]; }
-    };
-
-    RelationIterator* iterator() { return new RelationIterator(this); }*/
+    //void addCouple(Note* n1, Note* n2, QString label);
 };
 
 #endif // RELATION_H

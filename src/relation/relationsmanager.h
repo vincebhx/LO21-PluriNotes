@@ -30,6 +30,11 @@ public:
     Relation* findRelation(QString titre);
     void addRelation(Relation* r);
     int numberOfRelations() { return relations.size(); }
+
+
+    QSqlTableModel* getTableModel(QSqlDatabase db);
+    QTableView* getCoupleView(QSqlTableModel *table);
+
 };
 
 #endif // RELATIONSMANAGER_H

@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
         NotesManager& nm = NotesManager::instance();
         RelationsManager& rm = RelationsManager::instance();
         nm.load();
-        //rm.load();
         int  i;
         QString id;               ///Identifiant de la note
         unsigned int version;           ///Numéro de version

@@ -55,17 +55,19 @@ void RelationsManager::loadCouples(){
 
 void RelationsManager::loadRelations(){
     QSqlRecord rec;
-    QSqlTableModel* relations = Relation::getTableModel(DbManager::instance().db);
-    std::cout<<"Relations à charger: "<<relations->rowCount()<<std::endl;
-    std::cout<<relations->record(0).value(0).toString().toStdString()<<std::endl;
-    for (int i = 0; i < relations->rowCount(); i++){
-        rec = relations->record(i);
+    QSqlTableModel* rel = Relation::getTableModel(DbManager::instance().db);
+
+    // -- On devrait en avoir 2... -- //
+    std::cout<<"Relations à charger: "<<rel->rowCount()<<std::endl;
+
+    for (int i = 0; i < rel->rowCount(); i++){
+        rec = rel->record(i);
         QString titre = rec.value(0).toString();
         std::cout<<"Chargement de la relation "<<titre.toStdString()<<std::endl;
         Relation* r = new Relation(titre,
                          rec.value(1).toString(),
                          rec.value(2).toBool());
-        addRelation(r);
+        //addRelation(r);
         //loadCouples(r);
     }
     std::cout<<"Fin de loadRelations()"<<std::endl;

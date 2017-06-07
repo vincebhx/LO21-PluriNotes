@@ -23,7 +23,7 @@ RelationsManager::RelationsManager() {
 }
 
 RelationsManager::~RelationsManager() {
-    // suppression des couples
+    relations.clear();
     std::cout<<"RelationsManager détruit."<<std::endl;
 }
 
@@ -39,19 +39,6 @@ void RelationsManager::load() {
 
     std::cout<<"Chargement des relations effectué."<<std::endl;
 }
-
-/*
-void RelationsManager::loadCouples(){
-    QSqlTableModel* couples = Couple::getTableModel(DbManager::instance().db);
-    QSqlRecord rec;
-
-    for (int i = 0; i < couples->rowCount(); i++){
-        rec = couples->record(i);
-        QString relation = rec.value(0).toString();
-        QString note1 = rec.value(1).toString();
-        // On recherche les notes + la relation dont il s'agit
-    }
-}*/
 
 void RelationsManager::loadRelations(){
     QSqlRecord rec;
@@ -74,19 +61,47 @@ void RelationsManager::loadRelations(){
 }
 
 void RelationsManager::addRelation(Relation* r){
-    if (nbRelations == nbMaxRelations){
-        nbMaxRelations += 5;
-        Relation** newRelations = new Relation* [nbMaxRelations];
-        for (unsigned int i = 0; i < nbRelations; i++){
-            newRelations[i] = relations[i];
-        }
-        Relation** oldRelations = relations;
+    relations.push_back(r);
+}
 
-        relations = newRelations;
+Relation* RelationsManager::findRelation(QString titre){
+    Relation* resultat = nullptr;
+    int trouve = 0;
 
-        if (oldRelations){
-            delete[] oldRelations;
+    // -- RECHERCHE DE LA NOTE DANS LES ACTIVES -- //
+    for(RMIterator it = this->begin(); it!= this->end(); it++){
+        Relation* r = (*it);
+        if (r->getTitre() == titre){
+            trouve = 1;
+            resultat = r;
         }
     }
-    relations[nbRelations++] = r;
+    return resultat;
 }
+
+/*
+void RelationsManager::loadCouples(){
+    //std::cout<<"Chargement des couples des relations...\n";
+    NotesManager& nm = NotesManager::instance();
+    QSqlTableModel* couples = Couple::getTableModel(DbManager::instance().db);
+    QSqlRecord rec;
+
+    for (int i = 0; i < couples->rowCount(); i++){
+        rec = couples->record(i);
+
+        // -- RECUPERATION DU TUPLE RELATION/NOTE1/NOTE2 -- //
+        QString relation = rec.value(0).toString();
+        QString note1 = rec.value(1).toString();
+        QString note2 = rec.value(2).toString();
+
+        // -- RECUPERATION DE LA RELATION IMPLIQUEE -- //
+
+
+        // -- RECUPERATION DE LA NOTE1 -- //
+
+        // -- RECUPERATION DE LA NOTE2 -- //
+
+    }
+}
+*/
+

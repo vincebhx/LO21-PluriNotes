@@ -34,11 +34,13 @@ public:
     void setVersion(unsigned int i) { version = i; }
     void setTitre(QString t) { titre = t; }
 
+    Note* findNote(QString id);
+
     const QString& getId() const { return id; }
     unsigned int getVersion() const { return version; }
     QString getTitre() const { return titre; }
     const QDateTime& getDateCreat() const {return dateCreation; }
-    QDateTime getDateLastMOdif() const {return dateModification; }
+    QDateTime getDateLastModif() const {return dateModification; }
 
     QWidget* getNoteView();
     QSqlQuery getQuery();

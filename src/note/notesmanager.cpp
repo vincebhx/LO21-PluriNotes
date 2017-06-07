@@ -187,3 +187,42 @@ void NotesManager::load() {
     /*FIN*/
     std::cout<<"Chargement effectué."<<std::endl;
 }
+
+Note* NotesManager::findNote(QString id){
+    NotesManager& nm = NotesManager::instance();
+    Note* resultat = nullptr;
+    int trouve = 0;
+
+    // -- RECHERCHE DE LA NOTE DANS LES ACTIVES -- //
+    for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++){
+        Note* n = (*it)->currentVersion();
+        if (n->getTitre() == id){
+            trouve = 1;
+            resultat = n;
+        }
+    }
+
+    // -- NOTE PAS DANS LES ACTIVES -> RECHERCHE DANS LES ARCHIVES -- //
+    if (trouve == 0){
+        for(NMIterator it = nm.begin(ARCHIVES); it!= nm.end(ARCHIVES); it++){
+            Note* n = (*it)->currentVersion();
+            if (n->getTitre() == id){
+                trouve = 1;
+                resultat = n;
+            }
+        }
+    };
+
+    // -- NOTE PAS DANS LES ARCHIVES -> RECHERCHE DANS LA CORBEILLE -- //
+    if (trouve == 0){
+        for(NMIterator it = nm.begin(CORBEILLE); it!= nm.end(CORBEILLE); it++){
+            Note* n = (*it)->currentVersion();
+            if (n->getTitre() == id){
+                trouve = 1;
+                resultat = n;
+            }
+        }
+    }
+    return resultat;
+}
+

@@ -5,6 +5,7 @@
 #include "../gui/mainwindow.h"
 #include "../src/note/media.h"
 #include "../src/note/tache.h"
+#include "../src/note/note.h"
 #include "../src/relation/relation.h"
 #include "../src/relation/relationsmanager.h"
 
@@ -35,6 +36,9 @@ int main(int argc, char *argv[])
         QDateTime dateCreation;   ///Date de création
         QDateTime dateModification;
         QString texte;
+
+        QString q = "c++";
+        std::cout<<"ma note : "<<nm.findNote(q)->getTitre().toStdString()<<"\n";
 
         QSqlTableModel* modelArticle = Article::getTableModel(dbM.db);
         QTableView* viewArticle = Article::getTableView(modelArticle);
@@ -71,7 +75,6 @@ int main(int argc, char *argv[])
     catch(Exception e) { std::cout<<"Erreur standard: "<<e.getInfo().toStdString()<<std::endl; }
     catch(QSqlError e) { std::cout<<"Erreur SQL: "<<e.driverText().toStdString()<<" - "<<e.databaseText().toStdString()<<std::endl; }
     catch (...) { std::cout<<"ERREUR"<<std::endl; }
-
     MainWindow window;
     window.show();
 

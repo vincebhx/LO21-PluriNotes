@@ -1,4 +1,5 @@
 #include "note.h"
+#include "notesmanager.h"
 
 #include <QLabel>
 #include <QLineEdit>
@@ -52,3 +53,4 @@ QSqlQuery Note::getQuery() {
     query.bindValue(":dateModification", dateModification.toString(dateStorageFormat));
     return query;
 }
+

@@ -21,6 +21,7 @@ private:
 public:
     static NotesManager& instance();
     void free();
+    Note* findNote(QString id);
 
     Note* currentVersion(Etat e) {
         switch(e) {

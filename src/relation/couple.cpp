@@ -1,8 +1,8 @@
 #include "couple.h"
 #include <QSqlDatabase>
+#include <QSqlTableModel>
 
-/*
-QSqlTableModel* couples = Couple::getTableModel(QSqlDatabase db){
+QSqlTableModel* Couple::getTableModel(QSqlDatabase db){
         QSqlTableModel* modelCouple = new QSqlTableModel(0, db);
         modelCouple->setTable("RelationNote");
         modelCouple->setEditStrategy(QSqlTableModel::OnManualSubmit);
@@ -10,5 +10,11 @@ QSqlTableModel* couples = Couple::getTableModel(QSqlDatabase db){
         modelCouple->setHeaderData(0, Qt::Horizontal, QObject::tr("relation"));
         modelCouple->setHeaderData(1, Qt::Horizontal, QObject::tr("note1"));
         modelCouple->setHeaderData(2, Qt::Horizontal, QObject::tr("note2"));
-        return modelArticle;
-}*/
+        return modelCouple;
+};
+
+QTableView* Couple::getCoupleView(QSqlTableModel *table) {
+    QTableView *viewCouple = new QTableView;
+    viewCouple->setModel(table);
+    return viewCouple;
+}

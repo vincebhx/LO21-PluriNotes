@@ -1,4 +1,5 @@
 #include "relation.h"
+#include "relationsmanager.h"
 #include "../note/note.h"
 #include "couple.h"
 #include <QSqlQuery>
@@ -31,6 +32,7 @@ QTableView* Relation::getRelationView(QSqlTableModel *table) {
     viewRelation->setModel(table);
     return viewRelation;
 }
+
 
 /*
 void Relation::addCouple(QPair<Note*, Note*> c){

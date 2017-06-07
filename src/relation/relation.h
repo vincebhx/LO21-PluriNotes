@@ -30,6 +30,7 @@ public:
     QString getTitre() const { return titre; }
     QString getDescription() const { return description; }
     bool estOriente() const { return oriente; }
+
     void addCouple(QPair<Note*, Note*> c);
 
     /*class RelationIterator{

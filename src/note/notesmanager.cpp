@@ -44,7 +44,6 @@ void NotesManager::addNote(Etat e, VersionIndex* n) {
 void NotesManager::load() {
     /*DEBUT*/
     std::cout<<"Chargement des données..."<<std::endl;
-
     QSqlRecord rec;
     VersionIndex* vIndex;
     Note* n;
@@ -182,7 +181,6 @@ void NotesManager::load() {
         etat = toEtat(rec.value(0).toInt());
     }
     if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
-
 
     /*FIN*/
     std::cout<<"Chargement effectué."<<std::endl;

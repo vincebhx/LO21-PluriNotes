@@ -5,7 +5,6 @@
 
 typedef std::vector<VersionIndex*>::iterator NMIterator;
 typedef enum { ACTIVES = 0, ARCHIVES = 1, CORBEILLE = 2 } Etat;
-static Etat toEtat(int i) { return static_cast<Etat>(i); }
 
 class NotesManager
 {
@@ -17,6 +16,8 @@ private:
     static NotesManager* _instance;
     NotesManager();
     ~NotesManager();
+
+    static Etat toEtat(int i) { return static_cast<Etat>(i); }
 
 public:
     static NotesManager& instance();

@@ -11,9 +11,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    /*NotesManager& nm = NotesManager::instance();
-    NoteSelector* noteselec = new NoteSelector(nm);
-    ui->tableView->setModel(noteselec);*/
+    //NoteTableModel* model = new NoteTableModel;
+    ui->tableWidget->setColumnCount(5);
+    ui->tableWidget->setRowCount(NotesManager::instance().nbNotes(ACTIVES));
+    /*for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++){
+
+    }*/
 }
 
 MainWindow::~MainWindow()

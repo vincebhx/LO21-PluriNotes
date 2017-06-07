@@ -16,7 +16,9 @@ NotesManager::NotesManager() {
 }
 
 NotesManager::~NotesManager() {
-    notes.clear();
+    actives.clear();
+    archives.clear();
+    corbeille.clear();
     std::cout<<"NotesManager détruit."<<std::endl;
 }
 
@@ -31,11 +33,12 @@ void NotesManager::free() {
     delete this;
 }
 
-void NotesManager::addNote(VersionIndex* n) {
-    for(unsigned int i = 0; i < notes.size(); i++)
-        if (notes.at(i)->currentVersion()->getId() == n->currentVersion()->getId())
+void NotesManager::addNote(Etat e, VersionIndex* n) {
+    std::vector<VersionIndex*>& current = ((e == ACTIVES) ? actives : ((e == ARCHIVES) ? archives : corbeille));
+    for(unsigned int i = 0; i < current.size(); i++)
+        if (current.at(i)->currentVersion()->getId() == n->currentVersion()->getId())
             throw Exception("Une note possédant l'id " + n->currentVersion()->getId() + " existe déjà.");
-    notes.push_back(n);
+    current.push_back(n);
 }
 
 void NotesManager::load() {
@@ -56,27 +59,27 @@ void NotesManager::load() {
     for (int i = 0; i < articles->rowCount(); i++) {
         newVIndex = false;
         rec = articles->record(i);
-        id = rec.value(0).toString();
+        id = rec.value(1).toString();
         n = new Article(
                     id,
-                    rec.value(1).toInt(),
-                    rec.value(2).toString(),
-                    QDateTime::fromString(rec.value(3).toString(), "dd/MM/yyyy hh:mm:ss"),
+                    rec.value(2).toInt(),
+                    rec.value(3).toString(),
                     QDateTime::fromString(rec.value(4).toString(), "dd/MM/yyyy hh:mm:ss"),
-                    rec.value(5).toString()
+                    QDateTime::fromString(rec.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
+                    rec.value(6).toString()
                     );
 
         if(currentId != id) {
             currentId = id;
             if(i != 0) {
-                NotesManager::instance().addNote(vIndex);
+                NotesManager::instance().addNote(ACTIVES, vIndex);
                 newVIndex = true;
             }
             vIndex = new VersionIndex;
         }
         vIndex->addVersion(n);
     }
-    if(!newVIndex) NotesManager::instance().addNote(vIndex);
+    if(!newVIndex) NotesManager::instance().addNote(ACTIVES, vIndex);
 
     /*MEDIAS*/
     QString type;
@@ -88,51 +91,51 @@ void NotesManager::load() {
     for (int i = 0; i < medias->rowCount(); i++) {
         newVIndex = false;
         rec = medias->record(i);
-        id = rec.value(0).toString();
-        type = rec.value(2).toString();
+        id = rec.value(1).toString();
+        type = rec.value(3).toString();
 
         if (type == "image")
             n = new Image(
                         id,
-                        rec.value(1).toInt(),
-                        rec.value(3).toString(),
-                        QDateTime::fromString(rec.value(4).toString(), "dd/MM/yyyy hh:mm:ss"),
+                        rec.value(2).toInt(),
+                        rec.value(4).toString(),
                         QDateTime::fromString(rec.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
-                        rec.value(6).toString(),
-                        rec.value(7).toString()
+                        QDateTime::fromString(rec.value(6).toString(), "dd/MM/yyyy hh:mm:ss"),
+                        rec.value(7).toString(),
+                        rec.value(8).toString()
                         );
         else if (type == "audio")
             n = new Audio(
                         id,
-                        rec.value(1).toInt(),
-                        rec.value(3).toString(),
-                        QDateTime::fromString(rec.value(4).toString(), "dd/MM/yyyy hh:mm:ss"),
+                        rec.value(2).toInt(),
+                        rec.value(4).toString(),
                         QDateTime::fromString(rec.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
-                        rec.value(6).toString(),
-                        rec.value(7).toString()
+                        QDateTime::fromString(rec.value(6).toString(), "dd/MM/yyyy hh:mm:ss"),
+                        rec.value(7).toString(),
+                        rec.value(8).toString()
                         );
         else //type == "video"
             n = new Video(
                         id,
-                        rec.value(1).toInt(),
-                        rec.value(3).toString(),
-                        QDateTime::fromString(rec.value(4).toString(), "dd/MM/yyyy hh:mm:ss"),
+                        rec.value(2).toInt(),
+                        rec.value(4).toString(),
                         QDateTime::fromString(rec.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
-                        rec.value(6).toString(),
+                        QDateTime::fromString(rec.value(6).toString(), "dd/MM/yyyy hh:mm:ss"),
+                        rec.value(7).toString(),
                         rec.value(7).toString()
                         );
 
         if(currentId != id) {
             currentId = id;
             if(i != 0) {
-                NotesManager::instance().addNote(vIndex);
+                NotesManager::instance().addNote(ACTIVES, vIndex);
                 newVIndex = true;
             }
             vIndex = new VersionIndex;
         }
         vIndex->addVersion(n);
     }
-    if(!newVIndex) NotesManager::instance().addNote(vIndex);
+    if(!newVIndex) NotesManager::instance().addNote(ACTIVES, vIndex);
 
     /*TACHES*/
     Statut stat;
@@ -145,36 +148,36 @@ void NotesManager::load() {
     for (int i = 0; i < taches->rowCount(); i++) {
         newVIndex = false;
         rec = taches->record(i);
-        id = rec.value(0).toString();
+        id = rec.value(1).toString();
 
-        statStr = rec.value(8).toString();
+        statStr = rec.value(9).toString();
         if(statStr == StatutStr[EN_COURS]) stat = EN_COURS;
         else if (statStr == StatutStr[TERMINE]) stat = TERMINE;
         else stat = EN_ATTENTE;
 
         n = new Tache(
                     id,
-                    rec.value(1).toInt(),
-                    rec.value(2).toString(),
-                    QDateTime::fromString(rec.value(3).toString(), "dd/MM/yyyy hh:mm:ss"),
+                    rec.value(2).toInt(),
+                    rec.value(3).toString(),
                     QDateTime::fromString(rec.value(4).toString(), "dd/MM/yyyy hh:mm:ss"),
-                    rec.value(5).toString(),
-                    rec.value(6).toInt(),
-                    QDateTime::fromString(rec.value(7).toString(), "dd/MM/yyyy hh:mm:ss"),
+                    QDateTime::fromString(rec.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
+                    rec.value(6).toString(),
+                    rec.value(7).toInt(),
+                    QDateTime::fromString(rec.value(8).toString(), "dd/MM/yyyy hh:mm:ss"),
                     stat
                     );
 
         if(currentId != id) {
             currentId = id;
             if(i != 0) {
-                NotesManager::instance().addNote(vIndex);
+                NotesManager::instance().addNote(ACTIVES, vIndex);
                 newVIndex = true;
             }
             vIndex = new VersionIndex;
         }
         vIndex->addVersion(n);
     }
-    if(!newVIndex) NotesManager::instance().addNote(vIndex);
+    if(!newVIndex) NotesManager::instance().addNote(ACTIVES, vIndex);
 
 
     /*FIN*/

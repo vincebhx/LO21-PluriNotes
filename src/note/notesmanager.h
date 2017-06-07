@@ -4,11 +4,15 @@
 #include "versionindex.h"
 
 typedef std::vector<VersionIndex*>::iterator NMIterator;
+typedef enum { ACTIVES = 0, ARCHIVES = 1, CORBEILLE = 2 } Etat;
+static Etat toEtat(int i) { return static_cast<Etat>(i); }
 
 class NotesManager
 {
 private:
-    std::vector<VersionIndex*> notes;
+    std::vector<VersionIndex*> actives;
+    std::vector<VersionIndex*> archives;
+    std::vector<VersionIndex*> corbeille;
 
     static NotesManager* _instance;
     NotesManager();
@@ -18,15 +22,45 @@ public:
     static NotesManager& instance();
     void free();
 
-    Note* currentVersion() { return notes.back()->currentVersion(); }
-    VersionIndex* currentNote() { return notes.back(); }
+    Note* currentVersion(Etat e) {
+        switch(e) {
+        case ACTIVES: return actives.back()->currentVersion();
+        case ARCHIVES: return archives.back()->currentVersion();
+        case CORBEILLE: return corbeille.back()->currentVersion();
+        }
+    }
+    VersionIndex* currentNote(Etat e) {
+        switch(e) {
+        case ACTIVES: return actives.back();
+        case ARCHIVES: return archives.back();
+        case CORBEILLE: return corbeille.back();
+        }
+    }
 
-    NMIterator begin() { return notes.begin(); }
-    NMIterator end() { return notes.end(); }
+    NMIterator begin(Etat e) {
+        switch(e) {
+        case ACTIVES: return actives.begin();
+        case ARCHIVES: return archives.begin();
+        case CORBEILLE: return corbeille.begin();
+        }
+    }
+    NMIterator end(Etat e) {
+        switch(e) {
+        case ACTIVES: return actives.end();
+        case ARCHIVES: return archives.end();
+        case CORBEILLE: return corbeille.end();
+        }
+    }
 
-    unsigned int nbOfNotes() { return notes.size(); }
+    unsigned int nbNotes(Etat e) {
+        switch(e) {
+        case ACTIVES: return actives.size();
+        case ARCHIVES: return archives.size();
+        case CORBEILLE: return corbeille.size();
+        }
+    }
 
-    void addNote(VersionIndex* v);
+    void addNote(Etat e, VersionIndex* v);
     void load();
 };
 

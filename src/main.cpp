@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 
         std::string id1;
         unsigned int ver1;
-        for(NMIterator it = nm.begin(); it!= nm.end(); it++) {
+        for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++) {
             id1 = (*it)->currentVersion()->getId().toStdString();
             ver1 = (*it)->currentVersion()->getVersion();
             std::cout<<id1<<" v"<<ver1<<std::endl;

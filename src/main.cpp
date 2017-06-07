@@ -37,9 +37,6 @@ int main(int argc, char *argv[])
         QDateTime dateModification;
         QString texte;
 
-        QString q = "c++";
-        std::cout<<"ma note : "<<nm.findNote(q)->getTitre().toStdString()<<"\n";
-
         QSqlTableModel* modelArticle = Article::getTableModel(dbM.db);
         QTableView* viewArticle = Article::getTableView(modelArticle);
         viewArticle->show();

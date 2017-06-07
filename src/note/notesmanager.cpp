@@ -194,7 +194,7 @@ Note* NotesManager::findNote(QString id){
     // -- RECHERCHE DE LA NOTE DANS LES ACTIVES -- //
     for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++){
         Note* n = (*it)->currentVersion();
-        if (n->getTitre() == id){
+        if (n->getId() == id){
             trouve = 1;
             resultat = n;
         }
@@ -204,7 +204,7 @@ Note* NotesManager::findNote(QString id){
     if (trouve == 0){
         for(NMIterator it = nm.begin(ARCHIVES); it!= nm.end(ARCHIVES); it++){
             Note* n = (*it)->currentVersion();
-            if (n->getTitre() == id){
+            if (n->getId() == id){
                 trouve = 1;
                 resultat = n;
             }
@@ -215,7 +215,7 @@ Note* NotesManager::findNote(QString id){
     if (trouve == 0){
         for(NMIterator it = nm.begin(CORBEILLE); it!= nm.end(CORBEILLE); it++){
             Note* n = (*it)->currentVersion();
-            if (n->getTitre() == id){
+            if (n->getId() == id){
                 trouve = 1;
                 resultat = n;
             }

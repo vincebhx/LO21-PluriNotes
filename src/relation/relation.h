@@ -7,7 +7,7 @@
 #include <QTableView>
 #include <QSqlTableModel>
 
-typedef std::vector<Relation*>::iterator RelationIterator;
+typedef std::vector<Couple*>::iterator RelationIterator;
 
 class Relation {
 private:

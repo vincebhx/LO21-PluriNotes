@@ -4,7 +4,6 @@
 #include <QSqlTableModel>
 #include <QSqlDatabase>
 #include <QTableView>
-#include <QPair>
 #include <QString>
 #include "../note/note.h"
 #include "relation.h"
@@ -13,10 +12,11 @@
 class Couple
 {
 private:
-    QPair<Note*, Note*> tuple;
+    Note* note1;
+    Note* note2;
     QString label;
 public:
-    Couple();
+    Couple(Note* n1, Note* n2, QString l): note1(n1), note2(n2), label(l){}
     ~Couple();
     QString getLabel(Couple& c){ return c.label; }
     void setLabel(Couple& c, QString& l) { c.label = l; }

@@ -9,7 +9,8 @@
 #include <QString>
 #include <QPair>
 #include <iostream>
-
+#include "relation.h"
+#include "couple.h"
 #include<QSqlError>
 #include <QDebug>
 
@@ -33,3 +34,7 @@ QTableView* Relation::getRelationView(QSqlTableModel *table) {
     return viewRelation;
 }
 
+
+void Relation::addCouple(Couple *c){
+    couples.push_back(c);
+}

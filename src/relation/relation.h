@@ -7,16 +7,16 @@
 #include <QTableView>
 #include <QSqlTableModel>
 
-// Notes : On interdit la recopie.
+typedef std::vector<Relation*>::iterator RelationIterator;
 
 class Relation {
 private:
     QString titre;
     QString description;
     bool oriente;
-    unsigned int nbCouples; // nombre de couples de type x, y (x, y et y, x) comptent pour deux
-    unsigned int nbMaxCouples;
-    QPair<Note*, Note*>* couples;
+    std::vector<Couple*> couples;
+
+    // -- INTERDICTION DE RECOPIE -- //
     void operator=(const Relation& r);
     Relation(const Relation& r); // interdiction de la recopie
 
@@ -31,7 +31,7 @@ public:
     QString getDescription() const { return description; }
     bool estOriente() const { return oriente; }
 
-    //void addCouple(Note* n1, Note* n2, QString label);
+    void addCouple(Couple* c);
 };
 
 #endif // RELATION_H

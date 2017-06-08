@@ -106,7 +106,14 @@ void RelationsManager::loadCouples(){
         Note* n2 = nm.findNote(note2);
         //std::cout<<"Note 2 = "<<n2->getId().toStdString()<<std::endl;
 
-        //addCouple(n1, n2, label);
+        Couple* nouveauCouple = new Couple(n1, n2, label);
+        rel->addCouple(nouveauCouple);
+
+        // -- INSERTION DE DEUX COUPLES SI RELATION ORIENTEE -- //
+        if (rel->estOriente()){
+            Couple* nouveauCouple2 = new Couple(n2, n1, label);
+            rel->addCouple(nouveauCouple2);
+        }
     }
 }
 

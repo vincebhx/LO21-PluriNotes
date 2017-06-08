@@ -7,6 +7,7 @@
 #include "../src/note/tache.h"
 #include "../src/note/note.h"
 #include "../src/relation/relation.h"
+#include "../src/relation/couple.h"
 #include "../src/relation/relationsmanager.h"
 
 #include <QApplication>
@@ -67,7 +68,6 @@ int main(int argc, char *argv[])
             ver1 = (*it)->currentVersion()->getVersion();
             std::cout<<id1<<" v"<<ver1<<std::endl;
         }
-
     }
     catch(Exception e) { std::cout<<"Erreur standard: "<<e.getInfo().toStdString()<<std::endl; }
     catch(QSqlError e) { std::cout<<"Erreur SQL: "<<e.driverText().toStdString()<<" - "<<e.databaseText().toStdString()<<std::endl; }

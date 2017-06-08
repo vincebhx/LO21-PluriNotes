@@ -18,6 +18,8 @@ public:
     ~Couple();
     QString getLabel(Couple& c){ return c.label; }
     void setLabel(Couple& c, QString& l) { c.label = l; }
+    Note* getNote1() { return note1; }
+    Note* getNote2() { return note2; }
 
     // -- RECUPERATION DES DONNEES DANS LA BDD -- //
     static QSqlTableModel* getTableModel(QSqlDatabase db);

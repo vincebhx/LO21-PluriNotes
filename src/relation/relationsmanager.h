@@ -31,6 +31,7 @@ public:
     void addRelation(Relation* r);
     int numberOfRelations() { return relations.size(); }
 
+    bool noteImpliqueeDansRelation(Note* note);
 
     QSqlTableModel* getTableModel(QSqlDatabase db);
     QTableView* getCoupleView(QSqlTableModel *table);

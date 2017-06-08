@@ -117,6 +117,19 @@ void RelationsManager::loadCouples(){
     }
 }
 
+
+bool RelationsManager::noteImpliqueeDansRelation(Note* note){
+    bool resultat = false;
+    // -- ON OBSERVE CHAQUE RELATION
+    for (RMIterator it = this->begin(); it != this->end(); it++){
+        for (RelationIterator itCouple = (*it)->begin(); itCouple != (*it)->end(); itCouple++){
+            if ((*itCouple)->getNote1() == note || (*itCouple)->getNote2() == note) resultat = true;
+        }
+    }
+    return resultat;
+}
+
+
 QSqlTableModel* RelationsManager::getTableModel(QSqlDatabase db){
         QSqlTableModel* modelCouple = new QSqlTableModel(0, db);
         modelCouple->setTable("RelationNote");

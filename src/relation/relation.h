@@ -23,14 +23,20 @@ private:
 
 public:
     static Relation reference;
+
     static QSqlTableModel* getTableModel(QSqlDatabase db);
     static QTableView* getRelationView(QSqlTableModel *table);
+
+    // -- SETTER - GETTER -- //
     Relation(QString t, QString d = NULL, bool o = true): titre(t), description(d), oriente(o) {}
     void setDescription(QString d) { description = d; }
     void orienter(bool o) { oriente = o; }
     QString getTitre() const { return titre; }
     QString getDescription() const { return description; }
     bool estOriente() const { return oriente; }
+
+    RelationIterator begin() { return couples.begin(); }
+    RelationIterator end() { return couples.end(); }
 
     void addCouple(Couple* c);
 };

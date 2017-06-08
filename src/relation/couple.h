@@ -9,8 +9,7 @@
 #include "relation.h"
 
 
-class Couple
-{
+class Couple {
 private:
     Note* note1;
     Note* note2;

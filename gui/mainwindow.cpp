@@ -4,6 +4,9 @@
 #include "../src/dbmanager.h"
 #include "../src/note/notesmanager.h"
 #include "../src/note/note.h"
+#include "../src/note/article.h"
+#include "../src/note/tache.h"
+#include "../src/note/media.h"
 #include "dialog.h"
 #include <iostream>
 
@@ -88,25 +91,48 @@ void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
     Note* clicked = nm.getNote(indice)->currentVersion();
     QString type = clicked->getClassName();
     int id_type; // 0: article; 1: tache; 2: image; 3: audio; 4:video
-    if (type == "article")
+    Article* article;
+    Tache* tache;
+    Image* image;
+    Video* video;
+    Audio* audio;
+
+    if (type == "article") {
         id_type = 0;
-    else if(type == "tache")
+        article = dynamic_cast<Article*>(clicked);
+    }
+    else if(type == "tache"){
         id_type = 1;
-    else if (type == "image")
+        tache = dynamic_cast<Tache*>(clicked);
+    }
+    else if (type == "image") {
         id_type =2;
-    else if (type == "audio")
+        image = dynamic_cast<Image*>(clicked);
+    }
+    else if (type == "audio"){
         id_type = 3;
-    else if (type == "video")
+        audio = dynamic_cast<Audio*>(clicked);
+    }
+    else if (type == "video"){
         id_type = 4;
+        video = dynamic_cast<Video*>(clicked);
+    }
 
     ui->stackedWidget->setCurrentIndex(id_type);
-    if (id_type == 0) {
+    switch (id_type) {
+    case 0:
         ui->a_titre->setText(clicked->getTitre());
         ui->a_creation->setText(clicked->getDateCreat().toString());
         ui->a_modif->setText(clicked->getDateLastModif().toString());
-        //ui->a_text->setText(clicked->getTexte());
-
-
+        ui->a_text->setText(article->getTexte());
+        break;
+    case 1 :
+        ui->t_titre->setText(clicked->getTitre());
+        ui->t_creation->setText(clicked->getDateCreat().toString());
+        ui->t_modif->setText(clicked->getDateLastModif().toString());
+        ui->dateTimeEdit->setDateTime(tache->getDateCreat());
+        ui->dateTimeEdit_2->setDateTime(tache->getDateEcheance());
+        break;
     }
 }
 

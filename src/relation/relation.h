@@ -6,6 +6,7 @@
 #include <QPair>
 #include <QTableView>
 #include <QSqlTableModel>
+#include <vector>
 
 typedef std::vector<Couple*>::iterator RelationIterator;
 
@@ -33,5 +34,8 @@ public:
 
     void addCouple(Couple* c);
 };
+
+
+
 
 #endif // RELATION_H

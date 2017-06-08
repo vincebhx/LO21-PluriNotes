@@ -6,11 +6,9 @@
 #include <QTableView>
 #include <QString>
 #include "../note/note.h"
-#include "relation.h"
 
 
-class Couple
-{
+class Couple {
 private:
     Note* note1;
     Note* note2;

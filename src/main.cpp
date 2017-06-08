@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
         QSqlTableModel* modelArticle = Article::getTableModel(dbM.db);
         QTableView* viewArticle = Article::getTableView(modelArticle);
-        viewArticle->show();
+        //viewArticle->show();
 
         for (i= 0; i < modelArticle->rowCount(); i++) {
             id = viewArticle->model()->data(viewArticle->model()->index(i,0)).toString();
@@ -55,11 +55,11 @@ int main(int argc, char *argv[])
 
         QSqlTableModel* modelTache = Tache::getTableModel(dbM.db);
         QTableView* viewTache = Tache::getTableView(modelTache);
-        viewTache->show();
+        //viewTache->show();
 
         QSqlTableModel* modelMedia = Media::getTableModel(dbM.db);
         QTableView* viewMedia = Media::getTableView(modelMedia);
-        viewMedia->show();
+        //viewMedia->show();
 
         std::string id1;
         unsigned int ver1;

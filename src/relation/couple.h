@@ -10,16 +10,23 @@
 
 class Couple {
 private:
-    Note* note1;
-    Note* note2;
+    QString id1;
+    QString id2;
     QString label;
 public:
-    Couple(Note* n1, Note* n2, QString l): note1(n1), note2(n2), label(l){}
+    // -- CONSTRUCTEURS -- //
+    Couple(QString& n1, QString& n2, QString& l): id1(n1), id2(n2), label(l){}
+    Couple(QString& n1, QString& n2): id1(n1), id2(n2){
+        QString labelVide("");
+        setLabel(labelVide);
+    }
     ~Couple();
+
+    // -- SETTERS, GETTERS -- //
     QString getLabel(Couple& c){ return c.label; }
-    void setLabel(Couple& c, QString& l) { c.label = l; }
-    Note* getNote1() { return note1; }
-    Note* getNote2() { return note2; }
+    void setLabel(QString& l) { label = l; }
+    QString& getNote1() { return id1; }
+    QString& getNote2() { return id2; }
 
     // -- RECUPERATION DES DONNEES DANS LA BDD -- //
     static QSqlTableModel* getTableModel(QSqlDatabase db);

@@ -97,21 +97,12 @@ void RelationsManager::loadCouples(){
         Relation* rel = findRelation(relation);
         //std::cout<<"Couples de la relation = "<<rel->getTitre().toStdString()<<std::endl;
 
-        // -- RECUPERATION DE LA NOTE1 -- //
-        Note* n1 = nm.findNote(note1);
-        //std::cout<<"Note 1 = "<<n1->getId().toStdString()<<std::endl;
-
-
-        // -- RECUPERATION DE LA NOTE2 -- //
-        Note* n2 = nm.findNote(note2);
-        //std::cout<<"Note 2 = "<<n2->getId().toStdString()<<std::endl;
-
-        Couple* nouveauCouple = new Couple(n1, n2, label);
+        Couple* nouveauCouple = new Couple(note1, note2, label);
         rel->addCouple(nouveauCouple);
 
         // -- INSERTION DE DEUX COUPLES SI RELATION ORIENTEE -- //
         if (rel->estOriente()){
-            Couple* nouveauCouple2 = new Couple(n2, n1, label);
+            Couple* nouveauCouple2 = new Couple(note2, note1, label);
             rel->addCouple(nouveauCouple2);
         }
     }
@@ -120,10 +111,11 @@ void RelationsManager::loadCouples(){
 
 bool RelationsManager::noteImpliqueeDansRelation(Note* note){
     bool resultat = false;
-    // -- ON OBSERVE CHAQUE RELATION
+    // -- ON OBSERVE CHAQUE RELATION -- //
     for (RMIterator it = this->begin(); it != this->end(); it++){
+        // -- LA NOTE Y EST ELLE IMPLIQUEE ? -- //
         for (RelationIterator itCouple = (*it)->begin(); itCouple != (*it)->end(); itCouple++){
-            if ((*itCouple)->getNote1() == note || (*itCouple)->getNote2() == note) resultat = true;
+            if ((*itCouple)->getNote1() == note->getId() || (*itCouple)->getNote2() == note->getId()) resultat = true;
         }
     }
     return resultat;

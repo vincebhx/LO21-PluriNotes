@@ -3,6 +3,7 @@
 #include "NoteSelector.h"
 #include "../src/dbmanager.h"
 #include "../src/note/notesmanager.h"
+#include "../src/note/note.h"
 #include "dialog.h"
 #include <iostream>
 
@@ -12,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     //NoteTableModel* model = new NoteTableModel;
-    /*NotesManager& nm = NotesManager::instance();
+    NotesManager& nm = NotesManager::instance();
 
     std::vector<QTableWidgetItem*> id;
     std::vector<QTableWidgetItem*> titre;
@@ -24,11 +25,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableWidget->setRowCount(NotesManager::instance().nbNotes(ACTIVES));
     for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++){
         id.push_back(new QTableWidgetItem((*it)->currentVersion()->getId()));
+        //titre.push_back((new QTableWidgetItem((*it)->currentVersion()->getDateCreat().toString()) ));
     }
 
     for (unsigned int i=0; i < ui->tableWidget->rowCount(); i++) {
         ui->tableWidget->setItem(i, 0, id[i]);
-    }*/
+    }
 }
 
 MainWindow::~MainWindow()

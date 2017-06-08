@@ -6,7 +6,6 @@
 #include <QTableView>
 #include <QString>
 #include "../note/note.h"
-#include "relation.h"
 
 
 class Couple {

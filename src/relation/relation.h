@@ -8,7 +8,7 @@
 #include <QSqlTableModel>
 #include <vector>
 
-typedef std::vector<Relation*>::iterator RelationIterator;
+//typedef std::vector<Relation*>::iterator RelationIterator;
 
 
 class Relation {

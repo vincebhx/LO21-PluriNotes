@@ -28,6 +28,8 @@ protected:
     virtual QSqlQuery prepareQuery() = 0;
 
 public:
+    virtual QString getClassName() = 0;
+
     static const QString dateDisplayFormat;
     static const QString dateStorageFormat;
 

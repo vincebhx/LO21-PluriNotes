@@ -33,6 +33,8 @@ private slots:
 
     void onClose();
 
+    void on_tableWidget_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui; // //
 };

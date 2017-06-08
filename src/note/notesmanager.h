@@ -64,6 +64,8 @@ public:
 
     void addNote(Etat e, VersionIndex* v);
     void load();
+
+    VersionIndex* getNote(int i) { return actives[i];}
 };
 
 #endif // NOTESMANAGER_H

@@ -31,6 +31,8 @@ public:
 
     static QSqlTableModel* getTableModel(QSqlDatabase db);
     static QTableView* getTableView(QSqlTableModel* table);
+
+    QString getClassName() {return "article";}
 };
 
 #endif // ARTICLE_H

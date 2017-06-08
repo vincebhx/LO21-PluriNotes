@@ -55,6 +55,7 @@ public:
         Media(id, version, titre, dateCreat, dateModif, description, filepath) {}
 
     const QString getTypeStr() const { return TypeStr[IMAGE]; }
+    QString getClassName() {return "image";}
 };
 
 ///Décrit un fichier audio
@@ -70,6 +71,7 @@ public:
         Media(id, version, titre, dateCreat, dateModif, description, filepath) {}
 
     const QString getTypeStr() const { return TypeStr[AUDIO]; }
+    QString getClassName() {return "audio";}
 };
 
 ///Décrit un fichier vidéo
@@ -85,6 +87,7 @@ public:
         Media(id, version, titre, dateCreat, dateModif, description, filepath) {}
 
     const QString getTypeStr() const { return TypeStr[VIDEO]; }
+    QString getClassName() { return "video";}
 };
 
 #endif // MEDIA_H

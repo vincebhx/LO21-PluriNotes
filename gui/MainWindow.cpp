@@ -106,6 +106,7 @@ void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
         ui->a_modif->setText(clicked->getDateLastModif().toString());
         //ui->a_text->setText(clicked->getTexte());
 
+
     }
 }
 

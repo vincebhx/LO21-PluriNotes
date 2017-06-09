@@ -16,7 +16,6 @@ protected:
     QString titre;                  ///Titre de la note
     const QDateTime dateCreation;   ///Date de création
     QDateTime dateModification;     ///Date de dernière modification
-
     Note(const QString id,
          unsigned int version,
          QString titre,

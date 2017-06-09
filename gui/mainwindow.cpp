@@ -17,11 +17,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow), nm(NotesManager::instance())
 {
     ui->setupUi(this);
-    setCentralWidget(ui->stackedWidget);
+    //setCentralWidget(ui->stackedWidget);
     //NoteTableModel* model = new NoteTableModel;
 
     ui->tableWidget_2->setColumnCount(2);
     ui->tableWidget->setColumnCount(4);
+    ui->archive->setColumnCount(4);
+    ui->tableWidget_3->setColumnCount(4);
 
 
     ui->comboBox->addItem("En attente");
@@ -29,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBox->addItem("Terminé");
 
     loadTableWidget1();
+    loadTableTache();
+    loadTableWidget3();
 
 }
 
@@ -42,10 +46,10 @@ void MainWindow::loadTableWidget1() {
 
     ui->tableWidget->setRowCount(NotesManager::instance().nbNotes(ACTIVES));
     for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++){
-        id.push_back(new QTableWidgetItem((*it)->currentVersion()->getId()));
-        titre.push_back((new QTableWidgetItem((*it)->currentVersion()->getTitre())));
-        dateC.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateCreat().toString()));
-        dateM.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateLastModif().toString()));
+            id.push_back(new QTableWidgetItem((*it)->currentVersion()->getId()));
+            titre.push_back((new QTableWidgetItem((*it)->currentVersion()->getTitre())));
+            dateC.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateCreat().toString()));
+            dateM.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateLastModif().toString()));
     }
 
     for (unsigned int i=0; i < ui->tableWidget->rowCount(); i++) {
@@ -53,6 +57,53 @@ void MainWindow::loadTableWidget1() {
         ui->tableWidget->setItem(i, 1, titre[i]);
         ui->tableWidget->setItem(i, 2, dateC[i]);
         ui->tableWidget->setItem(i, 3, dateM[i]);
+    }
+}
+
+void MainWindow::loadTableTache() {
+    std::vector<QTableWidgetItem*> id;
+    std::vector<QTableWidgetItem*> titre;
+    std::vector<QTableWidgetItem*> dateC;
+    std::vector<QTableWidgetItem*> dateM;
+    std::vector<VersionIndex*> list = nm.getTasks();
+    ui->tableWidget_3->setRowCount(list.size());
+    for (unsigned int i = 0; i < list.size(); i++) {
+        id.push_back(new QTableWidgetItem(list[i]->currentVersion()->getId()));
+        titre.push_back((new QTableWidgetItem(list[i]->currentVersion()->getTitre())));
+        dateC.push_back(new QTableWidgetItem(list[i]->currentVersion()->getDateCreat().toString()));
+        dateM.push_back(new QTableWidgetItem(list[i]->currentVersion()->getDateLastModif().toString()));
+    }
+
+    for (unsigned int i=0; i < ui->tableWidget_3->rowCount(); i++) {
+        ui->tableWidget_3->setItem(i, 0, id[i]);
+        ui->tableWidget_3->setItem(i, 1, titre[i]);
+        ui->tableWidget_3->setItem(i, 2, dateC[i]);
+        ui->tableWidget_3->setItem(i, 3, dateM[i]);
+    }
+
+}
+
+void MainWindow::loadTableWidget3() {
+
+    std::vector<QTableWidgetItem*> id;
+    std::vector<QTableWidgetItem*> titre;
+    std::vector<QTableWidgetItem*> dateC;
+    std::vector<QTableWidgetItem*> dateM;
+
+
+    ui->archive->setRowCount(NotesManager::instance().nbNotes(ARCHIVES));
+    for(NMIterator it = nm.begin(ARCHIVES); it!= nm.end(ARCHIVES); it++){
+        id.push_back(new QTableWidgetItem((*it)->currentVersion()->getId()));
+        titre.push_back((new QTableWidgetItem((*it)->currentVersion()->getTitre())));
+        dateC.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateCreat().toString()));
+        dateM.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateLastModif().toString()));
+    }
+
+    for (unsigned int i=0; i < ui->archive->rowCount(); i++) {
+        ui->archive->setItem(i, 0, id[i]);
+        ui->archive->setItem(i, 1, titre[i]);
+        ui->archive->setItem(i, 2, dateC[i]);
+        ui->archive->setItem(i, 3, dateM[i]);
     }
 }
 

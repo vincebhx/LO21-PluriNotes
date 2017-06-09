@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>849</width>
-    <height>557</height>
+    <width>865</width>
+    <height>704</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>100</x>
       <y>20</y>
       <width>401</width>
-      <height>451</height>
+      <height>441</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -46,7 +46,7 @@
         <x>10</x>
         <y>30</y>
         <width>361</width>
-        <height>301</height>
+        <height>291</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout">
@@ -512,15 +512,74 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout"/>
    </widget>
+   <widget class="QPushButton" name="supprimer">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>470</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Supprimer</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="archiver">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>470</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Archiver</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="enregistrer">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>470</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Enregistrer</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>470</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ajouter une note</string>
+    </property>
+   </widget>
    <zorder>layoutWidget</zorder>
    <zorder>stackedWidget</zorder>
+   <zorder>supprimer</zorder>
+   <zorder>archiver</zorder>
+   <zorder>enregistrer</zorder>
+   <zorder>pushButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>849</width>
+     <width>865</width>
      <height>21</height>
     </rect>
    </property>
@@ -560,8 +619,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>301</width>
-       <height>221</height>
+       <width>201</width>
+       <height>151</height>
       </rect>
      </property>
      <property name="verticalScrollBarPolicy">
@@ -584,8 +643,8 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>241</y>
-       <width>381</width>
+       <y>170</y>
+       <width>201</width>
        <height>171</height>
       </rect>
      </property>
@@ -603,7 +662,7 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>220</y>
+       <y>150</y>
        <width>47</width>
        <height>13</height>
       </rect>
@@ -612,61 +671,35 @@
       <string>Version</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="enregistrer">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
+    <widget class="QTableWidget" name="tableWidget_3">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>440</y>
-       <width>75</width>
-       <height>23</height>
+       <x>0</x>
+       <y>361</y>
+       <width>201</width>
+       <height>121</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_34">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>340</y>
+       <width>47</width>
+       <height>13</height>
       </rect>
      </property>
      <property name="text">
-      <string>Enregistrer</string>
+      <string>Tache</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="supprimer">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>420</y>
-       <width>91</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Supprimer</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="archiver">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>420</y>
-       <width>91</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Archiver</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>440</y>
-       <width>91</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Ajouter une note</string>
-     </property>
-    </widget>
+    <zorder>tableWidget</zorder>
+    <zorder>tableWidget_2</zorder>
+    <zorder>label_31</zorder>
+    <zorder>archive</zorder>
+    <zorder>tableWidget_3</zorder>
+    <zorder>label_34</zorder>
    </widget>
   </widget>
   <widget class="QDockWidget" name="dockWidget_3">
@@ -694,6 +727,29 @@
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_2">
+   <property name="features">
+    <set>QDockWidget::NoDockWidgetFeatures</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::BottomDockWidgetArea|Qt::LeftDockWidgetArea</set>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <widget class="QTableWidget" name="archive">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>201</width>
+       <height>131</height>
+      </rect>
      </property>
     </widget>
    </widget>

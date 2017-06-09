@@ -66,6 +66,8 @@ public:
     void load();
 
     VersionIndex* getNote(int i) { return actives[i];}
+
+    std::vector<VersionIndex*> getTasks();
 };
 
 #endif // NOTESMANAGER_H

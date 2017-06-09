@@ -37,6 +37,10 @@ private slots:
 
     void loadTableWidget1();
 
+    void loadTableWidget3();
+
+    void loadTableTache();
+
     void saveNewVersionTache();
 
     void saveNewVersionImage();

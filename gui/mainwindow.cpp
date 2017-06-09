@@ -40,6 +40,10 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->tableWidget->setItem(i, 2, dateC[i]);
         ui->tableWidget->setItem(i, 3, dateM[i]);
     }
+
+    ui->comboBox->addItem("En attente");
+    ui->comboBox->addItem("En cours");
+    ui->comboBox->addItem("Terminé");
 }
 
 MainWindow::~MainWindow()
@@ -53,29 +57,6 @@ void MainWindow::on_pushButton_clicked()
     createnote->show();
 }
 
-void MainWindow::on_pushButton_5_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
-void MainWindow::on_pushButton_6_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
-}
-
-void MainWindow::on_pushButton_7_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(3);
-}
-
-void MainWindow::on_pushButton_8_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(4);
-}
-void MainWindow::on_pushButton_9_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
 
 void MainWindow::onClose()
 {
@@ -132,6 +113,33 @@ void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
         ui->t_modif->setText(clicked->getDateLastModif().toString());
         ui->dateTimeEdit->setDateTime(tache->getDateCreat());
         ui->dateTimeEdit_2->setDateTime(tache->getDateEcheance());
+        ui->comboBox->setCurrentIndex(tache->getStatut());
+        break;
+
+    case 2:
+        ui->i_titre->setText(clicked->getTitre());
+        ui->i_creation->setText(clicked->getDateCreat().toString());
+        ui->i_modif->setText(clicked->getDateLastModif().toString());
+        ui->i_desc->setText(image->getDescription());
+        ui->i_path->setText(image->getFilePath());
+        break;
+
+    case 3:
+        ui->au_titre->setText(clicked->getTitre());
+        ui->au_creat->setText(clicked->getDateCreat().toString());
+        ui->au_modif->setText(clicked->getDateLastModif().toString());
+        ui->au_desc->setText(audio->getDescription());
+        ui->au_path->setText(audio->getFilePath());
+        break;
+    case 4:
+        ui->v_titre->setText(clicked->getTitre());
+        ui->v_creation->setText(clicked->getDateCreat().toString());
+        ui->v_modif->setText(clicked->getDateLastModif().toString());
+        ui->v_desc->setText(video->getDescription());
+        ui->v_path->setText(video->getFilePath());
+        break;
+
+    default :
         break;
     }
 }

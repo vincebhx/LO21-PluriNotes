@@ -33,11 +33,11 @@
       <x>100</x>
       <y>20</y>
       <width>381</width>
-      <height>331</height>
+      <height>381</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label_25">
@@ -221,30 +221,10 @@
        <item row="16" column="1">
         <widget class="QComboBox" name="comboBox"/>
        </item>
-       <item row="17" column="1">
-        <widget class="QPushButton" name="pushButton_6">
-         <property name="text">
-          <string>Test Stacked Widget</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="page_3">
-     <widget class="QPushButton" name="pushButton_7">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>310</y>
-        <width>212</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Test Stacked Widget</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_27">
       <property name="geometry">
        <rect>
@@ -264,7 +244,7 @@
         <x>30</x>
         <y>30</y>
         <width>281</width>
-        <height>264</height>
+        <height>331</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_3">
@@ -276,7 +256,7 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_8"/>
+        <widget class="QLineEdit" name="i_titre"/>
        </item>
        <item row="3" column="0" colspan="2">
         <widget class="QLabel" name="label_12">
@@ -286,7 +266,7 @@
         </widget>
        </item>
        <item row="5" column="1">
-        <widget class="QLineEdit" name="lineEdit_9">
+        <widget class="QLineEdit" name="i_creation">
          <property name="readOnly">
           <bool>true</bool>
          </property>
@@ -300,28 +280,38 @@
         </widget>
        </item>
        <item row="9" column="1">
-        <widget class="QLineEdit" name="lineEdit_7">
+        <widget class="QLineEdit" name="i_modif">
          <property name="readOnly">
           <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="11" column="0" colspan="2">
+       <item row="13" column="0" colspan="2">
         <widget class="QLabel" name="label_14">
          <property name="text">
           <string>Fichier</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
-        <widget class="QLineEdit" name="lineEdit_10"/>
+       <item row="14" column="1">
+        <widget class="QLineEdit" name="i_path"/>
        </item>
-       <item row="13" column="1">
+       <item row="15" column="1">
         <widget class="QPushButton" name="pushButton_2">
          <property name="text">
           <string>Parcourir</string>
          </property>
         </widget>
+       </item>
+       <item row="12" column="0">
+        <widget class="QLabel" name="label_30">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="1">
+        <widget class="QTextEdit" name="i_desc"/>
        </item>
       </layout>
      </widget>
@@ -331,9 +321,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>30</y>
+        <y>21</y>
         <width>351</width>
-        <height>264</height>
+        <height>341</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_4">
@@ -344,68 +334,65 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_11"/>
-       </item>
-       <item row="3" column="0" colspan="2">
+       <item row="4" column="0" colspan="2">
         <widget class="QLabel" name="label_16">
          <property name="text">
           <string>Date de création</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
-        <widget class="QLineEdit" name="lineEdit_12">
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="au_creat">
          <property name="readOnly">
           <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="7" column="0" colspan="2">
+       <item row="8" column="0" colspan="2">
         <widget class="QLabel" name="label_17">
          <property name="text">
           <string>Date de dernière modification</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
-        <widget class="QLineEdit" name="lineEdit_13">
+       <item row="10" column="1">
+        <widget class="QLineEdit" name="au_modif">
          <property name="readOnly">
           <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="11" column="0" colspan="2">
+       <item row="12" column="0" colspan="2">
         <widget class="QLabel" name="label_18">
          <property name="text">
           <string>Fichier</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
-        <widget class="QLineEdit" name="lineEdit_14"/>
-       </item>
        <item row="13" column="1">
+        <widget class="QLineEdit" name="au_path"/>
+       </item>
+       <item row="14" column="1">
         <widget class="QPushButton" name="pushButton_3">
          <property name="text">
           <string>Parcourir</string>
          </property>
         </widget>
        </item>
+       <item row="11" column="0">
+        <widget class="QLabel" name="label_23">
+         <property name="text">
+          <string>Description</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="1">
+        <widget class="QTextEdit" name="au_desc"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="au_titre"/>
+       </item>
       </layout>
-     </widget>
-     <widget class="QPushButton" name="pushButton_8">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>300</y>
-        <width>212</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Test Stacked Widget</string>
-      </property>
      </widget>
      <widget class="QLabel" name="label_28">
       <property name="geometry">
@@ -428,7 +415,7 @@
         <x>20</x>
         <y>30</y>
         <width>311</width>
-        <height>235</height>
+        <height>347</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_5">
@@ -449,6 +436,13 @@
          </property>
         </widget>
        </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="v_creation">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
        <item row="7" column="0" colspan="2">
         <widget class="QLabel" name="label_21">
          <property name="text">
@@ -463,44 +457,34 @@
          </property>
         </widget>
        </item>
-       <item row="11" column="0" colspan="2">
+       <item row="12" column="0">
+        <widget class="QLabel" name="label_24">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="1">
+        <widget class="QTextEdit" name="v_desc"/>
+       </item>
+       <item row="13" column="0" colspan="2">
         <widget class="QLabel" name="label_22">
          <property name="text">
           <string>Fichier</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
-        <widget class="QLineEdit" name="v_fichier"/>
+       <item row="14" column="1">
+        <widget class="QLineEdit" name="v_path"/>
        </item>
-       <item row="13" column="1">
+       <item row="15" column="1">
         <widget class="QPushButton" name="pushButton_4">
          <property name="text">
           <string>Parcourir</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
-        <widget class="QLineEdit" name="v_creation">
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
       </layout>
-     </widget>
-     <widget class="QPushButton" name="pushButton_9">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>320</y>
-        <width>212</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Test Stacked Widget</string>
-      </property>
      </widget>
      <widget class="QLabel" name="label_29">
       <property name="geometry">
@@ -517,7 +501,7 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>

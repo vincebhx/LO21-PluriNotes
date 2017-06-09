@@ -186,41 +186,29 @@ void NotesManager::load() {
     std::cout<<"Chargement effectué."<<std::endl;
 }
 
-Note* NotesManager::findNote(QString id){
+Note* NotesManager::findNote(QString id) {
     NotesManager& nm = NotesManager::instance();
-    Note* resultat = nullptr;
-    int trouve = 0;
+    Note* n;
 
-    // -- RECHERCHE DE LA NOTE DANS LES ACTIVES -- //
+    /* Recherche dans les notes actives */
     for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++){
-        Note* n = (*it)->currentVersion();
-        if (n->getId() == id){
-            trouve = 1;
-            resultat = n;
-        }
+        n = (*it)->currentVersion();
+        if (n->getId() == id) return n;
     }
 
-    // -- NOTE PAS DANS LES ACTIVES -> RECHERCHE DANS LES ARCHIVES -- //
-    if (trouve == 0){
-        for(NMIterator it = nm.begin(ARCHIVES); it!= nm.end(ARCHIVES); it++){
-            Note* n = (*it)->currentVersion();
-            if (n->getId() == id){
-                trouve = 1;
-                resultat = n;
-            }
-        }
-    };
-
-    // -- NOTE PAS DANS LES ARCHIVES -> RECHERCHE DANS LA CORBEILLE -- //
-    if (trouve == 0){
-        for(NMIterator it = nm.begin(CORBEILLE); it!= nm.end(CORBEILLE); it++){
-            Note* n = (*it)->currentVersion();
-            if (n->getId() == id){
-                trouve = 1;
-                resultat = n;
-            }
-        }
+    /* Note non active : Recherche dans les archives */
+    for(NMIterator it = nm.begin(ARCHIVES); it!= nm.end(ARCHIVES); it++){
+        n = (*it)->currentVersion();
+        if (n->getId() == id) return n;
     }
-    return resultat;
+
+    /* Note ni active ni archivée : Recherche dans la corbeille */
+    for(NMIterator it = nm.begin(CORBEILLE); it!= nm.end(CORBEILLE); it++){
+        n = (*it)->currentVersion();
+        if (n->getId() == id) return n;
+    }
+
+    /* Si on n'a pas trouvé la note : on renvoie un pointeur nul */
+    return nullptr;
 }
 

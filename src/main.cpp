@@ -15,6 +15,7 @@
 #include <QSqlTableModel>
 #include <QTableView>
 #include <iostream>
+#include <QDebug>
 #include <QString>
 #include <QModelIndex>
 #include <QDataStream>
@@ -69,7 +70,8 @@ int main(int argc, char *argv[])
             std::cout<<id1<<" v"<<ver1<<std::endl;
         }
 
-
+        Note* n = nm.findNote("article1");
+        qDebug()<<n->getId()<<" v"<<n->getVersion()<<" - "<<n->getTitre();
 
     }
     catch(Exception e) { std::cout<<"Erreur standard: "<<e.getInfo().toStdString()<<std::endl; }

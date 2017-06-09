@@ -36,8 +36,6 @@ public:
     void setVersion(unsigned int i) { version = i; }
     void setTitre(QString t) { titre = t; }
 
-    Note* findNote(QString id);
-
     const QString& getId() const { return id; }
     unsigned int getVersion() const { return version; }
     QString getTitre() const { return titre; }

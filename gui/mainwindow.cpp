@@ -143,17 +143,19 @@ void MainWindow::loadClicked(Note* clicked, QString type) {
 }
 
 void MainWindow::loadVersion(VersionIndex* vClicked) {
-
+    ui->tableWidget_2->clear();
     ui->tableWidget_2->setRowCount(vClicked->nbOfVersions());
-    for (unsigned int i=0; i < vClicked->nbOfVersions(); i++) {
-        ui->tableWidget_2->setItem(i, 0, new QTableWidgetItem(vClicked->at(i)->getDateCreat().toString()));
-        ui->tableWidget_2->setItem(i, 1, new QTableWidgetItem(vClicked->at(i)->getDateLastModif().toString()));
+    int j =0;
+    for (int i= vClicked->nbOfVersions()-1; i > -1 ; i--) {
+        ui->tableWidget_2->setItem(vClicked->nbOfVersions()-1-i, 0, new QTableWidgetItem(vClicked->at(i)->getDateCreat().toString()));
+        ui->tableWidget_2->setItem(vClicked->nbOfVersions()-1-i, 1, new QTableWidgetItem(vClicked->at(i)->getDateLastModif().toString()));
+        j++;
     }
 }
 
 void MainWindow::on_tableWidget_2_doubleClicked(const QModelIndex &index)
 {
-    int indice = index.row();
+    int indice = ui->tableWidget_2->rowCount() - 1 - index.row();
     int indiceN = ui->tableWidget->currentRow();
     Note* clicked = nm.getNote(indiceN)->at(indice);
     QString type = clicked->getClassName();
@@ -181,8 +183,6 @@ void MainWindow::saveNewVersionTache() {
     QString id = clicked->getId();
     int version = ui->tableWidget_2->rowCount() + 1;
     QString titre = ui->t_titre->text();
-    //QDateTime creation = ui->t_creation->text();
-    //QDateTime modif = QDateTime::currentDateTime();
     QDateTime echeance = ui->dateTimeEdit_2->dateTime();
     QString action = ui->t_action->text();
     int priorite = ui->spinBox->value();
@@ -194,11 +194,65 @@ void MainWindow::saveNewVersionTache() {
 
 }
 
+void MainWindow::saveNewVersionImage() {
+    Note* clicked = nm.getNote(ui->tableWidget->currentRow())->firstVersion();
+    QString id = clicked->getId();
+    int version = ui->tableWidget_2->rowCount() + 1;
+    QString titre = ui->i_titre->text();
+    QString desc = ui->i_desc->toPlainText();
+    QString path = ui->i_path->text();
+
+    Note* newV = new Image(id, version, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
+    nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    loadVersion(nm.getNote(ui->tableWidget->currentRow()));
+}
+
+void MainWindow::saveNewVersionVideo(){
+    Note* clicked = nm.getNote(ui->tableWidget->currentRow())->firstVersion();
+    QString id = clicked->getId();
+    int version = ui->tableWidget_2->rowCount() + 1;
+    QString titre = ui->v_titre->text();
+    QString desc = ui->v_desc->toPlainText();
+    QString path = ui->v_path->text();
+
+    Note* newV = new Video(id, version, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
+    nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    loadVersion(nm.getNote(ui->tableWidget->currentRow()));
+}
+
+void MainWindow::saveNewVersionAudio() {
+    Note* clicked = nm.getNote(ui->tableWidget->currentRow())->firstVersion();
+    QString id = clicked->getId();
+    int version = ui->tableWidget_2->rowCount() + 1;
+    QString titre = ui->au_titre->text();
+    QString desc = ui->au_desc->toPlainText();
+    QString path = ui->au_path->text();
+
+    Note* newV = new Audio(id, version, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
+    nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    loadVersion(nm.getNote(ui->tableWidget->currentRow()));
+}
+
 void MainWindow::on_enregistrer_clicked()
 {
     int index = ui->stackedWidget->currentIndex();
-    //saveNewVersionArticle();
-    saveNewVersionTache();
+    switch (index) {
+    case 0:
+        saveNewVersionArticle();
+        break;
+    case 1:
+        saveNewVersionTache();
+        break;
+    case 2:
+        saveNewVersionImage();
+        break;
+    case 3:
+        saveNewVersionAudio();
+        break;
+    case 4:
+        saveNewVersionVideo();
+        break;
+    }
 }
 
 

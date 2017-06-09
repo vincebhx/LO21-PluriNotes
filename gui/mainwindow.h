@@ -39,6 +39,12 @@ private slots:
 
     void saveNewVersionTache();
 
+    void saveNewVersionImage();
+
+    void saveNewVersionVideo();
+
+    void saveNewVersionAudio();
+
 private:
     Ui::MainWindow *ui; // //
     NotesManager& nm;

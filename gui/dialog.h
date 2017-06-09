@@ -13,7 +13,12 @@ class Dialog : public QDialog
 
 public:
     explicit Dialog(QWidget *parent = 0);
+    void validForm();
     ~Dialog();
+
+private slots:
+
+    void on_buttonBox_accepted();
 
 private:
     Ui::Dialog *ui;

@@ -12,6 +12,7 @@ private:
 
 public:
     VersionIndex() {}
+    VersionIndex(Note* n);
 
     Note* firstVersion() { return versions.front(); }
     Note* currentVersion() { return versions.back(); }

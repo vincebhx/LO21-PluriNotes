@@ -70,8 +70,9 @@ int main(int argc, char *argv[])
             std::cout<<id1<<" v"<<ver1<<std::endl;
         }
 
-        Note* n = nm.findNote("article1");
-        qDebug()<<n->getId()<<" v"<<n->getVersion()<<" - "<<n->getTitre();
+        Article* n = dynamic_cast<Article*>(nm.findNote("article1"));
+        if (n == nullptr) qDebug()<<"Note non trouvée :(";
+        else qDebug()<<n->getId()<<" v"<<n->getVersion()<<" - "<<n->getTitre();
 
     }
     catch(Exception e) { std::cout<<"Erreur standard: "<<e.getInfo().toStdString()<<std::endl; }
@@ -79,9 +80,6 @@ int main(int argc, char *argv[])
     catch (...) { std::cout<<"ERREUR"<<std::endl; }
     MainWindow window;
     window.show();
-
-
-
 
     QObject::connect(&app, SIGNAL(aboutToQuit()), &window, SLOT(onClose()));
 

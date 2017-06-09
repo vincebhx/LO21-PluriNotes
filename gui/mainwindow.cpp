@@ -8,6 +8,7 @@
 #include "../src/note/tache.h"
 #include "../src/note/media.h"
 #include "dialog.h"
+#include "../src/note/versionindex.h"
 #include <iostream>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -69,79 +70,83 @@ void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
 {
     NotesManager& nm = NotesManager::instance();
     int indice = index.row();
+    VersionIndex* vClicked = nm.getNote(indice);
     Note* clicked = nm.getNote(indice)->currentVersion();
     QString type = clicked->getClassName();
-    int id_type; // 0: article; 1: tache; 2: image; 3: audio; 4:video
+    loadClicked(clicked, type);
+    loadVersion(vClicked);
+
+}
+
+void MainWindow::loadClicked(Note* clicked, QString type) {
     Article* article;
     Tache* tache;
     Image* image;
     Video* video;
     Audio* audio;
-
     if (type == "article") {
-        id_type = 0;
         article = dynamic_cast<Article*>(clicked);
-    }
-    else if(type == "tache"){
-        id_type = 1;
-        tache = dynamic_cast<Tache*>(clicked);
-    }
-    else if (type == "image") {
-        id_type =2;
-        image = dynamic_cast<Image*>(clicked);
-    }
-    else if (type == "audio"){
-        id_type = 3;
-        audio = dynamic_cast<Audio*>(clicked);
-    }
-    else if (type == "video"){
-        id_type = 4;
-        video = dynamic_cast<Video*>(clicked);
-    }
-
-    ui->stackedWidget->setCurrentIndex(id_type);
-    switch (id_type) {
-    case 0:
         ui->a_titre->setText(clicked->getTitre());
         ui->a_creation->setText(clicked->getDateCreat().toString());
         ui->a_modif->setText(clicked->getDateLastModif().toString());
         ui->a_text->setText(article->getTexte());
-        break;
-    case 1 :
+        ui->stackedWidget->setCurrentIndex(0);
+    }
+    else if(type == "tache"){
+        tache = dynamic_cast<Tache*>(clicked);
         ui->t_titre->setText(clicked->getTitre());
         ui->t_creation->setText(clicked->getDateCreat().toString());
         ui->t_modif->setText(clicked->getDateLastModif().toString());
         ui->dateTimeEdit->setDateTime(tache->getDateCreat());
         ui->dateTimeEdit_2->setDateTime(tache->getDateEcheance());
         ui->comboBox->setCurrentIndex(tache->getStatut());
-        break;
-
-    case 2:
+        ui->stackedWidget->setCurrentIndex(1);
+    }
+    else if (type == "image") {
+        image = dynamic_cast<Image*>(clicked);
         ui->i_titre->setText(clicked->getTitre());
         ui->i_creation->setText(clicked->getDateCreat().toString());
         ui->i_modif->setText(clicked->getDateLastModif().toString());
         ui->i_desc->setText(image->getDescription());
         ui->i_path->setText(image->getFilePath());
-        break;
-
-    case 3:
+        ui->stackedWidget->setCurrentIndex(2);
+    }
+    else if (type == "audio"){
+        audio = dynamic_cast<Audio*>(clicked);
         ui->au_titre->setText(clicked->getTitre());
         ui->au_creat->setText(clicked->getDateCreat().toString());
         ui->au_modif->setText(clicked->getDateLastModif().toString());
         ui->au_desc->setText(audio->getDescription());
         ui->au_path->setText(audio->getFilePath());
-        break;
-    case 4:
+        ui->stackedWidget->setCurrentIndex(3);
+    }
+    else if (type == "video"){
+        video = dynamic_cast<Video*>(clicked);
         ui->v_titre->setText(clicked->getTitre());
         ui->v_creation->setText(clicked->getDateCreat().toString());
         ui->v_modif->setText(clicked->getDateLastModif().toString());
         ui->v_desc->setText(video->getDescription());
         ui->v_path->setText(video->getFilePath());
-        break;
+        ui->stackedWidget->setCurrentIndex(4);
+    }
 
-    default :
-        break;
+}
+
+void MainWindow::loadVersion(VersionIndex* vClicked) {
+    ui->tableWidget_2->setColumnCount(2);
+    ui->tableWidget_2->setRowCount(vClicked->nbOfVersions());
+    for (unsigned int i=0; i < vClicked->nbOfVersions(); i++) {
+        ui->tableWidget_2->setItem(i, 0, new QTableWidgetItem(vClicked->at(i)->getDateCreat().toString()));
+        ui->tableWidget_2->setItem(i, 1, new QTableWidgetItem(vClicked->at(i)->getDateLastModif().toString()));
     }
 }
 
-
+void MainWindow::on_tableWidget_2_doubleClicked(const QModelIndex &index)
+{
+    NotesManager& nm = NotesManager::instance();
+    int indice = index.row();
+    int indiceN = ui->tableWidget->currentRow();
+    Note* clicked = nm.getNote(indiceN)->at(indice);
+    QString type = clicked->getClassName();
+    loadClicked(clicked, type);
+    }

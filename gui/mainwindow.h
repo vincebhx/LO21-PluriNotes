@@ -25,6 +25,12 @@ private slots:
 
     void on_tableWidget_doubleClicked(const QModelIndex &index);
 
+    void loadClicked(Note* clicked, QString type);
+
+    void loadVersion(VersionIndex *vClicked);
+
+    void on_tableWidget_2_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui; // //
 };

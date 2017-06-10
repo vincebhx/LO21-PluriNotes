@@ -69,14 +69,34 @@ void Dialog::createTache() {
     nm.addNote((Etat)0, v);
 }
 void Dialog::createImage() {
-
+    Note* newN;
+    QString titre = ui->i_titre->text();
+    QString desc = ui->i_desc->toPlainText();
+    QString path = ui->i_path->text();
+    newN = new Image(0, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
+    VersionIndex* v = new VersionIndex(newN);
+    nm.addNote((Etat)0, v);
 }
 
 void Dialog::createAudio() {
+    Note* newN;
+    QString titre = ui->au_titre->text();
+    QString desc = ui->au_desc->toPlainText();
+    QString path = ui->au_path->text();
+    newN = new Audio(0, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
+    VersionIndex* v = new VersionIndex(newN);
+    nm.addNote((Etat)0, v);
 
 }
 
 void Dialog::createVideo(){
+    Note* newN;
+    QString titre = ui->v_titre->text();
+    QString desc = ui->v_desc->toPlainText();
+    QString path = ui->v_path->text();
+    newN = new Video(0, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
+    VersionIndex* v = new VersionIndex(newN);
+    nm.addNote((Etat)0, v);
 }
 
 

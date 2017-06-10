@@ -49,6 +49,8 @@ private slots:
 
     void saveNewVersionAudio();
 
+    void on_pushButton_5_clicked();
+
 private:
     Ui::MainWindow *ui; // //
     NotesManager& nm;

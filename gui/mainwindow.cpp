@@ -307,3 +307,8 @@ void MainWindow::on_enregistrer_clicked()
 }
 
 
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    loadTableWidget1();
+}

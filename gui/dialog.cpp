@@ -1,9 +1,17 @@
 #include "dialog.h"
 #include "ui_dialog.h"
+#include "../src/note/note.h"
+#include "../src/note/versionindex.h"
+#include "../src/dbmanager.h"
+#include "../src/note/notesmanager.h"
+#include "../src/note/note.h"
+#include "../src/note/article.h"
+#include "../src/note/tache.h"
+#include "../src/note/media.h"
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::Dialog)
+    ui(new Ui::Dialog), nm(NotesManager::instance())
 {
     ui->setupUi(this);
 
@@ -39,8 +47,60 @@ Dialog::~Dialog()
     delete ui;
 }
 
+void Dialog::createArticle() {
+    Note* newN;
+    QString titre = ui->a_titre->text();
+    QString text = ui->a_text->toPlainText();
+    newN = new Article(0, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), text);
+    VersionIndex* v = new VersionIndex(newN);
+    nm.addNote((Etat)0, v);
 
-void Dialog::on_buttonBox_accepted()
-{
-    //
 }
+
+void Dialog::createTache() {
+    Note* newN;
+    QString titre = ui->t_titre->text();
+    QString action = ui->t_action->text();
+    int priorite = ui->spinBox->value();
+    QDateTime echeance = ui->t_echance->dateTime();
+    Statut statut = Statut(ui->comboBox->currentIndex());
+    newN = new Tache(0, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), action, priorite, echeance, statut);
+    VersionIndex* v = new VersionIndex(newN);
+    nm.addNote((Etat)0, v);
+}
+void Dialog::createImage() {
+
+}
+
+void Dialog::createAudio() {
+
+}
+
+void Dialog::createVideo(){
+}
+
+
+void Dialog::on_buttonBox_clicked(QAbstractButton *button)
+{
+    int index = ui->tabWidget->currentIndex();
+    switch (index) {
+    case 0:
+        createArticle();
+        break;
+    case 1:
+        createTache();
+        break;
+    case 2:
+        createImage();
+        break;
+    case 3 :
+        createAudio();
+        break;
+    case 4:
+        createVideo();
+        break;
+    default :
+        break;
+    }
+
+    }

@@ -12,7 +12,7 @@
 #include "../src/note/versionindex.h"
 #include <iostream>
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent) : Widget(),
     QMainWindow(parent),
     ui(new Ui::MainWindow), nm(NotesManager::instance())
 {
@@ -30,13 +30,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBox->addItem("En cours");
     ui->comboBox->addItem("Terminé");
 
-    loadTableWidget1();
+    loadTableWidgetActives();
     loadTableTache();
-    loadTableWidget3();
+    loadTableWidgetArchive();
 
 }
 
-void MainWindow::loadTableWidget1() {
+void MainWindow::loadTableWidgetActives() {
 
     std::vector<QTableWidgetItem*> id;
     std::vector<QTableWidgetItem*> titre;
@@ -83,7 +83,7 @@ void MainWindow::loadTableTache() {
 
 }
 
-void MainWindow::loadTableWidget3() {
+void MainWindow::loadTableWidgetArchive() {
 
     std::vector<QTableWidgetItem*> id;
     std::vector<QTableWidgetItem*> titre;
@@ -114,8 +114,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    Dialog* createnote = new Dialog;
-    createnote->show();
+    //Dialog* createnote = new Dialog;
+    //createnote->show();
+    sendMessage();
 }
 
 
@@ -138,24 +139,29 @@ void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
 }
 
 void MainWindow::loadClicked(Note* clicked, QString type) {
+   loadNote(clicked, type);
+
+}
+
+void MainWindow::loadNote(Note* note, QString type) {
     Article* article;
     Tache* tache;
     Image* image;
     Video* video;
     Audio* audio;
     if (type == "article") {
-        article = dynamic_cast<Article*>(clicked);
-        ui->a_titre->setText(clicked->getTitre());
-        ui->a_creation->setText(clicked->getDateCreat().toString());
-        ui->a_modif->setText(clicked->getDateLastModif().toString());
+        article = dynamic_cast<Article*>(note);
+        ui->a_titre->setText(note->getTitre());
+        ui->a_creation->setText(note->getDateCreat().toString());
+        ui->a_modif->setText(note->getDateLastModif().toString());
         ui->a_text->setText(article->getTexte());
         ui->stackedWidget->setCurrentIndex(0);
     }
     else if(type == "tache"){
-        tache = dynamic_cast<Tache*>(clicked);
-        ui->t_titre->setText(clicked->getTitre());
-        ui->t_creation->setText(clicked->getDateCreat().toString());
-        ui->t_modif->setText(clicked->getDateLastModif().toString());
+        tache = dynamic_cast<Tache*>(note);
+        ui->t_titre->setText(note->getTitre());
+        ui->t_creation->setText(note->getDateCreat().toString());
+        ui->t_modif->setText(note->getDateLastModif().toString());
         ui->t_action->setText(tache->getAction());
         ui->dateTimeEdit->setDateTime(tache->getDateCreat());
         ui->dateTimeEdit_2->setDateTime(tache->getDateEcheance());
@@ -164,33 +170,32 @@ void MainWindow::loadClicked(Note* clicked, QString type) {
         ui->stackedWidget->setCurrentIndex(1);
     }
     else if (type == "image") {
-        image = dynamic_cast<Image*>(clicked);
-        ui->i_titre->setText(clicked->getTitre());
-        ui->i_creation->setText(clicked->getDateCreat().toString());
-        ui->i_modif->setText(clicked->getDateLastModif().toString());
+        image = dynamic_cast<Image*>(note);
+        ui->i_titre->setText(note->getTitre());
+        ui->i_creation->setText(note->getDateCreat().toString());
+        ui->i_modif->setText(note->getDateLastModif().toString());
         ui->i_desc->setText(image->getDescription());
         ui->i_path->setText(image->getFilePath());
         ui->stackedWidget->setCurrentIndex(2);
     }
     else if (type == "audio"){
-        audio = dynamic_cast<Audio*>(clicked);
-        ui->au_titre->setText(clicked->getTitre());
-        ui->au_creat->setText(clicked->getDateCreat().toString());
-        ui->au_modif->setText(clicked->getDateLastModif().toString());
+        audio = dynamic_cast<Audio*>(note);
+        ui->au_titre->setText(note->getTitre());
+        ui->au_creat->setText(note->getDateCreat().toString());
+        ui->au_modif->setText(note->getDateLastModif().toString());
         ui->au_desc->setText(audio->getDescription());
         ui->au_path->setText(audio->getFilePath());
         ui->stackedWidget->setCurrentIndex(3);
     }
     else if (type == "video"){
-        video = dynamic_cast<Video*>(clicked);
-        ui->v_titre->setText(clicked->getTitre());
-        ui->v_creation->setText(clicked->getDateCreat().toString());
-        ui->v_modif->setText(clicked->getDateLastModif().toString());
+        video = dynamic_cast<Video*>(note);
+        ui->v_titre->setText(note->getTitre());
+        ui->v_creation->setText(note->getDateCreat().toString());
+        ui->v_modif->setText(note->getDateLastModif().toString());
         ui->v_desc->setText(video->getDescription());
         ui->v_path->setText(video->getFilePath());
         ui->stackedWidget->setCurrentIndex(4);
     }
-
 }
 
 void MainWindow::loadVersion(VersionIndex* vClicked) {
@@ -310,5 +315,17 @@ void MainWindow::on_enregistrer_clicked()
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    loadTableWidget1();
+    loadTableWidgetActives();
+}
+
+void MainWindow::receiveMessage() {
+    std::cout << "msg recu par mainwindow \n";
+    loadTableWidgetActives();
+    loadTableTache();
+    Note* note= nm.getNote(nm.nbNotes((Etat)0) -1)->currentVersion();
+    QString type = note->getClassName();
+    loadNote(note, type);
+    loadVersion(nm.getNote(nm.nbNotes((Etat)0) -1));
+    ui->tableWidget->setCurrentCell(nm.nbNotes((Etat)0) -1, 0);
+
 }

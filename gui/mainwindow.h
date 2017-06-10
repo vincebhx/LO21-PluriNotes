@@ -3,22 +3,26 @@
 
 #include <QMainWindow>
 #include <QAbstractTableModel>
+#include "mediator.h"
 #include "src/note/notesmanager.h"
+#include <iostream>
 
 namespace Ui {
 class MainWindow;
-//class NoteTableModel;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public Widget
 {
     Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void receiveMessage();
+    QString getCode() {return "mainwindow";}
 
 private slots:
+
     void on_pushButton_clicked();
 
     void onClose();
@@ -35,9 +39,9 @@ private slots:
 
     void saveNewVersionArticle();
 
-    void loadTableWidget1();
+    void loadTableWidgetActives();
 
-    void loadTableWidget3();
+    void loadTableWidgetArchive();
 
     void loadTableTache();
 
@@ -51,26 +55,13 @@ private slots:
 
     void on_pushButton_5_clicked();
 
+    void loadNote(Note* note, QString type);
+
 private:
     Ui::MainWindow *ui; // //
     NotesManager& nm;
 };
 
-/*class NoteTableModel : public QAbstractTableModel {
-    Q_OBJECT
 
-public:
-    NoteTableModel(QObject *parent) {
-
-    };
-    int rowCount(const QModelIndex &parent = QModelIndex()) const override {
-        return NotesManager::instance().nbNotes(ACTIVES);
-    }
-    int columnCount(const QModelIndex &parent = QModelIndex()) const override {
-        return 5;
-    }
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-
-};*/
 
 #endif // MAINWINDOW_H

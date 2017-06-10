@@ -9,7 +9,7 @@
 #include "../src/note/tache.h"
 #include "../src/note/media.h"
 
-Dialog::Dialog(QWidget *parent) :
+Dialog::Dialog(QWidget *parent) : Widget(),
     QDialog(parent),
     ui(new Ui::Dialog), nm(NotesManager::instance())
 {
@@ -122,5 +122,7 @@ void Dialog::on_buttonBox_clicked(QAbstractButton *button)
     default :
         break;
     }
+
+    sendMessage();
 
     }

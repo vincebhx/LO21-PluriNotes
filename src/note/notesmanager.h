@@ -22,6 +22,7 @@ private:
 public:
     static NotesManager& instance();
     void free();
+    Note* findNote(QString id);
 
     Note* currentVersion(Etat e) {
         switch(e) {
@@ -62,10 +63,11 @@ public:
     }
 
     void addNote(Etat e, VersionIndex* v);
-    Note* findNote(QString id);
     void load();
 
     VersionIndex* getNote(int i) { return actives[i];}
+
+    std::vector<VersionIndex*> getTasks();
 };
 
 #endif // NOTESMANAGER_H

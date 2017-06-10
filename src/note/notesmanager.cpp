@@ -212,3 +212,16 @@ Note* NotesManager::findNote(QString id) {
     return nullptr;
 }
 
+std::vector<VersionIndex*> NotesManager::getTasks() {
+    std::vector<VersionIndex*> listTask;
+
+    for(NMIterator it = this->begin(ACTIVES); it!= this->end(ACTIVES); it++){
+        if((*it)->currentVersion()->getClassName() == "tache") {
+            listTask.push_back(*it);
+            std::cout << (*it)->currentVersion()->getId().toStdString();
+        }
+    }
+
+    return listTask;
+}
+

@@ -6,38 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>781</width>
-    <height>470</height>
+    <width>865</width>
+    <height>704</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>380</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add Note</string>
-    </property>
-   </widget>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
       <x>100</x>
       <y>20</y>
-      <width>381</width>
-      <height>381</height>
+      <width>401</width>
+      <height>441</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label_25">
@@ -59,7 +46,7 @@
         <x>10</x>
         <y>30</y>
         <width>361</width>
-        <height>301</height>
+        <height>291</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout">
@@ -111,13 +98,6 @@
        <item row="3" column="1">
         <widget class="QTextEdit" name="a_text"/>
        </item>
-       <item row="4" column="1">
-        <widget class="QPushButton" name="pushButton_5">
-         <property name="text">
-          <string>Test Stacked Widget</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
     </widget>
@@ -141,7 +121,7 @@
         <x>20</x>
         <y>30</y>
         <width>311</width>
-        <height>413</height>
+        <height>421</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_2">
@@ -169,57 +149,77 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0" colspan="2">
-        <widget class="QLabel" name="label_5">
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_33">
          <property name="text">
-          <string>Date de dernière modification</string>
+          <string>Action</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="9" column="1">
         <widget class="QLineEdit" name="t_modif">
          <property name="readOnly">
           <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="2">
+       <item row="10" column="0" colspan="2">
         <widget class="QLabel" name="label_9">
          <property name="text">
           <string>Date début</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
+       <item row="12" column="1">
         <widget class="QDateTimeEdit" name="dateTimeEdit">
          <property name="calendarPopup">
           <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="10" column="0" colspan="2">
+       <item row="14" column="0" colspan="2">
         <widget class="QLabel" name="label_10">
          <property name="text">
           <string>Date échéance</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
+       <item row="16" column="1">
         <widget class="QDateTimeEdit" name="dateTimeEdit_2">
          <property name="calendarPopup">
           <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="14" column="0" colspan="2">
+       <item row="18" column="0" colspan="2">
         <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Statut</string>
+         </property>
+        </widget>
+       </item>
+       <item row="20" column="1">
+        <widget class="QComboBox" name="comboBox"/>
+       </item>
+       <item row="8" column="0" colspan="2">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Date de dernière modification</string>
+         </property>
+        </widget>
+       </item>
+       <item row="21" column="0">
+        <widget class="QLabel" name="label_32">
          <property name="text">
           <string>Priorité</string>
          </property>
         </widget>
        </item>
-       <item row="16" column="1">
-        <widget class="QComboBox" name="comboBox"/>
+       <item row="22" column="1">
+        <widget class="QSpinBox" name="spinBox"/>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="t_action"/>
        </item>
       </layout>
      </widget>
@@ -244,7 +244,7 @@
         <x>30</x>
         <y>30</y>
         <width>281</width>
-        <height>393</height>
+        <height>331</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_3">
@@ -512,17 +512,75 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout"/>
    </widget>
-   <zorder>pushButton</zorder>
+   <widget class="QPushButton" name="supprimer">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>470</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Supprimer</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="archiver">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>470</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Archiver</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="enregistrer">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>470</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Enregistrer</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>470</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ajouter une note</string>
+    </property>
+   </widget>
    <zorder>layoutWidget</zorder>
    <zorder>stackedWidget</zorder>
+   <zorder>supprimer</zorder>
+   <zorder>archiver</zorder>
+   <zorder>enregistrer</zorder>
+   <zorder>pushButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>781</width>
-     <height>22</height>
+     <width>865</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -560,16 +618,22 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>-1</y>
-       <width>751</width>
-       <height>221</height>
+       <y>0</y>
+       <width>201</width>
+       <height>151</height>
       </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
      <property name="sortingEnabled">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <attribute name="verticalHeaderVisible">
       <bool>false</bool>
@@ -579,15 +643,63 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>220</y>
-       <width>381</width>
-       <height>192</height>
+       <y>170</y>
+       <width>201</width>
+       <height>171</height>
       </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
     </widget>
+    <widget class="QLabel" name="label_31">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>150</y>
+       <width>47</width>
+       <height>13</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Version</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>361</y>
+       <width>201</width>
+       <height>121</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_34">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>340</y>
+       <width>47</width>
+       <height>13</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Tache</string>
+     </property>
+    </widget>
+    <zorder>tableWidget</zorder>
+    <zorder>tableWidget_2</zorder>
+    <zorder>label_31</zorder>
+    <zorder>archive</zorder>
+    <zorder>tableWidget_3</zorder>
+    <zorder>label_34</zorder>
    </widget>
   </widget>
   <widget class="QDockWidget" name="dockWidget_3">
@@ -615,6 +727,29 @@
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_2">
+   <property name="features">
+    <set>QDockWidget::NoDockWidgetFeatures</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::BottomDockWidgetArea|Qt::LeftDockWidgetArea</set>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <widget class="QTableWidget" name="archive">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>201</width>
+       <height>131</height>
+      </rect>
      </property>
     </widget>
    </widget>

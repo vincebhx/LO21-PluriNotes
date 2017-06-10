@@ -2,6 +2,8 @@
 #define DIALOG_H
 
 #include <QDialog>
+#include <QAbstractButton>
+#include "../src/note/notesmanager.h"
 
 namespace Ui {
 class Dialog;
@@ -18,10 +20,21 @@ public:
 
 private slots:
 
-    void on_buttonBox_accepted();
+    void on_buttonBox_clicked(QAbstractButton *button);
+
+    void createArticle();
+
+    void createTache();
+
+    void createImage();
+
+    void createAudio();
+
+    void createVideo();
 
 private:
     Ui::Dialog *ui;
+    NotesManager& nm;
 };
 
 #endif // DIALOG_H

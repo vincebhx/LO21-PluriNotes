@@ -15,6 +15,9 @@ static const QString StatutStr[3] = {"enAttente", "enCours", "termine"};
 class Tache: public Note
 {
 private:
+    static const QString idStem;
+    static unsigned int idIncrement;
+
     QString action;
     unsigned int priorite;
     QDateTime dateEcheance;
@@ -32,7 +35,19 @@ public:
           unsigned int priorite = 0,
           QDateTime dateEch = QDateTime::currentDateTime(),
           Statut statut = EN_ATTENTE):
-        Note(id, version, titre, dateCreat, dateModif), action(action), priorite(priorite), dateEcheance(dateEch), statut(statut) {}
+        Note(id, version, titre, dateCreat, dateModif),
+        action(action), priorite(priorite), dateEcheance(dateEch), statut(statut) {}
+
+    Tache(unsigned int version,
+          QString titre,
+          QDateTime dateCreat = QDateTime::currentDateTime(),
+          QDateTime dateModif = QDateTime::currentDateTime(),
+          QString action = "",
+          unsigned int priorite = 0,
+          QDateTime dateEch = QDateTime::currentDateTime(),
+          Statut statut = EN_ATTENTE):
+        Note(idStem + QString::number(idIncrement), version, titre, dateCreat, dateModif),
+        action(action), priorite(priorite), dateEcheance(dateEch), statut(statut) { idIncrement++; }
 
     void setAction(QString a) { action = a; }
     void setPriorite(unsigned int p) { priorite = p; }

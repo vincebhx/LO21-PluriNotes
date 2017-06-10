@@ -7,6 +7,15 @@
 
 #include <iostream>
 
+const QString Image::idStem  = "IMG_";
+unsigned int Image::idIncrement = 0;
+
+const QString Audio::idStem  = "AUD_";
+unsigned int Audio::idIncrement = 0;
+
+const QString Video::idStem  = "VID_";
+unsigned int Video::idIncrement = 0;
+
 QFormLayout* Media::getLayout() {
     //Description
     QLineEdit* descEdit = new QLineEdit(description);

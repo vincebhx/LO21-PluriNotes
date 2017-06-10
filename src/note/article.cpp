@@ -6,6 +6,9 @@
 #include <QSqlRecord>
 #include <QSqlError>
 
+const QString Article::idStem  = "ART_";
+unsigned int Article::idIncrement = 0;
+
 QFormLayout* Article::getLayout() {
     //Texte
     QTextEdit* textEdit = new QTextEdit(texte);

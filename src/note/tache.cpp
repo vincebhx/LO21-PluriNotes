@@ -9,6 +9,9 @@
 
 #include <iostream>
 
+const QString Tache::idStem  = "TCH_";
+unsigned int Tache::idIncrement = 0;
+
 QFormLayout* Tache::getLayout() {
     //Sélection du statut
     QComboBox* statutBox = new QComboBox;

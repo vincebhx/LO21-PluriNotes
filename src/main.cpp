@@ -69,11 +69,6 @@ int main(int argc, char *argv[])
             ver1 = (*it)->currentVersion()->getVersion();
             std::cout<<id1<<" v"<<ver1<<std::endl;
         }
-
-        Article* n = dynamic_cast<Article*>(nm.findNote("article1"));
-        if (n == nullptr) qDebug()<<"Note non trouvée :(";
-        else qDebug()<<n->getId()<<" v"<<n->getVersion()<<" - "<<n->getTitre();
-
     }
     catch(Exception e) { std::cout<<"Erreur standard: "<<e.getInfo().toStdString()<<std::endl; }
     catch(QSqlError e) { std::cout<<"Erreur SQL: "<<e.driverText().toStdString()<<" - "<<e.databaseText().toStdString()<<std::endl; }

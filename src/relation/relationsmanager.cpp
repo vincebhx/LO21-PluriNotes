@@ -99,12 +99,6 @@ void RelationsManager::loadCouples(){
 
         Couple* nouveauCouple = new Couple(note1, note2, label);
         rel->addCouple(nouveauCouple);
-
-        // -- INSERTION DE DEUX COUPLES SI RELATION ORIENTEE -- //
-        if (rel->estOriente()){
-            Couple* nouveauCouple2 = new Couple(note2, note1, label);
-            rel->addCouple(nouveauCouple2);
-        }
     }
 }
 

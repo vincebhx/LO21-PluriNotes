@@ -22,7 +22,11 @@ private:
 public:
     static NotesManager& instance();
     void free();
+
+    std::vector<QString> indexId;
     Note* findNote(QString id);
+    int getIndexId(QString id);
+    int getSizeIndexId() { return indexId.size(); }
 
     Note* currentVersion(Etat e) {
         switch(e) {

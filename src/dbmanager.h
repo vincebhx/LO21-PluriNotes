@@ -18,7 +18,7 @@ public:
     QSqlDatabase db;
     static DbManager& instance();
     void free();
-    bool addNote(Note& n);
+    bool saveNote(Note* n);
 };
 
 #endif // DBMANAGER_H

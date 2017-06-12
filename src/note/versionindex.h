@@ -9,10 +9,13 @@ class VersionIndex
 {
 private:
     std::vector<Note*> versions;
-
+    unsigned short etat;
 public:
     VersionIndex() {}
     VersionIndex(Note* n);
+
+    unsigned short& getEtat() { return etat; }
+    void setEtat(unsigned short i) { etat = i; }
 
     Note* firstVersion() { return versions.front(); }
     Note* currentVersion() { return versions.back(); }

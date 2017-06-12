@@ -225,6 +225,7 @@ void MainWindow::saveNewVersionArticle() {
 
     Note* newV = new Article(id, version, titre, creat, modif, texte);
     nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    DbManager::instance().saveNote(newV);
     loadVersion(nm.getNote(ui->tableWidget->currentRow()));
 
 }
@@ -241,6 +242,7 @@ void MainWindow::saveNewVersionTache() {
 
     Note* newV = new Tache(id, version, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), action, priorite, echeance, statut);
     nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    DbManager::instance().saveNote(newV);
     loadVersion(nm.getNote(ui->tableWidget->currentRow()));
 
 }
@@ -255,6 +257,7 @@ void MainWindow::saveNewVersionImage() {
 
     Note* newV = new Image(id, version, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
     nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    DbManager::instance().saveNote(newV);
     loadVersion(nm.getNote(ui->tableWidget->currentRow()));
 }
 
@@ -268,6 +271,7 @@ void MainWindow::saveNewVersionVideo(){
 
     Note* newV = new Video(id, version, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
     nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    DbManager::instance().saveNote(newV);
     loadVersion(nm.getNote(ui->tableWidget->currentRow()));
 }
 
@@ -281,6 +285,7 @@ void MainWindow::saveNewVersionAudio() {
 
     Note* newV = new Audio(id, version, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
     nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    DbManager::instance().saveNote(newV);
     loadVersion(nm.getNote(ui->tableWidget->currentRow()));
 }
 

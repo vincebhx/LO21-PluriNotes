@@ -24,7 +24,7 @@ QFormLayout* Article::getLayout() {
 QSqlQuery Article::prepareQuery() {
     QSqlQuery query;
 
-    query.prepare("INSERT INTO Article VALUES (:id, :version, :titre, :dateCreation, :dateModification, :texte)");
+    query.prepare("INSERT INTO Article VALUES (:etat, :id, :version, :titre, :dateCreation, :dateModification, :texte)");
     query.bindValue(":texte", texte);
 
     return query;

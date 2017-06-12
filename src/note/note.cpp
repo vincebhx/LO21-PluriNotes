@@ -46,6 +46,7 @@ QWidget* Note::getNoteView() {
 
 QSqlQuery Note::getQuery() {
     QSqlQuery query = prepareQuery();
+    query.bindValue(":etat", parent->getEtat());
     query.bindValue(":id", id);
     query.bindValue(":version", version);
     query.bindValue(":titre", titre);

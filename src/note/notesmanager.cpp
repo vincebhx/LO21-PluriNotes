@@ -34,6 +34,7 @@ void NotesManager::free() {
 }
 
 void NotesManager::addNote(Etat e, VersionIndex* n) {
+    n->setEtat(static_cast<unsigned short>(e));
     std::vector<VersionIndex*>& current = ((e == ACTIVES) ? actives : ((e == ARCHIVES) ? archives : corbeille));
     for(unsigned int i = 0; i < current.size(); i++)
         if (current.at(i)->currentVersion()->getId() == n->currentVersion()->getId())

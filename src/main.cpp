@@ -26,7 +26,6 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     try{
 
-
         DbManager& dbM = DbManager::instance();
         NotesManager& nm = NotesManager::instance();
         RelationsManager& rm = RelationsManager::instance();
@@ -69,6 +68,7 @@ int main(int argc, char *argv[])
             ver1 = (*it)->currentVersion()->getVersion();
             std::cout<<id1<<" v"<<ver1<<std::endl;
         }
+
     }
     catch(Exception e) { std::cout<<"Erreur standard: "<<e.getInfo().toStdString()<<std::endl; }
     catch(QSqlError e) { std::cout<<"Erreur SQL: "<<e.driverText().toStdString()<<" - "<<e.databaseText().toStdString()<<std::endl; }

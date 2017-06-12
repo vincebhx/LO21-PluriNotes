@@ -7,10 +7,13 @@
 #include <QSqlQuery>
 #include <QString>
 
+class VersionIndex;
+
 ///Décrit une Note (interface, classe abstraite)
 class Note
 {
 protected:
+    VersionIndex* parent;
     const QString id;               ///Identifiant de la note
     unsigned int version;           ///Numéro de version
     QString titre;                  ///Titre de la note
@@ -27,7 +30,11 @@ protected:
     virtual QSqlQuery prepareQuery() = 0;
 
 public:
+
     virtual QString getClassName() = 0;
+
+    void setParent(VersionIndex* v) { parent = v; }
+    const VersionIndex* getParent() { return parent; }
 
     static const QString dateDisplayFormat;
     static const QString dateStorageFormat;

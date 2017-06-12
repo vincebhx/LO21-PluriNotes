@@ -36,7 +36,7 @@ QFormLayout* Media::getLayout() {
 QSqlQuery Media::prepareQuery() {
     QSqlQuery query;
 
-    query.prepare("INSERT INTO Media VALUES (:id, :version, :type, :titre, :dateCreation, :dateModification, :description, :filepath)");
+    query.prepare("INSERT INTO Media VALUES (:etat, :id, :version, :type, :titre, :dateCreation, :dateModification, :description, :filepath)");
     query.bindValue(":type", getTypeStr());
     query.bindValue(":description", description);
     query.bindValue(":filepath", filepath);

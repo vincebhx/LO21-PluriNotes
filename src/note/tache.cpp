@@ -53,7 +53,7 @@ QFormLayout* Tache::getLayout() {
 QSqlQuery Tache::prepareQuery() {
     QSqlQuery query;
 
-    query.prepare("INSERT INTO Tache VALUES (:id, :version, :titre, :dateCreation, :dateModification, :action, :priorite, :statut)");
+    query.prepare("INSERT INTO Tache VALUES (:etat, :id, :version, :titre, :dateCreation, :dateModification, :action, :priorite, :statut)");
     query.bindValue(":action", action);
     query.bindValue(":priorite", priorite);
     query.bindValue(":statut", StatutStr[statut]);

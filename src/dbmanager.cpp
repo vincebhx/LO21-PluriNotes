@@ -40,14 +40,17 @@ void DbManager::free() {
     delete this;
 }
 
-bool DbManager::addNote(Note &n) {
+bool DbManager::saveNote(Note *n) {
     bool success = false;
-    QSqlQuery query = n.getQuery();
+    QSqlQuery query = n->getQuery();
 
-    if(query.exec())
+    if(query.exec()) {
         success = true;
+        qDebug() << "Note ajoutée à la base de données.";
+    }
     else
         qDebug() << "Erreur - DbManager::addNote : "<< query.lastError();
 
+    query.finish();
     return success;
 }

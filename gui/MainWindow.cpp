@@ -224,12 +224,13 @@ void MainWindow::saveNewVersionArticle() {
     QString titre = ui->a_titre->text();
     QString texte = ui->a_text->toPlainText();
     QDateTime modif = QDateTime::currentDateTime();
-    QDateTime creat = QDateTime::currentDateTime();
+    QDateTime creat = clicked->getDateCreat();
     int version = ui->tableWidget_2->rowCount() + 1;
 
 
     Note* newV = new Article(id, version, titre, creat, modif, texte);
     nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    DbManager::instance().saveNote(newV);
     loadVersion(nm.getNote(ui->tableWidget->currentRow()));
 
 }
@@ -244,8 +245,9 @@ void MainWindow::saveNewVersionTache() {
     int priorite = ui->spinBox->value();
     Statut statut = Statut(ui->comboBox->currentIndex());
 
-    Note* newV = new Tache(id, version, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), action, priorite, echeance, statut);
+    Note* newV = new Tache(id, version, titre, clicked->getDateCreat(), QDateTime::currentDateTime(), action, priorite, echeance, statut);
     nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    DbManager::instance().saveNote(newV);
     loadVersion(nm.getNote(ui->tableWidget->currentRow()));
 
 }
@@ -258,8 +260,9 @@ void MainWindow::saveNewVersionImage() {
     QString desc = ui->i_desc->toPlainText();
     QString path = ui->i_path->text();
 
-    Note* newV = new Image(id, version, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
+    Note* newV = new Image(id, version, titre, clicked->getDateCreat(), QDateTime::currentDateTime(), desc, path);
     nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    DbManager::instance().saveNote(newV);
     loadVersion(nm.getNote(ui->tableWidget->currentRow()));
 }
 
@@ -271,8 +274,9 @@ void MainWindow::saveNewVersionVideo(){
     QString desc = ui->v_desc->toPlainText();
     QString path = ui->v_path->text();
 
-    Note* newV = new Video(id, version, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
+    Note* newV = new Video(id, version, titre, clicked->getDateCreat(), QDateTime::currentDateTime(), desc, path);
     nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    DbManager::instance().saveNote(newV);
     loadVersion(nm.getNote(ui->tableWidget->currentRow()));
 }
 
@@ -284,8 +288,9 @@ void MainWindow::saveNewVersionAudio() {
     QString desc = ui->au_desc->toPlainText();
     QString path = ui->au_path->text();
 
-    Note* newV = new Audio(id, version, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
+    Note* newV = new Audio(id, version, titre, clicked->getDateCreat(), QDateTime::currentDateTime(), desc, path);
     nm.getNote(ui->tableWidget->currentRow())->addVersion(newV);
+    DbManager::instance().saveNote(newV);
     loadVersion(nm.getNote(ui->tableWidget->currentRow()));
 }
 

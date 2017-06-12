@@ -1,4 +1,5 @@
 #include "couple.h"
+
 #include <QString>
 #include <QSqlDatabase>
 #include <QSqlTableModel>

@@ -23,13 +23,12 @@ private:
 
 public:
     static Relation reference;
-    std::vector< std::vector<int> > matriceAdjacence;
 
     static QSqlTableModel* getTableModel(QSqlDatabase db);
     static QTableView* getRelationView(QSqlTableModel *table);
 
     // -- SETTER - GETTER -- //
-    Relation(QString t, QString d = NULL, bool o = true): titre(t), description(d), oriente(o), matriceAdjacence(std::vector< std::vector<int> >()) {}
+    Relation(QString t, QString d = NULL, bool o = true): titre(t), description(d), oriente(o) {}
     void setDescription(QString d) { description = d; }
     void orienter(bool o) { oriente = o; }
     QString getTitre() const { return titre; }
@@ -38,8 +37,6 @@ public:
 
     RelationIterator begin() { return couples.begin(); }
     RelationIterator end() { return couples.end(); }
-
-    void loadMatrice();
 
     void addCouple(Couple* c);
 };

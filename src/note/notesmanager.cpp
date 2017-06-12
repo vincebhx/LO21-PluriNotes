@@ -40,6 +40,7 @@ void NotesManager::addNote(Etat e, VersionIndex* n) {
         if (current.at(i)->currentVersion()->getId() == n->currentVersion()->getId())
             throw Exception("Une note possédant l'id " + n->currentVersion()->getId() + " existe déjà.");
     current.push_back(n);
+    indexId.push_back(n->currentVersion()->getId());
 }
 
 void NotesManager::load() {
@@ -224,5 +225,14 @@ std::vector<VersionIndex*> NotesManager::getTasks() {
     }
 
     return listTask;
+}
+
+
+int NotesManager::getIndexId(QString id){
+    int i = -1;
+    do {
+        i++;
+    }while (this->indexId[i] != id && i < this->indexId.size());
+    return i;
 }
 

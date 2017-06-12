@@ -18,7 +18,8 @@ HEADERS += \
     src/note/notesmanager.h \
     src/note/tache.h \
     src/note/versionindex.h \
-    src/dbmanager.h
+    src/dbmanager.h \
+    gui/mediator.h
 
 SOURCES += \
     gui/NoteSelector.cpp \
@@ -34,7 +35,8 @@ SOURCES += \
     src/note/notesmanager.cpp \
     src/note/tache.cpp \
     src/note/versionindex.cpp \
-    src/dbmanager.cpp
+    src/dbmanager.cpp \
+    gui/mediator.cpp
 
 DISTFILES += \
     README.md \

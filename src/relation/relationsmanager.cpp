@@ -133,3 +133,12 @@ QTableView* RelationsManager::getCoupleView(QSqlTableModel *table) {
     return viewCouple;
 }
 
+std::vector<QString> nomRelations(){
+    RelationsManager& rm = RelationsManager::instance();
+    std::vector<QString> noms;
+    for (RMIterator RMit = rm.begin(); RMit != rm.end(); RMit++){
+        noms.push_back((*RMit)->getTitre());
+    }
+    return noms;
+}
+

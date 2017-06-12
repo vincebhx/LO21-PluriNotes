@@ -27,6 +27,7 @@ public:
     void setLabel(QString& l) { label = l; }
     QString& getNote1() { return id1; }
     QString& getNote2() { return id2; }
+    std::vector<QString> getNotes();
 
     // -- RECUPERATION DES DONNEES DANS LA BDD -- //
     static QSqlTableModel* getTableModel(QSqlDatabase db);

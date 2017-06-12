@@ -1,4 +1,5 @@
 #include "couple.h"
+#include <QString>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
 
@@ -18,4 +19,11 @@ QTableView* Couple::getCoupleView(QSqlTableModel *table) {
     QTableView *viewCouple = new QTableView;
     viewCouple->setModel(table);
     return viewCouple;
+}
+
+std::vector<QString> Couple::getNotes(){
+    std::vector<QString> noms;
+    noms.push_back(id1);
+    noms.push_back(id2);
+    return noms;
 }

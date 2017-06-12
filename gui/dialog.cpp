@@ -52,6 +52,7 @@ void Dialog::createArticle() {
     QString titre = ui->a_titre->text();
     QString text = ui->a_text->toPlainText();
     newN = new Article(0, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), text);
+    //DbManager::instance().saveNote(newN);
     VersionIndex* v = new VersionIndex(newN);
     nm.addNote((Etat)0, v);
 
@@ -65,6 +66,7 @@ void Dialog::createTache() {
     QDateTime echeance = ui->t_echance->dateTime();
     Statut statut = Statut(ui->comboBox->currentIndex());
     newN = new Tache(0, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), action, priorite, echeance, statut);
+    //DbManager::instance().saveNote(newN);
     VersionIndex* v = new VersionIndex(newN);
     nm.addNote((Etat)0, v);
 }
@@ -74,6 +76,7 @@ void Dialog::createImage() {
     QString desc = ui->i_desc->toPlainText();
     QString path = ui->i_path->text();
     newN = new Image(0, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
+    //DbManager::instance().saveNote(newN);
     VersionIndex* v = new VersionIndex(newN);
     nm.addNote((Etat)0, v);
 }
@@ -84,6 +87,7 @@ void Dialog::createAudio() {
     QString desc = ui->au_desc->toPlainText();
     QString path = ui->au_path->text();
     newN = new Audio(0, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
+    //DbManager::instance().saveNote(newN);
     VersionIndex* v = new VersionIndex(newN);
     nm.addNote((Etat)0, v);
 
@@ -95,6 +99,7 @@ void Dialog::createVideo(){
     QString desc = ui->v_desc->toPlainText();
     QString path = ui->v_path->text();
     newN = new Video(0, titre, QDateTime::currentDateTime(), QDateTime::currentDateTime(), desc, path);
+    //DbManager::instance().saveNote(newN);
     VersionIndex* v = new VersionIndex(newN);
     nm.addNote((Etat)0, v);
 }

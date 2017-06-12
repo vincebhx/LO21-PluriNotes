@@ -56,6 +56,7 @@ QSqlQuery Note::getQuery() {
     return query;
 }
 
+/*
 void Note::arborescences(std::vector< std::vector<int> > visite){
     // -- LA MATRICE VISITE EVITE LA REDONDANCE DES LIENS DANS LES ARBORESCENCES -- //
     NotesManager& nm = NotesManager::instance();
@@ -100,7 +101,7 @@ void Note::arborescences(std::vector< std::vector<int> > visite){
         }
    } // -- FIN IF !EMPTY -- //
     // -- IF EMPTY : FIN DE LA RECUSION -- //
-}
+}*/
 
 void Note::getArborescences(){
     NotesManager& nm = NotesManager::instance();
@@ -109,12 +110,23 @@ void Note::getArborescences(){
     std::vector< std::vector<int> > visite;
 
     for (RMIterator RMit = rm.begin(); RMit != rm.end(); RMit++){
-        for (unsigned int i = 0; i < taille; i++){
+        std::vector<int> ascendants;
+        std::vector<int> descendants;
+
+        /*for (unsigned int i = 0; i < taille; i++){
             for (unsigned int j = 0; j < taille; j++){
                 visite[i][j] = (*RMit)->matriceAdjacence[i][j];
             }
+        }*/
+
+        QString idDepart = this->getId();
+        int indexDepart = nm.getIndexId(idDepart);
+
+        for (unsigned int i = 0; i< taille; i++){
+            if ((*RMit)->matriceAdjacence[i][indexDepart] == 1) ascendants.push_back(i);
+            if ((*RMit)->matriceAdjacence[indexDepart][i] == 1) descendants.push_back(i);
         }
-        this->arborescences(visite);
+
+        //this->arborescences(visite);
     }
 }
-

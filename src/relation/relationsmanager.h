@@ -31,6 +31,8 @@ public:
     void addRelation(Relation* r);
     int numberOfRelations() { return relations.size(); }
 
+    std::vector<QString> nomRelations();
+
     bool noteImpliqueeDansRelation(Note* note);
 
     QSqlTableModel* getTableModel(QSqlDatabase db);

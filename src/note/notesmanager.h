@@ -23,7 +23,7 @@ public:
     static NotesManager& instance();
     void free();
 
-    std::vector<QString> indexId;
+    std::vector<QString> indexId; // TOUS LES ID DE TOUTES LES NOTES
     Note* findNote(QString id);
     int getIndexId(QString id);
     int getSizeIndexId() { return indexId.size(); }

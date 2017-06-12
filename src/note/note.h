@@ -48,9 +48,6 @@ public:
     const QDateTime& getDateCreat() const {return dateCreation; }
     QDateTime getDateLastModif() const {return dateModification; }
 
-    void arborescences(std::vector<std::vector<int> > visite);
-    void getArborescences();
-
     QWidget* getNoteView();
     QSqlQuery getQuery();
 };

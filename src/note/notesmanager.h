@@ -68,6 +68,7 @@ public:
 
     void addNote(Etat e, VersionIndex* v);
     void load();
+    void load2();
 
     VersionIndex* getNote(int i) { return actives[i];}
 

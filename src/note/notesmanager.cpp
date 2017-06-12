@@ -8,6 +8,9 @@
 
 #include <iostream>
 #include <QSqlRecord>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
 
 NotesManager* NotesManager::_instance = 0;
 
@@ -41,151 +44,6 @@ void NotesManager::addNote(Etat e, VersionIndex* n) {
             throw Exception("Une note possédant l'id " + n->currentVersion()->getId() + " existe déjà.");
     current.push_back(n);
     indexId.push_back(n->currentVersion()->getId());
-}
-
-void NotesManager::load() {
-    /*DEBUT*/
-    std::cout<<"Chargement des données..."<<std::endl;
-    QSqlRecord rec;
-    VersionIndex* vIndex;
-    Note* n;
-    QString id;
-    Etat etat;
-
-    /*ARTICLES*/
-    bool newVIndex = true;
-    QString currentId = "\0";
-    QSqlTableModel* articles = Article::getTableModel(DbManager::instance().db);
-
-    for (int i = 0; i < articles->rowCount(); i++) {
-        newVIndex = false;
-        rec = articles->record(i);
-        id = rec.value(1).toString();
-
-        n = new Article(
-                    id,
-                    rec.value(2).toInt(),
-                    rec.value(3).toString(),
-                    QDateTime::fromString(rec.value(4).toString(), "dd/MM/yyyy hh:mm:ss"),
-                    QDateTime::fromString(rec.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
-                    rec.value(6).toString()
-                    );
-
-        if(currentId != id) {
-            currentId = id;
-            if(i != 0) {
-                NotesManager::instance().addNote(etat, vIndex);
-                newVIndex = true;
-            }
-            vIndex = new VersionIndex;
-        }
-        vIndex->addVersion(n);
-        etat = toEtat(rec.value(0).toInt());
-    }
-    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
-
-    /*MEDIAS*/
-    QString type;
-    newVIndex = true;
-    currentId = "\0";
-
-    QSqlTableModel* medias = Media::getTableModel(DbManager::instance().db);
-
-    for (int i = 0; i < medias->rowCount(); i++) {
-        newVIndex = false;
-        rec = medias->record(i);
-        id = rec.value(1).toString();
-        type = rec.value(3).toString();
-
-        if (type == "image")
-            n = new Image(
-                        id,
-                        rec.value(2).toInt(),
-                        rec.value(4).toString(),
-                        QDateTime::fromString(rec.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
-                        QDateTime::fromString(rec.value(6).toString(), "dd/MM/yyyy hh:mm:ss"),
-                        rec.value(7).toString(),
-                        rec.value(8).toString()
-                        );
-        else if (type == "audio")
-            n = new Audio(
-                        id,
-                        rec.value(2).toInt(),
-                        rec.value(4).toString(),
-                        QDateTime::fromString(rec.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
-                        QDateTime::fromString(rec.value(6).toString(), "dd/MM/yyyy hh:mm:ss"),
-                        rec.value(7).toString(),
-                        rec.value(8).toString()
-                        );
-        else //type == "video"
-            n = new Video(
-                        id,
-                        rec.value(2).toInt(),
-                        rec.value(4).toString(),
-                        QDateTime::fromString(rec.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
-                        QDateTime::fromString(rec.value(6).toString(), "dd/MM/yyyy hh:mm:ss"),
-                        rec.value(7).toString(),
-                        rec.value(7).toString()
-                        );
-
-        if(currentId != id) {
-            currentId = id;
-            if(i != 0) {
-                NotesManager::instance().addNote(etat, vIndex);
-                newVIndex = true;
-            }
-            vIndex = new VersionIndex;
-        }
-        vIndex->addVersion(n);
-        etat = toEtat(rec.value(0).toInt());
-    }
-    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
-
-    /*TACHES*/
-    Statut stat;
-    QString statStr;
-    newVIndex = true;
-    currentId = "\0";
-
-    QSqlTableModel* taches = Tache::getTableModel(DbManager::instance().db);
-
-    for (int i = 0; i < taches->rowCount(); i++) {
-        newVIndex = false;
-        rec = taches->record(i);
-        id = rec.value(1).toString();
-
-        statStr = rec.value(9).toString();
-        if(statStr == StatutStr[EN_COURS]) stat = EN_COURS;
-        else if (statStr == StatutStr[TERMINE]) stat = TERMINE;
-        else stat = EN_ATTENTE;
-
-        n = new Tache(
-                    id,
-                    rec.value(2).toInt(),
-                    rec.value(3).toString(),
-                    QDateTime::fromString(rec.value(4).toString(), "dd/MM/yyyy hh:mm:ss"),
-                    QDateTime::fromString(rec.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
-                    rec.value(6).toString(),
-                    rec.value(7).toInt(),
-                    QDateTime::fromString(rec.value(8).toString(), "dd/MM/yyyy hh:mm:ss"),
-                    stat
-                    );
-
-        if(currentId != id) {
-            currentId = id;
-            if(i != 0) {
-                NotesManager::instance().addNote(etat, vIndex);
-                newVIndex = true;
-            }
-            vIndex = new VersionIndex;
-        }
-        vIndex->addVersion(n);
-        etat = toEtat(rec.value(0).toInt());
-    }
-    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
-
-    /*FIN*/
-    std::cout<<"Chargement effectué."<<std::endl;
 }
 
 Note* NotesManager::findNote(QString id) {
@@ -225,6 +83,163 @@ std::vector<VersionIndex*> NotesManager::getTasks() {
     }
 
     return listTask;
+}
+
+void NotesManager::load() {
+    /*DEBUT*/
+    std::cout<<"Chargement des données..."<<std::endl;
+    VersionIndex* vIndex;
+    Note* n;
+    QString id;
+    Etat etat;
+
+    /*ARTICLES*/
+    QSqlQuery queryART;
+    unsigned int count = 0;
+    bool newVIndex = true;
+    QString currentId = "\0";
+
+    queryART.prepare("SELECT * FROM Article ORDER BY id, version");
+    if(queryART.exec()) qDebug() << "Récupération des articles ok.";
+    else qDebug() << "Erreur - NotesManager::load : "<< queryART.lastError();
+
+    while(queryART.next()) {
+        newVIndex = false;
+        id = queryART.value(1).toString();
+        n = new Article(
+                    id,
+                    queryART.value(2).toInt(),
+                    queryART.value(3).toString(),
+                    QDateTime::fromString(queryART.value(4).toString(), "dd/MM/yyyy hh:mm:ss"),
+                    QDateTime::fromString(queryART.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
+                    queryART.value(6).toString()
+                    );
+
+        if(currentId != id) {
+            currentId = id;
+            if(count != 0) {
+                NotesManager::instance().addNote(etat, vIndex);
+                newVIndex = true;
+            }
+            vIndex = new VersionIndex;
+        }
+        vIndex->addVersion(n);
+        etat = toEtat(queryART.value(0).toInt());
+        count++;
+    }
+    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
+
+    /*MEDIAS*/
+    QSqlQuery queryMED;
+    QString type;
+    count = 0;
+    newVIndex = true;
+    currentId = "\0";
+
+    queryMED.prepare("SELECT * FROM Media ORDER BY id, version");
+    if(queryMED.exec()) qDebug() << "Récupération des médias ok.";
+    else qDebug() << "Erreur - NotesManager::load : "<< queryMED.lastError();
+
+    while(queryMED.next()) {
+        newVIndex = false;
+        id = queryMED.value(1).toString();
+        type = queryMED.value(3).toString();
+
+        if (type == "image")
+            n = new Image(
+                        id,
+                        queryMED.value(2).toInt(),
+                        queryMED.value(4).toString(),
+                        QDateTime::fromString(queryMED.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
+                        QDateTime::fromString(queryMED.value(6).toString(), "dd/MM/yyyy hh:mm:ss"),
+                        queryMED.value(7).toString(),
+                        queryMED.value(8).toString()
+                        );
+        else if (type == "audio")
+            n = new Audio(
+                        id,
+                        queryMED.value(2).toInt(),
+                        queryMED.value(4).toString(),
+                        QDateTime::fromString(queryMED.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
+                        QDateTime::fromString(queryMED.value(6).toString(), "dd/MM/yyyy hh:mm:ss"),
+                        queryMED.value(7).toString(),
+                        queryMED.value(8).toString()
+                        );
+        else //type == "video"
+            n = new Video(
+                        id,
+                        queryMED.value(2).toInt(),
+                        queryMED.value(4).toString(),
+                        QDateTime::fromString(queryMED.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
+                        QDateTime::fromString(queryMED.value(6).toString(), "dd/MM/yyyy hh:mm:ss"),
+                        queryMED.value(7).toString(),
+                        queryMED.value(7).toString()
+                        );
+
+        if(currentId != id) {
+            currentId = id;
+            if(count != 0) {
+                NotesManager::instance().addNote(etat, vIndex);
+                newVIndex = true;
+            }
+            vIndex = new VersionIndex;
+        }
+        vIndex->addVersion(n);
+        etat = toEtat(queryMED.value(0).toInt());
+        count++;
+    }
+    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
+
+
+    /*TACHES*/
+    QSqlQuery queryTCH;
+    Statut stat;
+    QString statStr;
+    count = 0;
+    newVIndex = true;
+    currentId = "\0";
+
+    queryTCH.prepare("SELECT * FROM Tache ORDER BY id, version");
+    if(queryTCH.exec()) qDebug() << "Récupération des tâches ok.";
+    else qDebug() << "Erreur - NotesManager::load : "<< queryTCH.lastError();
+
+    while(queryTCH.next()) {
+        newVIndex = false;
+        id = queryTCH.value(1).toString();
+
+        statStr = queryTCH.value(9).toString();
+        if(statStr == StatutStr[EN_COURS]) stat = EN_COURS;
+        else if (statStr == StatutStr[TERMINE]) stat = TERMINE;
+        else stat = EN_ATTENTE;
+
+        n = new Tache(
+                    id,
+                    queryTCH.value(2).toInt(),
+                    queryTCH.value(3).toString(),
+                    QDateTime::fromString(queryTCH.value(4).toString(), "dd/MM/yyyy hh:mm:ss"),
+                    QDateTime::fromString(queryTCH.value(5).toString(), "dd/MM/yyyy hh:mm:ss"),
+                    queryTCH.value(6).toString(),
+                    queryTCH.value(7).toInt(),
+                    QDateTime::fromString(queryTCH.value(8).toString(), "dd/MM/yyyy hh:mm:ss"),
+                    stat
+                    );
+
+        if(currentId != id) {
+            currentId = id;
+            if(count != 0) {
+                NotesManager::instance().addNote(etat, vIndex);
+                newVIndex = true;
+            }
+            vIndex = new VersionIndex;
+        }
+        vIndex->addVersion(n);
+        etat = toEtat(queryTCH.value(0).toInt());
+        count++;
+    }
+    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
+
+    /*FIN*/
+    std::cout<<"Chargement effectué."<<std::endl;
 }
 
 

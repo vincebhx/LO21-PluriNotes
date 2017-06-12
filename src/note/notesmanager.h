@@ -2,6 +2,7 @@
 #define NOTESMANAGER_H
 
 #include "versionindex.h"
+#include "./src/relation/relationsmanager.h"
 
 typedef std::vector<VersionIndex*>::iterator NMIterator;
 typedef enum { ACTIVES = 0, ARCHIVES = 1, CORBEILLE = 2 } Etat;
@@ -70,6 +71,8 @@ public:
     void load();
 
     VersionIndex* getNote(int i) { return actives[i];}
+    std::vector<QString> getAscendants(Note* note, Relation* relation);
+    std::vector<QString> getDescendants(Note* note, Relation* relation);
 
     std::vector<VersionIndex*> getTasks();
 };

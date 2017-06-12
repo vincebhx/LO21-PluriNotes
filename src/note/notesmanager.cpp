@@ -5,6 +5,7 @@
 #include "tache.h"
 #include "../exception.h"
 #include "versionindex.h"
+#include "./src/relation/relationsmanager.h"
 
 #include <iostream>
 #include <QSqlRecord>
@@ -236,3 +237,28 @@ int NotesManager::getIndexId(QString id){
     return i;
 }
 
+std::vector<QString> NotesManager::getAscendants(Note* note, Relation* relation){
+    std::vector<QString> ascendants;
+
+    // -- LA NOTE DONT ON CHERCHE LES ASCENDANTS -- //
+    QString idNote = note->getId();
+
+    for (RelationIterator ri = relation->begin(); ri != relation->end(); ri++){
+        if ((*ri)->getNote2() == idNote) ascendants.push_back((*ri)->getNote1());
+    }
+
+    return ascendants;
+}
+
+std::vector<QString> NotesManager::getDescendants(Note* note, Relation* relation){
+    std::vector<QString> descendants;
+
+    // -- LA NOTE DONT ON CHERCHE LES ASCENDANTS -- //
+    QString idNote = note->getId();
+
+    for (RelationIterator ri = relation->begin(); ri != relation->end(); ri++){
+        if ((*ri)->getNote1() == idNote) descendants.push_back((*ri)->getNote2());
+    }
+
+    return descendants;
+}

@@ -2,7 +2,7 @@
 #define AJOUTERRELATION_H
 
 #include <QDialog>
-
+#include "../src/note/notesmanager.h"
 namespace Ui {
 class AjouterRelation;
 }
@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::AjouterRelation *ui;
+    NotesManager& nm;
 };
 
 #endif // AJOUTERRELATION_H

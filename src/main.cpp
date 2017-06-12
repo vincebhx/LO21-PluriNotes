@@ -11,6 +11,7 @@
 #include "../src/relation/relation.h"
 #include "../src/relation/couple.h"
 #include "../src/relation/relationsmanager.h"
+#include "../gui/ajouterrelation.h"
 
 #include <QApplication>
 #include <QSqlError>
@@ -82,6 +83,11 @@ int main(int argc, char *argv[])
     mediator->addComponent(window);
     mediator->addComponent(createnote);
     //mediator->disributeMessage(createnote, "hello");
+
+    AjouterRelation* ajouterR = new AjouterRelation;
+    ajouterR->show();
+
+
 
 
     QObject::connect(&app, SIGNAL(aboutToQuit()), window, SLOT(onClose()));

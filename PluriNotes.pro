@@ -19,7 +19,8 @@ HEADERS += \
     src/note/tache.h \
     src/note/versionindex.h \
     src/dbmanager.h \
-    gui/mediator.h
+    gui/mediator.h \
+    gui/ajouterrelation.h
 
 SOURCES += \
     gui/NoteSelector.cpp \
@@ -36,7 +37,8 @@ SOURCES += \
     src/note/tache.cpp \
     src/note/versionindex.cpp \
     src/dbmanager.cpp \
-    gui/mediator.cpp
+    gui/mediator.cpp \
+    gui/ajouterrelation.cpp
 
 DISTFILES += \
     README.md \
@@ -44,4 +46,5 @@ DISTFILES += \
 
 FORMS += \
     gui/mainwindow.ui \
-    gui/dialog.ui
+    gui/dialog.ui \
+    gui/ajouterrelation.ui

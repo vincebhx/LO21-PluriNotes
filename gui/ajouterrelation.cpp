@@ -3,9 +3,14 @@
 
 AjouterRelation::AjouterRelation(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AjouterRelation)
+    ui(new Ui::AjouterRelation),nm(NotesManager::instance())
 {
     ui->setupUi(this);
+    for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++){
+         ui->Note1->addItem((*it)->currentVersion()->getId());
+         ui->Note2->addItem((*it)->currentVersion()->getId());
+    }
+
 }
 
 AjouterRelation::~AjouterRelation()

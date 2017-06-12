@@ -80,12 +80,14 @@ int main(int argc, char *argv[])
     window->show();
     Dialog* createnote = new Dialog;
     Mediator* mediator = Mediator::instance();
+    AjouterRelation* ajouterR = new AjouterRelation;
     mediator->addComponent(window);
     mediator->addComponent(createnote);
+    mediator->addComponent(ajouterR);
     //mediator->disributeMessage(createnote, "hello");
 
-    AjouterRelation* ajouterR = new AjouterRelation;
-    ajouterR->show();
+
+
 
 
 

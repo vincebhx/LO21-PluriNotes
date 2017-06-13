@@ -1,6 +1,7 @@
 #include "dbmanager.h"
 #include "note/note.h"
 #include "exception.h"
+#include "./relation/relation.h"
 
 #include <iostream>
 #include <QFileDialog>
@@ -43,6 +44,36 @@ void DbManager::free() {
 bool DbManager::saveNote(Note *n) {
     bool success = false;
     QSqlQuery query = n->getQuery();
+
+    if(query.exec()) {
+        success = true;
+        qDebug() << "Note ajoutée à la base de données.";
+    }
+    else
+        qDebug() << "Erreur - DbManager::addNote : "<< query.lastError();
+
+    query.finish();
+    return success;
+}
+
+bool DbManager::saveRelation(Relation* r) {
+    bool success = false;
+    QSqlQuery query = r->getQuery();
+
+    if(query.exec()) {
+        success = true;
+        qDebug() << "Note ajoutée à la base de données.";
+    }
+    else
+        qDebug() << "Erreur - DbManager::addNote : "<< query.lastError();
+
+    query.finish();
+    return success;
+}
+
+bool DbManager::saveCouple(Relation* r, Couple* c) {
+    bool success = false;
+    QSqlQuery query = c->getQuery(r);
 
     if(query.exec()) {
         success = true;

@@ -38,7 +38,11 @@ public:
     RelationIterator begin() { return couples.begin(); }
     RelationIterator end() { return couples.end(); }
 
+    QSqlQuery getQuery();
+    QSqlQuery deleteQuery();
+
     void addCouple(Couple* c);
+    void deleteCouples() { couples.clear(); }
 };
 
 

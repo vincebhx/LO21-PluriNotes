@@ -2,6 +2,7 @@
 #define DBMANAGER_H
 
 #include "note/note.h"
+#include "./src/relation/relation.h"
 
 #include <QSqlDatabase>
 #include <QString>
@@ -19,6 +20,8 @@ public:
     static DbManager& instance();
     void free();
     bool saveNote(Note* n);
+    bool saveRelation(Relation* r);
+    bool saveCouple(Relation* r, Couple* c);
 };
 
 #endif // DBMANAGER_H

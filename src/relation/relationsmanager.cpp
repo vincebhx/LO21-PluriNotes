@@ -45,6 +45,9 @@ void RelationsManager::loadRelations(){
     QSqlRecord rec;
     QSqlTableModel* rel = Relation::getTableModel(DbManager::instance().db);
 
+    Relation* ref = new Relation("Reference", "Relation de reference entre deux notes", 1);
+    addRelation(ref);
+
     for (int i = 0; i < rel->rowCount(); i++){
         rec = rel->record(i);
         QString titre = rec.value(0).toString();
@@ -99,6 +102,7 @@ void RelationsManager::loadCouples(){
 
         Couple* nouveauCouple = new Couple(note1, note2, label);
         rel->addCouple(nouveauCouple);
+        if (rel->estOriente()) rel->addCouple(new Couple(note2, note1, label));
     }
 }
 
@@ -142,3 +146,18 @@ std::vector<QString> RelationsManager::nomRelations(){
     return noms;
 }
 
+
+void RelationsManager::supprimerRelation(Relation* r){
+    QString titre = r->getTitre();
+    if (titre.toStdString() == "Reference"){
+        std::cout<<"Impossible de supprimer la relation Référence.\n";
+    }
+    else{
+        r->deleteCouples();
+
+        NotesManager& nm = NotesManager::instance();
+        int index = nm.getIndexId(titre);
+
+        relations.erase(relations.begin()+index);
+    }
+}

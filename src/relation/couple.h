@@ -7,6 +7,7 @@
 #include <QString>
 #include "../note/note.h"
 
+class Relation;
 
 class Couple {
 private:
@@ -23,7 +24,7 @@ public:
     ~Couple();
 
     // -- SETTERS, GETTERS -- //
-    QString getLabel(Couple& c){ return c.label; }
+    QString getLabel(){ return label; }
     void setLabel(QString& l) { label = l; }
     QString& getNote1() { return id1; }
     QString& getNote2() { return id2; }
@@ -32,6 +33,9 @@ public:
     // -- RECUPERATION DES DONNEES DANS LA BDD -- //
     static QSqlTableModel* getTableModel(QSqlDatabase db);
     static QTableView* getCoupleView(QSqlTableModel *table);
+
+    QSqlQuery getQuery(Relation* r);
+    QSqlQuery deleteQuery(Relation* r);
 };
 
 #endif // COUPLE_H

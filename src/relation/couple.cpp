@@ -1,8 +1,10 @@
 #include "couple.h"
+#include "relation.h"
 
 #include <QString>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
+
 
 QSqlTableModel* Couple::getTableModel(QSqlDatabase db){
         QSqlTableModel* modelCouple = new QSqlTableModel(0, db);
@@ -27,4 +29,28 @@ std::vector<QString> Couple::getNotes(){
     noms.push_back(id1);
     noms.push_back(id2);
     return noms;
+}
+
+QSqlQuery Couple::getQuery(Relation* r) {
+    QSqlQuery query;
+
+    query.prepare("INSERT INTO RelationNote VALUES (:relation, :n1, :n2, :label)");
+    query.bindValue(":relation", r->getTitre());
+    query.bindValue(":n1", getNote1());
+    query.bindValue(":n2", getNote2());
+    query.bindValue(":label", getLabel());
+
+    return query;
+}
+
+QSqlQuery Couple::deleteQuery(Relation* r) {
+    QSqlQuery query;
+
+    query.prepare("DELETE FROM RelationNote WHERE relation = :relation AND note1 = :n1 AND note2 = :n2");
+    query.bindValue(":relation", r->getTitre());
+    query.bindValue(":n1", getNote1());
+    query.bindValue(":n2", getNote2());
+    query.bindValue(":label", getLabel());
+
+    return query;
 }

@@ -31,6 +31,8 @@ public:
     void addRelation(Relation* r);
     int numberOfRelations() { return relations.size(); }
 
+    void supprimerRelation(Relation* r);
+
     std::vector<QString> nomRelations();
 
     bool noteImpliqueeDansRelation(Note* note);

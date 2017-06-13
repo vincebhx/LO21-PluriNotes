@@ -93,10 +93,12 @@ int main(int argc, char *argv[])
     catch(QSqlError e) { std::cout<<"Erreur SQL: "<<e.driverText().toStdString()<<" - "<<e.databaseText().toStdString()<<std::endl; }
     catch (...) { std::cout<<"ERREUR"<<std::endl; }
 
+    //Debug changement d'état et suppression de notes
+    /*
     NotesManager& nm = NotesManager::instance();
-    nm.archiveNote(nm.currentNote(ACTIVES));
-    //nm.trashNote(nm.currentNote(ARCHIVES));
-    //nm.deleteNote(nm.currentNote(CORBEILLE));
+    nm.changeState(CORBEILLE, nm.currentNote(ACTIVES));
+    nm.deleteNote(nm.currentNote(ACTIVES));
+    */
 
     MainWindow* window = new MainWindow;
     window->show();

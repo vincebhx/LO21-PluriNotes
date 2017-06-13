@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
+#include <iostream>
 #include <QDebug>
 
 #include <iostream>
@@ -63,7 +64,6 @@ QSqlQuery Note::getUpdateStateQuery() {
     QSqlQuery query;
     QString str = "UPDATE " + getTableName() + " SET etat = "+ QString::number(parent->getEtat())
             + " WHERE id = '" + id + "' AND version = " + QString::number(version);
-    qDebug()<<str;
     query.prepare(str);
     return query;
 }
@@ -71,7 +71,6 @@ QSqlQuery Note::getUpdateStateQuery() {
 QSqlQuery Note::getDeleteQuery() {
     QSqlQuery query;
     QString str = "DELETE FROM " + getTableName() + " WHERE id = '" + id +"' AND version = " + QString::number(version);
-    qDebug()<<str;
     query.prepare(str);
     return query;
 }
@@ -144,6 +143,7 @@ std::vector<QString> Note::implicationRelation(){
     return nomsRelation;
 }
 
+/*
 bool Note::referencesTerminees(){
     bool resultat = true;
 
@@ -163,7 +163,11 @@ bool Note::referencesTerminees(){
                     resultat = false;
                 }
             }
+=======
+        if (implicationRelation(*RMit)){
+            relations.push_back((*RMit)->getTitre());
+>>>>>>> 5d5c3ef9d84815ed1c3f9bca436dff7a95827056
         }
     }
     return resultat;
-}
+}*/

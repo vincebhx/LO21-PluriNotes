@@ -6,6 +6,7 @@
 
 typedef std::vector<VersionIndex*>::iterator NMIterator;
 typedef enum { ACTIVES = 0, ARCHIVES = 1, CORBEILLE = 2 } Etat;
+static const QString stateString[3] = {"actives", "archives", "corbeille"};
 
 class NotesManager
 {
@@ -70,8 +71,7 @@ public:
 
     void load();
     void addNote(Etat e, VersionIndex* v);
-    void archiveNote(VersionIndex* v);
-    void trashNote(VersionIndex* v);
+    void changeState(Etat targetState, VersionIndex* vIndex);
     void deleteNote(VersionIndex* v);
 
     VersionIndex* getNote(int i) { return actives[i]; }

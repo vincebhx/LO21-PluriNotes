@@ -48,37 +48,24 @@ void NotesManager::addNote(Etat e, VersionIndex* n) {
     indexId.push_back(n->currentVersion()->getId());
 }
 
-void NotesManager::archiveNote(VersionIndex* v) {
-    Etat etat = static_cast<Etat>(v->getEtat());
-    if (etat == ARCHIVES) //Note déjà archivée
-        qDebug()<<"Note déjà archivée !";
+void NotesManager::changeState(Etat targetState, VersionIndex* vIndex) {
+    Etat etat = static_cast<Etat>(vIndex->getEtat());
+    if (etat == targetState) //Note déjà dans l'état cible
+        qDebug()<<"Note déjà dans l'état cible ("<<stateString[targetState]<<") !";
     else {
-        this->addNote(ARCHIVES, v); //Met à jour l'état dans le VersionIndex !
-        NMIterator oldPos = find(this->begin(etat), this->end(etat), v);
-        switch (etat) {
-        case ACTIVES: actives.erase(oldPos); break;
-        case CORBEILLE: corbeille.erase(oldPos); break;
-        default: throw Exception("Erreur d'archivage : la position de la note est inconnue !");
-        }
-        for (VersionIterator it = v->begin(); it != v->end(); it++) //Mise à jour de toutes les versions de la note dans la BDD
-            DbManager::instance().updateNoteState(*it);
-    }
-}
+        this->addNote(targetState, vIndex);    //Ajoute la note dans l'état cible et à jour l'état dans le VersionIndex
+        NMIterator oldPos = find(this->begin(etat), this->end(etat), vIndex);
 
-void NotesManager::trashNote(VersionIndex* v) {
-    Etat etat = static_cast<Etat>(v->getEtat());
-    if (etat == CORBEILLE) //Note déjà archivée
-        qDebug()<<"Note déjà dans la corbeille !";
-    else {
-        this->addNote(CORBEILLE, v);    //Met à jour l'état dans le VersionIndex !
-        NMIterator oldPos = find(this->begin(etat), this->end(etat), v);
-        switch (etat) {
+        switch (etat) { //On ne sera jamais dans le cas où etat == targetState ici.
         case ACTIVES: actives.erase(oldPos); break;
-        case ARCHIVES: corbeille.erase(oldPos); break;
-        default: throw Exception("Erreur de mise à la corbeille : la position de la note est inconnue !");
+        case ARCHIVES: archives.erase(oldPos); break;
+        case CORBEILLE: corbeille.erase(oldPos); break;
+        default: throw Exception("Erreur de changement d'état (vers " + stateString[targetState]
+                                 + ") : la position de la note est inconnue !");
         }
-        for (VersionIterator it = v->begin(); it != v->end(); it++) //Mise à jour de toutes les versions de la note dans la BDD
-            DbManager::instance().updateNoteState(*it);
+
+        for (VersionIterator it = vIndex->begin(); it != vIndex->end(); it++) //Mise à jour de toutes les versions de la note dans la BDD
+            DbManager::instance().changeNoteState(*it);
     }
 }
 

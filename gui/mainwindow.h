@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QAbstractTableModel>
+#include <QTreeWidget>
 #include "mediator.h"
 #include "src/note/notesmanager.h"
 #include <iostream>
@@ -58,6 +59,20 @@ private slots:
     void loadNote(Note* note, QString type);
 
     void on_tableWidget_3_doubleClicked(const QModelIndex &index);
+
+    void loadRelationView(Note* n);
+
+    void addRoot(QString name, QString description, Note *n);
+    void addChild (QTreeWidgetItem *parent,QString name, QString description);
+
+
+    void on_pushButton_2_clicked();
+
+    void changeStateButton(Etat etat);
+
+    void on_archiver_clicked();
+
+    void on_supprimer_clicked();
 
 private:
     Ui::MainWindow *ui; // //

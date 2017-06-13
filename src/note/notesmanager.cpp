@@ -115,7 +115,6 @@ void NotesManager::load() {
 
     while(queryART.next()) {
         id = queryART.value(1).toString();
-        qDebug()<<id;
         n = new Article(
                     id,
                     queryART.value(2).toInt(),

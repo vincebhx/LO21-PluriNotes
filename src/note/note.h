@@ -48,6 +48,9 @@ public:
     const QDateTime& getDateCreat() const {return dateCreation; }
     QDateTime getDateLastModif() const {return dateModification; }
 
+    bool referencee();
+    bool archivee();
+
     QWidget* getNoteView();
     QSqlQuery getQuery();
 };

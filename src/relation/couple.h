@@ -35,6 +35,7 @@ public:
     static QTableView* getCoupleView(QSqlTableModel *table);
 
     QSqlQuery getQuery(Relation* r);
+    QSqlQuery deleteQuery(Relation* r);
 };
 
 #endif // COUPLE_H

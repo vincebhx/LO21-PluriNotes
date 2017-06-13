@@ -51,3 +51,15 @@ QSqlQuery Relation::getQuery(){
 
     return query;
 }
+
+
+QSqlQuery Relation::deleteQuery(){
+    QSqlQuery query;
+
+    query.prepare("DELETE FROM Relation WHERE titre = :titre");
+    query.bindValue(":titre", getTitre());
+
+    return query;
+}
+
+

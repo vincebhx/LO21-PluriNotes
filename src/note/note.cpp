@@ -55,3 +55,26 @@ QSqlQuery Note::getQuery() {
     query.bindValue(":dateModification", dateModification.toString(dateStorageFormat));
     return query;
 }
+
+bool Note::referencee(){
+    RelationsManager& rm = RelationsManager::instance();
+    QString reference("Reference");
+    Relation* ref = rm.findRelation(reference);
+    bool resultat = false;
+
+    for (RelationIterator ri = ref->begin(); ri != ref->end(); ri++){
+        if ((*ri)->getNote2() == getId()) resultat = true;
+    }
+    return resultat;
+}
+
+bool Note::archivee(){
+    NotesManager& nm = NotesManager::instance();
+    bool resultat = false;
+
+    for(NMIterator it = nm.begin(ARCHIVES); it!= nm.end(ARCHIVES); it++){
+        Note* n = (*it)->currentVersion();
+        if (n->getId() == id) resultat = true;
+    }
+    return resultat;
+}

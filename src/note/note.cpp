@@ -128,19 +128,19 @@ bool Note::implicationRelation(Relation* rel){
     return resultat;
 }
 
-std::vector<QString> Note::implicationRelation(){
-    std::vector<QString> nomsRelation;
+std::vector<Relation *> Note::implicationRelation(){
+    std::vector<Relation*> listRelation;
 
     RelationsManager& rm = RelationsManager::instance();
 
     for (RMIterator RMit = rm.begin(); RMit != rm.end(); RMit++){
         for (RelationIterator ri = (*RMit)->begin(); ri != (*RMit)->end(); ri++){
             if ((*ri)->getNote1() == id || (*ri)->getNote2() == id){
-                nomsRelation.push_back((*RMit)->getTitre());
+                listRelation.push_back(*RMit);
             }
         }
     }
-    return nomsRelation;
+    return listRelation;
 }
 
 /*

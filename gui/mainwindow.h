@@ -60,10 +60,11 @@ private slots:
 
     void on_tableWidget_3_doubleClicked(const QModelIndex &index);
 
-    void loadRelationView(Note* n);
 
     void addRoot(QString name, QString description, Note *n);
     void addChild (QTreeWidgetItem *parent,QString name, QString description);
+    void addAscendant(QTreeWidgetItem *parent, Relation *relation, Note *n);
+    void addDescendant(QTreeWidgetItem *parent, Relation* relation, Note* n);
 
 
     void on_pushButton_2_clicked();
@@ -73,6 +74,8 @@ private slots:
     void on_archiver_clicked();
 
     void on_supprimer_clicked();
+
+
 
 private:
     Ui::MainWindow *ui; // //

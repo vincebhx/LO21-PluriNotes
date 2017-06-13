@@ -52,7 +52,7 @@ public:
     QDateTime getDateLastModif() const {return dateModification; }
 
     bool implicationRelation(Relation* rel);
-    std::vector<QString> implicationRelation();
+    std::vector<Relation*> implicationRelation();
 
     bool referencee();
     bool archivee();

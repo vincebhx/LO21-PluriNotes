@@ -63,7 +63,8 @@ public:
     static QSqlTableModel* getTableModel(QSqlDatabase db);
     static QTableView* getTableView(QSqlTableModel* table);
 
-    QString getClassName() {return "tache";}
+    QString getClassName() { return "tache"; }
+    const QString getTableName() const { return "Tache"; }
 };
 
 #endif // TACHE_H

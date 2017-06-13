@@ -64,6 +64,8 @@ int main(int argc, char *argv[])
         QTableView* viewMedia = Media::getTableView(modelMedia);
         //viewMedia->show();
 
+        /*
+        //TEST : Affichage des notes actives dans la console
         std::string id1;
         unsigned int ver1;
         for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++) {
@@ -71,7 +73,7 @@ int main(int argc, char *argv[])
             ver1 = (*it)->currentVersion()->getVersion();
             std::cout<<id1<<" v"<<ver1<<std::endl;
         }
-
+        */
     }
     catch(Exception e) { std::cout<<"Erreur standard: "<<e.getInfo().toStdString()<<std::endl; }
     catch(QSqlError e) { std::cout<<"Erreur SQL: "<<e.driverText().toStdString()<<" - "<<e.databaseText().toStdString()<<std::endl; }

@@ -8,6 +8,7 @@
 #include "./src/relation/relationsmanager.h"
 
 #include <iostream>
+#include <algorithm>
 #include <QSqlRecord>
 #include <QSqlQuery>
 #include <QSqlError>
@@ -16,14 +17,14 @@
 NotesManager* NotesManager::_instance = 0;
 
 NotesManager::NotesManager() {
-    std::cout<<"Construction du NotesManager."<<std::endl;
+    qDebug()<<"Construction du NotesManager.";
 }
 
 NotesManager::~NotesManager() {
     actives.clear();
     archives.clear();
     corbeille.clear();
-    std::cout<<"NotesManager détruit."<<std::endl;
+    qDebug()<<"Destruction du NotesManager.";
 }
 
 NotesManager& NotesManager::instance() {
@@ -45,8 +46,50 @@ void NotesManager::addNote(Etat e, VersionIndex* n) {
             throw Exception("Une note possédant l'id " + n->currentVersion()->getId() + " existe déjà.");
     current.push_back(n);
     indexId.push_back(n->currentVersion()->getId());
+}
 
+void NotesManager::archiveNote(VersionIndex* v) {
+    Etat etat = static_cast<Etat>(v->getEtat());
+    if (etat == ARCHIVES) //Note déjà archivée
+        qDebug()<<"Note déjà archivée !";
+    else {
+        this->addNote(ARCHIVES, v); //Met à jour l'état dans le VersionIndex !
+        NMIterator oldPos = find(this->begin(etat), this->end(etat), v);
+        switch (etat) {
+        case ACTIVES: actives.erase(oldPos);
+        case CORBEILLE: corbeille.erase(oldPos);
+        default: throw Exception("Erreur d'archivage : la position de la note est inconnue !");
+        }
+        for (VersionIterator it = v->begin(); it != v->end(); it++) //Mise à jour de toutes les versions de la note dans la BDD
+            DbManager::instance().updateNoteState(*it);
+    }
+}
 
+void NotesManager::trashNote(VersionIndex* v) {
+    Etat etat = static_cast<Etat>(v->getEtat());
+    if (etat == CORBEILLE) //Note déjà archivée
+        qDebug()<<"Note déjà dans la corbeille !";
+    else {
+        this->addNote(CORBEILLE, v);    //Met à jour l'état dans le VersionIndex !
+        NMIterator oldPos = find(this->begin(etat), this->end(etat), v);
+        switch (etat) {
+        case ACTIVES: actives.erase(oldPos);
+        case ARCHIVES: corbeille.erase(oldPos);
+        default: throw Exception("Erreur de mise à la corbeille : la position de la note est inconnue !");
+        }
+        for (VersionIterator it = v->begin(); it != v->end(); it++) //Mise à jour de toutes les versions de la note dans la BDD
+            DbManager::instance().updateNoteState(*it);
+    }
+}
+
+void NotesManager::deleteNote(VersionIndex* v) {
+    Etat etat = static_cast<Etat>(v->getEtat());
+    if (etat != CORBEILLE)
+        qDebug()<<"Erreur : impossible de supprimer une note qui n'est pas dans la corbeille !";
+    else {
+        NMIterator pos = find(this->begin(CORBEILLE), this->end(CORBEILLE), v);
+        corbeille.erase(pos);
+    }
 }
 
 VersionIndex* NotesManager::findVersionIndex(QString id) {
@@ -98,7 +141,7 @@ std::vector<VersionIndex*> NotesManager::getTasks() {
 
 void NotesManager::load() {
     /*DEBUT*/
-    std::cout<<"Chargement des données..."<<std::endl;
+    qDebug()<<"\nChargement des données...";
     VersionIndex* vIndex;
     Note* n;
     QString id;
@@ -240,7 +283,7 @@ void NotesManager::load() {
     if(count != 0) NotesManager::instance().addNote(etat, vIndex);
 
     /*FIN*/
-    std::cout<<"Chargement effectué."<<std::endl;
+    qDebug()<<"Chargement effectué.\n";
 }
 
 

@@ -18,13 +18,13 @@ DbManager::DbManager(const QString& path)
     if(!db.open())
         throw Exception("Échec de la connexion à la base de données.");
     else
-        std::cout<<"Succès de la connexion à la base de données."<<std::endl;
+        qDebug() << "Succès de la connexion à la base de données.";
 }
 
 DbManager::~DbManager() {
     if (db.isOpen()) {
         db.close();
-        std::cout<<"Fermeture de la connexion avec la base de données."<<std::endl;
+        qDebug() << "Fermeture de la connexion avec la base de données.";
     }
 }
 
@@ -81,6 +81,21 @@ bool DbManager::saveCouple(Relation* r, Couple* c) {
     }
     else
         qDebug() << "Erreur - DbManager::addNote : "<< query.lastError();
+
+    query.finish();
+    return success;
+}
+
+bool DbManager::updateNoteState(Note *n) {
+    bool success = false;
+    QSqlQuery query = n->getUpdateStateQuery();
+
+    if(query.exec()) {
+        success = true;
+        qDebug() << "État de la note mise à jour dans la base de données.";
+    }
+    else
+        qDebug() << "Erreur - DbManager::updateNoteState : "<< query.lastError();
 
     query.finish();
     return success;

@@ -19,9 +19,12 @@ public:
     QSqlDatabase db;
     static DbManager& instance();
     void free();
+
     bool saveNote(Note* n);
     bool saveRelation(Relation* r);
     bool saveCouple(Relation* r, Couple* c);
+
+    bool updateNoteState(Note* n);
 };
 
 #endif // DBMANAGER_H

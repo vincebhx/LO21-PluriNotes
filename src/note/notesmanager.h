@@ -68,9 +68,11 @@ public:
         }
     }
 
-    void addNote(Etat e, VersionIndex* v);
     void load();
-    void load2();
+    void addNote(Etat e, VersionIndex* v);
+    void archiveNote(VersionIndex* v);
+    void trashNote(VersionIndex* v);
+    void deleteNote(VersionIndex* v);
 
     VersionIndex* getNote(int i) { return actives[i];}
     std::vector<QString> getAscendants(Note* note, Relation* relation);

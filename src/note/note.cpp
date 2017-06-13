@@ -56,6 +56,16 @@ QSqlQuery Note::getQuery() {
     return query;
 }
 
+QSqlQuery Note::getUpdateStateQuery() {
+    QSqlQuery query;
+    query.prepare("UPDATE :table SET etat = :etat WHERE id = ':id' AND version = :version");
+    query.bindValue(":table", getTableName());
+    query.bindValue(":etat", parent->getEtat());
+    query.bindValue(":id", id);
+    query.bindValue(":version", version);
+    return query;
+}
+
 bool Note::referencee(){
     RelationsManager& rm = RelationsManager::instance();
     QString reference("Reference");

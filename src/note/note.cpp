@@ -7,6 +7,8 @@
 #include <QPushButton>
 #include <QDebug>
 
+#include <iostream>
+
 const QString Note::dateDisplayFormat = "ddd dd MMMM yyyy à hh:mm:ss";
 const QString Note::dateStorageFormat = "dd/MM/yyyy hh:mm:ss";
 
@@ -97,6 +99,28 @@ bool Note::archivee(){
     return resultat;
 }
 
+bool Note::supprimee(){
+    NotesManager& nm = NotesManager::instance();
+    bool resultat = false;
+
+    for(NMIterator it = nm.begin(CORBEILLE); it!= nm.end(CORBEILLE); it++){
+        Note* n = (*it)->currentVersion();
+        if (n->getId() == id) resultat = true;
+    }
+    return resultat;
+}
+
+bool Note::activee(){
+    NotesManager& nm = NotesManager::instance();
+    bool resultat = false;
+
+    for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++){
+        Note* n = (*it)->currentVersion();
+        if (n->getId() == id) resultat = true;
+    }
+    return resultat;
+}
+
 bool Note::implicationRelation(Relation* rel){
     bool resultat = false;
     for (RelationIterator ri = rel->begin(); ri != rel->end(); ri++){
@@ -106,9 +130,40 @@ bool Note::implicationRelation(Relation* rel){
 }
 
 std::vector<QString> Note::implicationRelation(){
-    std::vector<QString> relations;
+    std::vector<QString> nomsRelation;
+
     RelationsManager& rm = RelationsManager::instance();
+
     for (RMIterator RMit = rm.begin(); RMit != rm.end(); RMit++){
-        if (implicationRelation(*RMit)) relations.push_back((*RMit)->getTitre());
+        for (RelationIterator ri = (*RMit)->begin(); ri != (*RMit)->end(); ri++){
+            if ((*ri)->getNote1() == id || (*ri)->getNote2() == id){
+                nomsRelation.push_back((*RMit)->getTitre());
+            }
+        }
     }
+    return nomsRelation;
+}
+
+bool Note::referencesTerminees(){
+    bool resultat = true;
+
+    RelationsManager& rm = RelationsManager::instance();
+    NotesManager& nm = NotesManager::instance();
+
+    // -- Est-elle référencée? -- //
+    if (referencee()){
+        QString titre("Reference");
+        Relation* ref = rm.findRelation(titre);
+
+        for (RelationIterator ri = ref->begin(); ri != ref->end(); ri++){
+            if ((*ri)->getNote2() == getId()){
+                // -- Référencée dans ce couple : l'ascendant est-il dans les archives ? -- /
+                Note* asc = nm.findNote((*ri)->getNote1());
+                if (asc->activee()){
+                    resultat = false;
+                }
+            }
+        }
+    }
+    return resultat;
 }

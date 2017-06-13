@@ -125,7 +125,7 @@ VersionIndex* NotesManager::findVersionIndex(QString id) {
 
 Note* NotesManager::findNote(QString id) {
 
-    VersionIndex* versionI = findVersionIndex(id);
+    VersionIndex* versionI = this->findVersionIndex(id);
     return versionI->currentVersion();
 
 }

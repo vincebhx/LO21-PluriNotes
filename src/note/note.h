@@ -2,6 +2,7 @@
 #define NOTE_H
 
 #include <Qt>
+#include <QList>
 #include <QDateTime>
 #include <QFormLayout>
 #include <QSqlQuery>
@@ -55,6 +56,9 @@ public:
 
     bool referencee();
     bool archivee();
+    bool activee();
+    bool supprimee();
+    bool referencesTerminees();
 
     QWidget* getNoteView();
     QSqlQuery getInsertQuery();

@@ -56,6 +56,20 @@ int main(int argc, char *argv[])
 
         }
 
+        // -- TEST IMPLICATION RELATION -- //
+        /*for (NMIterator ni = nm.begin(ACTIVES); ni != nm.end(ACTIVES); ni++){
+            std::vector<QString> bidule = (*ni)->currentVersion()->implicationRelation();
+            if (!bidule.empty()) std::cout<<"note active dans relation : "<<bidule[0].toStdString()<<std::endl;
+        }
+        for (NMIterator ni = nm.begin(ARCHIVES); ni != nm.end(ARCHIVES); ni++){
+            std::vector<QString> bidule = (*ni)->currentVersion()->implicationRelation();
+            if (!bidule.empty()) std::cout<<"Une note archivee dans relation : "<<bidule[0].toStdString()<<std::endl;
+        }
+        for (NMIterator ni = nm.begin(CORBEILLE); ni != nm.end(CORBEILLE); ni++){
+            std::vector<QString> bidule = (*ni)->currentVersion()->implicationRelation();
+            if (!bidule.empty()) std::cout<<"note dans la corbeille dans relation : "<<bidule[0].toStdString()<<std::endl;
+        }*/
+
         QSqlTableModel* modelTache = Tache::getTableModel(dbM.db);
         QTableView* viewTache = Tache::getTableView(modelTache);
         //viewTache->show();
@@ -64,7 +78,7 @@ int main(int argc, char *argv[])
         QTableView* viewMedia = Media::getTableView(modelMedia);
         //viewMedia->show();
 
-        /*
+    /*
         //TEST : Affichage des notes actives dans la console
         std::string id1;
         unsigned int ver1;
@@ -72,8 +86,8 @@ int main(int argc, char *argv[])
             id1 = (*it)->currentVersion()->getId().toStdString();
             ver1 = (*it)->currentVersion()->getVersion();
             std::cout<<id1<<" v"<<ver1<<std::endl;
-        }
-        */
+        }*/
+
     }
     catch(Exception e) { std::cout<<"Erreur standard: "<<e.getInfo().toStdString()<<std::endl; }
     catch(QSqlError e) { std::cout<<"Erreur SQL: "<<e.driverText().toStdString()<<" - "<<e.databaseText().toStdString()<<std::endl; }

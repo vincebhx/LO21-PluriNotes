@@ -1,5 +1,6 @@
 #include "relationsmanager.h"
 #include "./src/note/notesmanager.h"
+
 #include <iostream>
 #include <QString>
 #include <QSqlQuery>

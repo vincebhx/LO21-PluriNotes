@@ -39,3 +39,15 @@ QTableView* Relation::getRelationView(QSqlTableModel *table) {
 void Relation::addCouple(Couple *c){
     couples.push_back(c);
 }
+
+QSqlQuery Relation::getQuery(){
+    QSqlQuery query;
+
+    query.prepare("INSERT INTO Relation VALUES (:titre, :description, :orientation)");
+    query.bindValue(":titre", getTitre());
+    query.bindValue(":description", getDescription());
+    if (estOriente()) query.bindValue(":orientation", 1);
+    else query.bindValue("orientation", 0);
+
+    return query;
+}

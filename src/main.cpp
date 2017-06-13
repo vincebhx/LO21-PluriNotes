@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
     AjouterRelation* ajouterR = new AjouterRelation;
     mediator->addComponent(window);
     mediator->addComponent(createnote);
-    mediator->addComponent(ajouterR);
+    //mediator->addComponent(ajouterR);
     //mediator->disributeMessage(createnote, "hello");
 
 

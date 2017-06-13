@@ -38,6 +38,8 @@ public:
     RelationIterator begin() { return couples.begin(); }
     RelationIterator end() { return couples.end(); }
 
+    QSqlQuery getQuery();
+
     void addCouple(Couple* c);
 };
 

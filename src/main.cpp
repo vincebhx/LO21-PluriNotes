@@ -112,13 +112,6 @@ int main(int argc, char *argv[])
     //mediator->disributeMessage(createnote, "hello");
 
 
-
-
-
-
-
-
-
     QObject::connect(&app, SIGNAL(aboutToQuit()), window, SLOT(onClose()));
 
     return app.exec();

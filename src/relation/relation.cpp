@@ -19,12 +19,12 @@ using namespace std;
 
 QSqlTableModel* Relation::getTableModel(QSqlDatabase db){
     QSqlTableModel* modelRelation = new QSqlTableModel(0, db);
-    modelRelation->setTable("RelationNote");
+    modelRelation->setTable("Relation");
     modelRelation->select();
     modelRelation->setEditStrategy(QSqlTableModel::OnManualSubmit);
     modelRelation->setHeaderData(0, Qt::Horizontal, QObject::tr("relation"));
-    modelRelation->setHeaderData(1, Qt::Horizontal, QObject::tr("note1"));
-    modelRelation->setHeaderData(2, Qt::Horizontal, QObject::tr("note2"));
+    modelRelation->setHeaderData(1, Qt::Horizontal, QObject::tr("description"));
+    modelRelation->setHeaderData(2, Qt::Horizontal, QObject::tr("orientation"));
 
     return modelRelation;
 }
@@ -49,9 +49,6 @@ QSqlQuery Relation::getInsertQuery(){
     else {
         orientation = 0;
     }
-    std::cout<<"Relation :"<<getTitre().toStdString()<<" "<<getDescription().toStdString()<<" "<<orientation<<std::endl;
-    //QString str = "INSERT INTO Relation VALUES ('" + getTitre() + "', '" + getDescription() + "' ," + orientation +")";
-
     query.prepare("INSERT INTO Relation VALUES (':titre', ':description', :orientation)");
     query.bindValue(":titre", getTitre());
     query.bindValue(":description", getDescription());

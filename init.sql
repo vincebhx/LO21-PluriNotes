@@ -73,8 +73,8 @@ CREATE TABLE Relation(
 INSERT INTO Relation VALUES('mon apprentissage du c++','pour m aider a apprendre le c++',1);
 INSERT INTO Relation VALUES('mon contenu internet de qualite','garder les contenus cool que je trouve', 0);
 INSERT INTO Relation VALUES('premiers contenu que jai vu sur internet','garder les trucs cool que je trouve', 0);
-
 INSERT INTO Relation VALUES('jadore ecouter de la musique et regarder des images','les 2 sens',1);
+INSERT INTO Relation VALUES('Reference', 'Relation de reference entre deux notes', 1);
 CREATE TABLE RelationNote(
   relation TEXT,
   note1 TEXT NOT NULL,

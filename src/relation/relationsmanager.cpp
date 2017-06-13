@@ -46,8 +46,8 @@ void RelationsManager::loadRelations(){
     QSqlRecord rec;
     QSqlTableModel* rel = Relation::getTableModel(DbManager::instance().db);
 
-    Relation* ref = new Relation("Reference", "Relation de reference entre deux notes", 1);
-    addRelation(ref);
+    //Relation* ref = new Relation("Reference", "Relation de reference entre deux notes", 1);
+    //addRelation(ref);
 
     for (int i = 0; i < rel->rowCount(); i++){
         rec = rel->record(i);

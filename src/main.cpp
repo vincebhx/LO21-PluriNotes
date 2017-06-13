@@ -57,13 +57,12 @@ int main(int argc, char *argv[])
 
         }
 
-        /* // -- VOIR TOUTES LES RELATIONS + TOUS LES COUPLES CHARGES DANS RELATIONS MANAGER s-- //
-        for (RMIterator rmi = rm.begin(); rmi != rm.end(); rmi++){
-            std::cout<<"\nrelation test saveRelation : "<<(*rmi)->getTitre().toStdString()<<std::endl;
+        /*for (RMIterator rmi = rm.begin(); rmi != rm.end(); rmi++){
+            std::cout<<(*rmi)->getTitre().toStdString()<<std::endl;
             for (RelationIterator rit = (*rmi)->begin(); rit != (*rmi)->end(); rit++){
-                std::cout<<"\n couple saveCouple : "<<(*rit)->getLabel().toStdString()<<" "<<(*rit)->getNote1().toStdString()<<" "<<(*rit)->getNote2().toStdString()<<std::endl;
+                std::cout<<"Couple: "<<(*rit)->getLabel().toStdString()<<" "<<(*rit)->getNote1().toStdString()<<" "<<(*rit)->getNote2().toStdString()<<std::endl;
             }
-        }*/
+         }*/
 
         QSqlTableModel* modelTache = Tache::getTableModel(dbM.db);
         QTableView* viewTache = Tache::getTableView(modelTache);

@@ -29,7 +29,7 @@ void Mediator::disributeMessage(Widget* sender, QString msg)
         std::cout << "s1 : " << s1.toStdString() << "    s2 : "<< s2.toStdString() << "\n";
         if (s1 != s2) {
             component[i]->receiveMessage();
-            std::cout << "message envoye a component i _=\n";
+            std::cout << "message envoye a component i \n";
         }
     }
 }

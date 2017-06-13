@@ -20,15 +20,30 @@ MainWindow::MainWindow(QWidget *parent) : Widget(),
     //setCentralWidget(ui->stackedWidget);
     //NoteTableModel* model = new NoteTableModel;
 
-    ui->tableWidget_2->setColumnCount(2);
-    ui->tableWidget->setColumnCount(4);
+
+    ui->tableWidget->setColumnCount(4); //notes actives
+    ui->tableWidget_2->setColumnCount(1); //version
+    ui->tableWidget_3->setColumnCount(5); //taches
     ui->archive->setColumnCount(4);
-    ui->tableWidget_3->setColumnCount(4);
+
 
 
     ui->comboBox->addItem("En attente");
     ui->comboBox->addItem("En cours");
     ui->comboBox->addItem("Terminé");
+
+    QStringList headerTable1;
+    headerTable1 << "ID" << "Titre" << "Date de creation" << "Date de modification";
+    QStringList headerTable2;
+    headerTable2 << "Date de derniere modification";
+    QStringList headerTable3;
+    headerTable3 << "ID" << "Titre" << "Date Echeance" << "Action" << "Priorite";
+
+    ui->tableWidget->setHorizontalHeaderLabels(headerTable1);
+    ui->tableWidget_2->setHorizontalHeaderLabels(headerTable2);
+    ui->tableWidget_3->setHorizontalHeaderLabels(headerTable3);
+    ui->archive->setHorizontalHeaderLabels(headerTable1);
+
 
     loadTableWidgetActives();
     loadTableTache();
@@ -63,22 +78,27 @@ void MainWindow::loadTableWidgetActives() {
 void MainWindow::loadTableTache() {
     std::vector<QTableWidgetItem*> id;
     std::vector<QTableWidgetItem*> titre;
-    std::vector<QTableWidgetItem*> dateC;
-    std::vector<QTableWidgetItem*> dateM;
+    std::vector<QTableWidgetItem*> dateE;
+    std::vector<QTableWidgetItem*> action;
+    std::vector<QTableWidgetItem*> priorite;
     std::vector<VersionIndex*> list = nm.getTasks();
     ui->tableWidget_3->setRowCount(list.size());
     for (unsigned int i = 0; i < list.size(); i++) {
-        id.push_back(new QTableWidgetItem(list[i]->currentVersion()->getId()));
-        titre.push_back((new QTableWidgetItem(list[i]->currentVersion()->getTitre())));
-        dateC.push_back(new QTableWidgetItem(list[i]->currentVersion()->getDateCreat().toString()));
-        dateM.push_back(new QTableWidgetItem(list[i]->currentVersion()->getDateLastModif().toString()));
+        Tache* tache = dynamic_cast<Tache*>(list[i]->currentVersion());
+        id.push_back(new QTableWidgetItem(tache->getId()));
+        titre.push_back((new QTableWidgetItem(tache->getTitre())));
+        dateE.push_back(new QTableWidgetItem(tache->getDateEcheance().toString()));
+        action.push_back(new QTableWidgetItem(tache->getAction()));
+        priorite.push_back(new QTableWidgetItem(QString::number(tache->getPriorite())));
+
     }
 
     for (unsigned int i=0; i < ui->tableWidget_3->rowCount(); i++) {
         ui->tableWidget_3->setItem(i, 0, id[i]);
         ui->tableWidget_3->setItem(i, 1, titre[i]);
-        ui->tableWidget_3->setItem(i, 2, dateC[i]);
-        ui->tableWidget_3->setItem(i, 3, dateM[i]);
+        ui->tableWidget_3->setItem(i, 2, dateE[i]);
+        ui->tableWidget_3->setItem(i, 3, action[i]);
+        ui->tableWidget_3->setItem(i, 3, priorite[i]);
     }
 
 }
@@ -129,10 +149,17 @@ void MainWindow::onClose()
 
 void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
 {
-    int indice = index.row();
-    VersionIndex* vClicked = nm.getNote(indice);
-    Note* clicked = nm.getNote(indice)->currentVersion();
+    if (index.column() != 0) {
+        ui->tableWidget->setCurrentCell(index.row(), 0);
+    }
+    QString id = ui->tableWidget->currentItem()->text();
+    std::cout << "cell id : "<<id.toStdString() << "\n";
+    VersionIndex* vClicked = nm.findVersionIndex(id);
+    Note* clicked = vClicked->currentVersion();
+    std::cout << "clicked : " <<clicked->getId().toStdString() << "\n";
     QString type = clicked->getClassName();
+    std::cout << "clicked type : " <<type.toStdString() << "\n";
+    //loadClicked(clicked, type);
     loadClicked(clicked, type);
     loadVersion(vClicked);
 
@@ -203,8 +230,7 @@ void MainWindow::loadVersion(VersionIndex* vClicked) {
     ui->tableWidget_2->setRowCount(vClicked->nbOfVersions());
     int j =0;
     for (int i= vClicked->nbOfVersions()-1; i > -1 ; i--) {
-        ui->tableWidget_2->setItem(vClicked->nbOfVersions()-1-i, 0, new QTableWidgetItem(vClicked->at(i)->getDateCreat().toString()));
-        ui->tableWidget_2->setItem(vClicked->nbOfVersions()-1-i, 1, new QTableWidgetItem(vClicked->at(i)->getDateLastModif().toString()));
+        ui->tableWidget_2->setItem(vClicked->nbOfVersions()-1-i, 0, new QTableWidgetItem(vClicked->at(i)->getDateLastModif().toString()));
         j++;
     }
 }
@@ -333,4 +359,21 @@ void MainWindow::receiveMessage() {
     loadVersion(nm.getNote(nm.nbNotes((Etat)0) -1));
     ui->tableWidget->setCurrentCell(nm.nbNotes((Etat)0) -1, 0);
 
+}
+
+void MainWindow::on_tableWidget_3_doubleClicked(const QModelIndex &index)
+{
+    if (index.column() != 0) {
+        ui->tableWidget_3->setCurrentCell(index.row(), 0);
+    }
+    QString id = ui->tableWidget_3->currentItem()->text();
+    std::cout << "cell id : "<<id.toStdString() << "\n";
+    VersionIndex* vClicked = nm.findVersionIndex(id);
+    Note* clicked = vClicked->currentVersion();
+    std::cout << "clicked : " <<clicked->getId().toStdString() << "\n";
+    QString type = clicked->getClassName();
+    std::cout << "clicked type : " <<type.toStdString() << "\n";
+    //loadClicked(clicked, type);
+    loadClicked(clicked, type);
+    loadVersion(vClicked);
 }

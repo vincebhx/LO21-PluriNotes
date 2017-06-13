@@ -45,32 +45,42 @@ void NotesManager::addNote(Etat e, VersionIndex* n) {
             throw Exception("Une note possédant l'id " + n->currentVersion()->getId() + " existe déjà.");
     current.push_back(n);
     indexId.push_back(n->currentVersion()->getId());
+
+
 }
 
-Note* NotesManager::findNote(QString id) {
-    NotesManager& nm = NotesManager::instance();
+VersionIndex* NotesManager::findVersionIndex(QString id) {
+    //VersionIndex* versionI;
     Note* n;
 
     /* Recherche dans les notes actives */
-    for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++){
+    for(NMIterator it = this->begin(ACTIVES); it!= this->end(ACTIVES); it++){
         n = (*it)->currentVersion();
-        if (n->getId() == id) return n;
+        if (n->getId() == id) return *it;
     }
 
     /* Note non active : Recherche dans les archives */
-    for(NMIterator it = nm.begin(ARCHIVES); it!= nm.end(ARCHIVES); it++){
+    for(NMIterator it = this->begin(ARCHIVES); it!= this->end(ARCHIVES); it++){
         n = (*it)->currentVersion();
-        if (n->getId() == id) return n;
+        if (n->getId() == id) return *it;
     }
 
     /* Note ni active ni archivée : Recherche dans la corbeille */
-    for(NMIterator it = nm.begin(CORBEILLE); it!= nm.end(CORBEILLE); it++){
+    for(NMIterator it = this->begin(CORBEILLE); it!= this->end(CORBEILLE); it++){
         n = (*it)->currentVersion();
-        if (n->getId() == id) return n;
+        if (n->getId() == id) return *it;
     }
 
     /* Si on n'a pas trouvé la note : on renvoie un pointeur nul */
     return nullptr;
+
+}
+
+Note* NotesManager::findNote(QString id) {
+
+    VersionIndex* versionI = findVersionIndex(id);
+    return versionI->currentVersion();
+
 }
 
 std::vector<VersionIndex*> NotesManager::getTasks() {

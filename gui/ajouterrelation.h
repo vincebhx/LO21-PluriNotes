@@ -3,17 +3,21 @@
 
 #include <QDialog>
 #include "../src/note/notesmanager.h"
+#include "mediator.h"
+
 namespace Ui {
 class AjouterRelation;
 }
 
-class AjouterRelation : public QDialog
+class AjouterRelation : public QDialog, public Widget
 {
     Q_OBJECT
 
 public:
     explicit AjouterRelation(QWidget *parent = 0);
     ~AjouterRelation();
+    QString getCode() {return "ajouterR";}
+    void receiveMessage() {};
 
 private:
     Ui::AjouterRelation *ui;

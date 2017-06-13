@@ -52,13 +52,10 @@ QSqlQuery Relation::getInsertQuery(){
     return query;
 }
 
-
-QSqlQuery Relation::getDeleteQuery(){
+QSqlQuery Relation::getDeleteQuery() {
     QSqlQuery query;
-
-    query.prepare("DELETE FROM Relation WHERE titre = :titre");
-    query.bindValue(":titre", getTitre());
-
+    QString str = "DELETE FROM Relation WHERE titre = '" + titre +"'";
+    query.prepare(str);
     return query;
 }
 

@@ -107,7 +107,6 @@ void NotesManager::load() {
     /*ARTICLES*/
     QSqlQuery queryART;
     unsigned int count = 0;
-    bool newVIndex = true;
     QString currentId = "\0";
 
     queryART.prepare("SELECT * FROM Article ORDER BY id, version");
@@ -115,8 +114,8 @@ void NotesManager::load() {
     else qDebug() << "Erreur - NotesManager::load : "<< queryART.lastError();
 
     while(queryART.next()) {
-        newVIndex = false;
         id = queryART.value(1).toString();
+        qDebug()<<id;
         n = new Article(
                     id,
                     queryART.value(2).toInt(),
@@ -128,10 +127,7 @@ void NotesManager::load() {
 
         if(currentId != id) {
             currentId = id;
-            if(count != 0) {
-                NotesManager::instance().addNote(etat, vIndex);
-                newVIndex = true;
-            }
+            if(count != 0) NotesManager::instance().addNote(etat, vIndex);
             vIndex = new VersionIndex;
             Article::idIncrement++;
         }
@@ -139,13 +135,12 @@ void NotesManager::load() {
         etat = toEtat(queryART.value(0).toInt());
         count++;
     }
-    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
+    if (count != 0) NotesManager::instance().addNote(etat, vIndex);
 
     /*MEDIAS*/
     QSqlQuery queryMED;
     QString type;
     count = 0;
-    newVIndex = true;
     currentId = "\0";
 
     queryMED.prepare("SELECT * FROM Media ORDER BY id, version");
@@ -153,7 +148,6 @@ void NotesManager::load() {
     else qDebug() << "Erreur - NotesManager::load : "<< queryMED.lastError();
 
     while(queryMED.next()) {
-        newVIndex = false;
         id = queryMED.value(1).toString();
         type = queryMED.value(3).toString();
 
@@ -190,10 +184,7 @@ void NotesManager::load() {
 
         if(currentId != id) {
             currentId = id;
-            if(count != 0) {
-                NotesManager::instance().addNote(etat, vIndex);
-                newVIndex = true;
-            }
+            if(count != 0) NotesManager::instance().addNote(etat, vIndex);
             vIndex = new VersionIndex;
             if (type == "image") Image::idIncrement++;
             else if (type == "audio") Audio::idIncrement++;
@@ -203,7 +194,7 @@ void NotesManager::load() {
         etat = toEtat(queryMED.value(0).toInt());
         count++;
     }
-    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
+    if(count != 0) NotesManager::instance().addNote(etat, vIndex);
 
 
     /*TACHES*/
@@ -211,7 +202,6 @@ void NotesManager::load() {
     Statut stat;
     QString statStr;
     count = 0;
-    newVIndex = true;
     currentId = "\0";
 
     queryTCH.prepare("SELECT * FROM Tache ORDER BY id, version");
@@ -219,7 +209,6 @@ void NotesManager::load() {
     else qDebug() << "Erreur - NotesManager::load : "<< queryTCH.lastError();
 
     while(queryTCH.next()) {
-        newVIndex = false;
         id = queryTCH.value(1).toString();
 
         statStr = queryTCH.value(9).toString();
@@ -241,10 +230,7 @@ void NotesManager::load() {
 
         if(currentId != id) {
             currentId = id;
-            if(count != 0) {
-                NotesManager::instance().addNote(etat, vIndex);
-                newVIndex = true;
-            }
+            if(count != 0) NotesManager::instance().addNote(etat, vIndex);
             vIndex = new VersionIndex;
             Tache::idIncrement++;
         }
@@ -252,7 +238,7 @@ void NotesManager::load() {
         etat = toEtat(queryTCH.value(0).toInt());
         count++;
     }
-    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
+    if(count != 0) NotesManager::instance().addNote(etat, vIndex);
 
     /*FIN*/
     std::cout<<"Chargement effectué."<<std::endl;

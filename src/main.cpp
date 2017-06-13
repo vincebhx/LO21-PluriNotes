@@ -78,6 +78,12 @@ int main(int argc, char *argv[])
     catch(Exception e) { std::cout<<"Erreur standard: "<<e.getInfo().toStdString()<<std::endl; }
     catch(QSqlError e) { std::cout<<"Erreur SQL: "<<e.driverText().toStdString()<<" - "<<e.databaseText().toStdString()<<std::endl; }
     catch (...) { std::cout<<"ERREUR"<<std::endl; }
+
+    NotesManager& nm = NotesManager::instance();
+    nm.archiveNote(nm.currentNote(ACTIVES));
+    //nm.trashNote(nm.currentNote(ARCHIVES));
+    //nm.deleteNote(nm.currentNote(CORBEILLE));
+
     MainWindow* window = new MainWindow;
     window->show();
     Dialog* createnote = new Dialog;

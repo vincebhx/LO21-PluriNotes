@@ -57,6 +57,8 @@ private slots:
 
     void loadNote(Note* note, QString type);
 
+    void on_tableWidget_3_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui; // //
     NotesManager& nm;

@@ -25,6 +25,7 @@ public:
     void free();
 
     std::vector<QString> indexId; // TOUS LES ID DE TOUTES LES NOTES
+    VersionIndex* findVersionIndex(QString id);
     Note* findNote(QString id);
     int getIndexId(QString id);
     int getSizeIndexId() { return indexId.size(); }

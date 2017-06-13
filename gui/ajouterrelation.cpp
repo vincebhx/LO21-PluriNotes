@@ -1,7 +1,7 @@
 #include "ajouterrelation.h"
 #include "ui_ajouterrelation.h"
 
-AjouterRelation::AjouterRelation(QWidget *parent) :
+AjouterRelation::AjouterRelation(QWidget *parent) : Widget(),
     QDialog(parent),
     ui(new Ui::AjouterRelation),nm(NotesManager::instance())
 {

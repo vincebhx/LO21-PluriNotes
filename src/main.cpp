@@ -57,18 +57,12 @@ int main(int argc, char *argv[])
 
         }
 
-        // -- TEST IMPLICATION RELATION -- //
-        /*for (NMIterator ni = nm.begin(ACTIVES); ni != nm.end(ACTIVES); ni++){
-            std::vector<QString> bidule = (*ni)->currentVersion()->implicationRelation();
-            if (!bidule.empty()) std::cout<<"note active dans relation : "<<bidule[0].toStdString()<<std::endl;
-        }
-        for (NMIterator ni = nm.begin(ARCHIVES); ni != nm.end(ARCHIVES); ni++){
-            std::vector<QString> bidule = (*ni)->currentVersion()->implicationRelation();
-            if (!bidule.empty()) std::cout<<"Une note archivee dans relation : "<<bidule[0].toStdString()<<std::endl;
-        }
-        for (NMIterator ni = nm.begin(CORBEILLE); ni != nm.end(CORBEILLE); ni++){
-            std::vector<QString> bidule = (*ni)->currentVersion()->implicationRelation();
-            if (!bidule.empty()) std::cout<<"note dans la corbeille dans relation : "<<bidule[0].toStdString()<<std::endl;
+        /* // -- VOIR TOUTES LES RELATIONS + TOUS LES COUPLES CHARGES DANS RELATIONS MANAGER s-- //
+        for (RMIterator rmi = rm.begin(); rmi != rm.end(); rmi++){
+            std::cout<<"\nrelation test saveRelation : "<<(*rmi)->getTitre().toStdString()<<std::endl;
+            for (RelationIterator rit = (*rmi)->begin(); rit != (*rmi)->end(); rit++){
+                std::cout<<"\n couple saveCouple : "<<(*rit)->getLabel().toStdString()<<" "<<(*rit)->getNote1().toStdString()<<" "<<(*rit)->getNote2().toStdString()<<std::endl;
+            }
         }*/
 
         QSqlTableModel* modelTache = Tache::getTableModel(dbM.db);

@@ -149,7 +149,10 @@ std::vector<QString> RelationsManager::nomRelations(){
 
 
 void RelationsManager::supprimerRelation(Relation* r){
+    // -- PERMET DE SUPPRIMER UNE RELATION R DU RELATIONS MANAGER
     QString titre = r->getTitre();
+
+    // -- R EST-ELLE LA RELATION REFERENCE A NE JAMAIS SUPPRIMER ? -- //
     if (titre.toStdString() == "Reference"){
         std::cout<<"Impossible de supprimer la relation Référence.\n";
     }

@@ -2,6 +2,7 @@
 #include "note/note.h"
 #include "exception.h"
 #include "./relation/relation.h"
+#include "./relation/relationsmanager.h"
 
 #include <iostream>
 #include <QFileDialog>
@@ -56,6 +57,7 @@ bool DbManager::saveNote(Note *n) {
     return success;
 }
 
+// -- INSERTION D'UNE RELATION DANS LA BASE DE DONNEES -- //
 bool DbManager::saveRelation(Relation* r) {
     bool success = false;
     QSqlQuery query = r->getInsertQuery();
@@ -63,6 +65,7 @@ bool DbManager::saveRelation(Relation* r) {
     if(query.exec()) {
         success = true;
         qDebug() << "Note ajoutée à la base de données.";
+        RelationsManager::instance().addRelation(r);
     }
     else
         qDebug() << "Erreur - DbManager::addNote : "<< query.lastError();
@@ -78,6 +81,7 @@ bool DbManager::saveCouple(Relation* r, Couple* c) {
     if(query.exec()) {
         success = true;
         qDebug() << "Note ajoutée à la base de données.";
+        r->addCouple(c);
     }
     else
         qDebug() << "Erreur - DbManager::addNote : "<< query.lastError();
@@ -117,6 +121,7 @@ bool DbManager::deleteNote(Note* n) {
     return success;
 };
 
+// -- SUPPRESSION D'UN COUPLE DANS LA BASE DE DONNEES -- //
 bool DbManager::deleteCouple(Couple* c, Relation* r) {
     bool success = false;
     QSqlQuery query = c->getDeleteQuery(r);
@@ -138,13 +143,17 @@ bool DbManager::deleteRelation(Relation* r) {
     QString ref = "Reference";
     if (r->getTitre() != ref){
 
+        // -- SUPPRESSION DES COUPLES DANS LA BASE DE DONNEES -- //
         for (RelationIterator ri = r->begin(); ri != r->end(); ri++){
             bool succes = deleteCouple((*ri), r);
         }
+        // -- SUPPRESSION DES COUPLES DANS LE RELATIONS MANAGER -- //
+        r->deleteCouples();
 
         QSqlQuery query = r->getDeleteQuery();
         qDebug()<<getLastQuery(query);
 
+        // -- SUPPRESSION DE LA RELATION DANS LA BASE DE DONNEES -- //
         if(query.exec()) {
             success = true;
             qDebug() << "Relation supprimée dans la base de données.";
@@ -152,6 +161,9 @@ bool DbManager::deleteRelation(Relation* r) {
         else
             qDebug() << "Erreur - DbManager::deleteNote : "<< query.lastError();
         query.finish();
+
+        // -- SUPPRESSION DE LA RELATION DANS LE RELATIONSMANAGER -- //
+        if (success == true) RelationsManager::instance().supprimerRelation(r);
     }
     return success;
 }

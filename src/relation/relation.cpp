@@ -42,12 +42,21 @@ void Relation::addCouple(Couple *c){
 
 QSqlQuery Relation::getInsertQuery(){
     QSqlQuery query;
+    int orientation;
+    if (estOriente()){
+        orientation = 1;
+    }
+    else {
+        orientation = 0;
+    }
+    std::cout<<"Relation :"<<getTitre().toStdString()<<" "<<getDescription().toStdString()<<" "<<orientation<<std::endl;
+    //QString str = "INSERT INTO Relation VALUES ('" + getTitre() + "', '" + getDescription() + "' ," + orientation +")";
 
-    query.prepare("INSERT INTO Relation VALUES (:titre, :description, :orientation)");
+    query.prepare("INSERT INTO Relation VALUES (':titre', ':description', :orientation)");
     query.bindValue(":titre", getTitre());
     query.bindValue(":description", getDescription());
-    if (estOriente()) query.bindValue(":orientation", 1);
-    else query.bindValue("orientation", 0);
+    query.bindValue(":orientation", orientation);
+    //query.prepare(str);
 
     return query;
 }

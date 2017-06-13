@@ -288,14 +288,12 @@ int NotesManager::getIndexId(QString id){
 
 std::vector<QString> NotesManager::getAscendants(Note* note, Relation* relation){
     std::vector<QString> ascendants;
-
-    // -- LA NOTE DONT ON CHERCHE LES ASCENDANTS -- //
+    // -- L'ID DE LA NOTE DONT ON CHERCHE LES ASCENDANTS -- //
     QString idNote = note->getId();
-
+    // -- ETUDE DE CHAQUE COUPLE DE LA RELATION relation -- //
     for (RelationIterator ri = relation->begin(); ri != relation->end(); ri++){
         if ((*ri)->getNote2() == idNote) ascendants.push_back((*ri)->getNote1());
     }
-
     return ascendants;
 }
 
@@ -304,10 +302,9 @@ std::vector<QString> NotesManager::getDescendants(Note* note, Relation* relation
 
     // -- LA NOTE DONT ON CHERCHE LES ASCENDANTS -- //
     QString idNote = note->getId();
-
+    // -- ETUDE DE TOUS LES COUPLES DE LA RELATION relation -- //
     for (RelationIterator ri = relation->begin(); ri != relation->end(); ri++){
         if ((*ri)->getNote1() == idNote) descendants.push_back((*ri)->getNote2());
     }
-
     return descendants;
 }

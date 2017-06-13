@@ -8,6 +8,7 @@
 #include <QString>
 
 class VersionIndex;
+class Relation;
 
 ///Décrit une Note (interface, classe abstraite)
 class Note
@@ -47,6 +48,9 @@ public:
     QString getTitre() const { return titre; }
     const QDateTime& getDateCreat() const {return dateCreation; }
     QDateTime getDateLastModif() const {return dateModification; }
+
+    bool implicationRelation(Relation* rel);
+    std::vector<QString> implicationRelation();
 
     bool referencee();
     bool archivee();

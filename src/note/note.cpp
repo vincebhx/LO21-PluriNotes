@@ -78,3 +78,19 @@ bool Note::archivee(){
     }
     return resultat;
 }
+
+bool Note::implicationRelation(Relation* rel){
+    bool resultat = false;
+    for (RelationIterator ri = rel->begin(); ri != rel->end(); ri++){
+        if ((*ri)->getNote1() == getId() || (*ri)->getNote2() == getId()) resultat = true;
+    }
+    return resultat;
+}
+
+std::vector<QString> Note::implicationRelation(){
+    std::vector<QString> relations;
+    RelationsManager& rm = RelationsManager::instance();
+    for (RMIterator RMit = rm.begin(); RMit != rm.end(); RMit++){
+        if (implicationRelation(*RMit)) relations.push_back((*RMit)->getTitre());
+    }
+}

@@ -66,6 +66,15 @@ QSqlQuery Note::getUpdateStateQuery() {
     return query;
 }
 
+QSqlQuery Note::getDeleteQuery() {
+    QSqlQuery query;
+    query.prepare("DELETE FROM :table WHERE id = ':id' AND version = :version");
+    query.bindValue(":table", getTableName());
+    query.bindValue(":id", id);
+    query.bindValue(":version", version);
+    return query;
+}
+
 bool Note::referencee(){
     RelationsManager& rm = RelationsManager::instance();
     QString reference("Reference");

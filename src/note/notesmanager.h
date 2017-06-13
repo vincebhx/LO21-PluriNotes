@@ -74,7 +74,7 @@ public:
     void trashNote(VersionIndex* v);
     void deleteNote(VersionIndex* v);
 
-    VersionIndex* getNote(int i) { return actives[i];}
+    VersionIndex* getNote(int i) { return actives[i]; }
     std::vector<QString> getAscendants(Note* note, Relation* relation);
     std::vector<QString> getDescendants(Note* note, Relation* relation);
 

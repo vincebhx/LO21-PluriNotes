@@ -87,8 +87,12 @@ void NotesManager::deleteNote(VersionIndex* v) {
     if (etat != CORBEILLE)
         qDebug()<<"Erreur : impossible de supprimer une note qui n'est pas dans la corbeille !";
     else {
+        for (VersionIterator it = v->begin(); it != v->end(); it++) //Mise à jour de toutes les versions de la note dans la BDD
+            DbManager::instance().deleteNote(*it);
+
         NMIterator pos = find(this->begin(CORBEILLE), this->end(CORBEILLE), v);
         corbeille.erase(pos);
+        delete v;
     }
 }
 

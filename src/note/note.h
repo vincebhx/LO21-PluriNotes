@@ -34,7 +34,6 @@ public:
 
     virtual QString getClassName() = 0;
     virtual const QString getTableName() const = 0;
-    QSqlQuery getUpdateStateQuery();
 
     void setParent(VersionIndex* v) { parent = v; }
     const VersionIndex* getParent() { return parent; }
@@ -59,6 +58,8 @@ public:
 
     QWidget* getNoteView();
     QSqlQuery getQuery();
+    QSqlQuery getUpdateStateQuery();
+    QSqlQuery getDeleteQuery();
 };
 
 #endif // NOTE_H

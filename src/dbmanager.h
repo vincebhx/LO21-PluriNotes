@@ -25,6 +25,8 @@ public:
     bool saveCouple(Relation* r, Couple* c);
 
     bool updateNoteState(Note* n);
+
+    bool deleteNote(Note* n);
 };
 
 #endif // DBMANAGER_H

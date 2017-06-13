@@ -100,3 +100,18 @@ bool DbManager::updateNoteState(Note *n) {
     query.finish();
     return success;
 }
+
+bool DbManager::deleteNote(Note* n) {
+    bool success = false;
+    QSqlQuery query = n->getDeleteQuery();
+
+    if(query.exec()) {
+        success = true;
+        qDebug() << "Note supprimée dans la base de données.";
+    }
+    else
+        qDebug() << "Erreur - DbManager::updateNoteState : "<< query.lastError();
+
+    query.finish();
+    return success;
+}

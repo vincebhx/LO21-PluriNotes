@@ -77,6 +77,12 @@ private slots:
 
 
 
+    void on_ajouterR_clicked();
+
+    void on_pushButton_6_clicked();
+
+    void receiveMessageCorbeille();
+
 private:
     Ui::MainWindow *ui; // //
     NotesManager& nm;

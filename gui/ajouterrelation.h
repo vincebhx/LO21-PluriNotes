@@ -18,6 +18,7 @@ public:
     ~AjouterRelation();
     QString getCode() {return "ajouterR";}
     void receiveMessage() {};
+    void receiveMessageARelation();
 
 private:
     Ui::AjouterRelation *ui;

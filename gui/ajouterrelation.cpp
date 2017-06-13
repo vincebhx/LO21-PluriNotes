@@ -17,3 +17,7 @@ AjouterRelation::~AjouterRelation()
 {
     delete ui;
 }
+
+void AjouterRelation::receiveMessageARelation() {
+    this->show();
+}

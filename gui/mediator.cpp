@@ -26,10 +26,23 @@ void Mediator::disributeMessage(Widget* sender, QString msg)
     for (unsigned int i =0 ; i < this->component.size() ; i++) {
         QString s1 = sender->getCode();
         QString s2 = component[i]->getCode();
-        std::cout << "s1 : " << s1.toStdString() << "    s2 : "<< s2.toStdString() << "\n";
-        if (s1 != s2) {
-            component[i]->receiveMessage();
-            std::cout << "message envoye a component i \n";
+        if (msg == "Note"){
+            if (s1 != s2) {
+                component[i]->receiveMessage();
+            }
+        }
+        else if (msg == "Corbeille"){
+            if (s1 != s2) {
+                component[i]->receiveMessageCorbeille();
+            }
+        }
+
+        else if (msg == "Ajout Relation"){
+            if (s1 != s2) {
+                component[i]->receiveMessageARelation();
+            }
         }
     }
 }
+
+

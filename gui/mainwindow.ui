@@ -606,6 +606,19 @@
      <string>Modifier une relation</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_6">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>560</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Corbeille</string>
+    </property>
+   </widget>
    <zorder>layoutWidget</zorder>
    <zorder>stackedWidget</zorder>
    <zorder>supprimer</zorder>
@@ -615,6 +628,7 @@
    <zorder>pushButton_5</zorder>
    <zorder>ajouterR</zorder>
    <zorder>modifierR</zorder>
+   <zorder>pushButton_6</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

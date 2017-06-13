@@ -141,7 +141,7 @@ void MainWindow::on_pushButton_clicked()
 {
     //Dialog* createnote = new Dialog;
     //createnote->show();
-    sendMessage();
+    sendMessage("Note");
 }
 
 
@@ -472,4 +472,19 @@ void MainWindow::on_archiver_clicked() {
 
 void MainWindow::on_supprimer_clicked() {
     changeStateButton(CORBEILLE);
+}
+
+void MainWindow::on_ajouterR_clicked()
+{
+    sendMessage("Ajout Relation");
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+     sendMessage("Corbeille");
+}
+
+void MainWindow::receiveMessageCorbeille() {
+    loadTableTache();
+    loadTableWidgetActives();
 }

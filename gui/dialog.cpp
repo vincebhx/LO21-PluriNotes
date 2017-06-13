@@ -127,6 +127,6 @@ void Dialog::on_buttonBox_clicked(QAbstractButton *button)
         break;
     }
 
-    sendMessage();
+    sendMessage("Note");
 
     }

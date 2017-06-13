@@ -29,13 +29,14 @@ class Widget
 {
 protected :
     Mediator* med;
-    //QString code;
 
 public:
     Widget() : med(Mediator::instance()){};
-    virtual void sendMessage() { med->disributeMessage(this, "hello"); }
+    virtual void sendMessage(QString msg) { med->disributeMessage(this, msg); }
     virtual void receiveMessage() = 0;
     virtual QString getCode() = 0;
+    virtual void receiveMessageCorbeille(){};
+    virtual void receiveMessageARelation() {};
 
 
 };

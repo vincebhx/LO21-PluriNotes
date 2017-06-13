@@ -20,7 +20,7 @@ public:
     explicit Dialog(QWidget *parent = 0);
     void validForm();
     ~Dialog();
-    void receiveMessage() { std::cout << "message recu dialog" << std::endl;
+    void receiveMessage() {
                           this->show();}
 
     /*void sendMessage() {

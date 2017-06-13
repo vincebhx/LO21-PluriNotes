@@ -115,6 +115,45 @@ bool DbManager::deleteNote(Note* n) {
         qDebug() << "Erreur - DbManager::deleteNote : "<< query.lastError();
     query.finish();
     return success;
+};
+
+bool DbManager::deleteCouple(Couple* c, Relation* r) {
+    bool success = false;
+    QSqlQuery query = c->getDeleteQuery(r);
+    qDebug()<<getLastQuery(query);
+
+    if(query.exec()) {
+        success = true;
+        qDebug() << "Note supprimée dans la base de données.";
+    }
+    else
+        qDebug() << "Erreur - DbManager::deleteNote : "<< query.lastError();
+    query.finish();
+    return success;
+};
+
+
+bool DbManager::deleteRelation(Relation* r) {
+    bool success = false;
+    QString ref = "Reference";
+    if (r->getTitre() != ref){
+
+        for (RelationIterator ri = r->begin(); ri != r->end(); ri++){
+            bool succes = deleteCouple((*ri), r);
+        }
+
+        QSqlQuery query = r->getDeleteQuery();
+        qDebug()<<getLastQuery(query);
+
+        if(query.exec()) {
+            success = true;
+            qDebug() << "Relation supprimée dans la base de données.";
+        }
+        else
+            qDebug() << "Erreur - DbManager::deleteNote : "<< query.lastError();
+        query.finish();
+    }
+    return success;
 }
 
 QString DbManager::getLastQuery(const QSqlQuery& query) {

@@ -28,6 +28,9 @@ public:
 
     bool deleteNote(Note* n);
 
+    bool deleteRelation(Relation* r);
+    bool deleteCouple(Couple* c, Relation* r);
+
     QString getLastQuery(const QSqlQuery& query);
 };
 

@@ -11,6 +11,9 @@
 #include "dialog.h"
 #include "../src/note/versionindex.h"
 #include <iostream>
+#include <QTreeWidget>
+#include <iostream>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent) : Widget(),
     QMainWindow(parent),
@@ -44,6 +47,7 @@ MainWindow::MainWindow(QWidget *parent) : Widget(),
     ui->tableWidget_3->setHorizontalHeaderLabels(headerTable3);
     ui->archive->setHorizontalHeaderLabels(headerTable1);
 
+    ui->treeWidget->setColumnCount(1);
 
     loadTableWidgetActives();
     loadTableTache();
@@ -162,6 +166,13 @@ void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
     //loadClicked(clicked, type);
     loadClicked(clicked, type);
     loadVersion(vClicked);
+    std::vector<QString> relations = clicked->implicationRelation();
+   /* QTreeWidgetItem* item = new QTreeWidgetItem(ui->treeWidget);
+
+    for (unsigned int i=0; i< relations.size(); i++){
+        //item->setText(0, relations[i]);
+        //ui->treeWidget->addTopLevelItem(item);
+    }*/
 
 }
 
@@ -376,4 +387,49 @@ void MainWindow::on_tableWidget_3_doubleClicked(const QModelIndex &index)
     //loadClicked(clicked, type);
     loadClicked(clicked, type);
     loadVersion(vClicked);
+}
+
+void MainWindow::addRoot(QString name, QString description, Note* n) {
+    QTreeWidgetItem* item = new QTreeWidgetItem(ui->treeWidget);
+    std::vector<QString> relations = n->implicationRelation();
+    for (unsigned int i=0; i< relations.size(); i++){
+        item->setText(0, relations[i]);
+        ui->treeWidget->addTopLevelItem(item);
+    }
+    /*item->setText(0, name);
+    ui->treeWidget->addTopLevelItem(item);
+    addChild(item, "one");
+    addChild(item, "two");*/
+
+}
+
+void MainWindow::addChild (QTreeWidgetItem *parent,QString name, QString description) {
+    QTreeWidgetItem* item = new QTreeWidgetItem();
+    QTreeWidgetItem* item2 = new QTreeWidgetItem();
+    item->setText(0, name);
+    parent->addChild(item);
+}
+
+
+
+
+void MainWindow::loadRelationView(Note* n) {
+    /* Récuperer list des relations ou la note est impliquée
+     * un treewidgetItem par relation; setTopLevelItem
+     * pour chaque relation :  sous-level ascendant et descendant
+     * pour ascendant et descedant treewidgetitem avec la note en question */
+
+    std::vector<QString> relationName = n->implicationRelation();
+    /*QStringList relationList;
+    for (unsigned int i=0; i<relationName.size(); i++) {
+        relationList << relationName[i];
+    }*/
+
+
+
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+
 }

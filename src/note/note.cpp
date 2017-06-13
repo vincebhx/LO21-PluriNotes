@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
+#include <iostream>
 
 const QString Note::dateDisplayFormat = "ddd dd MMMM yyyy à hh:mm:ss";
 const QString Note::dateStorageFormat = "dd/MM/yyyy hh:mm:ss";
@@ -91,6 +92,8 @@ std::vector<QString> Note::implicationRelation(){
     std::vector<QString> relations;
     RelationsManager& rm = RelationsManager::instance();
     for (RMIterator RMit = rm.begin(); RMit != rm.end(); RMit++){
-        if (implicationRelation(*RMit)) relations.push_back((*RMit)->getTitre());
+        if (implicationRelation(*RMit)){
+            relations.push_back((*RMit)->getTitre());
+        }
     }
 }

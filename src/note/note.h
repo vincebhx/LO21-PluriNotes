@@ -57,7 +57,7 @@ public:
     bool archivee();
 
     QWidget* getNoteView();
-    QSqlQuery getQuery();
+    QSqlQuery getInsertQuery();
     QSqlQuery getUpdateStateQuery();
     QSqlQuery getDeleteQuery();
 };

@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QDebug>
 
 const QString Note::dateDisplayFormat = "ddd dd MMMM yyyy à hh:mm:ss";
 const QString Note::dateStorageFormat = "dd/MM/yyyy hh:mm:ss";
@@ -45,7 +46,7 @@ QWidget* Note::getNoteView() {
     return view;
 }
 
-QSqlQuery Note::getQuery() {
+QSqlQuery Note::getInsertQuery() {
     QSqlQuery query = prepareQuery();
     query.bindValue(":etat", parent->getEtat());
     query.bindValue(":id", id);
@@ -58,20 +59,18 @@ QSqlQuery Note::getQuery() {
 
 QSqlQuery Note::getUpdateStateQuery() {
     QSqlQuery query;
-    query.prepare("UPDATE :table SET etat = :etat WHERE id = :id AND version = :version");
-    query.bindValue(":table", getTableName());
-    query.bindValue(":etat", parent->getEtat());
-    query.bindValue(":id", id);
-    query.bindValue(":version", version);
+    QString str = "UPDATE " + getTableName() + " SET etat = "+ QString::number(parent->getEtat())
+            + " WHERE id = '" + id + "' AND version = " + QString::number(version);
+    qDebug()<<str;
+    query.prepare(str);
     return query;
 }
 
 QSqlQuery Note::getDeleteQuery() {
     QSqlQuery query;
-    query.prepare("DELETE FROM :table WHERE id = :id AND version = :version");
-    query.bindValue(":table", getTableName());
-    query.bindValue(":id", id);
-    query.bindValue(":version", version);
+    QString str = "DELETE FROM " + getTableName() + " WHERE id = '" + id +"' AND version = " + QString::number(version);
+    qDebug()<<str;
+    query.prepare(str);
     return query;
 }
 

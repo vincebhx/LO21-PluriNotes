@@ -53,17 +53,13 @@ void NotesManager::archiveNote(VersionIndex* v) {
     if (etat == ARCHIVES) //Note déjà archivée
         qDebug()<<"Note déjà archivée !";
     else {
-        qDebug()<<"archiveNote1";
         this->addNote(ARCHIVES, v); //Met à jour l'état dans le VersionIndex !
-        qDebug()<<"archiveNote2";
         NMIterator oldPos = find(this->begin(etat), this->end(etat), v);
-        qDebug()<<"archiveNote3";
         switch (etat) {
         case ACTIVES: actives.erase(oldPos); break;
         case CORBEILLE: corbeille.erase(oldPos); break;
         default: throw Exception("Erreur d'archivage : la position de la note est inconnue !");
         }
-        qDebug()<<"archiveNote3";
         for (VersionIterator it = v->begin(); it != v->end(); it++) //Mise à jour de toutes les versions de la note dans la BDD
             DbManager::instance().updateNoteState(*it);
     }

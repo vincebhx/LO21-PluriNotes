@@ -43,7 +43,7 @@ void DbManager::free() {
 
 bool DbManager::saveNote(Note *n) {
     bool success = false;
-    QSqlQuery query = n->getQuery();
+    QSqlQuery query = n->getInsertQuery();
 
     if(query.exec()) {
         success = true;
@@ -58,7 +58,7 @@ bool DbManager::saveNote(Note *n) {
 
 bool DbManager::saveRelation(Relation* r) {
     bool success = false;
-    QSqlQuery query = r->getQuery();
+    QSqlQuery query = r->getInsertQuery();
 
     if(query.exec()) {
         success = true;
@@ -73,7 +73,7 @@ bool DbManager::saveRelation(Relation* r) {
 
 bool DbManager::saveCouple(Relation* r, Couple* c) {
     bool success = false;
-    QSqlQuery query = c->getQuery(r);
+    QSqlQuery query = c->getInsertQuery(r);
 
     if(query.exec()) {
         success = true;

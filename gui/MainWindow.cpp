@@ -11,6 +11,10 @@
 #include "dialog.h"
 #include "../src/note/versionindex.h"
 #include <iostream>
+#include <QTreeWidget>
+#include <iostream>
+#include <QFileDialog>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) : Widget(),
     QMainWindow(parent),
@@ -44,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) : Widget(),
     ui->tableWidget_3->setHorizontalHeaderLabels(headerTable3);
     ui->archive->setHorizontalHeaderLabels(headerTable1);
 
+    ui->treeWidget->setColumnCount(2);
 
     loadTableWidgetActives();
     loadTableTache();
@@ -162,7 +167,15 @@ void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
     //loadClicked(clicked, type);
     loadClicked(clicked, type);
     loadVersion(vClicked);
-
+    /*std::vector<QString> relations = clicked->implicationRelation();
+    QTreeWidgetItem* item = new QTreeWidgetItem(ui->treeWidget);
+    for (unsigned int i=0; i< relations.size(); i++){
+        item->setText(0, relations[i]);
+        item->setText(1, "relations[i]");
+        ui->treeWidget->addTopLevelItem(item);
+    }*/
+    ui->treeWidget->clear();
+    addRoot("Relation ou la note est impliquée", "desc", clicked);
 }
 
 void MainWindow::loadClicked(Note* clicked, QString type) {
@@ -376,4 +389,87 @@ void MainWindow::on_tableWidget_3_doubleClicked(const QModelIndex &index)
     //loadClicked(clicked, type);
     loadClicked(clicked, type);
     loadVersion(vClicked);
+}
+
+void MainWindow::addRoot(QString name, QString description, Note* n) {
+    QTreeWidgetItem* relation = new QTreeWidgetItem(ui->treeWidget);
+    QTreeWidgetItem* asc = new QTreeWidgetItem();
+    QTreeWidgetItem* desc = new QTreeWidgetItem();
+    asc->setText(0, "ascendant");
+    asc->setText(1, "");
+    asc->setText(0, "descendant");
+    asc->setText(1, "");
+    std::vector<Relation*> relations = n->implicationRelation();
+    for (unsigned int i=0; i< relations.size(); i++){
+        relation->setText(0, relations[i]->getTitre());
+        relation->setText(1, "");
+        ui->treeWidget->addTopLevelItem(relation);
+        addAscendant(relation, relations[i], n);
+        addDescendant(relation, relations[i], n);
+     }
+
+    /*item->setText(0, name);
+    ui->treeWidget->addTopLevelItem(item);
+    addChild(item, "one");
+    addChild(item, "two");*/
+
+}
+
+void MainWindow::addChild (QTreeWidgetItem *parent,QString name, QString description) {
+    QTreeWidgetItem* item = new QTreeWidgetItem();
+    item->setText(0, name);
+    item->setText(1, description);
+    parent->addChild(item);
+}
+
+void MainWindow::addAscendant(QTreeWidgetItem *parent, Relation* relation, Note* n) {
+    QTreeWidgetItem* item = new QTreeWidgetItem();
+    item->setText(0, "Ascendant");
+    item->setText(0, "");
+    std::vector<QString> asc = nm.getAscendants(n, relation);
+    for (unsigned int i =0; i < asc.size(); i++) {
+        addChild(item, asc[i], "");
+        std::cout << "asc" <<asc[i].toStdString() << "\n";
+    }
+}
+
+void MainWindow::addDescendant(QTreeWidgetItem *parent, Relation* relation, Note* n) {
+    QTreeWidgetItem* item = new QTreeWidgetItem();
+    item->setText(0, "Descendant");
+    item->setText(0, "");
+    std::vector<QString> desc = nm.getDescendants(n, relation);
+    for (unsigned int i =0; i < desc.size(); i++) {
+        addChild(item, desc[i], "");
+        std::cout << "desc" <<desc[i].toStdString() << "\n";
+    }
+}
+
+
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+
+}
+void MainWindow::changeStateButton(Etat etat) {
+    if (nm.nbNotes(ACTIVES) != 0 && ui->tableWidget->currentItem()) {
+        unsigned short index = ui->stackedWidget->currentIndex(); //Pour le cas où c'est une tâche
+        QString id = nm.getNote(ui->tableWidget->currentRow())->firstVersion()->getId();
+        VersionIndex* vClicked = nm.findVersionIndex(id);
+
+        nm.changeState(etat, vClicked); //Changement d'état !
+
+        /*Reload des tables à gauche*/
+        loadTableWidgetActives();
+        if (index == 1) loadTableTache(); //On ne recharge la table des tâches que si on a édité une tâche
+        loadTableWidgetArchive();
+    }
+}
+
+void MainWindow::on_archiver_clicked() {
+    changeStateButton(ARCHIVES);
+}
+
+void MainWindow::on_supprimer_clicked() {
+    changeStateButton(CORBEILLE);
 }

@@ -61,7 +61,6 @@ QSqlQuery Note::getUpdateStateQuery() {
     QSqlQuery query;
     QString str = "UPDATE " + getTableName() + " SET etat = "+ QString::number(parent->getEtat())
             + " WHERE id = '" + id + "' AND version = " + QString::number(version);
-    qDebug()<<str;
     query.prepare(str);
     return query;
 }
@@ -69,7 +68,6 @@ QSqlQuery Note::getUpdateStateQuery() {
 QSqlQuery Note::getDeleteQuery() {
     QSqlQuery query;
     QString str = "DELETE FROM " + getTableName() + " WHERE id = '" + id +"' AND version = " + QString::number(version);
-    qDebug()<<str;
     query.prepare(str);
     return query;
 }

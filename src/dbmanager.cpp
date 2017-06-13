@@ -86,7 +86,7 @@ bool DbManager::saveCouple(Relation* r, Couple* c) {
     return success;
 }
 
-bool DbManager::updateNoteState(Note *n) {
+bool DbManager::changeNoteState(Note *n) {
     bool success = false;
     QSqlQuery query = n->getUpdateStateQuery();
     qDebug()<<getLastQuery(query);

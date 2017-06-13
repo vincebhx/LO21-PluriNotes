@@ -24,7 +24,7 @@ public:
     bool saveRelation(Relation* r);
     bool saveCouple(Relation* r, Couple* c);
 
-    bool updateNoteState(Note* n);
+    bool changeNoteState(Note* n);
 
     bool deleteNote(Note* n);
 

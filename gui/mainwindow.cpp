@@ -11,6 +11,7 @@
 #include "dialog.h"
 #include "../src/note/versionindex.h"
 #include <iostream>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) : Widget(),
     QMainWindow(parent),
@@ -376,4 +377,27 @@ void MainWindow::on_tableWidget_3_doubleClicked(const QModelIndex &index)
     //loadClicked(clicked, type);
     loadClicked(clicked, type);
     loadVersion(vClicked);
+}
+
+void MainWindow::changeStateButton(Etat etat) {
+    if (nm.nbNotes(ACTIVES) != 0 && ui->tableWidget->currentItem()) {
+        unsigned short index = ui->stackedWidget->currentIndex(); //Pour le cas où c'est une tâche
+        QString id = nm.getNote(ui->tableWidget->currentRow())->firstVersion()->getId();
+        VersionIndex* vClicked = nm.findVersionIndex(id);
+
+        nm.changeState(etat, vClicked); //Changement d'état !
+
+        /*Reload des tables à gauche*/
+        loadTableWidgetActives();
+        if (index == 1) loadTableTache(); //On ne recharge la table des tâches que si on a édité une tâche
+        loadTableWidgetArchive();
+    }
+}
+
+void MainWindow::on_archiver_clicked() {
+    changeStateButton(ARCHIVES);
+}
+
+void MainWindow::on_supprimer_clicked() {
+    changeStateButton(CORBEILLE);
 }

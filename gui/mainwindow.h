@@ -59,6 +59,12 @@ private slots:
 
     void on_tableWidget_3_doubleClicked(const QModelIndex &index);
 
+    void changeStateButton(Etat etat);
+
+    void on_archiver_clicked();
+
+    void on_supprimer_clicked();
+
 private:
     Ui::MainWindow *ui; // //
     NotesManager& nm;

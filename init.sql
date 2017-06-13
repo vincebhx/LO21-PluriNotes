@@ -71,7 +71,10 @@ CREATE TABLE Relation(
   CHECK (oriente IN (0, 1))
 );
 INSERT INTO Relation VALUES('mon apprentissage du c++','pour m aider a apprendre le c++',1);
-INSERT INTO Relation VALUES('mon contenu internet de qualite','garder les contenus cool que je trouve',0);
+INSERT INTO Relation VALUES('mon contenu internet de qualite','garder les contenus cool que je trouve', 0);
+INSERT INTO Relation VALUES('premiers contenu que jai vu sur internet','garder les trucs cool que je trouve', 0);
+
+INSERT INTO Relation VALUES('jadore ecouter de la musique et regarder des images','les 2 sens',1);
 CREATE TABLE RelationNote(
   relation TEXT,
   note1 TEXT NOT NULL,
@@ -81,4 +84,6 @@ CREATE TABLE RelationNote(
 );
 INSERT INTO RelationNote VALUES('mon apprentissage du c++','ART_0','TCH_0', 'digerer toutes ces infos');
 INSERT INTO RelationNote VALUES('mon contenu internet de qualite','IMG_0','VID_0', 'categorie extra drole');
+INSERT INTO RelationNote VALUES('mon apprentissage du c++','TCH_0','VID_0', 'on fait une pause...ou pas');
+INSERT INTO RelationNote VALUES('jadore ecouter de la musique et regarder des images','AUD_0','VID_0', 'categorie extra drole');
 COMMIT;

@@ -89,6 +89,7 @@ bool DbManager::saveCouple(Relation* r, Couple* c) {
 bool DbManager::updateNoteState(Note *n) {
     bool success = false;
     QSqlQuery query = n->getUpdateStateQuery();
+    qDebug()<<getLastQuery(query);
 
     if(query.exec()) {
         success = true;
@@ -104,14 +105,25 @@ bool DbManager::updateNoteState(Note *n) {
 bool DbManager::deleteNote(Note* n) {
     bool success = false;
     QSqlQuery query = n->getDeleteQuery();
+    qDebug()<<getLastQuery(query);
 
     if(query.exec()) {
         success = true;
         qDebug() << "Note supprimée dans la base de données.";
     }
     else
-        qDebug() << "Erreur - DbManager::updateNoteState : "<< query.lastError();
-
+        qDebug() << "Erreur - DbManager::deleteNote : "<< query.lastError();
     query.finish();
     return success;
+}
+
+QString DbManager::getLastQuery(const QSqlQuery& query) {
+    QString s = query.lastQuery();
+    QMapIterator<QString, QVariant> it (query.boundValues());
+
+    while (it.hasNext()) {
+        it.next();
+        s.replace(it.key(),it.value().toString());
+    }
+    return s;
 }

@@ -58,7 +58,7 @@ QSqlQuery Note::getQuery() {
 
 QSqlQuery Note::getUpdateStateQuery() {
     QSqlQuery query;
-    query.prepare("UPDATE :table SET etat = :etat WHERE id = ':id' AND version = :version");
+    query.prepare("UPDATE :table SET etat = :etat WHERE id = :id AND version = :version");
     query.bindValue(":table", getTableName());
     query.bindValue(":etat", parent->getEtat());
     query.bindValue(":id", id);
@@ -68,7 +68,7 @@ QSqlQuery Note::getUpdateStateQuery() {
 
 QSqlQuery Note::getDeleteQuery() {
     QSqlQuery query;
-    query.prepare("DELETE FROM :table WHERE id = ':id' AND version = :version");
+    query.prepare("DELETE FROM :table WHERE id = :id AND version = :version");
     query.bindValue(":table", getTableName());
     query.bindValue(":id", id);
     query.bindValue(":version", version);

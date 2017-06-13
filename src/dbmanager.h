@@ -27,6 +27,8 @@ public:
     bool updateNoteState(Note* n);
 
     bool deleteNote(Note* n);
+
+    QString getLastQuery(const QSqlQuery& query);
 };
 
 #endif // DBMANAGER_H

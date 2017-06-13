@@ -3,6 +3,7 @@
 
 VersionIndex::VersionIndex(Note* n) {
     std::vector<Note*> ver(1, n);   //On initialise ver avec 1 fois n (équivalent à ver.push_back(n);)
+    n->setParent(this);
     versions = ver;
 }
 

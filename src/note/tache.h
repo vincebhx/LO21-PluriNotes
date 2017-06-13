@@ -16,7 +16,6 @@ class Tache: public Note
 {
 private:
     static const QString idStem;
-    static unsigned int idIncrement;
 
     QString action;
     unsigned int priorite;
@@ -26,6 +25,8 @@ private:
     QFormLayout* getLayout();
     QSqlQuery prepareQuery();
 public:
+    static unsigned int idIncrement;
+
     Tache(const QString id,
           unsigned int version,
           QString titre,
@@ -36,7 +37,7 @@ public:
           QDateTime dateEch = QDateTime::currentDateTime(),
           Statut statut = EN_ATTENTE):
         Note(id, version, titre, dateCreat, dateModif),
-        action(action), priorite(priorite), dateEcheance(dateEch), statut(statut) {}
+        action(action), priorite(priorite), dateEcheance(dateEch), statut(statut) { }
 
     Tache(unsigned int version,
           QString titre,

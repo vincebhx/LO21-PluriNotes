@@ -123,6 +123,7 @@ void NotesManager::load() {
                 newVIndex = true;
             }
             vIndex = new VersionIndex;
+            Article::idIncrement++;
         }
         vIndex->addVersion(n);
         etat = toEtat(queryART.value(0).toInt());
@@ -184,6 +185,9 @@ void NotesManager::load() {
                 newVIndex = true;
             }
             vIndex = new VersionIndex;
+            if (type == "image") Image::idIncrement++;
+            else if (type == "audio") Audio::idIncrement++;
+            else Video::idIncrement++;
         }
         vIndex->addVersion(n);
         etat = toEtat(queryMED.value(0).toInt());
@@ -232,6 +236,7 @@ void NotesManager::load() {
                 newVIndex = true;
             }
             vIndex = new VersionIndex;
+            Tache::idIncrement++;
         }
         vIndex->addVersion(n);
         etat = toEtat(queryTCH.value(0).toInt());

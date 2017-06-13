@@ -46,8 +46,9 @@ public:
 class Image: public Media {
 private:
     static const QString idStem;
-    static unsigned int idIncrement;
 public:
+    static unsigned int idIncrement;
+
     Image(const QString id,
           unsigned int version,
           QString titre,
@@ -55,7 +56,7 @@ public:
           QDateTime dateModif = QDateTime::currentDateTime(),
           QString description = "",
           QString filepath = ""):
-        Media(id, version, titre, dateCreat, dateModif, description, filepath) {}
+        Media(id, version, titre, dateCreat, dateModif, description, filepath) { }
 
     Image(unsigned int version,
           QString titre,
@@ -73,8 +74,9 @@ public:
 class Audio: public Media {
 private:
     static const QString idStem;
-    static unsigned int idIncrement;
 public:
+    static unsigned int idIncrement;
+
     Audio(const QString id,
           unsigned int version,
           QString titre,
@@ -82,7 +84,7 @@ public:
           QDateTime dateModif = QDateTime::currentDateTime(),
           QString description = "",
           QString filepath = ""):
-        Media(id, version, titre, dateCreat, dateModif, description, filepath) {}
+        Media(id, version, titre, dateCreat, dateModif, description, filepath) { }
 
     Audio(unsigned int version,
           QString titre,
@@ -100,8 +102,9 @@ public:
 class Video: public Media {
 private:
     static const QString idStem;
-    static unsigned int idIncrement;
 public:
+    static unsigned int idIncrement;
+
     Video(const QString id,
           unsigned int version,
           QString titre,
@@ -109,7 +112,7 @@ public:
           QDateTime dateModif = QDateTime::currentDateTime(),
           QString description = "",
           QString filepath = ""):
-        Media(id, version, titre, dateCreat, dateModif, description, filepath) {}
+        Media(id, version, titre, dateCreat, dateModif, description, filepath) { }
 
     Video(unsigned int version,
           QString titre,

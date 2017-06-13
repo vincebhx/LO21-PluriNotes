@@ -13,20 +13,21 @@ class Article: public Note
 {
 private:
     static const QString idStem;
-    static unsigned int idIncrement;
 
     QString texte;
     QFormLayout* getLayout();
     QSqlQuery prepareQuery();
 
 public:
+    static unsigned int idIncrement;
+
     Article(const QString id,
             unsigned int version,
             QString titre,
             QDateTime dateCreat = QDateTime::currentDateTime(),
             QDateTime dateModif = QDateTime::currentDateTime(),
             QString texte = ""):
-        Note(id, version, titre, dateCreat, dateModif), texte(texte) {}
+        Note(id, version, titre, dateCreat, dateModif), texte(texte) { }
 
     Article(unsigned int version,
             QString titre,

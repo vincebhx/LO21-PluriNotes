@@ -18,13 +18,13 @@ DbManager::DbManager(const QString& path)
     if(!db.open())
         throw Exception("Échec de la connexion à la base de données.");
     else
-        std::cout<<"Succès de la connexion à la base de données."<<std::endl;
+        qDebug() << "Succès de la connexion à la base de données.";
 }
 
 DbManager::~DbManager() {
     if (db.isOpen()) {
         db.close();
-        std::cout<<"Fermeture de la connexion avec la base de données."<<std::endl;
+        qDebug() << "Fermeture de la connexion avec la base de données.";
     }
 }
 
@@ -43,7 +43,7 @@ void DbManager::free() {
 
 bool DbManager::saveNote(Note *n) {
     bool success = false;
-    QSqlQuery query = n->getQuery();
+    QSqlQuery query = n->getInsertQuery();
 
     if(query.exec()) {
         success = true;
@@ -58,7 +58,7 @@ bool DbManager::saveNote(Note *n) {
 
 bool DbManager::saveRelation(Relation* r) {
     bool success = false;
-    QSqlQuery query = r->getQuery();
+    QSqlQuery query = r->getInsertQuery();
 
     if(query.exec()) {
         success = true;
@@ -73,7 +73,7 @@ bool DbManager::saveRelation(Relation* r) {
 
 bool DbManager::saveCouple(Relation* r, Couple* c) {
     bool success = false;
-    QSqlQuery query = c->getQuery(r);
+    QSqlQuery query = c->getInsertQuery(r);
 
     if(query.exec()) {
         success = true;
@@ -84,4 +84,46 @@ bool DbManager::saveCouple(Relation* r, Couple* c) {
 
     query.finish();
     return success;
+}
+
+bool DbManager::changeNoteState(Note *n) {
+    bool success = false;
+    QSqlQuery query = n->getUpdateStateQuery();
+    qDebug()<<getLastQuery(query);
+
+    if(query.exec()) {
+        success = true;
+        qDebug() << "État de la note mise à jour dans la base de données.";
+    }
+    else
+        qDebug() << "Erreur - DbManager::updateNoteState : "<< query.lastError();
+
+    query.finish();
+    return success;
+}
+
+bool DbManager::deleteNote(Note* n) {
+    bool success = false;
+    QSqlQuery query = n->getDeleteQuery();
+    qDebug()<<getLastQuery(query);
+
+    if(query.exec()) {
+        success = true;
+        qDebug() << "Note supprimée dans la base de données.";
+    }
+    else
+        qDebug() << "Erreur - DbManager::deleteNote : "<< query.lastError();
+    query.finish();
+    return success;
+}
+
+QString DbManager::getLastQuery(const QSqlQuery& query) {
+    QString s = query.lastQuery();
+    QMapIterator<QString, QVariant> it (query.boundValues());
+
+    while (it.hasNext()) {
+        it.next();
+        s.replace(it.key(),it.value().toString());
+    }
+    return s;
 }

@@ -24,7 +24,7 @@ INSERT INTO Article VALUES(0, 'ART_0',4,'c++','26/05/2017 14:00:00','26/05/2017 
 INSERT INTO Article VALUES(0, 'ART_1',1,'js','28/05/2017 11:00:00','26/05/2017 10:00:00','coder en js v1');
 INSERT INTO Article VALUES(0, 'ART_1',2,'js','28/05/2017 12:00:00','26/05/2017 10:00:00','coder en js v2');
 CREATE TABLE Tache(
-  etat INT NOT NULL,
+  etat INT NOT NULL DEFAULT 0,
   id TEXT NOT NULL,
   version INT NOT NULL,
   titre TEXT,
@@ -45,7 +45,7 @@ INSERT INTO Tache VALUES(0,'TCH_0',4,'toto','26/05/2017 10:00:00','27/05/2017 10
 INSERT INTO Tache VALUES(0,'TCH_1',1,'toto','26/05/2017 10:00:00','27/05/2017 10:00:00','coder en js',42,'28/05/2017 10:00:00','enCours');
 INSERT INTO Tache VALUES(0,'TCH_1',2,'toto','26/05/2017 10:00:00','27/05/2017 10:00:00','coder en js',42,'28/05/2017 10:00:00','termine');
 CREATE TABLE Media(
-  etat INT NOT NULL,
+  etat INT NOT NULL DEFAULT 0,
   id TEXT NOT NULL,
   version INT NOT NULL,
   type TEXT,

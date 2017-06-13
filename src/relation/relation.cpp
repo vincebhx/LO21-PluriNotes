@@ -40,7 +40,7 @@ void Relation::addCouple(Couple *c){
     couples.push_back(c);
 }
 
-QSqlQuery Relation::getQuery(){
+QSqlQuery Relation::getInsertQuery(){
     QSqlQuery query;
 
     query.prepare("INSERT INTO Relation VALUES (:titre, :description, :orientation)");
@@ -53,7 +53,7 @@ QSqlQuery Relation::getQuery(){
 }
 
 
-QSqlQuery Relation::deleteQuery(){
+QSqlQuery Relation::getDeleteQuery(){
     QSqlQuery query;
 
     query.prepare("DELETE FROM Relation WHERE titre = :titre");

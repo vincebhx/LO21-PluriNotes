@@ -31,7 +31,7 @@ std::vector<QString> Couple::getNotes(){
     return noms;
 }
 
-QSqlQuery Couple::getQuery(Relation* r) {
+QSqlQuery Couple::getInsertQuery(Relation* r) {
     QSqlQuery query;
 
     query.prepare("INSERT INTO RelationNote VALUES (:relation, :n1, :n2, :label)");
@@ -43,7 +43,7 @@ QSqlQuery Couple::getQuery(Relation* r) {
     return query;
 }
 
-QSqlQuery Couple::deleteQuery(Relation* r) {
+QSqlQuery Couple::getDeleteQuery(Relation* r) {
     QSqlQuery query;
 
     query.prepare("DELETE FROM RelationNote WHERE relation = :relation AND note1 = :n1 AND note2 = :n2");

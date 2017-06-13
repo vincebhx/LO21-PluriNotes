@@ -8,6 +8,7 @@
 #include "./src/relation/relationsmanager.h"
 
 #include <iostream>
+#include <algorithm>
 #include <QSqlRecord>
 #include <QSqlQuery>
 #include <QSqlError>
@@ -16,14 +17,14 @@
 NotesManager* NotesManager::_instance = 0;
 
 NotesManager::NotesManager() {
-    std::cout<<"Construction du NotesManager."<<std::endl;
+    qDebug()<<"Construction du NotesManager.";
 }
 
 NotesManager::~NotesManager() {
     actives.clear();
     archives.clear();
     corbeille.clear();
-    std::cout<<"NotesManager détruit."<<std::endl;
+    qDebug()<<"Destruction du NotesManager.";
 }
 
 NotesManager& NotesManager::instance() {
@@ -45,8 +46,41 @@ void NotesManager::addNote(Etat e, VersionIndex* n) {
             throw Exception("Une note possédant l'id " + n->currentVersion()->getId() + " existe déjà.");
     current.push_back(n);
     indexId.push_back(n->currentVersion()->getId());
+}
 
+void NotesManager::changeState(Etat targetState, VersionIndex* vIndex) {
+    Etat etat = static_cast<Etat>(vIndex->getEtat());
+    if (etat == targetState) //Note déjà dans l'état cible
+        qDebug()<<"Note déjà dans l'état cible ("<<stateString[targetState]<<") !";
+    else {
+        this->addNote(targetState, vIndex);    //Ajoute la note dans l'état cible et à jour l'état dans le VersionIndex
+        NMIterator oldPos = find(this->begin(etat), this->end(etat), vIndex);
 
+        switch (etat) { //On ne sera jamais dans le cas où etat == targetState ici.
+        case ACTIVES: actives.erase(oldPos); break;
+        case ARCHIVES: archives.erase(oldPos); break;
+        case CORBEILLE: corbeille.erase(oldPos); break;
+        default: throw Exception("Erreur de changement d'état (vers " + stateString[targetState]
+                                 + ") : la position de la note est inconnue !");
+        }
+
+        for (VersionIterator it = vIndex->begin(); it != vIndex->end(); it++) //Mise à jour de toutes les versions de la note dans la BDD
+            DbManager::instance().changeNoteState(*it);
+    }
+}
+
+void NotesManager::deleteNote(VersionIndex* v) {
+    Etat etat = static_cast<Etat>(v->getEtat());
+    if (etat != CORBEILLE)
+        qDebug()<<"Erreur : impossible de supprimer une note qui n'est pas dans la corbeille !";
+    else {
+        for (VersionIterator it = v->begin(); it != v->end(); it++) //Mise à jour de toutes les versions de la note dans la BDD
+            DbManager::instance().deleteNote(*it);
+
+        NMIterator pos = find(this->begin(CORBEILLE), this->end(CORBEILLE), v);
+        corbeille.erase(pos);
+        delete v;
+    }
 }
 
 VersionIndex* NotesManager::findVersionIndex(QString id) {
@@ -98,7 +132,7 @@ std::vector<VersionIndex*> NotesManager::getTasks() {
 
 void NotesManager::load() {
     /*DEBUT*/
-    std::cout<<"Chargement des données..."<<std::endl;
+    qDebug()<<"\nChargement des données...";
     VersionIndex* vIndex;
     Note* n;
     QString id;
@@ -107,7 +141,6 @@ void NotesManager::load() {
     /*ARTICLES*/
     QSqlQuery queryART;
     unsigned int count = 0;
-    bool newVIndex = true;
     QString currentId = "\0";
 
     queryART.prepare("SELECT * FROM Article ORDER BY id, version");
@@ -115,7 +148,6 @@ void NotesManager::load() {
     else qDebug() << "Erreur - NotesManager::load : "<< queryART.lastError();
 
     while(queryART.next()) {
-        newVIndex = false;
         id = queryART.value(1).toString();
         n = new Article(
                     id,
@@ -128,10 +160,7 @@ void NotesManager::load() {
 
         if(currentId != id) {
             currentId = id;
-            if(count != 0) {
-                NotesManager::instance().addNote(etat, vIndex);
-                newVIndex = true;
-            }
+            if(count != 0) NotesManager::instance().addNote(etat, vIndex);
             vIndex = new VersionIndex;
             Article::idIncrement++;
         }
@@ -139,13 +168,12 @@ void NotesManager::load() {
         etat = toEtat(queryART.value(0).toInt());
         count++;
     }
-    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
+    if (count != 0) NotesManager::instance().addNote(etat, vIndex);
 
     /*MEDIAS*/
     QSqlQuery queryMED;
     QString type;
     count = 0;
-    newVIndex = true;
     currentId = "\0";
 
     queryMED.prepare("SELECT * FROM Media ORDER BY id, version");
@@ -153,7 +181,6 @@ void NotesManager::load() {
     else qDebug() << "Erreur - NotesManager::load : "<< queryMED.lastError();
 
     while(queryMED.next()) {
-        newVIndex = false;
         id = queryMED.value(1).toString();
         type = queryMED.value(3).toString();
 
@@ -190,10 +217,7 @@ void NotesManager::load() {
 
         if(currentId != id) {
             currentId = id;
-            if(count != 0) {
-                NotesManager::instance().addNote(etat, vIndex);
-                newVIndex = true;
-            }
+            if(count != 0) NotesManager::instance().addNote(etat, vIndex);
             vIndex = new VersionIndex;
             if (type == "image") Image::idIncrement++;
             else if (type == "audio") Audio::idIncrement++;
@@ -203,7 +227,7 @@ void NotesManager::load() {
         etat = toEtat(queryMED.value(0).toInt());
         count++;
     }
-    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
+    if(count != 0) NotesManager::instance().addNote(etat, vIndex);
 
 
     /*TACHES*/
@@ -211,7 +235,6 @@ void NotesManager::load() {
     Statut stat;
     QString statStr;
     count = 0;
-    newVIndex = true;
     currentId = "\0";
 
     queryTCH.prepare("SELECT * FROM Tache ORDER BY id, version");
@@ -219,7 +242,6 @@ void NotesManager::load() {
     else qDebug() << "Erreur - NotesManager::load : "<< queryTCH.lastError();
 
     while(queryTCH.next()) {
-        newVIndex = false;
         id = queryTCH.value(1).toString();
 
         statStr = queryTCH.value(9).toString();
@@ -241,10 +263,7 @@ void NotesManager::load() {
 
         if(currentId != id) {
             currentId = id;
-            if(count != 0) {
-                NotesManager::instance().addNote(etat, vIndex);
-                newVIndex = true;
-            }
+            if(count != 0) NotesManager::instance().addNote(etat, vIndex);
             vIndex = new VersionIndex;
             Tache::idIncrement++;
         }
@@ -252,10 +271,10 @@ void NotesManager::load() {
         etat = toEtat(queryTCH.value(0).toInt());
         count++;
     }
-    if(!newVIndex) NotesManager::instance().addNote(etat, vIndex);
+    if(count != 0) NotesManager::instance().addNote(etat, vIndex);
 
     /*FIN*/
-    std::cout<<"Chargement effectué."<<std::endl;
+    qDebug()<<"Chargement effectué.\n";
 }
 
 

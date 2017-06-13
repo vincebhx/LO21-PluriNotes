@@ -68,6 +68,12 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void changeStateButton(Etat etat);
+
+    void on_archiver_clicked();
+
+    void on_supprimer_clicked();
+
 private:
     Ui::MainWindow *ui; // //
     NotesManager& nm;

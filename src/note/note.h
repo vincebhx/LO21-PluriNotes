@@ -33,6 +33,7 @@ protected:
 public:
 
     virtual QString getClassName() = 0;
+    virtual const QString getTableName() const = 0;
 
     void setParent(VersionIndex* v) { parent = v; }
     const VersionIndex* getParent() { return parent; }
@@ -56,7 +57,9 @@ public:
     bool archivee();
 
     QWidget* getNoteView();
-    QSqlQuery getQuery();
+    QSqlQuery getInsertQuery();
+    QSqlQuery getUpdateStateQuery();
+    QSqlQuery getDeleteQuery();
 };
 
 #endif // NOTE_H

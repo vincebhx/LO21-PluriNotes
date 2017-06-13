@@ -6,6 +6,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <iostream>
+#include <QDebug>
 
 const QString Note::dateDisplayFormat = "ddd dd MMMM yyyy à hh:mm:ss";
 const QString Note::dateStorageFormat = "dd/MM/yyyy hh:mm:ss";
@@ -46,7 +47,7 @@ QWidget* Note::getNoteView() {
     return view;
 }
 
-QSqlQuery Note::getQuery() {
+QSqlQuery Note::getInsertQuery() {
     QSqlQuery query = prepareQuery();
     query.bindValue(":etat", parent->getEtat());
     query.bindValue(":id", id);
@@ -54,6 +55,21 @@ QSqlQuery Note::getQuery() {
     query.bindValue(":titre", titre);
     query.bindValue(":dateCreation", dateCreation.toString(dateStorageFormat));
     query.bindValue(":dateModification", dateModification.toString(dateStorageFormat));
+    return query;
+}
+
+QSqlQuery Note::getUpdateStateQuery() {
+    QSqlQuery query;
+    QString str = "UPDATE " + getTableName() + " SET etat = "+ QString::number(parent->getEtat())
+            + " WHERE id = '" + id + "' AND version = " + QString::number(version);
+    query.prepare(str);
+    return query;
+}
+
+QSqlQuery Note::getDeleteQuery() {
+    QSqlQuery query;
+    QString str = "DELETE FROM " + getTableName() + " WHERE id = '" + id +"' AND version = " + QString::number(version);
+    query.prepare(str);
     return query;
 }
 

@@ -14,6 +14,7 @@
 #include <QTreeWidget>
 #include <iostream>
 #include <QFileDialog>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) : Widget(),
     QMainWindow(parent),
@@ -410,9 +411,6 @@ void MainWindow::addChild (QTreeWidgetItem *parent,QString name, QString descrip
     parent->addChild(item);
 }
 
-
-
-
 void MainWindow::loadRelationView(Note* n) {
     /* Récuperer list des relations ou la note est impliquée
      * un treewidgetItem par relation; setTopLevelItem
@@ -424,12 +422,31 @@ void MainWindow::loadRelationView(Note* n) {
     for (unsigned int i=0; i<relationName.size(); i++) {
         relationList << relationName[i];
     }*/
-
-
-
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
 
+}
+void MainWindow::changeStateButton(Etat etat) {
+    if (nm.nbNotes(ACTIVES) != 0 && ui->tableWidget->currentItem()) {
+        unsigned short index = ui->stackedWidget->currentIndex(); //Pour le cas où c'est une tâche
+        QString id = nm.getNote(ui->tableWidget->currentRow())->firstVersion()->getId();
+        VersionIndex* vClicked = nm.findVersionIndex(id);
+
+        nm.changeState(etat, vClicked); //Changement d'état !
+
+        /*Reload des tables à gauche*/
+        loadTableWidgetActives();
+        if (index == 1) loadTableTache(); //On ne recharge la table des tâches que si on a édité une tâche
+        loadTableWidgetArchive();
+    }
+}
+
+void MainWindow::on_archiver_clicked() {
+    changeStateButton(ARCHIVES);
+}
+
+void MainWindow::on_supprimer_clicked() {
+    changeStateButton(CORBEILLE);
 }

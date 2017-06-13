@@ -40,6 +40,8 @@ public:
     virtual const QString getTypeStr() const = 0;
     static QSqlTableModel* getTableModel(QSqlDatabase db);
     static QTableView* getTableView(QSqlTableModel* table);
+
+    const QString getTableName() const { return "Media"; }
 };
 
 ///Décrit une image

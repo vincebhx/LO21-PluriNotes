@@ -81,6 +81,8 @@ private slots:
 
     void loadRelation(Note *n);
 
+    void on_treeWidget_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui; // //
     NotesManager& nm;

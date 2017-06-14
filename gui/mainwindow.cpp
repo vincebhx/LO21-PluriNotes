@@ -158,13 +158,9 @@ void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
         ui->tableWidget->setCurrentCell(index.row(), 0);
     }
     QString id = ui->tableWidget->currentItem()->text();
-    std::cout << "cell id : "<<id.toStdString() << "\n";
     VersionIndex* vClicked = nm.findVersionIndex(id);
     Note* clicked = vClicked->currentVersion();
-    std::cout << "clicked : " <<clicked->getId().toStdString() << "\n";
     QString type = clicked->getClassName();
-    std::cout << "clicked type : " <<type.toStdString() << "\n";
-    //loadClicked(clicked, type);
     loadClicked(clicked, type);
     loadVersion(vClicked);
     ui->treeWidget->clear();
@@ -475,4 +471,18 @@ void MainWindow::on_modifierR_clicked()
 void MainWindow::receiveMessageMRelation() {
     if (ui->tableWidget->currentItem())
         loadRelation(nm.findNote(ui->tableWidget->itemAt(ui->tableWidget->currentRow(), 0)->text()));
+}
+
+void MainWindow::on_treeWidget_doubleClicked(const QModelIndex &index)
+{
+    if (ui->treeWidget->currentItem()->text(0) != "Ascendant" && ui->treeWidget->currentItem()->text(0) != "Descendant") {
+        QString id = ui->treeWidget->currentItem()->text(0);
+        VersionIndex* vClicked = nm.findVersionIndex(id);
+        Note* clicked = vClicked->currentVersion();
+        QString type = clicked->getClassName();
+        loadClicked(clicked, type);
+        loadVersion(vClicked);
+        ui->treeWidget->clear();
+        loadRelation(clicked);
+    }
 }

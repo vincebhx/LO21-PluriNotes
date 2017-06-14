@@ -46,7 +46,7 @@ protected:
         id(id), version(version), titre(titre), dateCreation(dateCreat), dateModification(dateModif) {}
 
     /**
-     * @brief prepareInsertQuery prépare la requête d'insertion d'une Note dans la BDD selon la classe fille.
+     * @brief prepareInsertQuery : prépare la requête d'insertion d'une Note dans la BDD selon la classe fille.
      * @return Retourne la requête d'insertion avec les attributs spécifiques à la classe fille.
      *
      * prepareInsertQuery n'est utilisée que par la méthode getInsertQuery de la classe Note.
@@ -58,19 +58,19 @@ protected:
 public:
 
     /**
-     * @brief getClassName permet d'accéder au nom de la classe fille courante.
+     * @brief getClassName : permet d'accéder au nom de la classe fille courante.
      * @return Retourne le nom de la classe fille courante ("article", "image", "audio", "video" ou "tache").
      */
     virtual QString getClassName() = 0;
 
     /**
-     * @brief getTableName permet d'accéder au nom de la table dans laquelle insérer les requêtes pour la classe fille courante.
+     * @brief getTableName : permet d'accéder au nom de la table dans laquelle insérer les requêtes pour la classe fille courante.
      * @return Retourne le nom de la table dans laquelle insérer les requêtes pour la classe fille courante ("Article, "Media", "Tache").
      */
     virtual const QString getTableName() const = 0;
 
     /**
-     * @brief setParent permet d'initialiser le pointeur vers l'index de versions parent de la note.
+     * @brief setParent : permet d'initialiser le pointeur vers l'index de versions parent de la note.
      * @param v : index de versions dans lequel se trouve la note.
      *
      * setParent est appelée lors de l'ajout de la note dans l'index de versions, ou lors de l'initialisation de l'index avec une première note.
@@ -79,7 +79,7 @@ public:
     void setParent(VersionIndex* v) { parent = v; }
 
     /**
-     * @brief getParent est le getter de l'attribut parent.
+     * @brief getParent : est le getter de l'attribut parent.
      * @return  Retourne un pointeur sur l'index de versions parent de la Note.
      */
     const VersionIndex* getParent() { return parent; }
@@ -183,20 +183,20 @@ public:
     bool referencesTerminees();
 
     /**
-     * @brief getInsertQuery initialise la requête d'insertion de la note.
-     * @return getInsertQuery retourne la requête d'insertion de la note dans la BDD.
+     * @brief getInsertQuery : initialise la requête d'insertion de la note.
+     * @return Retourne la requête d'insertion de la note dans la BDD.
      */
     QSqlQuery getInsertQuery();
 
     /**
-     * @brief getUpdateStateQuery initialise la requête de mise à jour de l'état de la note.
-     * @return getUpdateStateQuery retourne la requête de mise à jour de l'état de la note dans la BDD.
+     * @brief getUpdateStateQuery : initialise la requête de mise à jour de l'état de la note.
+     * @return Retourne la requête de mise à jour de l'état de la note dans la BDD.
      */
     QSqlQuery getUpdateStateQuery();
 
     /**
-     * @brief getDeleteQuery retourne la requête de suppression de la note.
-     * @return getDeleteQuery retourne la requête de suppression de la note dans la BDD.
+     * @brief getDeleteQuery : retourne la requête de suppression de la note.
+     * @return Retourne la requête de suppression de la note dans la BDD.
      */
     QSqlQuery getDeleteQuery();
 };

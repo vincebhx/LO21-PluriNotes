@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['referencee',['referencee',['../class_note.html#a23597c1124ada1f1ee151b5ac3d28321',1,'Note']]],
-  ['referencesterminees',['referencesTerminees',['../class_note.html#ab5e9f9a51f27ed73ba5d89b94f291191',1,'Note']]]
+  ['findnote',['findNote',['../class_notes_manager.html#a23e542af8fa9e43e3a5fffe18eb7c76b',1,'NotesManager']]],
+  ['findversionindex',['findVersionIndex',['../class_notes_manager.html#a3e81e800842edc0dbfa86fea8437d739',1,'NotesManager']]],
+  ['free',['free',['../class_notes_manager.html#a73d2e908ab3181a91c09cd61c644b9ca',1,'NotesManager']]]
 ];

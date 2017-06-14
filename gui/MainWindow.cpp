@@ -425,7 +425,7 @@ void MainWindow::addChild (QTreeWidgetItem *parent,QString name, QString descrip
 void MainWindow::addAscendant(QTreeWidgetItem *parent, Relation* relation, Note* n) {
     QTreeWidgetItem* item = new QTreeWidgetItem();
     item->setText(0, "Ascendant");
-    item->setText(0, "");
+    item->setText(1, "");
     std::vector<QString> asc = nm.getAscendants(n, relation);
     for (unsigned int i =0; i < asc.size(); i++) {
         addChild(item, asc[i], "");
@@ -436,7 +436,7 @@ void MainWindow::addAscendant(QTreeWidgetItem *parent, Relation* relation, Note*
 void MainWindow::addDescendant(QTreeWidgetItem *parent, Relation* relation, Note* n) {
     QTreeWidgetItem* item = new QTreeWidgetItem();
     item->setText(0, "Descendant");
-    item->setText(0, "");
+    item->setText(1, "");
     std::vector<QString> desc = nm.getDescendants(n, relation);
     for (unsigned int i =0; i < desc.size(); i++) {
         addChild(item, desc[i], "");

@@ -42,6 +42,12 @@ void Mediator::disributeMessage(Widget* sender, QString msg)
                 component[i]->receiveMessageARelation();
             }
         }
+
+        else if (msg == "Modifier Relation"){
+            if (s1 != s2) {
+                component[i]->receiveMessageMRelation();
+            }
+        }
     }
 }
 

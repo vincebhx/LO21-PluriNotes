@@ -109,7 +109,6 @@ int main(int argc, char *argv[])
     mediator->addComponent(ajouterR);
     mediator->addComponent(corbeille);
     mediator->addComponent(modifierR);
-    modifierR->show();
     //mediator->disributeMessage(createnote, "hello");
 
 

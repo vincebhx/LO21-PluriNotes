@@ -44,6 +44,10 @@ void ModifierRelation::on_comboBox_currentIndexChanged(int index)
 }
 
 void ModifierRelation::receiveMessageMRelation() {
+    for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++){
+         ui->Note1->addItem((*it)->currentVersion()->getId());
+         ui->Note2->addItem((*it)->currentVersion()->getId());
+    }
     this->show();
 }
 

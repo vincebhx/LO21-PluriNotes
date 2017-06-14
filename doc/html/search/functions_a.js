@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['prepareinsertquery',['prepareInsertQuery',['../class_media.html#aa5fd62fe3d7a151ab5efc74b4a3c19d7',1,'Media::prepareInsertQuery()'],['../class_note.html#aef2a5c1af6849face54750a34958bdc5',1,'Note::prepareInsertQuery()']]]
+  ['nbnotes',['nbNotes',['../class_notes_manager.html#a7c29f7258480b927662afe425d2a5f0a',1,'NotesManager']]],
+  ['note',['Note',['../class_note.html#aca4da68ecf0082b5ab57b0d6b8bd4e54',1,'Note']]]
 ];

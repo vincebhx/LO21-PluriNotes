@@ -92,8 +92,8 @@ int main(int argc, char *argv[])
     /*
     NotesManager& nm = NotesManager::instance();
     nm.changeState(CORBEILLE, nm.currentNote(ACTIVES));
-    nm.deleteNote(nm.currentNote(ACTIVES));
-    */
+    nm.deleteNote(nm.currentNote(CORBEILLE));*/
+
 
     MainWindow* window = new MainWindow;
     window->show();

@@ -12,7 +12,7 @@ class VersionIndex;
 class Relation;
 
 /**
- * @brief La classe abstraite Note. elle sert d'interface pour ses classes filles
+ * @brief La classe abstraite Note; elle sert d'interface pour ses classes filles.
  */
 class Note
 {

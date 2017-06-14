@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('class_video.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Décrit un fichier vidéo.  
+<p>La classe <a class="el" href="class_video.html" title="La classe Video; elle définit le type de note Video. ">Video</a>; elle définit le type de note <a class="el" href="class_video.html" title="La classe Video; elle définit le type de note Video. ">Video</a>.  
  <a href="class_video.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="media_8h_source.html">media.h</a>&gt;</code></p>
@@ -98,18 +98,18 @@ Inheritance diagram for Video:</div>
  <div class="center">
   <img src="class_video.png" usemap="#Video_map" alt=""/>
   <map id="Video_map" name="Video_map">
-<area href="class_media.html" title="Décrit un média. " alt="Media" shape="rect" coords="0,56,47,80"/>
-<area href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. " alt="Note" shape="rect" coords="0,0,47,24"/>
+<area href="class_media.html" title="La classe abstraite Media; elle définit le type de note Media, et sert d&#39;interface pour ses classes f..." alt="Media" shape="rect" coords="0,56,47,80"/>
+<area href="class_note.html" title="La classe abstraite Note; elle sert d&#39;interface pour ses classes filles. " alt="Note" shape="rect" coords="0,0,47,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a22cbbd5009360b6b19d5d52bc498c02c"><td class="memItemLeft" align="right" valign="top"><a id="a22cbbd5009360b6b19d5d52bc498c02c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Video</b> (const QString <a class="el" href="class_note.html#a66575bef3f06a18bbcf74a3d95e61eef">id</a>, unsigned int <a class="el" href="class_note.html#a4d40f017d6f24cad4ae1f7c8046234df">version</a>, QString <a class="el" href="class_note.html#a4f3aceb1ee03caa1f37a08880fe44f47">titre</a>, QDateTime dateCreat=QDateTime::currentDateTime(), QDateTime dateModif=QDateTime::currentDateTime(), QString description=&quot;&quot;, QString filepath=&quot;&quot;)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Video</b> (const QString <a class="el" href="class_note.html#a66575bef3f06a18bbcf74a3d95e61eef">id</a>, unsigned int <a class="el" href="class_note.html#a4d40f017d6f24cad4ae1f7c8046234df">version</a>, QString <a class="el" href="class_note.html#a4f3aceb1ee03caa1f37a08880fe44f47">titre</a>, QDateTime dateCreat=QDateTime::currentDateTime(), QDateTime dateModif=QDateTime::currentDateTime(), QString <a class="el" href="class_media.html#ad6a9035cacbd35418fd54514bc17328e">description</a>=&quot;&quot;, QString <a class="el" href="class_media.html#aa9b953480d2e5118bfc4c552b1f49ab4">filepath</a>=&quot;&quot;)</td></tr>
 <tr class="separator:a22cbbd5009360b6b19d5d52bc498c02c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9227beac67e4ec58f2028951b744a8a2"><td class="memItemLeft" align="right" valign="top"><a id="a9227beac67e4ec58f2028951b744a8a2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Video</b> (unsigned int <a class="el" href="class_note.html#a4d40f017d6f24cad4ae1f7c8046234df">version</a>, QString <a class="el" href="class_note.html#a4f3aceb1ee03caa1f37a08880fe44f47">titre</a>, QDateTime dateCreat=QDateTime::currentDateTime(), QDateTime dateModif=QDateTime::currentDateTime(), QString description=&quot;&quot;, QString filepath=&quot;&quot;)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Video</b> (unsigned int <a class="el" href="class_note.html#a4d40f017d6f24cad4ae1f7c8046234df">version</a>, QString <a class="el" href="class_note.html#a4f3aceb1ee03caa1f37a08880fe44f47">titre</a>, QDateTime dateCreat=QDateTime::currentDateTime(), QDateTime dateModif=QDateTime::currentDateTime(), QString <a class="el" href="class_media.html#ad6a9035cacbd35418fd54514bc17328e">description</a>=&quot;&quot;, QString <a class="el" href="class_media.html#aa9b953480d2e5118bfc4c552b1f49ab4">filepath</a>=&quot;&quot;)</td></tr>
 <tr class="separator:a9227beac67e4ec58f2028951b744a8a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a032183e1c5a64434e78b45e7456ddcb3"><td class="memItemLeft" align="right" valign="top"><a id="a032183e1c5a64434e78b45e7456ddcb3"></a>
 const QString&#160;</td><td class="memItemRight" valign="bottom"><b>getTypeStr</b> () const</td></tr>
@@ -217,22 +217,24 @@ static QSqlTableModel *&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 static QTableView *&#160;</td><td class="memItemRight" valign="bottom"><b>getTableView</b> (QSqlTableModel *table)</td></tr>
 <tr class="separator:a6ca41589c5944c4079fb4b4b81896c5b inherit pub_static_methods_class_media"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_media"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_media')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_media.html">Media</a></td></tr>
-<tr class="memitem:a25bf7de7d62b3b8ec62fa2c97490f29d inherit pro_methods_class_media"><td class="memItemLeft" align="right" valign="top"><a id="a25bf7de7d62b3b8ec62fa2c97490f29d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Media</b> (const QString <a class="el" href="class_note.html#a66575bef3f06a18bbcf74a3d95e61eef">id</a>, unsigned int <a class="el" href="class_note.html#a4d40f017d6f24cad4ae1f7c8046234df">version</a>, QString <a class="el" href="class_note.html#a4f3aceb1ee03caa1f37a08880fe44f47">titre</a>, QDateTime dateCreat=QDateTime::currentDateTime(), QDateTime dateModif=QDateTime::currentDateTime(), QString description=&quot;&quot;, QString filepath=&quot;&quot;)</td></tr>
+<tr class="memitem:a25bf7de7d62b3b8ec62fa2c97490f29d inherit pro_methods_class_media"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_media.html#a25bf7de7d62b3b8ec62fa2c97490f29d">Media</a> (const QString <a class="el" href="class_note.html#a66575bef3f06a18bbcf74a3d95e61eef">id</a>, unsigned int <a class="el" href="class_note.html#a4d40f017d6f24cad4ae1f7c8046234df">version</a>, QString <a class="el" href="class_note.html#a4f3aceb1ee03caa1f37a08880fe44f47">titre</a>, QDateTime dateCreat=QDateTime::currentDateTime(), QDateTime dateModif=QDateTime::currentDateTime(), QString <a class="el" href="class_media.html#ad6a9035cacbd35418fd54514bc17328e">description</a>=&quot;&quot;, QString <a class="el" href="class_media.html#aa9b953480d2e5118bfc4c552b1f49ab4">filepath</a>=&quot;&quot;)</td></tr>
+<tr class="memdesc:a25bf7de7d62b3b8ec62fa2c97490f29d inherit pro_methods_class_media"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_media.html" title="La classe abstraite Media; elle définit le type de note Media, et sert d&#39;interface pour ses classes f...">Media</a> : constructeur de <a class="el" href="class_media.html" title="La classe abstraite Media; elle définit le type de note Media, et sert d&#39;interface pour ses classes f...">Media</a>.  <a href="class_media.html#a25bf7de7d62b3b8ec62fa2c97490f29d">More...</a><br /></td></tr>
 <tr class="separator:a25bf7de7d62b3b8ec62fa2c97490f29d inherit pro_methods_class_media"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5fd62fe3d7a151ab5efc74b4a3c19d7 inherit pro_methods_class_media"><td class="memItemLeft" align="right" valign="top">QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_media.html#aa5fd62fe3d7a151ab5efc74b4a3c19d7">prepareInsertQuery</a> ()</td></tr>
-<tr class="memdesc:aa5fd62fe3d7a151ab5efc74b4a3c19d7 inherit pro_methods_class_media"><td class="mdescLeft">&#160;</td><td class="mdescRight">prepareInsertQuery : prépare la requête d'insertion d'une <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a> dans la BDD selon la classe fille.  <a href="class_media.html#aa5fd62fe3d7a151ab5efc74b4a3c19d7">More...</a><br /></td></tr>
+<tr class="memdesc:aa5fd62fe3d7a151ab5efc74b4a3c19d7 inherit pro_methods_class_media"><td class="mdescLeft">&#160;</td><td class="mdescRight">prepareInsertQuery : prépare la requête d'insertion d'une <a class="el" href="class_note.html" title="La classe abstraite Note; elle sert d&#39;interface pour ses classes filles. ">Note</a> dans la BDD selon la classe fille.  <a href="class_media.html#aa5fd62fe3d7a151ab5efc74b4a3c19d7">More...</a><br /></td></tr>
 <tr class="separator:aa5fd62fe3d7a151ab5efc74b4a3c19d7 inherit pro_methods_class_media"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_note"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_note')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_note.html">Note</a></td></tr>
 <tr class="memitem:aca4da68ecf0082b5ab57b0d6b8bd4e54 inherit pro_methods_class_note"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#aca4da68ecf0082b5ab57b0d6b8bd4e54">Note</a> (const QString <a class="el" href="class_note.html#a66575bef3f06a18bbcf74a3d95e61eef">id</a>, unsigned int <a class="el" href="class_note.html#a4d40f017d6f24cad4ae1f7c8046234df">version</a>, QString <a class="el" href="class_note.html#a4f3aceb1ee03caa1f37a08880fe44f47">titre</a>, QDateTime dateCreat=QDateTime::currentDateTime(), QDateTime dateModif=QDateTime::currentDateTime())</td></tr>
-<tr class="memdesc:aca4da68ecf0082b5ab57b0d6b8bd4e54 inherit pro_methods_class_note"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a>. Appelé uniquement par les constructeurs de ses classes filles.  <a href="class_note.html#aca4da68ecf0082b5ab57b0d6b8bd4e54">More...</a><br /></td></tr>
+<tr class="memdesc:aca4da68ecf0082b5ab57b0d6b8bd4e54 inherit pro_methods_class_note"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de <a class="el" href="class_note.html" title="La classe abstraite Note; elle sert d&#39;interface pour ses classes filles. ">Note</a>. Appelé uniquement par les constructeurs de ses classes filles.  <a href="class_note.html#aca4da68ecf0082b5ab57b0d6b8bd4e54">More...</a><br /></td></tr>
 <tr class="separator:aca4da68ecf0082b5ab57b0d6b8bd4e54 inherit pro_methods_class_note"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_media"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_media')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_media.html">Media</a></td></tr>
 <tr class="memitem:ad6a9035cacbd35418fd54514bc17328e inherit pro_attribs_class_media"><td class="memItemLeft" align="right" valign="top"><a id="ad6a9035cacbd35418fd54514bc17328e"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>description</b></td></tr>
+QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_media.html#ad6a9035cacbd35418fd54514bc17328e">description</a></td></tr>
+<tr class="memdesc:ad6a9035cacbd35418fd54514bc17328e inherit pro_attribs_class_media"><td class="mdescLeft">&#160;</td><td class="mdescRight">Description du média. <br /></td></tr>
 <tr class="separator:ad6a9035cacbd35418fd54514bc17328e inherit pro_attribs_class_media"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9b953480d2e5118bfc4c552b1f49ab4 inherit pro_attribs_class_media"><td class="memItemLeft" align="right" valign="top"><a id="aa9b953480d2e5118bfc4c552b1f49ab4"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>filepath</b></td></tr>
+QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_media.html#aa9b953480d2e5118bfc4c552b1f49ab4">filepath</a></td></tr>
+<tr class="memdesc:aa9b953480d2e5118bfc4c552b1f49ab4 inherit pro_attribs_class_media"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chemin d'accès au fichier contenant le média. <br /></td></tr>
 <tr class="separator:aa9b953480d2e5118bfc4c552b1f49ab4 inherit pro_attribs_class_media"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_note"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_note')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_note.html">Note</a></td></tr>
 <tr class="memitem:aaffabb70683f653f1cb3665dc65a5706 inherit pro_attribs_class_note"><td class="memItemLeft" align="right" valign="top"><a id="aaffabb70683f653f1cb3665dc65a5706"></a>
@@ -261,7 +263,7 @@ QDateTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=
 <tr class="separator:a4d92c5c0fffb0d408473c6c9419db9eb inherit pro_attribs_class_note"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Décrit un fichier vidéo. </p>
+<div class="textblock"><p>La classe <a class="el" href="class_video.html" title="La classe Video; elle définit le type de note Video. ">Video</a>; elle définit le type de note <a class="el" href="class_video.html" title="La classe Video; elle définit le type de note Video. ">Video</a>. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1c76796b4dccf62fe9257505c941530c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1c76796b4dccf62fe9257505c941530c">&#9670;&nbsp;</a></span>getClassName()</h2>

@@ -6,5 +6,6 @@ var searchData=
   ['datestorageformat',['dateStorageFormat',['../class_note.html#a3ac84a5f35c7043f66274787b449ba8c',1,'Note']]],
   ['dbmanager',['DbManager',['../class_db_manager.html',1,'']]],
   ['deletenote',['deleteNote',['../class_notes_manager.html#af8eb92f946d6beca66fc1f8baa1e5ccc',1,'NotesManager']]],
+  ['description',['description',['../class_media.html#ad6a9035cacbd35418fd54514bc17328e',1,'Media']]],
   ['dialog',['Dialog',['../class_dialog.html',1,'']]]
 ];

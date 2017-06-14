@@ -12,8 +12,11 @@ var searchData=
   ['getnote',['getNote',['../class_notes_manager.html#a65057904447c8204c04b42dc16013829',1,'NotesManager']]],
   ['getparent',['getParent',['../class_note.html#a2ff0d9628f3546962d62d09442975027',1,'Note']]],
   ['getsizeindexid',['getSizeIndexId',['../class_notes_manager.html#a10af407c8b16855a16c49195afe17fdd',1,'NotesManager']]],
+  ['gettablemodel',['getTableModel',['../class_article.html#ae6a634367bb1aebfbc33280ec97f8650',1,'Article']]],
   ['gettablename',['getTableName',['../class_article.html#aebf0fc28608d9831e4319488d6a1ff9b',1,'Article::getTableName()'],['../class_media.html#a13db2a59ab57a36c89a0ec22f2291217',1,'Media::getTableName()'],['../class_note.html#a131dcdbed4fa638f1c1b6ff819b093ab',1,'Note::getTableName()'],['../class_tache.html#a311b6ecdc5fecd373e9517aa5d74d2ae',1,'Tache::getTableName()']]],
+  ['gettableview',['getTableView',['../class_article.html#a6e1d162a0d201c028f4761f25f7d6f74',1,'Article']]],
   ['gettasks',['getTasks',['../class_notes_manager.html#a4c797b40422589940458e4ef1491fa94',1,'NotesManager']]],
+  ['gettexte',['getTexte',['../class_article.html#a88d949f806cd552591a652be6138a260',1,'Article']]],
   ['gettitre',['getTitre',['../class_note.html#aeca9a3994f11f8f4f8995954d5bc4147',1,'Note']]],
   ['getupdatestatequery',['getUpdateStateQuery',['../class_note.html#aff087fd373a576743774e18f0440eae4',1,'Note']]],
   ['getversion',['getVersion',['../class_note.html#a9295a2ff38b3095a523a4b8ec3a20992',1,'Note']]]

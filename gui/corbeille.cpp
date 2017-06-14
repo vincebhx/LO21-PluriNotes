@@ -51,12 +51,9 @@ void Corbeille::on_pushButton_4_clicked()
 
 void Corbeille::restaurer() {
     if (nm.nbNotes(CORBEILLE) != 0 && ui->tableWidget->currentItem()) {
-        QString id = nm.getNote(ui->tableWidget->currentRow())->firstVersion()->getId();
+        QString id = ui->tableWidget->itemAt(ui->tableWidget->currentRow(), 0)->text();
         VersionIndex* vClicked = nm.findVersionIndex(id);
-
         nm.changeState(ACTIVES, vClicked); //Changement d'état !
-
-        /*Reload des tables à gauche*/
         loadTable();
     }
 }
@@ -66,4 +63,32 @@ void Corbeille::restaurer() {
 void Corbeille::on_pushButton_clicked()
 {
     restaurer();
+}
+
+void Corbeille::receiveMessageCorbeille() {
+    loadTable();
+    this->show();
+}
+
+void Corbeille::supprimerNote() {
+    if (ui->tableWidget->currentItem()) {
+        QString id = ui->tableWidget->itemAt(ui->tableWidget->currentRow(), 0)->text();
+        VersionIndex* vClicked = nm.findVersionIndex(id);
+        nm.deleteNote(vClicked);
+    }
+}
+
+void Corbeille::on_pushButton_2_clicked()
+{
+     supprimerNote();
+     loadTable();
+}
+
+void Corbeille::on_pushButton_3_clicked()
+{
+    for (int i=0; i< ui->tableWidget->rowCount(); i++) {
+        ui->tableWidget->setCurrentCell(i,0);
+        supprimerNote();
+    }
+    loadTable();
 }

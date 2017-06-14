@@ -33,10 +33,11 @@ protected :
 public:
     Widget() : med(Mediator::instance()){};
     virtual void sendMessage(QString msg) { med->disributeMessage(this, msg); }
-    virtual void receiveMessage() = 0;
+    virtual void receiveMessage(){};
     virtual QString getCode() = 0;
     virtual void receiveMessageCorbeille(){};
     virtual void receiveMessageARelation() {};
+    virtual void receiveMessageMRelation() {};
 
 
 };

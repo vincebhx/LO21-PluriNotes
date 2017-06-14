@@ -83,6 +83,9 @@ private slots:
 
     void receiveMessageCorbeille();
 
+    void on_modifierR_clicked();
+    void receiveMessageMRelation();
+
 private:
     Ui::MainWindow *ui; // //
     NotesManager& nm;

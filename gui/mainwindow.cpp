@@ -488,3 +488,12 @@ void MainWindow::receiveMessageCorbeille() {
     loadTableTache();
     loadTableWidgetActives();
 }
+
+void MainWindow::on_modifierR_clicked()
+{
+    sendMessage("Modifier Relation");
+}
+
+void MainWindow::receiveMessageMRelation() {
+    // load relations
+}

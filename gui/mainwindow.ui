@@ -567,19 +567,6 @@
      <string>Ajouter une note</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>10</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="ajouterR">
     <property name="geometry">
      <rect>
@@ -625,7 +612,6 @@
    <zorder>archiver</zorder>
    <zorder>enregistrer</zorder>
    <zorder>pushButton</zorder>
-   <zorder>pushButton_5</zorder>
    <zorder>ajouterR</zorder>
    <zorder>modifierR</zorder>
    <zorder>pushButton_6</zorder>

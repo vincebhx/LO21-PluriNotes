@@ -21,7 +21,8 @@ HEADERS += \
     src/dbmanager.h \
     gui/mediator.h \
     gui/ajouterrelation.h \
-    gui/corbeille.h
+    gui/corbeille.h \
+    gui/modifierrelation.h
 
 SOURCES += \
     gui/NoteSelector.cpp \
@@ -40,7 +41,8 @@ SOURCES += \
     src/dbmanager.cpp \
     gui/mediator.cpp \
     gui/ajouterrelation.cpp \
-    gui/corbeille.cpp
+    gui/corbeille.cpp \
+    gui/modifierrelation.cpp
 
 DISTFILES += \
     README.md \
@@ -50,4 +52,5 @@ FORMS += \
     gui/mainwindow.ui \
     gui/dialog.ui \
     gui/ajouterrelation.ui \
-    gui/corbeille.ui
+    gui/corbeille.ui \
+    gui/modifierrelation.ui

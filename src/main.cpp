@@ -13,6 +13,7 @@
 #include "../src/relation/relationsmanager.h"
 #include "../gui/ajouterrelation.h"
 #include "../gui/corbeille.h"
+#include "../gui/modifierrelation.h"
 
 #include <QApplication>
 #include <QSqlError>
@@ -101,10 +102,14 @@ int main(int argc, char *argv[])
     Mediator* mediator = Mediator::instance();
     AjouterRelation* ajouterR = new AjouterRelation;
     Corbeille* corbeille = new Corbeille;
+    ModifierRelation* modifierR = new ModifierRelation;
+
     mediator->addComponent(window);
     mediator->addComponent(createnote);
     mediator->addComponent(ajouterR);
     mediator->addComponent(corbeille);
+    mediator->addComponent(modifierR);
+    modifierR->show();
     //mediator->disributeMessage(createnote, "hello");
 
 

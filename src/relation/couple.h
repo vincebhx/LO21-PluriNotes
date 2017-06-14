@@ -17,7 +17,7 @@ private:
 public:
     // -- CONSTRUCTEURS -- //
     Couple(QString& n1, QString& n2, QString& l): id1(n1), id2(n2), label(l){}
-    Couple(QString& n1, QString& n2): id1(n1), id2(n2){
+    Couple(const QString& n1, const QString& n2): id1(n1), id2(n2){
         QString labelVide("");
         setLabel(labelVide);
     }

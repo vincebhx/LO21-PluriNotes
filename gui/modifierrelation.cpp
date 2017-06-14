@@ -66,5 +66,11 @@ void ModifierRelation::on_pushButton_2_clicked()
 void ModifierRelation::on_pushButton_3_clicked()
 {
     Relation* relation = RM.findRelation(ui->comboBox->currentText());
+    Note* n1 =nm.findNote(ui->Note1->currentText());
+    Note* n2 =nm.findNote(ui->Note2->currentText());
+    Couple* couple = new Couple(n1->getId(), n2->getId());
+    relation->addCouple(couple);
+    loadTable();
+
 
 }

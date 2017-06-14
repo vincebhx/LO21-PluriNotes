@@ -60,8 +60,6 @@ private slots:
 
     void on_tableWidget_3_doubleClicked(const QModelIndex &index);
 
-    void on_pushButton_2_clicked();
-
     void changeStateButton(Etat etat);
 
     void on_archiver_clicked();

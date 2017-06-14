@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label_25">
@@ -286,23 +286,6 @@
          </property>
         </widget>
        </item>
-       <item row="13" column="0" colspan="2">
-        <widget class="QLabel" name="label_14">
-         <property name="text">
-          <string>Fichier</string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="1">
-        <widget class="QLineEdit" name="i_path"/>
-       </item>
-       <item row="15" column="1">
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="text">
-          <string>Parcourir</string>
-         </property>
-        </widget>
-       </item>
        <item row="12" column="0">
         <widget class="QLabel" name="label_30">
          <property name="text">
@@ -312,6 +295,16 @@
        </item>
        <item row="12" column="1">
         <widget class="QTextEdit" name="i_desc"/>
+       </item>
+       <item row="13" column="0" colspan="2">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>Fichier</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="1">
+        <widget class="QLineEdit" name="i_path"/>
        </item>
       </layout>
      </widget>
@@ -333,6 +326,9 @@
           <string>Titre</string>
          </property>
         </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="au_titre"/>
        </item>
        <item row="4" column="0" colspan="2">
         <widget class="QLabel" name="label_16">
@@ -362,23 +358,6 @@
          </property>
         </widget>
        </item>
-       <item row="12" column="0" colspan="2">
-        <widget class="QLabel" name="label_18">
-         <property name="text">
-          <string>Fichier</string>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="1">
-        <widget class="QLineEdit" name="au_path"/>
-       </item>
-       <item row="14" column="1">
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="text">
-          <string>Parcourir</string>
-         </property>
-        </widget>
-       </item>
        <item row="11" column="0">
         <widget class="QLabel" name="label_23">
          <property name="text">
@@ -389,8 +368,15 @@
        <item row="11" column="1">
         <widget class="QTextEdit" name="au_desc"/>
        </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="au_titre"/>
+       <item row="12" column="0" colspan="2">
+        <widget class="QLabel" name="label_18">
+         <property name="text">
+          <string>Fichier</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="1">
+        <widget class="QLineEdit" name="au_path"/>
        </item>
       </layout>
      </widget>
@@ -476,13 +462,6 @@
        </item>
        <item row="14" column="1">
         <widget class="QLineEdit" name="v_path"/>
-       </item>
-       <item row="15" column="1">
-        <widget class="QPushButton" name="pushButton_4">
-         <property name="text">
-          <string>Parcourir</string>
-         </property>
-        </widget>
        </item>
       </layout>
      </widget>

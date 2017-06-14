@@ -419,12 +419,6 @@ void MainWindow::loadRelation(Note* n) {
     }
 }
 
-
-void MainWindow::on_pushButton_2_clicked()
-{
-
-}
-
 void MainWindow::changeStateButton(Etat etat) {
     if (nm.nbNotes(ACTIVES) != 0 && ui->tableWidget->currentItem()) {
         unsigned short index = ui->stackedWidget->currentIndex(); //Pour le cas où c'est une tâche
@@ -486,3 +480,4 @@ void MainWindow::on_treeWidget_doubleClicked(const QModelIndex &index)
         loadRelation(clicked);
     }
 }
+

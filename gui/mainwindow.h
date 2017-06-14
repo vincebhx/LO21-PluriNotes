@@ -60,13 +60,6 @@ private slots:
 
     void on_tableWidget_3_doubleClicked(const QModelIndex &index);
 
-
-    void addRoot(QString name, QString description, Note *n);
-    void addChild (QTreeWidgetItem *parent,QString name, QString description);
-    void addAscendant(QTreeWidgetItem *parent, Relation *relation, Note *n);
-    void addDescendant(QTreeWidgetItem *parent, Relation* relation, Note* n);
-
-
     void on_pushButton_2_clicked();
 
     void changeStateButton(Etat etat);
@@ -85,6 +78,8 @@ private slots:
 
     void on_modifierR_clicked();
     void receiveMessageMRelation();
+
+    void loadRelation(Note *n);
 
 private:
     Ui::MainWindow *ui; // //

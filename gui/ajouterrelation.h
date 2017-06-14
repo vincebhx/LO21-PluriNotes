@@ -20,6 +20,9 @@ public:
     void receiveMessage() {};
     void receiveMessageARelation();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::AjouterRelation *ui;
     NotesManager& nm;

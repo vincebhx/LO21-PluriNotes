@@ -167,15 +167,8 @@ void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
     //loadClicked(clicked, type);
     loadClicked(clicked, type);
     loadVersion(vClicked);
-    /*std::vector<QString> relations = clicked->implicationRelation();
-    QTreeWidgetItem* item = new QTreeWidgetItem(ui->treeWidget);
-    for (unsigned int i=0; i< relations.size(); i++){
-        item->setText(0, relations[i]);
-        item->setText(1, "relations[i]");
-        ui->treeWidget->addTopLevelItem(item);
-    }*/
     ui->treeWidget->clear();
-    addRoot("Relation ou la note est impliquée", "desc", clicked);
+    loadRelation(clicked);
 }
 
 void MainWindow::loadClicked(Note* clicked, QString type) {
@@ -335,25 +328,29 @@ void MainWindow::saveNewVersionAudio() {
 
 void MainWindow::on_enregistrer_clicked()
 {
-    int index = ui->stackedWidget->currentIndex();
-    switch (index) {
-    case 0:
-        saveNewVersionArticle();
-        break;
-    case 1:
-        saveNewVersionTache();
-        break;
-    case 2:
-        saveNewVersionImage();
-        break;
-    case 3:
-        saveNewVersionAudio();
-        break;
-    case 4:
-        saveNewVersionVideo();
-        break;
+    if (ui->tableWidget->currentItem()){
+        int index = ui->stackedWidget->currentIndex();
+        switch (index) {
+        case 0:
+            saveNewVersionArticle();
+            break;
+        case 1:
+            saveNewVersionTache();
+            break;
+        case 2:
+            saveNewVersionImage();
+            break;
+        case 3:
+            saveNewVersionAudio();
+            break;
+        case 4:
+            saveNewVersionVideo();
+            break;
+        }
     }
+
 }
+
 
 
 
@@ -391,66 +388,47 @@ void MainWindow::on_tableWidget_3_doubleClicked(const QModelIndex &index)
     loadVersion(vClicked);
 }
 
-void MainWindow::addRoot(QString name, QString description, Note* n) {
+
+void MainWindow::loadRelation(Note* n) {
+    ui->treeWidget->clear();
+    RelationsManager& RM = RelationsManager::instance();
     QTreeWidgetItem* relation = new QTreeWidgetItem(ui->treeWidget);
-    QTreeWidgetItem* asc = new QTreeWidgetItem();
-    QTreeWidgetItem* desc = new QTreeWidgetItem();
-    asc->setText(0, "ascendant");
-    asc->setText(1, "");
-    asc->setText(0, "descendant");
-    asc->setText(1, "");
     std::vector<Relation*> relations = n->implicationRelation();
+    QTreeWidgetItem* item = new QTreeWidgetItem();
     for (unsigned int i=0; i< relations.size(); i++){
         relation->setText(0, relations[i]->getTitre());
         relation->setText(1, "");
         ui->treeWidget->addTopLevelItem(relation);
-        addAscendant(relation, relations[i], n);
-        addDescendant(relation, relations[i], n);
-     }
+        QTreeWidgetItem* asc = new QTreeWidgetItem();
+        QTreeWidgetItem* desc = new QTreeWidgetItem();
+        asc->setText(0, "Ascendant");
+        desc->setText(0, "Descendant");
+        relation->addChild(asc);
+        relation->addChild(desc);
+        std::vector<QString> lasc = nm.getAscendants(n, relations[i]);
+        std::vector<QString> ldesc = nm.getDescendants(n, relations[i]);
+        for (unsigned int i =0; i < lasc.size(); i++) {
+            item->setText(0, lasc[i]);
+            item->setText(1, "");
+            asc->addChild(item);
 
-    /*item->setText(0, name);
-    ui->treeWidget->addTopLevelItem(item);
-    addChild(item, "one");
-    addChild(item, "two");*/
+        }
+        for (unsigned int i =0; i < ldesc.size(); i++) {
+            item->setText(0, ldesc[i]);
+            item->setText(1, "");
+            desc->addChild(item);
 
-}
+        }
 
-void MainWindow::addChild (QTreeWidgetItem *parent,QString name, QString description) {
-    QTreeWidgetItem* item = new QTreeWidgetItem();
-    item->setText(0, name);
-    item->setText(1, description);
-    parent->addChild(item);
-}
-
-void MainWindow::addAscendant(QTreeWidgetItem *parent, Relation* relation, Note* n) {
-    QTreeWidgetItem* item = new QTreeWidgetItem();
-    item->setText(0, "Ascendant");
-    item->setText(1, "");
-    std::vector<QString> asc = nm.getAscendants(n, relation);
-    for (unsigned int i =0; i < asc.size(); i++) {
-        addChild(item, asc[i], "");
-        std::cout << "asc" <<asc[i].toStdString() << "\n";
     }
 }
-
-void MainWindow::addDescendant(QTreeWidgetItem *parent, Relation* relation, Note* n) {
-    QTreeWidgetItem* item = new QTreeWidgetItem();
-    item->setText(0, "Descendant");
-    item->setText(1, "");
-    std::vector<QString> desc = nm.getDescendants(n, relation);
-    for (unsigned int i =0; i < desc.size(); i++) {
-        addChild(item, desc[i], "");
-        std::cout << "desc" <<desc[i].toStdString() << "\n";
-    }
-}
-
-
 
 
 void MainWindow::on_pushButton_2_clicked()
 {
 
 }
+
 void MainWindow::changeStateButton(Etat etat) {
     if (nm.nbNotes(ACTIVES) != 0 && ui->tableWidget->currentItem()) {
         unsigned short index = ui->stackedWidget->currentIndex(); //Pour le cas où c'est une tâche
@@ -495,5 +473,6 @@ void MainWindow::on_modifierR_clicked()
 }
 
 void MainWindow::receiveMessageMRelation() {
-    // load relations
+    if (ui->tableWidget->currentItem())
+        loadRelation(nm.findNote(ui->tableWidget->itemAt(ui->tableWidget->currentRow(), 0)->text()));
 }

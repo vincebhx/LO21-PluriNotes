@@ -1,6 +1,7 @@
 #include "modifierrelation.h"
 #include "ui_modifierrelation.h"
 #include "../src/relation/relationsmanager.h"
+#include <iostream>
 
 ModifierRelation::ModifierRelation(QWidget *parent) : Widget(),
     QDialog(parent),
@@ -22,8 +23,9 @@ void ModifierRelation::loadRelations() {
 }
 
 void ModifierRelation::loadTable() {
+    ui->tableWidget->clear();
     Relation* relation = RM.findRelation(ui->comboBox->currentText());
-    ui->tableWidget->setRowCount(RM.numberOfRelations());
+    ui->tableWidget->setRowCount(relation->getNbCouples());
     for(RelationIterator it = relation->begin(); it != relation->end(); it++){
         for (unsigned int i =0; i< ui->tableWidget->rowCount(); i++) {
             ui->tableWidget->setItem(i, 0, new QTableWidgetItem((*it)->getNote1()));
@@ -39,8 +41,7 @@ ModifierRelation::~ModifierRelation()
 
 void ModifierRelation::on_comboBox_currentIndexChanged(int index)
 {
-    ui->tableWidget->clear();
-    loadTable();
+   loadTable();
 }
 
 void ModifierRelation::receiveMessageMRelation() {
@@ -48,6 +49,7 @@ void ModifierRelation::receiveMessageMRelation() {
          ui->Note1->addItem((*it)->currentVersion()->getId());
          ui->Note2->addItem((*it)->currentVersion()->getId());
     }
+    loadRelations();
     this->show();
 }
 

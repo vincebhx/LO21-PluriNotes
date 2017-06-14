@@ -43,6 +43,8 @@ public:
 
     void addCouple(Couple* c);
     void deleteCouples() { couples.clear(); }
+
+    int getNbCouples() {return couples.size();}
 };
 
 

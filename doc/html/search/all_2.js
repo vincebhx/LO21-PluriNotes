@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['datecreation',['dateCreation',['../class_note.html#a05add78a3ca4d5f549db96ddb77dba71',1,'Note']]],
-  ['datedisplayformat',['dateDisplayFormat',['../class_note.html#a8f55bdaf370fc3f1a5a568e875ad6e9e',1,'Note']]],
-  ['datemodification',['dateModification',['../class_note.html#a4d92c5c0fffb0d408473c6c9419db9eb',1,'Note']]],
-  ['datestorageformat',['dateStorageFormat',['../class_note.html#a3ac84a5f35c7043f66274787b449ba8c',1,'Note']]],
-  ['dbmanager',['DbManager',['../class_db_manager.html',1,'']]],
-  ['dialog',['Dialog',['../class_dialog.html',1,'']]]
+  ['changestate',['changeState',['../class_notes_manager.html#ad4b1fe86025ce4693b7543f7feea05db',1,'NotesManager']]],
+  ['corbeille',['Corbeille',['../class_corbeille.html',1,'']]],
+  ['couple',['Couple',['../class_couple.html',1,'']]],
+  ['currentnote',['currentNote',['../class_notes_manager.html#afd28602fc4f98f28364621cd7c1a6634',1,'NotesManager']]],
+  ['currentversion',['currentVersion',['../class_notes_manager.html#a64f27a7bf54af7ecc992475e7c0d6364',1,'NotesManager']]]
 ];

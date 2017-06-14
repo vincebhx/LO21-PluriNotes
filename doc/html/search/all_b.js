@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['setparent',['setParent',['../class_note.html#a2fc9276b6de2d21ef02c22f0093a89b1',1,'Note']]],
-  ['settitre',['setTitre',['../class_note.html#ab96d62ae2bc6bc4079b2ca61c547f0d6',1,'Note']]],
-  ['setversion',['setVersion',['../class_note.html#a01d9c513e45b80c01b409b7c0eb43f25',1,'Note']]],
-  ['supprimee',['supprimee',['../class_note.html#a1266b185e7d1655a0821135440fb9dfe',1,'Note']]]
+  ['parent',['parent',['../class_note.html#aaffabb70683f653f1cb3665dc65a5706',1,'Note']]],
+  ['prepareinsertquery',['prepareInsertQuery',['../class_media.html#aa5fd62fe3d7a151ab5efc74b4a3c19d7',1,'Media::prepareInsertQuery()'],['../class_note.html#aef2a5c1af6849face54750a34958bdc5',1,'Note::prepareInsertQuery()']]]
 ];

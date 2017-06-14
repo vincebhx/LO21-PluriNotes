@@ -11,13 +11,28 @@
 typedef enum { IMAGE = 0, AUDIO = 1, VIDEO = 2 } Type;
 static const QString TypeStr[3] = {"image", "audio", "video"};
 
-///Décrit un média
+/**
+ * @brief La classe abstraite Media; elle définit le type de note Media, et sert d'interface pour ses classes filles.
+ */
 class Media: public Note
 {
 protected:
+    ///Description du média.
     QString description;
+
+    ///Chemin d'accès au fichier contenant le média.
     QString filepath;
 
+    /**
+     * @brief Media : constructeur de Media.
+     * @param id : identifiant du média. Unique avec version
+     * @param version : version du média. Unique avec id
+     * @param titre : titre du média. Modifiable par l'utilisateur
+     * @param dateCreat : date de création du média. Générée automatiquement, sauf chargement depuis la BDD.
+     * @param dateModif : date de dernière modification du média. Générée automatiquement, sauf chargement depuis la BDD.
+     * @param description : description du média.
+     * @param filepath : chemin d'accès au fichier contenant le média.
+     */
     Media(const QString id,
           unsigned int version,
           QString titre,
@@ -43,7 +58,9 @@ public:
     const QString getTableName() const { return "Media"; }
 };
 
-///Décrit une image
+/**
+ * @brief La classe Image; elle définit le type de note Image.
+ */
 class Image: public Media {
 private:
     static const QString idStem;
@@ -71,7 +88,9 @@ public:
     QString getClassName() {return "image";}
 };
 
-///Décrit un fichier audio
+/**
+ * @brief La classe Audio; elle définit le type de note Audio.
+ */
 class Audio: public Media {
 private:
     static const QString idStem;
@@ -99,7 +118,9 @@ public:
     QString getClassName() {return "audio";}
 };
 
-///Décrit un fichier vidéo
+/**
+ * @brief La classe Video; elle définit le type de note Video.
+ */
 class Video: public Media {
 private:
     static const QString idStem;

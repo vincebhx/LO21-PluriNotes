@@ -80,21 +80,15 @@ $(document).ready(function(){initNavTree('class_relation.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="class_relation-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Relation Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_relation_1_1_relation_iterator.html">RelationIterator</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad7e15134559c256541e409a38b1f028e"><td class="memItemLeft" align="right" valign="top"><a id="ad7e15134559c256541e409a38b1f028e"></a>
@@ -115,28 +109,43 @@ QString&#160;</td><td class="memItemRight" valign="bottom"><b>getDescription</b>
 <tr class="memitem:a086652295438f03444a2209fb395433f"><td class="memItemLeft" align="right" valign="top"><a id="a086652295438f03444a2209fb395433f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>estOriente</b> () const</td></tr>
 <tr class="separator:a086652295438f03444a2209fb395433f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a42a4c0195c6dd8b3c9091a968b2396"><td class="memItemLeft" align="right" valign="top"><a id="a6a42a4c0195c6dd8b3c9091a968b2396"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addCouple</b> (<a class="el" href="class_couple.html">Couple</a> &amp;c)</td></tr>
-<tr class="separator:a6a42a4c0195c6dd8b3c9091a968b2396"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74ed579c339635a92f1118dca35195d1"><td class="memItemLeft" align="right" valign="top"><a id="a74ed579c339635a92f1118dca35195d1"></a>
-<a class="el" href="class_relation_1_1_relation_iterator.html">RelationIterator</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>iterator</b> ()</td></tr>
-<tr class="separator:a74ed579c339635a92f1118dca35195d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaa16d3db702718f07fb6f1de27a5079"><td class="memItemLeft" align="right" valign="top"><a id="aeaa16d3db702718f07fb6f1de27a5079"></a>
+RelationIterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
+<tr class="separator:aeaa16d3db702718f07fb6f1de27a5079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7794100a063986a855f9d1cd7058ab53"><td class="memItemLeft" align="right" valign="top"><a id="a7794100a063986a855f9d1cd7058ab53"></a>
+RelationIterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
+<tr class="separator:a7794100a063986a855f9d1cd7058ab53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a676d577e2fe504acabd5adb33e0a3b03"><td class="memItemLeft" align="right" valign="top"><a id="a676d577e2fe504acabd5adb33e0a3b03"></a>
+QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><b>getInsertQuery</b> ()</td></tr>
+<tr class="separator:a676d577e2fe504acabd5adb33e0a3b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1c9e385dd2a755dd18333b971451c9b"><td class="memItemLeft" align="right" valign="top"><a id="ad1c9e385dd2a755dd18333b971451c9b"></a>
+QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><b>getDeleteQuery</b> ()</td></tr>
+<tr class="separator:ad1c9e385dd2a755dd18333b971451c9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a773220ed96bf384a04f9019eaae81fc7"><td class="memItemLeft" align="right" valign="top"><a id="a773220ed96bf384a04f9019eaae81fc7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>addCouple</b> (<a class="el" href="class_couple.html">Couple</a> *c)</td></tr>
+<tr class="separator:a773220ed96bf384a04f9019eaae81fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f8e0da29220d370336091703d18f1eb"><td class="memItemLeft" align="right" valign="top"><a id="a8f8e0da29220d370336091703d18f1eb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteCouples</b> ()</td></tr>
+<tr class="separator:a8f8e0da29220d370336091703d18f1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a754e74144f7101eba7e6fc85fb4632c0"><td class="memItemLeft" align="right" valign="top"><a id="a754e74144f7101eba7e6fc85fb4632c0"></a>
+static QSqlTableModel *&#160;</td><td class="memItemRight" valign="bottom"><b>getTableModel</b> (QSqlDatabase db)</td></tr>
+<tr class="separator:a754e74144f7101eba7e6fc85fb4632c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb92ad9cae0309aca6b1a2d6d6602b98"><td class="memItemLeft" align="right" valign="top"><a id="abb92ad9cae0309aca6b1a2d6d6602b98"></a>
+static QTableView *&#160;</td><td class="memItemRight" valign="bottom"><b>getRelationView</b> (QSqlTableModel *table)</td></tr>
+<tr class="separator:abb92ad9cae0309aca6b1a2d6d6602b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a0bb09723f341f833184578d0302e82b0"><td class="memItemLeft" align="right" valign="top"><a id="a0bb09723f341f833184578d0302e82b0"></a>
 static <a class="el" href="class_relation.html">Relation</a>&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b></td></tr>
 <tr class="separator:a0bb09723f341f833184578d0302e82b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:acfe6c29823b92678a2ffdbd9117df278"><td class="memItemLeft" align="right" valign="top"><a id="acfe6c29823b92678a2ffdbd9117df278"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>RelationIterator</b></td></tr>
-<tr class="separator:acfe6c29823b92678a2ffdbd9117df278"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="_relation_8h_source.html">Relation.h</a></li>
-<li>src/Relation.cpp</li>
+<li>/Users/vbaheux/Desktop/PluriNotes/src/relation/<a class="el" href="relation_8h_source.html">relation.h</a></li>
+<li>/Users/vbaheux/Desktop/PluriNotes/src/relation/relation.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

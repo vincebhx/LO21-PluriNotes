@@ -27,8 +27,7 @@ protected:
           QString filepath = ""):
         Note(id, version, titre, dateCreat, dateModif), description(description), filepath(filepath) {}
 
-    QFormLayout* getLayout();
-    QSqlQuery prepareQuery();
+    QSqlQuery prepareInsertQuery();
 
 public:
     void setDescription(QString d) { description = d; }

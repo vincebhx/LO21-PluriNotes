@@ -22,8 +22,7 @@ private:
     QDateTime dateEcheance;
     Statut statut;
 
-    QFormLayout* getLayout();
-    QSqlQuery prepareQuery();
+    QSqlQuery prepareInsertQuery();
 public:
     static unsigned int idIncrement;
 

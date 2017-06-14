@@ -81,6 +81,7 @@ $(document).ready(function(){initNavTree('class_couple.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_couple-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Couple Class Reference</div>  </div>
@@ -89,21 +90,46 @@ $(document).ready(function(){initNavTree('class_couple.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a96abb14e6e627d4bf99299fb1339c123"><td class="memItemLeft" align="right" valign="top"><a id="a96abb14e6e627d4bf99299fb1339c123"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Couple</b> (<a class="el" href="class_note.html">Note</a> &amp;x, <a class="el" href="class_note.html">Note</a> &amp;y, const QString &amp;lab)</td></tr>
-<tr class="separator:a96abb14e6e627d4bf99299fb1339c123"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f04e0130d4d44ce39e322033d85a8df"><td class="memItemLeft" align="right" valign="top"><a id="a0f04e0130d4d44ce39e322033d85a8df"></a>
-const QString &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLabel</b> () const</td></tr>
-<tr class="separator:a0f04e0130d4d44ce39e322033d85a8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4eb471a899b8f929508d359fe6909923"><td class="memItemLeft" align="right" valign="top"><a id="a4eb471a899b8f929508d359fe6909923"></a>
-const <a class="el" href="class_note.html">Note</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getNoteX</b> () const</td></tr>
-<tr class="separator:a4eb471a899b8f929508d359fe6909923"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a57b44ca79adc6a93a77ae8c4a91f78"><td class="memItemLeft" align="right" valign="top"><a id="a4a57b44ca79adc6a93a77ae8c4a91f78"></a>
-const <a class="el" href="class_note.html">Note</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getNoteY</b> () const</td></tr>
-<tr class="separator:a4a57b44ca79adc6a93a77ae8c4a91f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86ad8bfe0cd4abf1a4a0fc2dcca2c25b"><td class="memItemLeft" align="right" valign="top"><a id="a86ad8bfe0cd4abf1a4a0fc2dcca2c25b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Couple</b> (QString &amp;n1, QString &amp;n2, QString &amp;l)</td></tr>
+<tr class="separator:a86ad8bfe0cd4abf1a4a0fc2dcca2c25b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96b08d731a63ddfe3f8a6a4859ff42b1"><td class="memItemLeft" align="right" valign="top"><a id="a96b08d731a63ddfe3f8a6a4859ff42b1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Couple</b> (QString &amp;n1, QString &amp;n2)</td></tr>
+<tr class="separator:a96b08d731a63ddfe3f8a6a4859ff42b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b24f3ca7895c1629c6abf46c4282111"><td class="memItemLeft" align="right" valign="top"><a id="a9b24f3ca7895c1629c6abf46c4282111"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>getLabel</b> ()</td></tr>
+<tr class="separator:a9b24f3ca7895c1629c6abf46c4282111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6472ba3e556d524f6b1efc5a5d6d11fa"><td class="memItemLeft" align="right" valign="top"><a id="a6472ba3e556d524f6b1efc5a5d6d11fa"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setLabel</b> (QString &amp;l)</td></tr>
+<tr class="separator:a6472ba3e556d524f6b1efc5a5d6d11fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa61081aef8ca4cd060763096e5633429"><td class="memItemLeft" align="right" valign="top"><a id="aa61081aef8ca4cd060763096e5633429"></a>
+QString &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getNote1</b> ()</td></tr>
+<tr class="separator:aa61081aef8ca4cd060763096e5633429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60f0d5ab53d97867f2d8cad687745a45"><td class="memItemLeft" align="right" valign="top"><a id="a60f0d5ab53d97867f2d8cad687745a45"></a>
+QString &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getNote2</b> ()</td></tr>
+<tr class="separator:a60f0d5ab53d97867f2d8cad687745a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43fadcc8e8e7fa544cd666a51c191bae"><td class="memItemLeft" align="right" valign="top"><a id="a43fadcc8e8e7fa544cd666a51c191bae"></a>
+std::vector&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getNotes</b> ()</td></tr>
+<tr class="separator:a43fadcc8e8e7fa544cd666a51c191bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6312cd6e9fbb5d7e89c95240490d9514"><td class="memItemLeft" align="right" valign="top"><a id="a6312cd6e9fbb5d7e89c95240490d9514"></a>
+QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><b>getInsertQuery</b> (<a class="el" href="class_relation.html">Relation</a> *r)</td></tr>
+<tr class="separator:a6312cd6e9fbb5d7e89c95240490d9514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68a4ca1e490b1566860176d39827b8fd"><td class="memItemLeft" align="right" valign="top"><a id="a68a4ca1e490b1566860176d39827b8fd"></a>
+QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><b>getDeleteQuery</b> (<a class="el" href="class_relation.html">Relation</a> *r)</td></tr>
+<tr class="separator:a68a4ca1e490b1566860176d39827b8fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:af43bfb85323e3a5bcdf3a1e7ea7e9615"><td class="memItemLeft" align="right" valign="top"><a id="af43bfb85323e3a5bcdf3a1e7ea7e9615"></a>
+static QSqlTableModel *&#160;</td><td class="memItemRight" valign="bottom"><b>getTableModel</b> (QSqlDatabase db)</td></tr>
+<tr class="separator:af43bfb85323e3a5bcdf3a1e7ea7e9615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8526166a76fc305210f212844b644158"><td class="memItemLeft" align="right" valign="top"><a id="a8526166a76fc305210f212844b644158"></a>
+static QTableView *&#160;</td><td class="memItemRight" valign="bottom"><b>getCoupleView</b> (QSqlTableModel *table)</td></tr>
+<tr class="separator:a8526166a76fc305210f212844b644158"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="_couple_8h_source.html">Couple.h</a></li>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/Users/vbaheux/Desktop/PluriNotes/src/relation/<a class="el" href="couple_8h_source.html">couple.h</a></li>
+<li>/Users/vbaheux/Desktop/PluriNotes/src/relation/couple.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

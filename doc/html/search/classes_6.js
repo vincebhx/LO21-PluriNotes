@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['relation',['Relation',['../class_relation.html',1,'']]],
-  ['relationiterator',['RelationIterator',['../class_relation_1_1_relation_iterator.html',1,'Relation']]]
+  ['note',['Note',['../class_note.html',1,'']]],
+  ['noteselector',['NoteSelector',['../class_note_selector.html',1,'']]],
+  ['notesmanager',['NotesManager',['../class_notes_manager.html',1,'']]],
+  ['noteviewer',['NoteViewer',['../class_note_viewer.html',1,'']]]
 ];

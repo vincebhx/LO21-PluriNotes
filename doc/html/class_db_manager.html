@@ -81,6 +81,8 @@ $(document).ready(function(){initNavTree('class_db_manager.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_db_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">DbManager Class Reference</div>  </div>
@@ -89,16 +91,49 @@ $(document).ready(function(){initNavTree('class_db_manager.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a449b4cc451c4ec493345d799891e7eaa"><td class="memItemLeft" align="right" valign="top"><a id="a449b4cc451c4ec493345d799891e7eaa"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>DbManager</b> (const QString &amp;path)</td></tr>
-<tr class="separator:a449b4cc451c4ec493345d799891e7eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30ac575c7cf8d6dc0b2314fb8d35289f"><td class="memItemLeft" align="right" valign="top"><a id="a30ac575c7cf8d6dc0b2314fb8d35289f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addNote</b> (<a class="el" href="class_note.html">Note</a> &amp;n)</td></tr>
-<tr class="separator:a30ac575c7cf8d6dc0b2314fb8d35289f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e6f77f3bc04a7b630724e4d998480d2"><td class="memItemLeft" align="right" valign="top"><a id="a1e6f77f3bc04a7b630724e4d998480d2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>free</b> ()</td></tr>
+<tr class="separator:a1e6f77f3bc04a7b630724e4d998480d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0563e524065ffedbf44bc7f5b86e0be"><td class="memItemLeft" align="right" valign="top"><a id="aa0563e524065ffedbf44bc7f5b86e0be"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>saveNote</b> (<a class="el" href="class_note.html">Note</a> *n)</td></tr>
+<tr class="separator:aa0563e524065ffedbf44bc7f5b86e0be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5b77337e5ac209f311eced6acdd5264"><td class="memItemLeft" align="right" valign="top"><a id="af5b77337e5ac209f311eced6acdd5264"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>saveRelation</b> (<a class="el" href="class_relation.html">Relation</a> *r)</td></tr>
+<tr class="separator:af5b77337e5ac209f311eced6acdd5264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1edbdd3c21069277b52e29c5dc19e057"><td class="memItemLeft" align="right" valign="top"><a id="a1edbdd3c21069277b52e29c5dc19e057"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>saveCouple</b> (<a class="el" href="class_relation.html">Relation</a> *r, <a class="el" href="class_couple.html">Couple</a> *c)</td></tr>
+<tr class="separator:a1edbdd3c21069277b52e29c5dc19e057"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d8ecbfc5e8534a1b441da6c45efc4f5"><td class="memItemLeft" align="right" valign="top"><a id="a7d8ecbfc5e8534a1b441da6c45efc4f5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>changeNoteState</b> (<a class="el" href="class_note.html">Note</a> *n)</td></tr>
+<tr class="separator:a7d8ecbfc5e8534a1b441da6c45efc4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3029675bda95d44beb0b3fe93fd6c8a"><td class="memItemLeft" align="right" valign="top"><a id="aa3029675bda95d44beb0b3fe93fd6c8a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>deleteNote</b> (<a class="el" href="class_note.html">Note</a> *n)</td></tr>
+<tr class="separator:aa3029675bda95d44beb0b3fe93fd6c8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a191260d954c0ed894e4420c8b1b24185"><td class="memItemLeft" align="right" valign="top"><a id="a191260d954c0ed894e4420c8b1b24185"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>deleteRelation</b> (<a class="el" href="class_relation.html">Relation</a> *r)</td></tr>
+<tr class="separator:a191260d954c0ed894e4420c8b1b24185"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add49c9dfeec7925f6b704283473f134c"><td class="memItemLeft" align="right" valign="top"><a id="add49c9dfeec7925f6b704283473f134c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>deleteCouple</b> (<a class="el" href="class_couple.html">Couple</a> *c, <a class="el" href="class_relation.html">Relation</a> *r)</td></tr>
+<tr class="separator:add49c9dfeec7925f6b704283473f134c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a104017413fa9803e6349df414a4b1086"><td class="memItemLeft" align="right" valign="top"><a id="a104017413fa9803e6349df414a4b1086"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>getLastQuery</b> (const QSqlQuery &amp;query)</td></tr>
+<tr class="separator:a104017413fa9803e6349df414a4b1086"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ab854b7eecf33502334ec042e1f45431d"><td class="memItemLeft" align="right" valign="top"><a id="ab854b7eecf33502334ec042e1f45431d"></a>
+static <a class="el" href="class_db_manager.html">DbManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>instance</b> ()</td></tr>
+<tr class="separator:ab854b7eecf33502334ec042e1f45431d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a9bbc0ad3003674b8e5e71783e5067f7f"><td class="memItemLeft" align="right" valign="top"><a id="a9bbc0ad3003674b8e5e71783e5067f7f"></a>
+QSqlDatabase&#160;</td><td class="memItemRight" valign="bottom"><b>db</b></td></tr>
+<tr class="separator:a9bbc0ad3003674b8e5e71783e5067f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="_db_manager_8h_source.html">DbManager.h</a></li>
-<li>src/DbManager.cpp</li>
+<li>/Users/vbaheux/Desktop/PluriNotes/src/<a class="el" href="dbmanager_8h_source.html">dbmanager.h</a></li>
+<li>/Users/vbaheux/Desktop/PluriNotes/src/dbmanager.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

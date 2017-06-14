@@ -80,47 +80,87 @@ $(document).ready(function(){initNavTree('class_notes_manager.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_notes_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">NotesManager Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_notes_manager_1_1_note_iterator.html">NoteIterator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator class.  <a href="class_notes_manager_1_1_note_iterator.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac6e8aefd8d14078c1e15e353859cca05"><td class="memItemLeft" align="right" valign="top"><a id="ac6e8aefd8d14078c1e15e353859cca05"></a>
-<a class="el" href="class_notes_manager_1_1_note_iterator.html">NoteIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>iterator</b> () const</td></tr>
-<tr class="separator:ac6e8aefd8d14078c1e15e353859cca05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc917f03283b2148dd2146f171f2d2e4"><td class="memItemLeft" align="right" valign="top"><a id="abc917f03283b2148dd2146f171f2d2e4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addNote</b> (<a class="el" href="class_version.html">Version</a> *n)</td></tr>
-<tr class="separator:abc917f03283b2148dd2146f171f2d2e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73d2e908ab3181a91c09cd61c644b9ca"><td class="memItemLeft" align="right" valign="top"><a id="a73d2e908ab3181a91c09cd61c644b9ca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>free</b> ()</td></tr>
+<tr class="separator:a73d2e908ab3181a91c09cd61c644b9ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e81e800842edc0dbfa86fea8437d739"><td class="memItemLeft" align="right" valign="top"><a id="a3e81e800842edc0dbfa86fea8437d739"></a>
+<a class="el" href="class_version_index.html">VersionIndex</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>findVersionIndex</b> (QString id)</td></tr>
+<tr class="separator:a3e81e800842edc0dbfa86fea8437d739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23e542af8fa9e43e3a5fffe18eb7c76b"><td class="memItemLeft" align="right" valign="top"><a id="a23e542af8fa9e43e3a5fffe18eb7c76b"></a>
+<a class="el" href="class_note.html">Note</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>findNote</b> (QString id)</td></tr>
+<tr class="separator:a23e542af8fa9e43e3a5fffe18eb7c76b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae75d33ce59185d50f89b261c6fc2701d"><td class="memItemLeft" align="right" valign="top"><a id="ae75d33ce59185d50f89b261c6fc2701d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getIndexId</b> (QString id)</td></tr>
+<tr class="separator:ae75d33ce59185d50f89b261c6fc2701d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10af407c8b16855a16c49195afe17fdd"><td class="memItemLeft" align="right" valign="top"><a id="a10af407c8b16855a16c49195afe17fdd"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getSizeIndexId</b> ()</td></tr>
+<tr class="separator:a10af407c8b16855a16c49195afe17fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64f27a7bf54af7ecc992475e7c0d6364"><td class="memItemLeft" align="right" valign="top"><a id="a64f27a7bf54af7ecc992475e7c0d6364"></a>
+<a class="el" href="class_note.html">Note</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>currentVersion</b> (Etat e)</td></tr>
+<tr class="separator:a64f27a7bf54af7ecc992475e7c0d6364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd28602fc4f98f28364621cd7c1a6634"><td class="memItemLeft" align="right" valign="top"><a id="afd28602fc4f98f28364621cd7c1a6634"></a>
+<a class="el" href="class_version_index.html">VersionIndex</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>currentNote</b> (Etat e)</td></tr>
+<tr class="separator:afd28602fc4f98f28364621cd7c1a6634"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af25ba99bf14ce9624e2c30a27124369c"><td class="memItemLeft" align="right" valign="top"><a id="af25ba99bf14ce9624e2c30a27124369c"></a>
+NMIterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> (Etat e)</td></tr>
+<tr class="separator:af25ba99bf14ce9624e2c30a27124369c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13daa5af5fc7026daf4ec48efce15320"><td class="memItemLeft" align="right" valign="top"><a id="a13daa5af5fc7026daf4ec48efce15320"></a>
+NMIterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> (Etat e)</td></tr>
+<tr class="separator:a13daa5af5fc7026daf4ec48efce15320"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c29f7258480b927662afe425d2a5f0a"><td class="memItemLeft" align="right" valign="top"><a id="a7c29f7258480b927662afe425d2a5f0a"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>nbNotes</b> (Etat e)</td></tr>
+<tr class="separator:a7c29f7258480b927662afe425d2a5f0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4fb2de50633dd25b71024343341cd64"><td class="memItemLeft" align="right" valign="top"><a id="ad4fb2de50633dd25b71024343341cd64"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> ()</td></tr>
+<tr class="separator:ad4fb2de50633dd25b71024343341cd64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2a42c617881a8b7f3371f979460dbd7"><td class="memItemLeft" align="right" valign="top"><a id="ad2a42c617881a8b7f3371f979460dbd7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>addNote</b> (Etat e, <a class="el" href="class_version_index.html">VersionIndex</a> *v)</td></tr>
+<tr class="separator:ad2a42c617881a8b7f3371f979460dbd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4b1fe86025ce4693b7543f7feea05db"><td class="memItemLeft" align="right" valign="top"><a id="ad4b1fe86025ce4693b7543f7feea05db"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>changeState</b> (Etat targetState, <a class="el" href="class_version_index.html">VersionIndex</a> *vIndex)</td></tr>
+<tr class="separator:ad4b1fe86025ce4693b7543f7feea05db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8eb92f946d6beca66fc1f8baa1e5ccc"><td class="memItemLeft" align="right" valign="top"><a id="af8eb92f946d6beca66fc1f8baa1e5ccc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteNote</b> (<a class="el" href="class_version_index.html">VersionIndex</a> *v)</td></tr>
+<tr class="separator:af8eb92f946d6beca66fc1f8baa1e5ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65057904447c8204c04b42dc16013829"><td class="memItemLeft" align="right" valign="top"><a id="a65057904447c8204c04b42dc16013829"></a>
+<a class="el" href="class_version_index.html">VersionIndex</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getNote</b> (int i)</td></tr>
+<tr class="separator:a65057904447c8204c04b42dc16013829"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab86e4ffe36ea274ce7fbfd73e020f6af"><td class="memItemLeft" align="right" valign="top"><a id="ab86e4ffe36ea274ce7fbfd73e020f6af"></a>
+std::vector&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getAscendants</b> (<a class="el" href="class_note.html">Note</a> *note, <a class="el" href="class_relation.html">Relation</a> *relation)</td></tr>
+<tr class="separator:ab86e4ffe36ea274ce7fbfd73e020f6af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0309e008781d2097cf90256624c44d4"><td class="memItemLeft" align="right" valign="top"><a id="ab0309e008781d2097cf90256624c44d4"></a>
+std::vector&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getDescendants</b> (<a class="el" href="class_note.html">Note</a> *note, <a class="el" href="class_relation.html">Relation</a> *relation)</td></tr>
+<tr class="separator:ab0309e008781d2097cf90256624c44d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c797b40422589940458e4ef1491fa94"><td class="memItemLeft" align="right" valign="top"><a id="a4c797b40422589940458e4ef1491fa94"></a>
+std::vector&lt; <a class="el" href="class_version_index.html">VersionIndex</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getTasks</b> ()</td></tr>
+<tr class="separator:a4c797b40422589940458e4ef1491fa94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac8bfffcfed9c8ab7a069fcf10f340ac5"><td class="memItemLeft" align="right" valign="top"><a id="ac8bfffcfed9c8ab7a069fcf10f340ac5"></a>
-static <a class="el" href="class_notes_manager.html">NotesManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_notes_manager.html#ac8bfffcfed9c8ab7a069fcf10f340ac5">instance</a> ()</td></tr>
-<tr class="memdesc:ac8bfffcfed9c8ab7a069fcf10f340ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton accessor. <br /></td></tr>
+static <a class="el" href="class_notes_manager.html">NotesManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>instance</b> ()</td></tr>
 <tr class="separator:ac8bfffcfed9c8ab7a069fcf10f340ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:ab45fc3969b29a821045a0e03ec26a27f"><td class="memItemLeft" align="right" valign="top"><a id="ab45fc3969b29a821045a0e03ec26a27f"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>NoteIterator</b></td></tr>
-<tr class="separator:ab45fc3969b29a821045a0e03ec26a27f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a9e94fe19ca2cf4fa845cc892bc0fb68e"><td class="memItemLeft" align="right" valign="top"><a id="a9e94fe19ca2cf4fa845cc892bc0fb68e"></a>
+std::vector&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>indexId</b></td></tr>
+<tr class="separator:a9e94fe19ca2cf4fa845cc892bc0fb68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="_notes_manager_8h_source.html">NotesManager.h</a></li>
-<li>src/NotesManager.cpp</li>
+<li>/Users/vbaheux/Desktop/PluriNotes/src/note/<a class="el" href="src_2note_2_notes_manager_8h_source.html">notesmanager.h</a></li>
+<li>/Users/vbaheux/Desktop/PluriNotes/src/note/notesmanager.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

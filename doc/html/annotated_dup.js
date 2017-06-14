@@ -1,22 +1,25 @@
 var annotated_dup =
 [
-    [ "TEMPS", null, [
-      [ "Date", "class_t_e_m_p_s_1_1_date.html", "class_t_e_m_p_s_1_1_date" ],
-      [ "TimeException", "class_t_e_m_p_s_1_1_time_exception.html", "class_t_e_m_p_s_1_1_time_exception" ]
-    ] ],
+    [ "AjouterRelation", "class_ajouter_relation.html", "class_ajouter_relation" ],
     [ "Article", "class_article.html", "class_article" ],
     [ "Audio", "class_audio.html", "class_audio" ],
+    [ "Corbeille", "class_corbeille.html", "class_corbeille" ],
     [ "Couple", "class_couple.html", "class_couple" ],
     [ "DbManager", "class_db_manager.html", "class_db_manager" ],
+    [ "Dialog", "class_dialog.html", "class_dialog" ],
+    [ "Exception", "class_exception.html", "class_exception" ],
     [ "Image", "class_image.html", "class_image" ],
     [ "MainWindow", "class_main_window.html", "class_main_window" ],
     [ "Media", "class_media.html", "class_media" ],
+    [ "Mediator", "class_mediator.html", "class_mediator" ],
     [ "Note", "class_note.html", "class_note" ],
-    [ "NoteException", "class_note_exception.html", "class_note_exception" ],
+    [ "NoteSelector", "class_note_selector.html", "class_note_selector" ],
     [ "NotesManager", "class_notes_manager.html", "class_notes_manager" ],
     [ "NoteViewer", "class_note_viewer.html", "class_note_viewer" ],
     [ "Relation", "class_relation.html", "class_relation" ],
+    [ "RelationsManager", "class_relations_manager.html", "class_relations_manager" ],
     [ "Tache", "class_tache.html", "class_tache" ],
-    [ "Version", "class_version.html", "class_version" ],
-    [ "Video", "class_video.html", "class_video" ]
+    [ "VersionIndex", "class_version_index.html", "class_version_index" ],
+    [ "Video", "class_video.html", "class_video" ],
+    [ "Widget", "class_widget.html", "class_widget" ]
 ];

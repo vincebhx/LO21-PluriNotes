@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['image',['Image',['../class_image.html',1,'']]]
+  ['exception',['Exception',['../class_exception.html',1,'']]]
 ];

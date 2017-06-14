@@ -12,6 +12,10 @@ private:
     unsigned short etat;
 public:
     VersionIndex() {}
+    /**
+     * @brief VersionIndex
+     * @param n
+     */
     VersionIndex(Note* n);
 
     unsigned short& getEtat() { return etat; }
@@ -25,7 +29,10 @@ public:
     VersionIterator end() { return versions.end(); }
 
     unsigned int nbOfVersions() { return versions.size(); }
-
+    /**
+     * @brief addVersion
+     * @param n
+     */
     void addVersion(Note* n);
 };
 

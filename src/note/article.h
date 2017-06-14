@@ -15,8 +15,8 @@ private:
     static const QString idStem;
 
     QString texte;
-    QFormLayout* getLayout();
-    QSqlQuery prepareQuery();
+
+    QSqlQuery prepareInsertQuery();
 
 public:
     static unsigned int idIncrement;

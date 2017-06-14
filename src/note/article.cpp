@@ -9,19 +9,7 @@
 const QString Article::idStem  = "ART_";
 unsigned int Article::idIncrement = 0;
 
-QFormLayout* Article::getLayout() {
-    //Texte
-    QTextEdit* textEdit = new QTextEdit(texte);
-    textEdit->setFixedWidth(300);
-
-    //Layout
-    QFormLayout* layout = new QFormLayout;
-    layout->addRow("Texte", textEdit);
-
-    return layout;
-}
-
-QSqlQuery Article::prepareQuery() {
+QSqlQuery Article::prepareInsertQuery() {
     QSqlQuery query;
 
     query.prepare("INSERT INTO Article VALUES (:etat, :id, :version, :titre, :dateCreation, :dateModification, :texte)");

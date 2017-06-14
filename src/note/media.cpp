@@ -16,24 +16,7 @@ unsigned int Audio::idIncrement = 0;
 const QString Video::idStem  = "VID_";
 unsigned int Video::idIncrement = 0;
 
-QFormLayout* Media::getLayout() {
-    //Description
-    QLineEdit* descEdit = new QLineEdit(description);
-    descEdit->setFixedWidth(300);
-
-    //Fichier
-    QLineEdit* fileEdit = new QLineEdit(filepath);
-    fileEdit->setFixedWidth(300);
-
-    //Layout
-    QFormLayout* layout = new QFormLayout;
-    layout->addRow("Description", descEdit);
-    layout->addRow("Fichier", fileEdit);
-
-    return layout;
-}
-
-QSqlQuery Media::prepareQuery() {
+QSqlQuery Media::prepareInsertQuery() {
     QSqlQuery query;
 
     query.prepare("INSERT INTO Media VALUES (:etat, :id, :version, :type, :titre, :dateCreation, :dateModification, :description, :filepath)");

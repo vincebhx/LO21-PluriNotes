@@ -90,19 +90,19 @@ $(document).ready(function(){initNavTree('class_note.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Décrit une <a class="el" href="class_note.html" title="Décrit une Note (interface, classe abstraite) ">Note</a> (interface, classe abstraite)  
+<p>La classe abstraite <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a>. elle sert d'interface pour ses classes filles.  
  <a href="class_note.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="_note_8h_source.html">Note.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="note_8h_source.html">note.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Note:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_note.png" usemap="#Note_map" alt=""/>
   <map id="Note_map" name="Note_map">
-<area href="class_article.html" title="Décrit un Article. " alt="Article" shape="rect" coords="0,56,49,80"/>
-<area href="class_media.html" title="Décrit un Média. " alt="Media" shape="rect" coords="59,56,108,80"/>
-<area href="class_tache.html" title="Décrit une Tâche. " alt="Tache" shape="rect" coords="118,56,167,80"/>
+<area href="class_article.html" title="Décrit un article. " alt="Article" shape="rect" coords="0,56,49,80"/>
+<area href="class_media.html" title="Décrit un média. " alt="Media" shape="rect" coords="59,56,108,80"/>
+<area href="class_tache.html" title="Décrit une tâche. " alt="Tache" shape="rect" coords="118,56,167,80"/>
 <area href="class_audio.html" title="Décrit un fichier audio. " alt="Audio" shape="rect" coords="0,112,49,136"/>
 <area href="class_image.html" title="Décrit une image. " alt="Image" shape="rect" coords="59,112,108,136"/>
 <area href="class_video.html" title="Décrit un fichier vidéo. " alt="Video" shape="rect" coords="118,112,167,136"/>
@@ -111,75 +111,759 @@ Inheritance diagram for Note:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab96d62ae2bc6bc4079b2ca61c547f0d6"><td class="memItemLeft" align="right" valign="top"><a id="ab96d62ae2bc6bc4079b2ca61c547f0d6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setTitre</b> (QString t)</td></tr>
-<tr class="separator:ab96d62ae2bc6bc4079b2ca61c547f0d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01d9c513e45b80c01b409b7c0eb43f25"><td class="memItemLeft" align="right" valign="top"><a id="a01d9c513e45b80c01b409b7c0eb43f25"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setVersion</b> (unsigned int i)</td></tr>
+<tr class="memitem:a681feb5254e7ed41b8a1a10d652d393c"><td class="memItemLeft" align="right" valign="top">virtual QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a681feb5254e7ed41b8a1a10d652d393c">getClassName</a> ()=0</td></tr>
+<tr class="memdesc:a681feb5254e7ed41b8a1a10d652d393c"><td class="mdescLeft">&#160;</td><td class="mdescRight">getClassName permet d'accéder au nom de la classe fille courante.  <a href="#a681feb5254e7ed41b8a1a10d652d393c">More...</a><br /></td></tr>
+<tr class="separator:a681feb5254e7ed41b8a1a10d652d393c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a131dcdbed4fa638f1c1b6ff819b093ab"><td class="memItemLeft" align="right" valign="top">virtual const QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a131dcdbed4fa638f1c1b6ff819b093ab">getTableName</a> () const =0</td></tr>
+<tr class="memdesc:a131dcdbed4fa638f1c1b6ff819b093ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">getTableName permet d'accéder au nom de la table dans laquelle insérer les requêtes pour la classe fille courante.  <a href="#a131dcdbed4fa638f1c1b6ff819b093ab">More...</a><br /></td></tr>
+<tr class="separator:a131dcdbed4fa638f1c1b6ff819b093ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fc9276b6de2d21ef02c22f0093a89b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a2fc9276b6de2d21ef02c22f0093a89b1">setParent</a> (<a class="el" href="class_version_index.html">VersionIndex</a> *v)</td></tr>
+<tr class="memdesc:a2fc9276b6de2d21ef02c22f0093a89b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">setParent permet d'initialiser le pointeur vers l'index de versions parent de la note.  <a href="#a2fc9276b6de2d21ef02c22f0093a89b1">More...</a><br /></td></tr>
+<tr class="separator:a2fc9276b6de2d21ef02c22f0093a89b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ff0d9628f3546962d62d09442975027"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_version_index.html">VersionIndex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a2ff0d9628f3546962d62d09442975027">getParent</a> ()</td></tr>
+<tr class="memdesc:a2ff0d9628f3546962d62d09442975027"><td class="mdescLeft">&#160;</td><td class="mdescRight">getParent est le getter de l'attribut parent.  <a href="#a2ff0d9628f3546962d62d09442975027">More...</a><br /></td></tr>
+<tr class="separator:a2ff0d9628f3546962d62d09442975027"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01d9c513e45b80c01b409b7c0eb43f25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a01d9c513e45b80c01b409b7c0eb43f25">setVersion</a> (unsigned int i)</td></tr>
+<tr class="memdesc:a01d9c513e45b80c01b409b7c0eb43f25"><td class="mdescLeft">&#160;</td><td class="mdescRight">setVersion est le setter de l'attribut version.  <a href="#a01d9c513e45b80c01b409b7c0eb43f25">More...</a><br /></td></tr>
 <tr class="separator:a01d9c513e45b80c01b409b7c0eb43f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff851c4b14e763f5e00755a3a12fbe76"><td class="memItemLeft" align="right" valign="top"><a id="aff851c4b14e763f5e00755a3a12fbe76"></a>
-const QString &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td></tr>
+<tr class="memitem:ab96d62ae2bc6bc4079b2ca61c547f0d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#ab96d62ae2bc6bc4079b2ca61c547f0d6">setTitre</a> (QString t)</td></tr>
+<tr class="memdesc:ab96d62ae2bc6bc4079b2ca61c547f0d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">setTitre est le setter de l'attribut titre.  <a href="#ab96d62ae2bc6bc4079b2ca61c547f0d6">More...</a><br /></td></tr>
+<tr class="separator:ab96d62ae2bc6bc4079b2ca61c547f0d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff851c4b14e763f5e00755a3a12fbe76"><td class="memItemLeft" align="right" valign="top">const QString &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#aff851c4b14e763f5e00755a3a12fbe76">getId</a> () const</td></tr>
+<tr class="memdesc:aff851c4b14e763f5e00755a3a12fbe76"><td class="mdescLeft">&#160;</td><td class="mdescRight">getId : getter de l'attribut id.  <a href="#aff851c4b14e763f5e00755a3a12fbe76">More...</a><br /></td></tr>
 <tr class="separator:aff851c4b14e763f5e00755a3a12fbe76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeca9a3994f11f8f4f8995954d5bc4147"><td class="memItemLeft" align="right" valign="top"><a id="aeca9a3994f11f8f4f8995954d5bc4147"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>getTitre</b> () const</td></tr>
+<tr class="memitem:a9295a2ff38b3095a523a4b8ec3a20992"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a9295a2ff38b3095a523a4b8ec3a20992">getVersion</a> () const</td></tr>
+<tr class="memdesc:a9295a2ff38b3095a523a4b8ec3a20992"><td class="mdescLeft">&#160;</td><td class="mdescRight">getVersion : getter de l'attribut version.  <a href="#a9295a2ff38b3095a523a4b8ec3a20992">More...</a><br /></td></tr>
+<tr class="separator:a9295a2ff38b3095a523a4b8ec3a20992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeca9a3994f11f8f4f8995954d5bc4147"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#aeca9a3994f11f8f4f8995954d5bc4147">getTitre</a> () const</td></tr>
+<tr class="memdesc:aeca9a3994f11f8f4f8995954d5bc4147"><td class="mdescLeft">&#160;</td><td class="mdescRight">getTitre : getter de l'attribut titre.  <a href="#aeca9a3994f11f8f4f8995954d5bc4147">More...</a><br /></td></tr>
 <tr class="separator:aeca9a3994f11f8f4f8995954d5bc4147"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae537a08aed5a92a902063491a579f3f5"><td class="memItemLeft" align="right" valign="top"><a id="ae537a08aed5a92a902063491a579f3f5"></a>
-unsigned int &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getVersion</b> () const</td></tr>
-<tr class="separator:ae537a08aed5a92a902063491a579f3f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe53f247ed427b2f35f37302efcc99ba"><td class="memItemLeft" align="right" valign="top"><a id="abe53f247ed427b2f35f37302efcc99ba"></a>
-const QDateTime &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getDateCreat</b> () const</td></tr>
+<tr class="memitem:abe53f247ed427b2f35f37302efcc99ba"><td class="memItemLeft" align="right" valign="top">const QDateTime &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#abe53f247ed427b2f35f37302efcc99ba">getDateCreat</a> () const</td></tr>
+<tr class="memdesc:abe53f247ed427b2f35f37302efcc99ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">getDateCreat : getter de l'attribut dateCreation.  <a href="#abe53f247ed427b2f35f37302efcc99ba">More...</a><br /></td></tr>
 <tr class="separator:abe53f247ed427b2f35f37302efcc99ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d137d4ac616d2c6026ce63e13f9e137"><td class="memItemLeft" align="right" valign="top"><a id="a5d137d4ac616d2c6026ce63e13f9e137"></a>
-QDateTime&#160;</td><td class="memItemRight" valign="bottom"><b>getDateLastModif</b> () const</td></tr>
-<tr class="separator:a5d137d4ac616d2c6026ce63e13f9e137"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab09c1be290c8a1910ead8880782065fe"><td class="memItemLeft" align="right" valign="top"><a id="ab09c1be290c8a1910ead8880782065fe"></a>
-QWidget *&#160;</td><td class="memItemRight" valign="bottom"><b>getNoteView</b> ()</td></tr>
-<tr class="separator:ab09c1be290c8a1910ead8880782065fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b25ea9f3071a454cf59ab7dcd300601"><td class="memItemLeft" align="right" valign="top"><a id="a1b25ea9f3071a454cf59ab7dcd300601"></a>
-QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><b>getQuery</b> ()</td></tr>
-<tr class="separator:a1b25ea9f3071a454cf59ab7dcd300601"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23c09b5038885d4777d52c55bde9058d"><td class="memItemLeft" align="right" valign="top">QDateTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a23c09b5038885d4777d52c55bde9058d">getDateModif</a> () const</td></tr>
+<tr class="memdesc:a23c09b5038885d4777d52c55bde9058d"><td class="mdescLeft">&#160;</td><td class="mdescRight">getDateModif : getter de l'attribut dateModification.  <a href="#a23c09b5038885d4777d52c55bde9058d">More...</a><br /></td></tr>
+<tr class="separator:a23c09b5038885d4777d52c55bde9058d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5717444d2c7c16f9d0f782c39e00581c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a5717444d2c7c16f9d0f782c39e00581c">implicationRelation</a> (<a class="el" href="class_relation.html">Relation</a> *rel)</td></tr>
+<tr class="memdesc:a5717444d2c7c16f9d0f782c39e00581c"><td class="mdescLeft">&#160;</td><td class="mdescRight">implicationRelation  <a href="#a5717444d2c7c16f9d0f782c39e00581c">More...</a><br /></td></tr>
+<tr class="separator:a5717444d2c7c16f9d0f782c39e00581c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5daebde2f546f7948d19c77f2fde8631"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_relation.html">Relation</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a5daebde2f546f7948d19c77f2fde8631">implicationRelation</a> ()</td></tr>
+<tr class="memdesc:a5daebde2f546f7948d19c77f2fde8631"><td class="mdescLeft">&#160;</td><td class="mdescRight">implicationRelation  <a href="#a5daebde2f546f7948d19c77f2fde8631">More...</a><br /></td></tr>
+<tr class="separator:a5daebde2f546f7948d19c77f2fde8631"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23597c1124ada1f1ee151b5ac3d28321"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a23597c1124ada1f1ee151b5ac3d28321">referencee</a> ()</td></tr>
+<tr class="memdesc:a23597c1124ada1f1ee151b5ac3d28321"><td class="mdescLeft">&#160;</td><td class="mdescRight">referencee  <a href="#a23597c1124ada1f1ee151b5ac3d28321">More...</a><br /></td></tr>
+<tr class="separator:a23597c1124ada1f1ee151b5ac3d28321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6625a822151dbc74da0cbbe0417cf58"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#ac6625a822151dbc74da0cbbe0417cf58">archivee</a> ()</td></tr>
+<tr class="memdesc:ac6625a822151dbc74da0cbbe0417cf58"><td class="mdescLeft">&#160;</td><td class="mdescRight">archivee  <a href="#ac6625a822151dbc74da0cbbe0417cf58">More...</a><br /></td></tr>
+<tr class="separator:ac6625a822151dbc74da0cbbe0417cf58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb7bdd3490331bec52154d2249316d3c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#adb7bdd3490331bec52154d2249316d3c">activee</a> ()</td></tr>
+<tr class="memdesc:adb7bdd3490331bec52154d2249316d3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">activee  <a href="#adb7bdd3490331bec52154d2249316d3c">More...</a><br /></td></tr>
+<tr class="separator:adb7bdd3490331bec52154d2249316d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1266b185e7d1655a0821135440fb9dfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a1266b185e7d1655a0821135440fb9dfe">supprimee</a> ()</td></tr>
+<tr class="memdesc:a1266b185e7d1655a0821135440fb9dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">supprimee  <a href="#a1266b185e7d1655a0821135440fb9dfe">More...</a><br /></td></tr>
+<tr class="separator:a1266b185e7d1655a0821135440fb9dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5e9f9a51f27ed73ba5d89b94f291191"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#ab5e9f9a51f27ed73ba5d89b94f291191">referencesTerminees</a> ()</td></tr>
+<tr class="memdesc:ab5e9f9a51f27ed73ba5d89b94f291191"><td class="mdescLeft">&#160;</td><td class="mdescRight">referencesTerminees  <a href="#ab5e9f9a51f27ed73ba5d89b94f291191">More...</a><br /></td></tr>
+<tr class="separator:ab5e9f9a51f27ed73ba5d89b94f291191"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c1796d0882f6ea452c4e971f7ff1c8f"><td class="memItemLeft" align="right" valign="top">QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a6c1796d0882f6ea452c4e971f7ff1c8f">getInsertQuery</a> ()</td></tr>
+<tr class="memdesc:a6c1796d0882f6ea452c4e971f7ff1c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">getInsertQuery initialise la requête d'insertion de la note.  <a href="#a6c1796d0882f6ea452c4e971f7ff1c8f">More...</a><br /></td></tr>
+<tr class="separator:a6c1796d0882f6ea452c4e971f7ff1c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff087fd373a576743774e18f0440eae4"><td class="memItemLeft" align="right" valign="top">QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#aff087fd373a576743774e18f0440eae4">getUpdateStateQuery</a> ()</td></tr>
+<tr class="memdesc:aff087fd373a576743774e18f0440eae4"><td class="mdescLeft">&#160;</td><td class="mdescRight">getUpdateStateQuery initialise la requête de mise à jour de l'état de la note.  <a href="#aff087fd373a576743774e18f0440eae4">More...</a><br /></td></tr>
+<tr class="separator:aff087fd373a576743774e18f0440eae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d5e181938bb118f6642050f9083ba1"><td class="memItemLeft" align="right" valign="top">QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#aa4d5e181938bb118f6642050f9083ba1">getDeleteQuery</a> ()</td></tr>
+<tr class="memdesc:aa4d5e181938bb118f6642050f9083ba1"><td class="mdescLeft">&#160;</td><td class="mdescRight">getDeleteQuery retourne la requête de suppression de la note.  <a href="#aa4d5e181938bb118f6642050f9083ba1">More...</a><br /></td></tr>
+<tr class="separator:aa4d5e181938bb118f6642050f9083ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a90542da62b39ab3e9e1cdbceaa73294a"><td class="memItemLeft" align="right" valign="top"><a id="a90542da62b39ab3e9e1cdbceaa73294a"></a>
-static const QString&#160;</td><td class="memItemRight" valign="bottom"><b>dateFormat</b> = &quot;ddd dd MMMM yyyy à hh:mm:ss&quot;</td></tr>
-<tr class="separator:a90542da62b39ab3e9e1cdbceaa73294a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f55bdaf370fc3f1a5a568e875ad6e9e"><td class="memItemLeft" align="right" valign="top"><a id="a8f55bdaf370fc3f1a5a568e875ad6e9e"></a>
+static const QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a8f55bdaf370fc3f1a5a568e875ad6e9e">dateDisplayFormat</a> = &quot;ddd dd MMMM yyyy à hh:mm:ss&quot;</td></tr>
+<tr class="memdesc:a8f55bdaf370fc3f1a5a568e875ad6e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">dateDisplayFormat : format d'affichage des dates. <br /></td></tr>
+<tr class="separator:a8f55bdaf370fc3f1a5a568e875ad6e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ac84a5f35c7043f66274787b449ba8c"><td class="memItemLeft" align="right" valign="top"><a id="a3ac84a5f35c7043f66274787b449ba8c"></a>
+static const QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a3ac84a5f35c7043f66274787b449ba8c">dateStorageFormat</a> = &quot;dd/MM/yyyy hh:mm:ss&quot;</td></tr>
+<tr class="memdesc:a3ac84a5f35c7043f66274787b449ba8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">dateStorageFormat : format de stockage des dates dans la BDD. <br /></td></tr>
+<tr class="separator:a3ac84a5f35c7043f66274787b449ba8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a84a15c87dd9aece2f824589348a61a08"><td class="memItemLeft" align="right" valign="top"><a id="a84a15c87dd9aece2f824589348a61a08"></a>
-virtual QFormLayout *&#160;</td><td class="memItemRight" valign="bottom"><b>getLayout</b> ()=0</td></tr>
-<tr class="separator:a84a15c87dd9aece2f824589348a61a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70ffdb3b7e31ae7f4225167c93dc17fe"><td class="memItemLeft" align="right" valign="top"><a id="a70ffdb3b7e31ae7f4225167c93dc17fe"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Note</b> (const QString i, QString t=NULL)</td></tr>
-<tr class="separator:a70ffdb3b7e31ae7f4225167c93dc17fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaab15fc26ba7bd354dd68367549514f7"><td class="memItemLeft" align="right" valign="top"><a id="aaab15fc26ba7bd354dd68367549514f7"></a>
-virtual QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><b>prepareQuery</b> ()=0</td></tr>
-<tr class="separator:aaab15fc26ba7bd354dd68367549514f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca4da68ecf0082b5ab57b0d6b8bd4e54"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#aca4da68ecf0082b5ab57b0d6b8bd4e54">Note</a> (const QString <a class="el" href="class_note.html#a66575bef3f06a18bbcf74a3d95e61eef">id</a>, unsigned int <a class="el" href="class_note.html#a4d40f017d6f24cad4ae1f7c8046234df">version</a>, QString <a class="el" href="class_note.html#a4f3aceb1ee03caa1f37a08880fe44f47">titre</a>, QDateTime dateCreat=QDateTime::currentDateTime(), QDateTime dateModif=QDateTime::currentDateTime())</td></tr>
+<tr class="memdesc:aca4da68ecf0082b5ab57b0d6b8bd4e54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a>. Appelé uniquement par les constructeurs de ses classes filles.  <a href="#aca4da68ecf0082b5ab57b0d6b8bd4e54">More...</a><br /></td></tr>
+<tr class="separator:aca4da68ecf0082b5ab57b0d6b8bd4e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef2a5c1af6849face54750a34958bdc5"><td class="memItemLeft" align="right" valign="top">virtual QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#aef2a5c1af6849face54750a34958bdc5">prepareInsertQuery</a> ()=0</td></tr>
+<tr class="memdesc:aef2a5c1af6849face54750a34958bdc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">prepareInsertQuery prépare la requête d'insertion d'une <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a> dans la BDD selon la classe fille.  <a href="#aef2a5c1af6849face54750a34958bdc5">More...</a><br /></td></tr>
+<tr class="separator:aef2a5c1af6849face54750a34958bdc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:aaffabb70683f653f1cb3665dc65a5706"><td class="memItemLeft" align="right" valign="top"><a id="aaffabb70683f653f1cb3665dc65a5706"></a>
+<a class="el" href="class_version_index.html">VersionIndex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#aaffabb70683f653f1cb3665dc65a5706">parent</a></td></tr>
+<tr class="memdesc:aaffabb70683f653f1cb3665dc65a5706"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index de versions auquel appartient la note. <br /></td></tr>
+<tr class="separator:aaffabb70683f653f1cb3665dc65a5706"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66575bef3f06a18bbcf74a3d95e61eef"><td class="memItemLeft" align="right" valign="top"><a id="a66575bef3f06a18bbcf74a3d95e61eef"></a>
-const QString&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+const QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a66575bef3f06a18bbcf74a3d95e61eef">id</a></td></tr>
+<tr class="memdesc:a66575bef3f06a18bbcf74a3d95e61eef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiant de la note. <br /></td></tr>
 <tr class="separator:a66575bef3f06a18bbcf74a3d95e61eef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f3aceb1ee03caa1f37a08880fe44f47"><td class="memItemLeft" align="right" valign="top"><a id="a4f3aceb1ee03caa1f37a08880fe44f47"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>titre</b></td></tr>
-<tr class="separator:a4f3aceb1ee03caa1f37a08880fe44f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d40f017d6f24cad4ae1f7c8046234df"><td class="memItemLeft" align="right" valign="top"><a id="a4d40f017d6f24cad4ae1f7c8046234df"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>version</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a4d40f017d6f24cad4ae1f7c8046234df">version</a></td></tr>
+<tr class="memdesc:a4d40f017d6f24cad4ae1f7c8046234df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numéro de version. <br /></td></tr>
 <tr class="separator:a4d40f017d6f24cad4ae1f7c8046234df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f3aceb1ee03caa1f37a08880fe44f47"><td class="memItemLeft" align="right" valign="top"><a id="a4f3aceb1ee03caa1f37a08880fe44f47"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a4f3aceb1ee03caa1f37a08880fe44f47">titre</a></td></tr>
+<tr class="memdesc:a4f3aceb1ee03caa1f37a08880fe44f47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Titre de la note. <br /></td></tr>
+<tr class="separator:a4f3aceb1ee03caa1f37a08880fe44f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05add78a3ca4d5f549db96ddb77dba71"><td class="memItemLeft" align="right" valign="top"><a id="a05add78a3ca4d5f549db96ddb77dba71"></a>
-const QDateTime&#160;</td><td class="memItemRight" valign="bottom"><b>dateCreation</b></td></tr>
+const QDateTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a05add78a3ca4d5f549db96ddb77dba71">dateCreation</a></td></tr>
+<tr class="memdesc:a05add78a3ca4d5f549db96ddb77dba71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Date de création. <br /></td></tr>
 <tr class="separator:a05add78a3ca4d5f549db96ddb77dba71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af683cf4a6468b14145f313a7acbd1ff9"><td class="memItemLeft" align="right" valign="top"><a id="af683cf4a6468b14145f313a7acbd1ff9"></a>
-QDateTime&#160;</td><td class="memItemRight" valign="bottom"><b>dateLastModification</b></td></tr>
-<tr class="separator:af683cf4a6468b14145f313a7acbd1ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d92c5c0fffb0d408473c6c9419db9eb"><td class="memItemLeft" align="right" valign="top"><a id="a4d92c5c0fffb0d408473c6c9419db9eb"></a>
+QDateTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_note.html#a4d92c5c0fffb0d408473c6c9419db9eb">dateModification</a></td></tr>
+<tr class="memdesc:a4d92c5c0fffb0d408473c6c9419db9eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Date de dernière modification. <br /></td></tr>
+<tr class="separator:a4d92c5c0fffb0d408473c6c9419db9eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Décrit une <a class="el" href="class_note.html" title="Décrit une Note (interface, classe abstraite) ">Note</a> (interface, classe abstraite) </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="_note_8h_source.html">Note.h</a></li>
-<li>src/Note.cpp</li>
+<div class="textblock"><p>La classe abstraite <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a>. elle sert d'interface pour ses classes filles. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aca4da68ecf0082b5ab57b0d6b8bd4e54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca4da68ecf0082b5ab57b0d6b8bd4e54">&#9670;&nbsp;</a></span>Note()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Note::Note </td>
+          <td>(</td>
+          <td class="paramtype">const QString&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>version</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>titre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QDateTime&#160;</td>
+          <td class="paramname"><em>dateCreat</em> = <code>QDateTime::currentDateTime()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QDateTime&#160;</td>
+          <td class="paramname"><em>dateModif</em> = <code>QDateTime::currentDateTime()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructeur de <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a>. Appelé uniquement par les constructeurs de ses classes filles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>: identifiant de la note. Unique avec version </td></tr>
+    <tr><td class="paramname">version</td><td>: version de la note. Unique avec id </td></tr>
+    <tr><td class="paramname">titre</td><td>: titre de la note. Modifiable par l'utilisateur </td></tr>
+    <tr><td class="paramname">dateCreat</td><td>: date de création de la note. Générée automatiquement, sauf chargement depuis la BDD. </td></tr>
+    <tr><td class="paramname">dateModif</td><td>: date de dernière modification de la note. Générée automatiquement, sauf chargement depuis la BDD. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="adb7bdd3490331bec52154d2249316d3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb7bdd3490331bec52154d2249316d3c">&#9670;&nbsp;</a></span>activee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Note::activee </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>activee </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="ac6625a822151dbc74da0cbbe0417cf58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6625a822151dbc74da0cbbe0417cf58">&#9670;&nbsp;</a></span>archivee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Note::archivee </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>archivee </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a681feb5254e7ed41b8a1a10d652d393c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a681feb5254e7ed41b8a1a10d652d393c">&#9670;&nbsp;</a></span>getClassName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual QString Note::getClassName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getClassName permet d'accéder au nom de la classe fille courante. </p>
+<dl class="section return"><dt>Returns</dt><dd>Retourne le nom de la classe fille courante ("article", "image", "audio", "video" ou "tache"). </dd></dl>
+
+<p>Implemented in <a class="el" href="class_video.html#a1c76796b4dccf62fe9257505c941530c">Video</a>, <a class="el" href="class_audio.html#a84d54f8a14ac238e135e3480a9efea8c">Audio</a>, <a class="el" href="class_image.html#abe45bc54cdfdc2a59bd0c17d64e8599e">Image</a>, <a class="el" href="class_tache.html#a6015d825a1706ca3f74ab85176d14a4f">Tache</a>, and <a class="el" href="class_article.html#ac998d08ac999f4f707f9808cff066c18">Article</a>.</p>
+
+</div>
+</div>
+<a id="abe53f247ed427b2f35f37302efcc99ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe53f247ed427b2f35f37302efcc99ba">&#9670;&nbsp;</a></span>getDateCreat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QDateTime&amp; Note::getDateCreat </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getDateCreat : getter de l'attribut dateCreation. </p>
+<dl class="section return"><dt>Returns</dt><dd>Retourne la date de création de la <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a> (première version). </dd></dl>
+
+</div>
+</div>
+<a id="a23c09b5038885d4777d52c55bde9058d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23c09b5038885d4777d52c55bde9058d">&#9670;&nbsp;</a></span>getDateModif()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QDateTime Note::getDateModif </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getDateModif : getter de l'attribut dateModification. </p>
+<dl class="section return"><dt>Returns</dt><dd>Retourne la date de dernière modification de la <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a>. </dd></dl>
+
+</div>
+</div>
+<a id="aa4d5e181938bb118f6642050f9083ba1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4d5e181938bb118f6642050f9083ba1">&#9670;&nbsp;</a></span>getDeleteQuery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QSqlQuery Note::getDeleteQuery </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getDeleteQuery retourne la requête de suppression de la note. </p>
+<dl class="section return"><dt>Returns</dt><dd>getDeleteQuery retourne la requête de suppression de la note dans la BDD. </dd></dl>
+
+</div>
+</div>
+<a id="aff851c4b14e763f5e00755a3a12fbe76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff851c4b14e763f5e00755a3a12fbe76">&#9670;&nbsp;</a></span>getId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QString&amp; Note::getId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getId : getter de l'attribut id. </p>
+<dl class="section return"><dt>Returns</dt><dd>Retourne l'id de la <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a6c1796d0882f6ea452c4e971f7ff1c8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c1796d0882f6ea452c4e971f7ff1c8f">&#9670;&nbsp;</a></span>getInsertQuery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QSqlQuery Note::getInsertQuery </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getInsertQuery initialise la requête d'insertion de la note. </p>
+<dl class="section return"><dt>Returns</dt><dd>getInsertQuery retourne la requête d'insertion de la note dans la BDD. </dd></dl>
+
+</div>
+</div>
+<a id="a2ff0d9628f3546962d62d09442975027"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ff0d9628f3546962d62d09442975027">&#9670;&nbsp;</a></span>getParent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_version_index.html">VersionIndex</a>* Note::getParent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getParent est le getter de l'attribut parent. </p>
+<dl class="section return"><dt>Returns</dt><dd>Retourne un pointeur sur l'index de versions parent de la <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a131dcdbed4fa638f1c1b6ff819b093ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a131dcdbed4fa638f1c1b6ff819b093ab">&#9670;&nbsp;</a></span>getTableName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const QString Note::getTableName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getTableName permet d'accéder au nom de la table dans laquelle insérer les requêtes pour la classe fille courante. </p>
+<dl class="section return"><dt>Returns</dt><dd>Retourne le nom de la table dans laquelle insérer les requêtes pour la classe fille courante ("Article, "<a class="el" href="class_media.html" title="Décrit un média. ">Media</a>", "<a class="el" href="class_tache.html" title="Décrit une tâche. ">Tache</a>"). </dd></dl>
+
+<p>Implemented in <a class="el" href="class_tache.html#a311b6ecdc5fecd373e9517aa5d74d2ae">Tache</a>, <a class="el" href="class_article.html#aebf0fc28608d9831e4319488d6a1ff9b">Article</a>, and <a class="el" href="class_media.html#a13db2a59ab57a36c89a0ec22f2291217">Media</a>.</p>
+
+</div>
+</div>
+<a id="aeca9a3994f11f8f4f8995954d5bc4147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeca9a3994f11f8f4f8995954d5bc4147">&#9670;&nbsp;</a></span>getTitre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Note::getTitre </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getTitre : getter de l'attribut titre. </p>
+<dl class="section return"><dt>Returns</dt><dd>retourne le titre de la <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a>. </dd></dl>
+
+</div>
+</div>
+<a id="aff087fd373a576743774e18f0440eae4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff087fd373a576743774e18f0440eae4">&#9670;&nbsp;</a></span>getUpdateStateQuery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QSqlQuery Note::getUpdateStateQuery </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getUpdateStateQuery initialise la requête de mise à jour de l'état de la note. </p>
+<dl class="section return"><dt>Returns</dt><dd>getUpdateStateQuery retourne la requête de mise à jour de l'état de la note dans la BDD. </dd></dl>
+
+</div>
+</div>
+<a id="a9295a2ff38b3095a523a4b8ec3a20992"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9295a2ff38b3095a523a4b8ec3a20992">&#9670;&nbsp;</a></span>getVersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Note::getVersion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getVersion : getter de l'attribut version. </p>
+<dl class="section return"><dt>Returns</dt><dd>Retourne la version de la note. </dd></dl>
+
+</div>
+</div>
+<a id="a5717444d2c7c16f9d0f782c39e00581c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5717444d2c7c16f9d0f782c39e00581c">&#9670;&nbsp;</a></span>implicationRelation() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Note::implicationRelation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_relation.html">Relation</a> *&#160;</td>
+          <td class="paramname"><em>rel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>implicationRelation </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rel</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a5daebde2f546f7948d19c77f2fde8631"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5daebde2f546f7948d19c77f2fde8631">&#9670;&nbsp;</a></span>implicationRelation() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="class_relation.html">Relation</a> * &gt; Note::implicationRelation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>implicationRelation </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="aef2a5c1af6849face54750a34958bdc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef2a5c1af6849face54750a34958bdc5">&#9670;&nbsp;</a></span>prepareInsertQuery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual QSqlQuery Note::prepareInsertQuery </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>prepareInsertQuery prépare la requête d'insertion d'une <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a> dans la BDD selon la classe fille. </p>
+<dl class="section return"><dt>Returns</dt><dd>Retourne la requête d'insertion avec les attributs spécifiques à la classe fille.</dd></dl>
+<p>prepareInsertQuery n'est utilisée que par la méthode getInsertQuery de la classe <a class="el" href="class_note.html" title="La classe abstraite Note. elle sert d&#39;interface pour ses classes filles. ">Note</a>. Elle est ici virtuelle pure, redéfinie dans les classes filles <a class="el" href="class_article.html" title="Décrit un article. ">Article</a>, <a class="el" href="class_media.html" title="Décrit un média. ">Media</a> et <a class="el" href="class_tache.html" title="Décrit une tâche. ">Tache</a> (Template Method). Ceci permet de factoriser le code pour les attributs communs à toutes les notes. </p>
+
+<p>Implemented in <a class="el" href="class_media.html#aa5fd62fe3d7a151ab5efc74b4a3c19d7">Media</a>.</p>
+
+</div>
+</div>
+<a id="a23597c1124ada1f1ee151b5ac3d28321"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23597c1124ada1f1ee151b5ac3d28321">&#9670;&nbsp;</a></span>referencee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Note::referencee </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>referencee </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="ab5e9f9a51f27ed73ba5d89b94f291191"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5e9f9a51f27ed73ba5d89b94f291191">&#9670;&nbsp;</a></span>referencesTerminees()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Note::referencesTerminees </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>referencesTerminees </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a2fc9276b6de2d21ef02c22f0093a89b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fc9276b6de2d21ef02c22f0093a89b1">&#9670;&nbsp;</a></span>setParent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Note::setParent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_version_index.html">VersionIndex</a> *&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>setParent permet d'initialiser le pointeur vers l'index de versions parent de la note. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>: index de versions dans lequel se trouve la note.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>setParent est appelée lors de l'ajout de la note dans l'index de versions, ou lors de l'initialisation de l'index avec une première note. Appel dans <a class="el" href="class_version_index.html#a0b6f6b386c349d6feb21fc168e52a527" title="VersionIndex. ">VersionIndex::VersionIndex(Note* n)</a> et <a class="el" href="class_version_index.html#a1b20708d2851084ba70f2344c93da84a" title="addVersion ">VersionIndex::addVersion(Note* n)</a> . </p>
+
+</div>
+</div>
+<a id="ab96d62ae2bc6bc4079b2ca61c547f0d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab96d62ae2bc6bc4079b2ca61c547f0d6">&#9670;&nbsp;</a></span>setTitre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Note::setTitre </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>setTitre est le setter de l'attribut titre. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>: le titre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a01d9c513e45b80c01b409b7c0eb43f25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01d9c513e45b80c01b409b7c0eb43f25">&#9670;&nbsp;</a></span>setVersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Note::setVersion </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>setVersion est le setter de l'attribut version. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>: le numéro de version (supérieur ou égal à 1). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1266b185e7d1655a0821135440fb9dfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1266b185e7d1655a0821135440fb9dfe">&#9670;&nbsp;</a></span>supprimee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Note::supprimee </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>supprimee </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/Users/vbaheux/Desktop/PluriNotes/src/note/<a class="el" href="note_8h_source.html">note.h</a></li>
+<li>/Users/vbaheux/Desktop/PluriNotes/src/note/note.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

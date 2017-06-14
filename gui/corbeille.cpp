@@ -32,7 +32,7 @@ void Corbeille::loadTable() {
             id.push_back(new QTableWidgetItem((*it)->currentVersion()->getId()));
             titre.push_back((new QTableWidgetItem((*it)->currentVersion()->getTitre())));
             dateC.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateCreat().toString()));
-            dateM.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateLastModif().toString()));
+            dateM.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateModif().toString()));
     }
 
     for (unsigned int i=0; i < ui->tableWidget->rowCount(); i++) {

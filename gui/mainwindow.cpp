@@ -69,7 +69,7 @@ void MainWindow::loadTableWidgetActives() {
             id.push_back(new QTableWidgetItem((*it)->currentVersion()->getId()));
             titre.push_back((new QTableWidgetItem((*it)->currentVersion()->getTitre())));
             dateC.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateCreat().toString()));
-            dateM.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateLastModif().toString()));
+            dateM.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateModif().toString()));
     }
 
     for (unsigned int i=0; i < ui->tableWidget->rowCount(); i++) {
@@ -121,7 +121,7 @@ void MainWindow::loadTableWidgetArchive() {
         id.push_back(new QTableWidgetItem((*it)->currentVersion()->getId()));
         titre.push_back((new QTableWidgetItem((*it)->currentVersion()->getTitre())));
         dateC.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateCreat().toString()));
-        dateM.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateLastModif().toString()));
+        dateM.push_back(new QTableWidgetItem((*it)->currentVersion()->getDateModif().toString()));
     }
 
     for (unsigned int i=0; i < ui->archive->rowCount(); i++) {
@@ -193,7 +193,7 @@ void MainWindow::loadNote(Note* note, QString type) {
         article = dynamic_cast<Article*>(note);
         ui->a_titre->setText(note->getTitre());
         ui->a_creation->setText(note->getDateCreat().toString());
-        ui->a_modif->setText(note->getDateLastModif().toString());
+        ui->a_modif->setText(note->getDateModif().toString());
         ui->a_text->setText(article->getTexte());
         ui->stackedWidget->setCurrentIndex(0);
     }
@@ -201,7 +201,7 @@ void MainWindow::loadNote(Note* note, QString type) {
         tache = dynamic_cast<Tache*>(note);
         ui->t_titre->setText(note->getTitre());
         ui->t_creation->setText(note->getDateCreat().toString());
-        ui->t_modif->setText(note->getDateLastModif().toString());
+        ui->t_modif->setText(note->getDateModif().toString());
         ui->t_action->setText(tache->getAction());
         ui->dateTimeEdit->setDateTime(tache->getDateCreat());
         ui->dateTimeEdit_2->setDateTime(tache->getDateEcheance());
@@ -213,7 +213,7 @@ void MainWindow::loadNote(Note* note, QString type) {
         image = dynamic_cast<Image*>(note);
         ui->i_titre->setText(note->getTitre());
         ui->i_creation->setText(note->getDateCreat().toString());
-        ui->i_modif->setText(note->getDateLastModif().toString());
+        ui->i_modif->setText(note->getDateModif().toString());
         ui->i_desc->setText(image->getDescription());
         ui->i_path->setText(image->getFilePath());
         ui->stackedWidget->setCurrentIndex(2);
@@ -222,7 +222,7 @@ void MainWindow::loadNote(Note* note, QString type) {
         audio = dynamic_cast<Audio*>(note);
         ui->au_titre->setText(note->getTitre());
         ui->au_creat->setText(note->getDateCreat().toString());
-        ui->au_modif->setText(note->getDateLastModif().toString());
+        ui->au_modif->setText(note->getDateModif().toString());
         ui->au_desc->setText(audio->getDescription());
         ui->au_path->setText(audio->getFilePath());
         ui->stackedWidget->setCurrentIndex(3);
@@ -231,7 +231,7 @@ void MainWindow::loadNote(Note* note, QString type) {
         video = dynamic_cast<Video*>(note);
         ui->v_titre->setText(note->getTitre());
         ui->v_creation->setText(note->getDateCreat().toString());
-        ui->v_modif->setText(note->getDateLastModif().toString());
+        ui->v_modif->setText(note->getDateModif().toString());
         ui->v_desc->setText(video->getDescription());
         ui->v_path->setText(video->getFilePath());
         ui->stackedWidget->setCurrentIndex(4);
@@ -243,7 +243,7 @@ void MainWindow::loadVersion(VersionIndex* vClicked) {
     ui->tableWidget_2->setRowCount(vClicked->nbOfVersions());
     int j =0;
     for (int i= vClicked->nbOfVersions()-1; i > -1 ; i--) {
-        ui->tableWidget_2->setItem(vClicked->nbOfVersions()-1-i, 0, new QTableWidgetItem(vClicked->at(i)->getDateLastModif().toString()));
+        ui->tableWidget_2->setItem(vClicked->nbOfVersions()-1-i, 0, new QTableWidgetItem(vClicked->at(i)->getDateModif().toString()));
         j++;
     }
 }

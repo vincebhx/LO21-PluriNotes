@@ -17,33 +17,53 @@ class Dialog : public QDialog, public Widget
     Q_OBJECT
 
 public:
+    /*!
+     * \brief Dialog : le constructeur initialise les champs par défaut
+     * \param parent
+     */
     explicit Dialog(QWidget *parent = 0);
-    void validForm();
     ~Dialog();
-    void receiveMessage() {
-                          this->show();}
-
-    /*void sendMessage() {
-
-        std::cout << "message envoye par dialog" << std::endl;
-                       }*/
-
+    /*!
+     * \brief receiveMessage : contient les instructions à suivre lorsque le message "Ajout Note" est reçu
+     */
+    void receiveMessage() {this->show();}
+    /*!
+     * \brief getCode : fonction héritée de la classe Widget, code utilisé lors de la distribution
+     * des messages par le mediator
+     * \return un code au format String
+     */
     QString getCode() {return "dialog";}
+
+private :
+    /*!
+     * \brief createArticle : Ajoute une nouvelle note de type Article au NotesManager et à la base de données
+     */
+    void createArticle();
+    /*!
+     * \brief createTache : Ajoute une nouvelle note de type Tache au NotesManager et à la base de données
+     */
+    void createTache();
+    /*!
+     * \brief createImage : Ajoute une nouvelle note de type Image au NotesManager et à la base de données
+     */
+    void createImage();
+    /*!
+     * \brief createAudio : Ajoute une nouvelle note de type Audio au NotesManager et à la base de données
+     */
+    void createAudio();
+    /*!
+     * \brief createVideo : Ajoute une nouvelle note de type Video au NotesManager et à la base de données
+     */
+    void createVideo();
 
 
 private slots:
-
+    /*!
+     * \brief on_buttonBox_clicked : appel la fonction d'ajout de nouvelle note en fonction du type
+     * \param button
+     */
     void on_buttonBox_clicked(QAbstractButton *button);
 
-    void createArticle();
-
-    void createTache();
-
-    void createImage();
-
-    void createAudio();
-
-    void createVideo();
 
 private:
     Ui::Dialog *ui;

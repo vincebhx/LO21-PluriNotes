@@ -406,7 +406,8 @@ void MainWindow::loadRelation(Note* n) {
 void MainWindow::changeStateButton(Etat etat) {
     if (nm.nbNotes(ACTIVES) != 0 && ui->tableWidget->currentItem()) {
         unsigned short index = ui->stackedWidget->currentIndex(); //Pour le cas où c'est une tâche
-        QString id = nm.getNote(ui->tableWidget->currentRow())->firstVersion()->getId();
+        //QString id = nm.getNote(ui->tableWidget->currentRow())->firstVersion()->getId();
+        QString id = nm.findNote(ui->tableWidget->itemAt(ui->tableWidget->currentRow(),0)->text())->getId();
         VersionIndex* vClicked = nm.findVersionIndex(id);
 
         nm.changeState(etat, vClicked); //Changement d'état !

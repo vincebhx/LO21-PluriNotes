@@ -5,17 +5,25 @@
 #include <QObject>
 #include <QWidget>
 #include <QString>
-//#include "widget.h"
 #include <vector>
 
 class Widget;
-//class Mediator;
-
+/*!
+ * \brief The Mediator class : Design Pattern Mediator : assure l'échange d'informations entre les différentes tout en conservant l'indépendance
+ * de ces fenêtres entre elles, le mediator est un singleton
+ */
 class Mediator
 {
 public:
-
+    /*!
+     * \brief addComponent : ajoute un composant de type Widget au Mediator
+     * \param w : Widget
+     */
     void addComponent(Widget* w);
+    /*!
+     * \brief instance : in
+     * \return
+     */
     static Mediator* instance() ;
     void disributeMessage(Widget* sender, QString msg);
 

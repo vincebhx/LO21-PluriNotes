@@ -50,7 +50,7 @@ public:
      * par la fenetre de modification d'une relation
      */
     void receiveMessageMRelation();
-
+private :
     /*!
      * \brief loadTableWidgetActives : charge à partir du NotesManager toutes les notes actives
      * dans le premier tableWidget

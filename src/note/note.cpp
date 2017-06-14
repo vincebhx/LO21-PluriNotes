@@ -84,6 +84,7 @@ bool Note::referencee(){
     for (RelationIterator ri = ref->begin(); ri != ref->end(); ri++){
         if ((*ri)->getNote2() == getId()) resultat = true;
     }
+
     return resultat;
 }
 

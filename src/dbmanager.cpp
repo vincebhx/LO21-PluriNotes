@@ -108,16 +108,22 @@ bool DbManager::changeNoteState(Note *n) {
 
 bool DbManager::deleteNote(Note* n) {
     bool success = false;
-    QSqlQuery query = n->getDeleteQuery();
-    qDebug()<<getLastQuery(query);
-
-    if(query.exec()) {
-        success = true;
-        qDebug() << "Note supprimée dans la base de données.";
+    // -- LA NOTE EST-ELLE REFERENCEE ? -- //
+    if (n->referencee()){
+        std::cout<<"Impossible de supprimer la note car elle est référencée : archivez-là.\n";
     }
-    else
-        qDebug() << "Erreur - DbManager::deleteNote : "<< query.lastError();
-    query.finish();
+    else{
+        QSqlQuery query = n->getDeleteQuery();
+        qDebug()<<getLastQuery(query);
+
+        if(query.exec()) {
+            success = true;
+            qDebug() << "Note supprimée dans la base de données.";
+        }
+        else
+            qDebug() << "Erreur - DbManager::deleteNote : "<< query.lastError();
+        query.finish();
+    }
     return success;
 };
 

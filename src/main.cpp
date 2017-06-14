@@ -64,6 +64,7 @@ int main(int argc, char *argv[])
             }
          }*/
 
+
         QSqlTableModel* modelTache = Tache::getTableModel(dbM.db);
         QTableView* viewTache = Tache::getTableView(modelTache);
         //viewTache->show();

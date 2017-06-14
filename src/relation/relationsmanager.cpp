@@ -103,7 +103,7 @@ void RelationsManager::loadCouples(){
 
         Couple* nouveauCouple = new Couple(note1, note2, label);
         rel->addCouple(nouveauCouple);
-        if (rel->estOriente()) rel->addCouple(new Couple(note2, note1, label));
+        if (!rel->estOriente()) rel->addCouple(new Couple(note2, note1, label));
     }
 }
 

@@ -86,45 +86,126 @@ $(document).ready(function(){initNavTree('class_main_window.html','');});
 <div class="title">MainWindow Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="class_main_window.html" title="The MainWindow class : comporte les différentes fonctionnalités et éléments de la fenêtre principale...">MainWindow</a> class : comporte les différentes fonctionnalités et éléments de la fenêtre principale.  
+ <a href="class_main_window.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="mainwindow_8h_source.html">mainwindow.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MainWindow:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_main_window.png" usemap="#MainWindow_map" alt=""/>
   <map id="MainWindow_map" name="MainWindow_map">
-<area href="class_widget.html" alt="Widget" shape="rect" coords="104,0,198,24"/>
+<area href="class_widget.html" title="The Widget class : classe mère des autres fenêtres qui seront ajoutées au mediator. " alt="Widget" shape="rect" coords="104,0,198,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8b244be8b7b7db1b08de2a2acb9409db"><td class="memItemLeft" align="right" valign="top"><a id="a8b244be8b7b7db1b08de2a2acb9409db"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MainWindow</b> (QWidget *parent=0)</td></tr>
+<tr class="memitem:a8b244be8b7b7db1b08de2a2acb9409db"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a8b244be8b7b7db1b08de2a2acb9409db">MainWindow</a> (QWidget *parent=0)</td></tr>
+<tr class="memdesc:a8b244be8b7b7db1b08de2a2acb9409db"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_main_window.html" title="The MainWindow class : comporte les différentes fonctionnalités et éléments de la fenêtre principale...">MainWindow</a> : Le constructeur initialise les nombres de colonnes et les en-têtes dans chaque tableWidget et effectue le chargement des différents tableaux.  <a href="#a8b244be8b7b7db1b08de2a2acb9409db">More...</a><br /></td></tr>
 <tr class="separator:a8b244be8b7b7db1b08de2a2acb9409db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e487e6b0943688411fb5e04a6b08232"><td class="memItemLeft" align="right" valign="top"><a id="a6e487e6b0943688411fb5e04a6b08232"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>receiveMessage</b> ()</td></tr>
-<tr class="separator:a6e487e6b0943688411fb5e04a6b08232"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8b1cdd0d6d10a39cb538593f29ba236"><td class="memItemLeft" align="right" valign="top"><a id="ac8b1cdd0d6d10a39cb538593f29ba236"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>getCode</b> ()</td></tr>
+<tr class="memitem:ac8b1cdd0d6d10a39cb538593f29ba236"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#ac8b1cdd0d6d10a39cb538593f29ba236">getCode</a> ()</td></tr>
+<tr class="memdesc:ac8b1cdd0d6d10a39cb538593f29ba236"><td class="mdescLeft">&#160;</td><td class="mdescRight">getCode : fonction héritée de la classe <a class="el" href="class_widget.html" title="The Widget class : classe mère des autres fenêtres qui seront ajoutées au mediator. ">Widget</a>, code utilisé lors de la distribution des messages par le mediator  <a href="#ac8b1cdd0d6d10a39cb538593f29ba236">More...</a><br /></td></tr>
 <tr class="separator:ac8b1cdd0d6d10a39cb538593f29ba236"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e487e6b0943688411fb5e04a6b08232"><td class="memItemLeft" align="right" valign="top"><a id="a6e487e6b0943688411fb5e04a6b08232"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a6e487e6b0943688411fb5e04a6b08232">receiveMessage</a> ()</td></tr>
+<tr class="memdesc:a6e487e6b0943688411fb5e04a6b08232"><td class="mdescLeft">&#160;</td><td class="mdescRight">receiveMessage : contient les instructions à effectuer lorsqu'un message est envoyé par la fenêtre de création de note <br /></td></tr>
+<tr class="separator:a6e487e6b0943688411fb5e04a6b08232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a2d236179faf97cdd38af59626bcd50"><td class="memItemLeft" align="right" valign="top"><a id="a3a2d236179faf97cdd38af59626bcd50"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a3a2d236179faf97cdd38af59626bcd50">receiveMessageCorbeille</a> ()</td></tr>
+<tr class="memdesc:a3a2d236179faf97cdd38af59626bcd50"><td class="mdescLeft">&#160;</td><td class="mdescRight">receiveMessageCorbeille : contient les instructions à effectuer lorsqu'un message est envoyé par la corbeille <br /></td></tr>
+<tr class="separator:a3a2d236179faf97cdd38af59626bcd50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a791a52f2774c281ed6ed6ae6137e832c"><td class="memItemLeft" align="right" valign="top"><a id="a791a52f2774c281ed6ed6ae6137e832c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a791a52f2774c281ed6ed6ae6137e832c">receiveMessageMRelation</a> ()</td></tr>
+<tr class="memdesc:a791a52f2774c281ed6ed6ae6137e832c"><td class="mdescLeft">&#160;</td><td class="mdescRight">receiveMessageMRelation : : contient les instructions à effectuer lorsqu'un message est envoyé par la fenetre de modification d'une relation <br /></td></tr>
+<tr class="separator:a791a52f2774c281ed6ed6ae6137e832c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_widget"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_widget')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_widget.html">Widget</a></td></tr>
-<tr class="memitem:a3b0fe9ee720267444513018e21faafa0 inherit pub_methods_class_widget"><td class="memItemLeft" align="right" valign="top"><a id="a3b0fe9ee720267444513018e21faafa0"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sendMessage</b> (QString msg)</td></tr>
+<tr class="memitem:a3b0fe9ee720267444513018e21faafa0 inherit pub_methods_class_widget"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#a3b0fe9ee720267444513018e21faafa0">sendMessage</a> (QString msg)</td></tr>
+<tr class="memdesc:a3b0fe9ee720267444513018e21faafa0 inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">sendMessage : distribue le message a tous les composants  <a href="class_widget.html#a3b0fe9ee720267444513018e21faafa0">More...</a><br /></td></tr>
 <tr class="separator:a3b0fe9ee720267444513018e21faafa0 inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6d1033551d49655bbbb9d0c3d246a88 inherit pub_methods_class_widget"><td class="memItemLeft" align="right" valign="top"><a id="ac6d1033551d49655bbbb9d0c3d246a88"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>receiveMessageCorbeille</b> ()</td></tr>
-<tr class="separator:ac6d1033551d49655bbbb9d0c3d246a88 inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb3f9dd356d2a88e1588d4c86cf661a9 inherit pub_methods_class_widget"><td class="memItemLeft" align="right" valign="top"><a id="acb3f9dd356d2a88e1588d4c86cf661a9"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>receiveMessageARelation</b> ()</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#acb3f9dd356d2a88e1588d4c86cf661a9">receiveMessageARelation</a> ()</td></tr>
+<tr class="memdesc:acb3f9dd356d2a88e1588d4c86cf661a9 inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">receiveMessageARelation : instructions à executer lorsque le message "Ajout Relation" est reçue, s'il n'y pas d'instructions particulières à exécuter la fonction ne sera pas redéfinies dans les classes filles <br /></td></tr>
 <tr class="separator:acb3f9dd356d2a88e1588d4c86cf661a9 inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_class_widget"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_widget')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_widget.html">Widget</a></td></tr>
 <tr class="memitem:a277514ab2684e1cf7d895de5c3813059 inherit pro_attribs_class_widget"><td class="memItemLeft" align="right" valign="top"><a id="a277514ab2684e1cf7d895de5c3813059"></a>
-<a class="el" href="class_mediator.html">Mediator</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>med</b></td></tr>
+<a class="el" href="class_mediator.html">Mediator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#a277514ab2684e1cf7d895de5c3813059">med</a></td></tr>
+<tr class="memdesc:a277514ab2684e1cf7d895de5c3813059 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">med : prend en attribut un mediator <br /></td></tr>
 <tr class="separator:a277514ab2684e1cf7d895de5c3813059 inherit pro_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_main_window.html" title="The MainWindow class : comporte les différentes fonctionnalités et éléments de la fenêtre principale...">MainWindow</a> class : comporte les différentes fonctionnalités et éléments de la fenêtre principale. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8b244be8b7b7db1b08de2a2acb9409db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b244be8b7b7db1b08de2a2acb9409db">&#9670;&nbsp;</a></span>MainWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainWindow::MainWindow </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_main_window.html" title="The MainWindow class : comporte les différentes fonctionnalités et éléments de la fenêtre principale...">MainWindow</a> : Le constructeur initialise les nombres de colonnes et les en-têtes dans chaque tableWidget et effectue le chargement des différents tableaux. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>= 0 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac8b1cdd0d6d10a39cb538593f29ba236"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8b1cdd0d6d10a39cb538593f29ba236">&#9670;&nbsp;</a></span>getCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString MainWindow::getCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getCode : fonction héritée de la classe <a class="el" href="class_widget.html" title="The Widget class : classe mère des autres fenêtres qui seront ajoutées au mediator. ">Widget</a>, code utilisé lors de la distribution des messages par le mediator </p>
+<dl class="section return"><dt>Returns</dt><dd>un code au format String </dd></dl>
+
+<p>Implements <a class="el" href="class_widget.html#ad4f0d932ac7c9b4bb03a786ad2cd9d5b">Widget</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/vbaheux/Desktop/PluriNotes/gui/<a class="el" href="mainwindow_8h_source.html">mainwindow.h</a></li>
 <li>/Users/vbaheux/Desktop/PluriNotes/gui/mainwindow.cpp</li>

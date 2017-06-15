@@ -1,7 +1,7 @@
 var class_couple =
 [
-    [ "Couple", "class_couple.html#a86ad8bfe0cd4abf1a4a0fc2dcca2c25b", null ],
-    [ "Couple", "class_couple.html#a96b08d731a63ddfe3f8a6a4859ff42b1", null ],
+    [ "Couple", "class_couple.html#ae796f1902c67c7db93f076d05b4ea59f", null ],
+    [ "Couple", "class_couple.html#a18686302c774ba79b9737a9d74ea7efb", null ],
     [ "~Couple", "class_couple.html#adb3d0b6785dd4e5ad1fafba5d90df602", null ],
     [ "getDeleteQuery", "class_couple.html#a68a4ca1e490b1566860176d39827b8fd", null ],
     [ "getInsertQuery", "class_couple.html#a6312cd6e9fbb5d7e89c95240490d9514", null ],

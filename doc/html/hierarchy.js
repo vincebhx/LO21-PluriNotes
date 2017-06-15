@@ -18,7 +18,8 @@ var hierarchy =
     ] ],
     [ "QDialog", null, [
       [ "AjouterRelation", "class_ajouter_relation.html", null ],
-      [ "Dialog", "class_dialog.html", null ]
+      [ "Dialog", "class_dialog.html", null ],
+      [ "ModifierRelation", "class_modifier_relation.html", null ]
     ] ],
     [ "QException", null, [
       [ "Exception", "class_exception.html", null ]
@@ -38,6 +39,7 @@ var hierarchy =
       [ "AjouterRelation", "class_ajouter_relation.html", null ],
       [ "Corbeille", "class_corbeille.html", null ],
       [ "Dialog", "class_dialog.html", null ],
-      [ "MainWindow", "class_main_window.html", null ]
+      [ "MainWindow", "class_main_window.html", null ],
+      [ "ModifierRelation", "class_modifier_relation.html", null ]
     ] ]
 ];

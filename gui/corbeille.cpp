@@ -1,5 +1,6 @@
 #include "corbeille.h"
 #include "ui_corbeille.h"
+#include <iostream>
 
 Corbeille::Corbeille(QWidget *parent) : Widget(),
     QMainWindow(parent),
@@ -51,7 +52,7 @@ void Corbeille::on_pushButton_4_clicked()
 
 void Corbeille::restaurer() {
     if (nm.nbNotes(CORBEILLE) != 0 && ui->tableWidget->currentItem()) {
-        QString id = ui->tableWidget->itemAt(ui->tableWidget->currentRow(), 0)->text();
+        QString id = ui->tableWidget->item(ui->tableWidget->currentRow(), 0)->text();
         VersionIndex* vClicked = nm.findVersionIndex(id);
         nm.changeState(ACTIVES, vClicked); //Changement d'état !
         loadTable();
@@ -72,8 +73,9 @@ void Corbeille::receiveMessageCorbeille() {
 
 void Corbeille::supprimerNote() {
     if (ui->tableWidget->currentItem()) {
-        QString id = ui->tableWidget->itemAt(ui->tableWidget->currentRow(), 0)->text();
+        QString id = ui->tableWidget->item(ui->tableWidget->currentRow(), 0)->text();
         VersionIndex* vClicked = nm.findVersionIndex(id);
+        std::cout << "test supprimer note" << vClicked->currentVersion()->getId().toStdString() << "\n";
         nm.deleteNote(vClicked);
     }
 }

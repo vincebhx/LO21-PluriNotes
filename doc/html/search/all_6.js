@@ -2,13 +2,16 @@ var searchData=
 [
   ['getascendants',['getAscendants',['../class_notes_manager.html#ab86e4ffe36ea274ce7fbfd73e020f6af',1,'NotesManager']]],
   ['getclassname',['getClassName',['../class_article.html#ac998d08ac999f4f707f9808cff066c18',1,'Article::getClassName()'],['../class_image.html#abe45bc54cdfdc2a59bd0c17d64e8599e',1,'Image::getClassName()'],['../class_audio.html#a84d54f8a14ac238e135e3480a9efea8c',1,'Audio::getClassName()'],['../class_video.html#a1c76796b4dccf62fe9257505c941530c',1,'Video::getClassName()'],['../class_note.html#a681feb5254e7ed41b8a1a10d652d393c',1,'Note::getClassName()'],['../class_tache.html#a6015d825a1706ca3f74ab85176d14a4f',1,'Tache::getClassName()']]],
+  ['getcode',['getCode',['../class_ajouter_relation.html#a78f0b8e7ad297140a61d9b16d27ff370',1,'AjouterRelation::getCode()'],['../class_corbeille.html#a35f916761a6095a83c2cff5947938dfd',1,'Corbeille::getCode()'],['../class_dialog.html#a9d1fef2074b4f94ff0d80f2680084d4e',1,'Dialog::getCode()'],['../class_main_window.html#ac8b1cdd0d6d10a39cb538593f29ba236',1,'MainWindow::getCode()'],['../class_widget.html#ad4f0d932ac7c9b4bb03a786ad2cd9d5b',1,'Widget::getCode()'],['../class_modifier_relation.html#a1349e3436f52b27c3806547b76dbf84b',1,'ModifierRelation::getCode()']]],
   ['getdatecreat',['getDateCreat',['../class_note.html#abe53f247ed427b2f35f37302efcc99ba',1,'Note']]],
   ['getdatemodif',['getDateModif',['../class_note.html#a23c09b5038885d4777d52c55bde9058d',1,'Note']]],
-  ['getdeletequery',['getDeleteQuery',['../class_note.html#aa4d5e181938bb118f6642050f9083ba1',1,'Note']]],
+  ['getdeletequery',['getDeleteQuery',['../class_note.html#aa4d5e181938bb118f6642050f9083ba1',1,'Note::getDeleteQuery()'],['../class_relation.html#ad1c9e385dd2a755dd18333b971451c9b',1,'Relation::getDeleteQuery()']]],
   ['getdescendants',['getDescendants',['../class_notes_manager.html#ab0309e008781d2097cf90256624c44d4',1,'NotesManager']]],
+  ['getdescription',['getDescription',['../class_relation.html#abdb5d8780691a9337661ce1a39e850f8',1,'Relation']]],
   ['getid',['getId',['../class_note.html#aff851c4b14e763f5e00755a3a12fbe76',1,'Note']]],
   ['getindexid',['getIndexId',['../class_notes_manager.html#ae75d33ce59185d50f89b261c6fc2701d',1,'NotesManager']]],
-  ['getinsertquery',['getInsertQuery',['../class_note.html#a6c1796d0882f6ea452c4e971f7ff1c8f',1,'Note']]],
+  ['getinsertquery',['getInsertQuery',['../class_note.html#a6c1796d0882f6ea452c4e971f7ff1c8f',1,'Note::getInsertQuery()'],['../class_relation.html#a676d577e2fe504acabd5adb33e0a3b03',1,'Relation::getInsertQuery()']]],
+  ['getnbcouples',['getNbCouples',['../class_relation.html#a9aae80097dcd80f33a3111bc6b83d1ad',1,'Relation']]],
   ['getnote',['getNote',['../class_notes_manager.html#a65057904447c8204c04b42dc16013829',1,'NotesManager']]],
   ['getparent',['getParent',['../class_note.html#a2ff0d9628f3546962d62d09442975027',1,'Note']]],
   ['getsizeindexid',['getSizeIndexId',['../class_notes_manager.html#a10af407c8b16855a16c49195afe17fdd',1,'NotesManager']]],
@@ -17,7 +20,7 @@ var searchData=
   ['gettableview',['getTableView',['../class_article.html#a6e1d162a0d201c028f4761f25f7d6f74',1,'Article']]],
   ['gettasks',['getTasks',['../class_notes_manager.html#a4c797b40422589940458e4ef1491fa94',1,'NotesManager']]],
   ['gettexte',['getTexte',['../class_article.html#a88d949f806cd552591a652be6138a260',1,'Article']]],
-  ['gettitre',['getTitre',['../class_note.html#aeca9a3994f11f8f4f8995954d5bc4147',1,'Note']]],
+  ['gettitre',['getTitre',['../class_note.html#aeca9a3994f11f8f4f8995954d5bc4147',1,'Note::getTitre()'],['../class_relation.html#a0cbf46a91a473631ece46d65cf109e54',1,'Relation::getTitre()']]],
   ['getupdatestatequery',['getUpdateStateQuery',['../class_note.html#aff087fd373a576743774e18f0440eae4',1,'Note']]],
   ['getversion',['getVersion',['../class_note.html#a9295a2ff38b3095a523a4b8ec3a20992',1,'Note']]]
 ];

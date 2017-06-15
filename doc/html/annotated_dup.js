@@ -12,6 +12,7 @@ var annotated_dup =
     [ "MainWindow", "class_main_window.html", "class_main_window" ],
     [ "Media", "class_media.html", "class_media" ],
     [ "Mediator", "class_mediator.html", "class_mediator" ],
+    [ "ModifierRelation", "class_modifier_relation.html", "class_modifier_relation" ],
     [ "Note", "class_note.html", "class_note" ],
     [ "NoteSelector", "class_note_selector.html", "class_note_selector" ],
     [ "NotesManager", "class_notes_manager.html", "class_notes_manager" ],

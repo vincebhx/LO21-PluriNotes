@@ -87,22 +87,121 @@ $(document).ready(function(){initNavTree('class_mediator.html','');});
 <div class="title">Mediator Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="class_mediator.html" title="The Mediator class : Design Pattern Mediator : assure l&#39;échange d&#39;informations entre les différentes ...">Mediator</a> class : Design Pattern <a class="el" href="class_mediator.html" title="The Mediator class : Design Pattern Mediator : assure l&#39;échange d&#39;informations entre les différentes ...">Mediator</a> : assure l'échange d'informations entre les différentes tout en conservant l'indépendance de ces fenêtres entre elles, le mediator est un singleton.  
+ <a href="class_mediator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="mediator_8h_source.html">mediator.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a102db23fa49ee2e7d2d6766fe4eaa7bd"><td class="memItemLeft" align="right" valign="top"><a id="a102db23fa49ee2e7d2d6766fe4eaa7bd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addComponent</b> (<a class="el" href="class_widget.html">Widget</a> *w)</td></tr>
+<tr class="memitem:a102db23fa49ee2e7d2d6766fe4eaa7bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mediator.html#a102db23fa49ee2e7d2d6766fe4eaa7bd">addComponent</a> (<a class="el" href="class_widget.html">Widget</a> *w)</td></tr>
+<tr class="memdesc:a102db23fa49ee2e7d2d6766fe4eaa7bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">addComponent : ajoute un composant de type <a class="el" href="class_widget.html" title="The Widget class : classe mère des autres fenêtres qui seront ajoutées au mediator. ">Widget</a> au <a class="el" href="class_mediator.html" title="The Mediator class : Design Pattern Mediator : assure l&#39;échange d&#39;informations entre les différentes ...">Mediator</a>  <a href="#a102db23fa49ee2e7d2d6766fe4eaa7bd">More...</a><br /></td></tr>
 <tr class="separator:a102db23fa49ee2e7d2d6766fe4eaa7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90ac77b3c929125a1cd1e412eac849ee"><td class="memItemLeft" align="right" valign="top"><a id="a90ac77b3c929125a1cd1e412eac849ee"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>disributeMessage</b> (<a class="el" href="class_widget.html">Widget</a> *sender, QString msg)</td></tr>
+<tr class="memitem:a90ac77b3c929125a1cd1e412eac849ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mediator.html#a90ac77b3c929125a1cd1e412eac849ee">disributeMessage</a> (<a class="el" href="class_widget.html">Widget</a> *sender, QString msg)</td></tr>
+<tr class="memdesc:a90ac77b3c929125a1cd1e412eac849ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">disributeMessage : distribue le message reçu à tous les composants du mediator  <a href="#a90ac77b3c929125a1cd1e412eac849ee">More...</a><br /></td></tr>
 <tr class="separator:a90ac77b3c929125a1cd1e412eac849ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6270158f5b8913bd980accca82c20551"><td class="memItemLeft" align="right" valign="top"><a id="a6270158f5b8913bd980accca82c20551"></a>
-static <a class="el" href="class_mediator.html">Mediator</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>instance</b> ()</td></tr>
+<tr class="memitem:a6270158f5b8913bd980accca82c20551"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_mediator.html">Mediator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mediator.html#a6270158f5b8913bd980accca82c20551">instance</a> ()</td></tr>
+<tr class="memdesc:a6270158f5b8913bd980accca82c20551"><td class="mdescLeft">&#160;</td><td class="mdescRight">instance  <a href="#a6270158f5b8913bd980accca82c20551">More...</a><br /></td></tr>
 <tr class="separator:a6270158f5b8913bd980accca82c20551"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_mediator.html" title="The Mediator class : Design Pattern Mediator : assure l&#39;échange d&#39;informations entre les différentes ...">Mediator</a> class : Design Pattern <a class="el" href="class_mediator.html" title="The Mediator class : Design Pattern Mediator : assure l&#39;échange d&#39;informations entre les différentes ...">Mediator</a> : assure l'échange d'informations entre les différentes tout en conservant l'indépendance de ces fenêtres entre elles, le mediator est un singleton. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a102db23fa49ee2e7d2d6766fe4eaa7bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a102db23fa49ee2e7d2d6766fe4eaa7bd">&#9670;&nbsp;</a></span>addComponent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mediator::addComponent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_widget.html">Widget</a> *&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>addComponent : ajoute un composant de type <a class="el" href="class_widget.html" title="The Widget class : classe mère des autres fenêtres qui seront ajoutées au mediator. ">Widget</a> au <a class="el" href="class_mediator.html" title="The Mediator class : Design Pattern Mediator : assure l&#39;échange d&#39;informations entre les différentes ...">Mediator</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>: <a class="el" href="class_widget.html" title="The Widget class : classe mère des autres fenêtres qui seront ajoutées au mediator. ">Widget</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a90ac77b3c929125a1cd1e412eac849ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90ac77b3c929125a1cd1e412eac849ee">&#9670;&nbsp;</a></span>disributeMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mediator::disributeMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_widget.html">Widget</a> *&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>disributeMessage : distribue le message reçu à tous les composants du mediator </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sender</td><td>: composant envoyant le message </td></tr>
+    <tr><td class="paramname">msg</td><td>: message envoyé </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6270158f5b8913bd980accca82c20551"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6270158f5b8913bd980accca82c20551">&#9670;&nbsp;</a></span>instance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_mediator.html">Mediator</a> * Mediator::instance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>instance </p>
+<dl class="section return"><dt>Returns</dt><dd>instance unique du médiator </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/vbaheux/Desktop/PluriNotes/gui/<a class="el" href="mediator_8h_source.html">mediator.h</a></li>
 <li>/Users/vbaheux/Desktop/PluriNotes/gui/mediator.cpp</li>

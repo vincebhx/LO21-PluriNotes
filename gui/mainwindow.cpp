@@ -406,8 +406,7 @@ void MainWindow::loadRelation(Note* n) {
 void MainWindow::changeStateButton(Etat etat) {
     if (nm.nbNotes(ACTIVES) != 0 && ui->tableWidget->currentItem()) {
         unsigned short index = ui->stackedWidget->currentIndex(); //Pour le cas où c'est une tâche
-        //QString id = nm.getNote(ui->tableWidget->currentRow())->firstVersion()->getId();
-        QString id = nm.findNote(ui->tableWidget->itemAt(ui->tableWidget->currentRow(),0)->text())->getId();
+        QString id = nm.getNote(ui->tableWidget->currentRow())->firstVersion()->getId();
         VersionIndex* vClicked = nm.findVersionIndex(id);
 
         nm.changeState(etat, vClicked); //Changement d'état !
@@ -418,6 +417,9 @@ void MainWindow::changeStateButton(Etat etat) {
         loadTableWidgetArchive();
     }
 }
+
+//INSERER CE PUTAIN DE ON_ACTIVER_CLICKED ICI
+//LE BACK S'OCCUPE DE TOUT SI JAMAIS LA NOTE EST DEJA ACTIVE
 
 void MainWindow::on_archiver_clicked() {
     changeStateButton(ARCHIVES);

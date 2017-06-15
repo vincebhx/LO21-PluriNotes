@@ -93,11 +93,10 @@ bool DbManager::saveCouple(Relation* r, Couple* c) {
 bool DbManager::changeNoteState(Note *n) {
     bool success = false;
     QSqlQuery query = n->getUpdateStateQuery();
-    qDebug()<<getLastQuery(query);
 
     if(query.exec()) {
         success = true;
-        qDebug() << "État de la note mise à jour dans la base de données.";
+        qDebug() << "État de la note"<<n->getId()<<"version"<<n->getVersion()<<"amis à jour dans la base de données.";
     }
     else
         qDebug() << "Erreur - DbManager::updateNoteState : "<< query.lastError();
@@ -113,9 +112,7 @@ bool DbManager::deleteNote(Note* n) {
         std::cout<<"Impossible de supprimer la note car elle est référencée : archivez-là.\n";
     }
     else{
-        qDebug()<<"TESTDEL1";
         QSqlQuery query = n->getDeleteQuery();
-        qDebug()<<"TESTDEL2";
         qDebug()<<getLastQuery(query);
 
         if(query.exec()) {

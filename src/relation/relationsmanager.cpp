@@ -120,13 +120,17 @@ void RelationsManager::loadCouples(){
 }
 
 
-bool RelationsManager::noteImpliqueeDansRelation(Note* note){
+bool RelationsManager::noteImpliqueeDansRelation(Note *note){
     bool resultat = false;
     // -- ON OBSERVE CHAQUE RELATION -- //
-    for (RMIterator it = this->begin(); it != this->end(); it++){
+    for (RMIterator it = relations.begin(); it != relations.end(); it++){
         // -- LA NOTE Y EST ELLE IMPLIQUEE ? -- //
-        for (RelationIterator itCouple = (*it)->begin(); itCouple != (*it)->end(); itCouple++){
-            if ((*itCouple)->getNote1() == note->getId() || (*itCouple)->getNote2() == note->getId()) resultat = true;
+        for (RelationIterator it2 = (*it)->begin(); it2 != (*it)->end(); it2++){
+            if ((*it2)->getNote1() == note->getId() || (*it2)->getNote2() == note->getId()) {
+                qDebug()<<(*it2)->getNote1()<<" "<<(*it2)->getNote2()<<" "<<note->getId()<<" TRUE";
+                resultat = true;
+                break;
+            }
         }
     }
     return resultat;

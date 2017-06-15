@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parent',['parent',['../class_note.html#aaffabb70683f653f1cb3665dc65a5706',1,'Note']]]
+  ['med',['med',['../class_widget.html#a277514ab2684e1cf7d895de5c3813059',1,'Widget']]]
 ];

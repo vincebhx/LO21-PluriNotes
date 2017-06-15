@@ -25,12 +25,13 @@ void ModifierRelation::loadTable() {
     ui->tableWidget->clear();
     Relation* relation = RM.findRelation(ui->comboBox->currentText());
     ui->tableWidget->setRowCount(relation->getNbCouples());
+    int i =0;
     for(RelationIterator it = relation->begin(); it != relation->end(); it++){
-        for (unsigned int i =0; i< ui->tableWidget->rowCount(); i++) {
+
             ui->tableWidget->setItem(i, 0, new QTableWidgetItem((*it)->getNote1()));
             ui->tableWidget->setItem(i, 1, new QTableWidgetItem((*it)->getNote2()));
             ui->tableWidget->setItem(i, 2, new QTableWidgetItem((*it)->getLabel()));
-        }
+            i++;
     }
 }
 
@@ -75,16 +76,15 @@ void ModifierRelation::on_pushButton_3_clicked()
     Couple* couple = new Couple(n1->getId(), n2->getId(), label);
     relation->addCouple(couple);
     loadTable();
-
-
 }
 
 void ModifierRelation::on_pushButton_clicked()
 {
-    QString id1 = ui->tableWidget->itemAt(ui->tableWidget->currentRow(), 0)->text();
-    QString id2 = ui->tableWidget->itemAt(ui->tableWidget->currentRow(), 1)->text();
+    QString id1 = ui->tableWidget->item(ui->tableWidget->currentRow(), 0)->text();
+    QString id2 = ui->tableWidget->item(ui->tableWidget->currentRow(), 1)->text();
     Relation* relation = RM.findRelation(ui->comboBox->currentText());
     Couple* c =relation->findCouple(id1, id2);
-    //supprimer couple
+    RM.supprimerCouple(relation, c);
+    loadTable();
 
 }

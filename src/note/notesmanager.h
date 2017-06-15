@@ -8,6 +8,9 @@ typedef std::vector<VersionIndex*>::iterator NMIterator;
 typedef enum { ACTIVES = 0, ARCHIVES = 1, CORBEILLE = 2 } Etat;
 static const QString stateString[3] = {"actives", "archives", "corbeille"};
 
+/**
+ * @brief La classe NotesManager instancie un unique objet (design pattern Singleton). Elle permet de gérer l'ensemble des notes.
+ */
 class NotesManager
 {
 private:

@@ -88,6 +88,11 @@ $(document).ready(function(){initNavTree('class_notes_manager.html','');});
 <div class="title">NotesManager Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>La classe <a class="el" href="class_notes_manager.html" title="La classe NotesManager instancie un unique objet (design pattern Singleton). Elle permet de gérer l&#39;e...">NotesManager</a> instancie un unique objet (design pattern Singleton). Elle permet de gérer l'ensemble des notes.  
+ <a href="class_notes_manager.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="src_2note_2_notes_manager_8h_source.html">notesmanager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -131,7 +136,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad4b1fe86025ce4693b7543f7feea05db"><td class="mdescLeft">&#160;</td><td class="mdescRight">changeState : déplace l'index de versions vIndex de son état courant vers l'état targetState et met à jour la BDD en conséquence.  <a href="#ad4b1fe86025ce4693b7543f7feea05db">More...</a><br /></td></tr>
 <tr class="separator:ad4b1fe86025ce4693b7543f7feea05db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8eb92f946d6beca66fc1f8baa1e5ccc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_notes_manager.html#af8eb92f946d6beca66fc1f8baa1e5ccc">deleteNote</a> (<a class="el" href="class_version_index.html">VersionIndex</a> *v)</td></tr>
-<tr class="memdesc:af8eb92f946d6beca66fc1f8baa1e5ccc"><td class="mdescLeft">&#160;</td><td class="mdescRight">deleteNote : si v est dans la corbeille, le supprime totalement du <a class="el" href="class_notes_manager.html">NotesManager</a> et de la BDD.  <a href="#af8eb92f946d6beca66fc1f8baa1e5ccc">More...</a><br /></td></tr>
+<tr class="memdesc:af8eb92f946d6beca66fc1f8baa1e5ccc"><td class="mdescLeft">&#160;</td><td class="mdescRight">deleteNote : si v est dans la corbeille, le supprime totalement du <a class="el" href="class_notes_manager.html" title="La classe NotesManager instancie un unique objet (design pattern Singleton). Elle permet de gérer l&#39;e...">NotesManager</a> et de la BDD.  <a href="#af8eb92f946d6beca66fc1f8baa1e5ccc">More...</a><br /></td></tr>
 <tr class="separator:af8eb92f946d6beca66fc1f8baa1e5ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65057904447c8204c04b42dc16013829"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_version_index.html">VersionIndex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_notes_manager.html#a65057904447c8204c04b42dc16013829">getNote</a> (int i)</td></tr>
 <tr class="memdesc:a65057904447c8204c04b42dc16013829"><td class="mdescLeft">&#160;</td><td class="mdescRight">getNote : Permet de trouver l'index de versions actif situé à la position i.  <a href="#a65057904447c8204c04b42dc16013829">More...</a><br /></td></tr>
@@ -149,7 +154,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac8bfffcfed9c8ab7a069fcf10f340ac5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_notes_manager.html">NotesManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_notes_manager.html#ac8bfffcfed9c8ab7a069fcf10f340ac5">instance</a> ()</td></tr>
-<tr class="memdesc:ac8bfffcfed9c8ab7a069fcf10f340ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">instance : accesseur à l'instance unique de <a class="el" href="class_notes_manager.html">NotesManager</a> (Singleton).  <a href="#ac8bfffcfed9c8ab7a069fcf10f340ac5">More...</a><br /></td></tr>
+<tr class="memdesc:ac8bfffcfed9c8ab7a069fcf10f340ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">instance : accesseur à l'instance unique de <a class="el" href="class_notes_manager.html" title="La classe NotesManager instancie un unique objet (design pattern Singleton). Elle permet de gérer l&#39;e...">NotesManager</a> (Singleton).  <a href="#ac8bfffcfed9c8ab7a069fcf10f340ac5">More...</a><br /></td></tr>
 <tr class="separator:ac8bfffcfed9c8ab7a069fcf10f340ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -159,7 +164,9 @@ std::vector&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom">
 <tr class="memdesc:a9e94fe19ca2cf4fa845cc892bc0fb68e"><td class="mdescLeft">&#160;</td><td class="mdescRight">indexId <br /></td></tr>
 <tr class="separator:a9e94fe19ca2cf4fa845cc892bc0fb68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>La classe <a class="el" href="class_notes_manager.html" title="La classe NotesManager instancie un unique objet (design pattern Singleton). Elle permet de gérer l&#39;e...">NotesManager</a> instancie un unique objet (design pattern Singleton). Elle permet de gérer l'ensemble des notes. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad2a42c617881a8b7f3371f979460dbd7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad2a42c617881a8b7f3371f979460dbd7">&#9670;&nbsp;</a></span>addNote()</h2>
 
@@ -190,7 +197,7 @@ std::vector&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">e</td><td>: état choisi par l'utilisateur. </td></tr>
-    <tr><td class="paramname">v</td><td>: Index de versions à ajouter dans le <a class="el" href="class_notes_manager.html">NotesManager</a>. </td></tr>
+    <tr><td class="paramname">v</td><td>: Index de versions à ajouter dans le <a class="el" href="class_notes_manager.html" title="La classe NotesManager instancie un unique objet (design pattern Singleton). Elle permet de gérer l&#39;e...">NotesManager</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -355,7 +362,7 @@ std::vector&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom">
       </table>
 </div><div class="memdoc">
 
-<p>deleteNote : si v est dans la corbeille, le supprime totalement du <a class="el" href="class_notes_manager.html">NotesManager</a> et de la BDD. </p>
+<p>deleteNote : si v est dans la corbeille, le supprime totalement du <a class="el" href="class_notes_manager.html" title="La classe NotesManager instancie un unique objet (design pattern Singleton). Elle permet de gérer l&#39;e...">NotesManager</a> et de la BDD. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>: index de versions à supprimer. </td></tr>
@@ -470,7 +477,7 @@ std::vector&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom">
 </div><div class="memdoc">
 
 <p>free : Fonction à appeler en fin de programme pour libérer la mémoire. </p>
-<p>Appelle le destructeur de <a class="el" href="class_notes_manager.html">NotesManager</a>. </p>
+<p>Appelle le destructeur de <a class="el" href="class_notes_manager.html" title="La classe NotesManager instancie un unique objet (design pattern Singleton). Elle permet de gérer l&#39;e...">NotesManager</a>. </p>
 
 </div>
 </div>
@@ -683,8 +690,8 @@ std::vector&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom">
 </table>
 </div><div class="memdoc">
 
-<p>instance : accesseur à l'instance unique de <a class="el" href="class_notes_manager.html">NotesManager</a> (Singleton). </p>
-<dl class="section return"><dt>Returns</dt><dd>Retourne une référence vers l'instance unique de <a class="el" href="class_notes_manager.html">NotesManager</a>. </dd></dl>
+<p>instance : accesseur à l'instance unique de <a class="el" href="class_notes_manager.html" title="La classe NotesManager instancie un unique objet (design pattern Singleton). Elle permet de gérer l&#39;e...">NotesManager</a> (Singleton). </p>
+<dl class="section return"><dt>Returns</dt><dd>Retourne une référence vers l'instance unique de <a class="el" href="class_notes_manager.html" title="La classe NotesManager instancie un unique objet (design pattern Singleton). Elle permet de gérer l&#39;e...">NotesManager</a>. </dd></dl>
 
 </div>
 </div>
@@ -704,7 +711,7 @@ std::vector&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom">
 </div><div class="memdoc">
 
 <p>load : Charge les données des notes présentes dans la BDD. </p>
-<p>Récupère l'ensemble des notes dans la base de données, et les place à leurs emplacements respectif dans le <a class="el" href="class_notes_manager.html">NotesManager</a>. </p>
+<p>Récupère l'ensemble des notes dans la base de données, et les place à leurs emplacements respectif dans le <a class="el" href="class_notes_manager.html" title="La classe NotesManager instancie un unique objet (design pattern Singleton). Elle permet de gérer l&#39;e...">NotesManager</a>. </p>
 
 </div>
 </div>

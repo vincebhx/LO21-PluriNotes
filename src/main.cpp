@@ -58,14 +58,11 @@ int main(int argc, char *argv[])
 
         }
 
-        QString nvRel = "Pour passer des bonnes journées";
-        /*QString de = "Une bonne idee :";
-        Relation* nr = new Relation(nvRel, de);
-        bool coucou = RelationsManager::instance().addRelation(nr);*/
-        //Relation* relej = rm.findRelation(nvRel);
-        //rm.supprimerRelation(relej);
+        /*QString titre12 = "mon apprentissage du c++";
+        Relation* rel = rm.findRelation(titre12);
+        rm.supprimerCouples(rel);*/
 
-        std::cout<<"Relations et couples dispo : \n";
+        std::cout<<"Relations et couples dispo après suppression: \n";
         for (RMIterator rmi = rm.begin(); rmi != rm.end(); rmi++){
             std::cout<<(*rmi)->getTitre().toStdString()<<std::endl;
             for (RelationIterator rit = (*rmi)->begin(); rit != (*rmi)->end(); rit++){

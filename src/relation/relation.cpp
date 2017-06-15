@@ -82,4 +82,6 @@ Couple* Relation::findCouple(QString id1, QString id2) {
     return NULL;
 }
 
-
+void Relation::supprimerCouple(Couple* c){
+    couples.erase(std::remove(couples.begin(), couples.end(), c), couples.end());
+}

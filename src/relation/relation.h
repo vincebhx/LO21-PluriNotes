@@ -100,6 +100,7 @@ public:
      * @brief deleteCouples supprime tous les couples contenus dans la relation.
      */
     void deleteCouples() { couples.clear(); }
+    void supprimerCouple(Couple* c);
 
     /**
      * @brief getNbCouples retourne le nombre de couples contenus dans la relation.

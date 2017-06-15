@@ -44,10 +44,13 @@ QSqlQuery Couple::getInsertQuery(Relation* r) {
 }
 
 QSqlQuery Couple::getDeleteQuery(Relation* r) {
-    QSqlQuery query;
 
-    query.prepare("DELETE FROM RelationNote WHERE relation = ':relation'");
+    QSqlQuery query;
+    query.prepare("DELETE FROM RelationNote WHERE relation = ':relation' AND note1 = ':n1' AND note2 = ':n2'");
     query.bindValue(":relation", r->getTitre());
+    query.bindValue(":n1", getNote1());
+    query.bindValue(":n2", getNote2());
+    query.bindValue(":label", getLabel());
 
     return query;
 }

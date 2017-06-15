@@ -184,11 +184,10 @@ bool RelationsManager::addCouple(QString titreRelation, Couple* c){
     }
 }
 
+
 void RelationsManager::supprimerCouples(Relation* r){
-    for(RelationIterator ri = r->begin(); ri != r->end(); ri++) {
-        supprimerCouple(r, (*ri));
-    }
-    r->deleteCouples();
+    bool succes = DbManager::instance().deleteCouples(r);
+    if (succes) r->deleteCouples();
 }
 
 void RelationsManager::supprimerCouple(Relation* r, Couple* c) {
@@ -210,8 +209,6 @@ void RelationsManager::supprimerRelation(Relation* r){
         bool suppression = DbManager::instance().deleteRelation(r);
         if (suppression){
             r->deleteCouples();
-
-
             relations.erase(std::remove(begin(), end(), r), end());
             std::cout<<"Après suppression...\n";
         }

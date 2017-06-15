@@ -142,35 +142,39 @@ bool DbManager::deleteCouple(Couple* c, Relation* r) {
     return success;
 };
 
+bool DbManager::deleteCouples(Relation* r) {
+    bool success = false;
+    QSqlQuery query = r->getDeleteQueryCouples();
+    qDebug()<<getLastQuery(query);
+
+    if(query.exec()) {
+        success = true;
+        qDebug() << "Couples supprimées dans la base de données.";
+    }
+    else
+        qDebug() << "Erreur - DbManager::deleteCouples : "<< query.lastError();
+    query.finish();
+    return success;
+};
+
 
 bool DbManager::deleteRelation(Relation* r) {
     bool success = false;
     QString ref = "Reference";
-    /*
-    if (r->getTitre() != ref){
 
-        // -- SUPPRESSION DES COUPLES DANS LA BASE DE DONNEES -- //
-        for (RelationIterator ri = r->begin(); ri != r->end(); ri++){
-            bool succes = deleteCouple((*ri), r);
-        }
-        // -- SUPPRESSION DES COUPLES DANS LE RELATIONS MANAGER -- //
-        r->deleteCouples();
+    if (r->getTitre() != ref){
+        bool susu = deleteCouples(r);
 
         QSqlQuery query = r->getDeleteQuery();
         qDebug()<<getLastQuery(query);
-
-        // -- SUPPRESSION DE LA RELATION DANS LA BASE DE DONNEES -- //
         if(query.exec()) {
             success = true;
             qDebug() << "Relation supprimée dans la base de données.";
         }
         else
-            qDebug() << "Erreur - DbManager::deleteNote : "<< query.lastError();
+            qDebug() << "Erreur - DbManager::deleteRelation : "<< query.lastError();
         query.finish();
-
-        // -- SUPPRESSION DE LA RELATION DANS LE RELATIONSMANAGER -- //
-        if (success == true) RelationsManager::instance().supprimerRelation(r);
-    }*/
+    }
     return success;
 }
 

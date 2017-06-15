@@ -109,6 +109,7 @@ public:
     int getNbCouples() {return couples.size();}
 
     Couple* findCouple(QString id1, QString id2);
+    QSqlQuery getDeleteQueryCouples();
 };
 
 

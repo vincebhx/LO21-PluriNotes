@@ -6,6 +6,7 @@ AjouterRelation::AjouterRelation(QWidget *parent) : Widget(),
     ui(new Ui::AjouterRelation),nm(NotesManager::instance())
 {
     ui->setupUi(this);
+
 }
 
 AjouterRelation::~AjouterRelation()

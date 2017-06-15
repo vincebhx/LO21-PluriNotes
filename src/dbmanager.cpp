@@ -65,10 +65,10 @@ bool DbManager::saveRelation(Relation* r) {
     if(query.exec()) {
         success = true;
         qDebug() << "Note ajoutée à la base de données.";
-        RelationsManager::instance().addRelation(r);
+        //RelationsManager::instance().addRelation(r);
     }
     else
-        qDebug() << "Erreur - DbManager::addNote : "<< query.lastError();
+        qDebug() << "Erreur - DbManager::addRelation : "<< query.lastError();
 
     query.finish();
     return success;

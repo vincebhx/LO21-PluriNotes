@@ -58,12 +58,19 @@ int main(int argc, char *argv[])
 
         }
 
-        /*for (RMIterator rmi = rm.begin(); rmi != rm.end(); rmi++){
+        /*QString nvRel = "Pour passer des bonnes journées";
+        QString de = "Une bonne idee :";
+        Relation* nr = new Relation(nvRel, de);
+        bool coucou = RelationsManager::instance().addRelation(nr);*/
+
+        std::cout<<"Relations et couples dispo : \n";
+        for (RMIterator rmi = rm.begin(); rmi != rm.end(); rmi++){
             std::cout<<(*rmi)->getTitre().toStdString()<<std::endl;
             for (RelationIterator rit = (*rmi)->begin(); rit != (*rmi)->end(); rit++){
                 std::cout<<"Couple: "<<(*rit)->getLabel().toStdString()<<" "<<(*rit)->getNote1().toStdString()<<" "<<(*rit)->getNote2().toStdString()<<std::endl;
             }
-         }*/
+         }
+
 
 
         QSqlTableModel* modelTache = Tache::getTableModel(dbM.db);

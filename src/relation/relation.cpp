@@ -37,7 +37,7 @@ QTableView* Relation::getRelationView(QSqlTableModel *table) {
 
 
 void Relation::addCouple(Couple *c){
-    couples.push_back(c);
+     couples.push_back(c);
 }
 
 QSqlQuery Relation::getInsertQuery(){
@@ -49,14 +49,19 @@ QSqlQuery Relation::getInsertQuery(){
     else {
         orientation = 0;
     }
-    query.prepare("INSERT INTO Relation VALUES (':titre', ':description', :orientation)");
-    query.bindValue(":titre", getTitre());
-    query.bindValue(":description", getDescription());
-    query.bindValue(":orientation", orientation);
-    //query.prepare(str);
+    QString t = getTitre();
+    QString d = getDescription();
+
+    QString str = "INSERT INTO Relation (titre, description, oriente) VALUES ('" + getTitre() + "', '" + getDescription() + "', " + estOriente() + ")";
+    //query.prepare("INSERT INTO Relation (titre, description, oriente) VALUES (:titre, :description, :orientation");
+    //query.bindValue(":titre", getTitre());
+    //query.bindValue(":description", getDescription());
+    //query.bindValue(":orientation", orientation);
+    query.prepare(str);
 
     return query;
 }
+
 
 QSqlQuery Relation::getDeleteQuery() {
     QSqlQuery query;

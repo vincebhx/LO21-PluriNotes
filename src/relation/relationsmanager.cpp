@@ -8,6 +8,8 @@
 #include <QSqlTableModel>
 #include <QVariant>
 
+#include <algorithm>
+
 
 RelationsManager* RelationsManager::_instance = 0;
 
@@ -46,22 +48,34 @@ void RelationsManager::loadRelations(){
     QSqlRecord rec;
     QSqlTableModel* rel = Relation::getTableModel(DbManager::instance().db);
 
-    //Relation* ref = new Relation("Reference", "Relation de reference entre deux notes", 1);
-    //addRelation(ref);
-
     for (int i = 0; i < rel->rowCount(); i++){
         rec = rel->record(i);
         QString titre = rec.value(0).toString();
         Relation* r = new Relation(titre,
                          rec.value(1).toString(),
                          rec.value(2).toBool());
-        addRelation(r);
+        relations.push_back(r);
     }
 }
 
-void RelationsManager::addRelation(Relation* r){
-    relations.push_back(r);
+bool RelationsManager::addRelation(Relation* r){
+    QString rel = r->getTitre();
+    Relation* relExistante = findRelation(rel);
+    if(relExistante){
+        qDebug()<<"La relation existe deja !";
+    }
+    else{
+        bool succes = DbManager::instance().saveRelation(r);
+        if (succes) relations.push_back(r);
+    }
 }
+
+/*
+bool RelationsManager::addRelationBDD(Relation* r){
+    bool insertion = DbManager::instance().saveRelation(r);
+    if (!insertion) qDebug()<<"Insertion de la relation impossible.";
+    else addRelation(r);
+}*/
 
 Relation* RelationsManager::findRelation(QString titre){
     Relation* resultat = nullptr;
@@ -103,7 +117,8 @@ void RelationsManager::loadCouples(){
 
         Couple* nouveauCouple = new Couple(note1, note2, label);
         rel->addCouple(nouveauCouple);
-        if (!rel->estOriente()) rel->addCouple(new Couple(note2, note1, label));
+        Couple* nouveauCouple2 = new Couple(note2, note1, label);
+        if (!rel->estOriente()) rel->addCouple(nouveauCouple2);
     }
 }
 
@@ -147,6 +162,25 @@ std::vector<QString> RelationsManager::nomRelations(){
     return noms;
 }
 
+bool RelationsManager::addCouple(QString titreRelation, Couple* c){
+    Relation* rel = findRelation(titreRelation);
+    if (rel){
+        bool succesCouple = DbManager::instance().saveCouple(rel, c);
+    }
+    else{
+        // -- LA RELATION N'EXISTE PAS : ON LA CREE ... peut ne pas servir. -- //
+        bool succesRelation = addRelation(rel);
+        if (succesRelation){
+            bool succesCouple = DbManager::instance().saveCouple(rel, c);
+            if (succesCouple) rel->addCouple(c);
+        }
+        else{
+            qDebug()<<"Impossibilité de rajouter dans la BDD la relation.";
+        }
+
+    }
+}
+
 
 void RelationsManager::supprimerRelation(Relation* r){
     // -- PERMET DE SUPPRIMER UNE RELATION R DU RELATIONS MANAGER
@@ -154,14 +188,21 @@ void RelationsManager::supprimerRelation(Relation* r){
 
     // -- R EST-ELLE LA RELATION REFERENCE A NE JAMAIS SUPPRIMER ? -- //
     if (titre.toStdString() == "Reference"){
-        std::cout<<"Impossible de supprimer la relation Référence.\n";
+        qDebug()<<"Impossible de supprimer la relation Référence.\n";
     }
     else{
-        r->deleteCouples();
+        bool suppression = DbManager::instance().deleteRelation(r);
+        if (suppression){
+            r->deleteCouples();
 
-        NotesManager& nm = NotesManager::instance();
-        int index = nm.getIndexId(titre);
+            NotesManager& nm = NotesManager::instance();
+            int index = nm.getIndexId(titre);
 
-        relations.erase(relations.begin()+index);
+            relations.erase(std::remove(begin(), end(), r), end());
+            std::cout<<"Après suppression...\n";
+        }
+        else {
+            qDebug()<<"Problème dans la suppression de la relation";
+        }
     }
 }

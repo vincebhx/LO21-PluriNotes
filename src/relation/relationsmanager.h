@@ -5,6 +5,9 @@
 #include "relation.h"
 #include "./src/dbmanager.h"
 
+/**
+ * @brief RMIterator permet de parcourir le vecteur de Relation* contenus dans le RelationsManager.
+ */
 typedef std::vector<Relation*>::iterator RMIterator;
 
 /**
@@ -13,10 +16,11 @@ typedef std::vector<Relation*>::iterator RMIterator;
 
 class RelationsManager {
 
-// friend class RMIterator;
-
 private:
     static RelationsManager* _instance;
+    /**
+     * @brief relations est un vecteur de pointeurs sur les relations stockées dans le RelationsManager.
+     */
     std::vector<Relation*> relations;
     RelationsManager();
     ~RelationsManager();
@@ -87,10 +91,30 @@ public:
      */
     bool noteImpliqueeDansRelation(Note* note);
 
+    /**
+     * @brief supprimerCouple permet de supprimer un couple d'une relation dans le RelationsManager.
+     * @param r : pointeur de la relation à laquelle appartient le couple à supprimer.
+     * @param c : pointeur sur le couple à supprimer.
+     */
     void supprimerCouple(Relation* r, Couple* c);
+    /**
+     * @brief supprimerCouples permet de supprimer tous les couples d'une relation dans le RelationsManager.
+     * @param r : pointeur sur la relation dont on veut supprimer tous les couples.
+     */
     void supprimerCouples(Relation* r);
 
+    /**
+     * @brief getTableModel permet d'interroger la base de données.
+     * @param db il s'agit de la base de données à interroger.
+     * @return Renvoie un objet QSqlTableModel avec tous les résultats apportés par la base de données.
+     */
     QSqlTableModel* getTableModel(QSqlDatabase db);
+
+    /**
+     * @brief getCoupleView permet de mettre en forme des résultats.
+     * @param table : pointeur sur l'objet contenant les résultats.
+     * @return Renvoie un objet QTableView donnant la mise en forme des résultats.
+     */
     QTableView* getCoupleView(QSqlTableModel *table);
 
 };

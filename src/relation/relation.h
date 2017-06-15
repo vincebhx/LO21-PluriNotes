@@ -100,6 +100,10 @@ public:
      * @brief deleteCouples supprime tous les couples contenus dans la relation.
      */
     void deleteCouples() { couples.clear(); }
+    /**
+     * @brief supprimerCouple permet de supprimer le couple de la relation appelante.
+     * @param c : pointeur du couple à supprimer.
+     */
     void supprimerCouple(Couple* c);
 
     /**
@@ -108,7 +112,17 @@ public:
      */
     int getNbCouples() {return couples.size();}
 
+    /**
+     * @brief findCouple retourne le couple (s'il existe) contenu dans la relation.
+     * @param id1 : ID de la note1 du couple à trouver
+     * @param id2 : ID de la note2 du couple à trouver
+     * @return Retourne un pointeur sur le couple trouvé.
+     */
     Couple* findCouple(QString id1, QString id2);
+    /**
+     * @brief getDeleteQueryCouples récupère la requête nécessaire à la suppression de tous les couples de la relation dans la base de données.
+     * @return Retourne la requête sous forme de QSqlQuery.
+     */
     QSqlQuery getDeleteQueryCouples();
 };
 

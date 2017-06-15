@@ -41,20 +41,49 @@ protected:
           QString description = "",
           QString filepath = ""):
         Note(id, version, titre, dateCreat, dateModif), description(description), filepath(filepath) {}
-
+    /**
+     * @brief prepareInsertQuery Renvoie la requête permettant d'insérer le média dans la base de données
+     * @return Retourne la quête sous forme de QSqlQuery
+     */
     QSqlQuery prepareInsertQuery();
 
 public:
+    /**
+     * @brief setDescription : changer la description de l'objet appelant.
+     * @param d Nouvelle description
+     */
     void setDescription(QString d) { description = d; }
+    /**
+     * @brief setFilePath : change le filepath de l'objet appelant
+     * @param f le nouveau filepath
+     */
     void setFilePath(QString f) { filepath = f; }
-
+    /**
+     * @brief getDescription Récupère la description du média appelant
+     * @return Retourne la description sous forme de QString.
+     */
     QString getDescription() const { return description; }
+    /**
+     * @brief getFilePath : retourne le filepath de l'objet appelant
+     * @return Retour sous forme de QString
+     */
     QString getFilePath() const {return filepath; }
 
     virtual const QString getTypeStr() const = 0;
     static QSqlTableModel* getTableModel(QSqlDatabase db);
+    /**
+     * @brief getTableView : récupère la vue de la table table passée en paramètre.
+     * @param table : Table dont on veut récupérer la vue.
+     * @return Retourne la vue de la table choisie.
+     */
     static QTableView* getTableView(QSqlTableModel* table);
 
+    /**
+    * @brief getTableName : permet d'accéder au nom de la table Article pour pouvoir faire des requêtes selon la classe.
+    * @return Retourne le nom de la table dans laquelle insérer les requêtes pour la classe courante (ici "Article).
+    *
+    * Voir Note::getTableName().
+    */
     const QString getTableName() const { return "Media"; }
 };
 
@@ -66,7 +95,9 @@ private:
     static const QString idStem;
 public:
     static unsigned int idIncrement;
-
+    /**
+     * @brief Image Premier constructeur de Image
+     */
     Image(const QString id,
           unsigned int version,
           QString titre,
@@ -75,7 +106,9 @@ public:
           QString description = "",
           QString filepath = ""):
         Media(id, version, titre, dateCreat, dateModif, description, filepath) { }
-
+    /**
+     * @brief Image Deuxième constructeur de Image
+     */
     Image(unsigned int version,
           QString titre,
           QDateTime dateCreat = QDateTime::currentDateTime(),
@@ -84,7 +117,15 @@ public:
           QString filepath = ""):
         Media(idStem + QString::number(idIncrement), version, titre, dateCreat, dateModif, description, filepath) { idIncrement++; }
 
+    /**
+     * @brief getTypeStr retourne le type de Note sous chaîne de caractère.
+     * @return Le type est retourné sous forme de QString.
+     */
     const QString getTypeStr() const { return TypeStr[IMAGE]; }
+    /**
+     * @brief getClassName renvoie le nom de la classe de l'image
+     * @return Retour sous forme de QString
+     */
     QString getClassName() {return "image";}
 };
 
@@ -96,7 +137,9 @@ private:
     static const QString idStem;
 public:
     static unsigned int idIncrement;
-
+    /**
+     * @brief Audio Premier constructeur de Audio
+     */
     Audio(const QString id,
           unsigned int version,
           QString titre,
@@ -105,7 +148,9 @@ public:
           QString description = "",
           QString filepath = ""):
         Media(id, version, titre, dateCreat, dateModif, description, filepath) { }
-
+    /**
+     * @brief Audio Deuxième constructeur de Audio
+     */
     Audio(unsigned int version,
           QString titre,
           QDateTime dateCreat = QDateTime::currentDateTime(),
@@ -114,6 +159,10 @@ public:
           QString filepath = ""):
         Media(idStem + QString::number(idIncrement), version, titre, dateCreat, dateModif, description, filepath) { idIncrement++; }
 
+    /**
+     * @brief getTypeStr retourne le type de Note sous chaîne de caractère.
+     * @return Le type est retourné sous forme de QString.
+     */
     const QString getTypeStr() const { return TypeStr[AUDIO]; }
     QString getClassName() {return "audio";}
 };
@@ -126,7 +175,9 @@ private:
     static const QString idStem;
 public:
     static unsigned int idIncrement;
-
+    /**
+     * @brief Video Premier constructeur de Video
+     */
     Video(const QString id,
           unsigned int version,
           QString titre,
@@ -135,7 +186,9 @@ public:
           QString description = "",
           QString filepath = ""):
         Media(id, version, titre, dateCreat, dateModif, description, filepath) { }
-
+    /**
+     * @brief Video Deuxième constructeur de Video
+     */
     Video(unsigned int version,
           QString titre,
           QDateTime dateCreat = QDateTime::currentDateTime(),
@@ -144,7 +197,15 @@ public:
           QString filepath = ""):
         Media(idStem + QString::number(idIncrement), version, titre, dateCreat, dateModif, description, filepath) { idIncrement++; }
 
+    /**
+     * @brief getTypeStr retourne le type de Note sous chaîne de caractère.
+     * @return Le type est retourné sous forme de QString.
+     */
     const QString getTypeStr() const { return TypeStr[VIDEO]; }
+    /**
+     * @brief getClassName renvoie le nom de la classe.
+     * @return Renvoi sous forme de QString.
+     */
     QString getClassName() { return "video";}
 };
 

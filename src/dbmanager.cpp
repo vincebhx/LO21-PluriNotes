@@ -164,9 +164,9 @@ bool DbManager::deleteRelation(Relation* r) {
             success = true;
             qDebug() << "Relation supprimée dans la base de données.";
         }*/
-        else
+        /*else
             qDebug() << "Erreur - DbManager::deleteNote : "<< query.lastError();
-        query.finish();
+        query.finish();*/
 
         // -- SUPPRESSION DE LA RELATION DANS LE RELATIONSMANAGER -- //
         if (success == true) RelationsManager::instance().supprimerRelation(r);

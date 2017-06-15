@@ -71,9 +71,20 @@ void ModifierRelation::on_pushButton_3_clicked()
     Relation* relation = RM.findRelation(ui->comboBox->currentText());
     Note* n1 =nm.findNote(ui->Note1->currentText());
     Note* n2 =nm.findNote(ui->Note2->currentText());
-    Couple* couple = new Couple(n1->getId(), n2->getId());
+    QString label = ui->lineEdit_2->text();
+    Couple* couple = new Couple(n1->getId(), n2->getId(), label);
     relation->addCouple(couple);
     loadTable();
 
+
+}
+
+void ModifierRelation::on_pushButton_clicked()
+{
+    QString id1 = ui->tableWidget->itemAt(ui->tableWidget->currentRow(), 0)->text();
+    QString id2 = ui->tableWidget->itemAt(ui->tableWidget->currentRow(), 1)->text();
+    Relation* relation = RM.findRelation(ui->comboBox->currentText());
+    Couple* c =relation->findCouple(id1, id2);
+    //supprimer couple
 
 }

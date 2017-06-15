@@ -1,5 +1,4 @@
 #include "relationsmanager.h"
-#include "./src/note/notesmanager.h"
 
 #include <iostream>
 #include <QString>
@@ -9,7 +8,6 @@
 #include <QVariant>
 
 #include <algorithm>
-
 
 RelationsManager* RelationsManager::_instance = 0;
 
@@ -92,7 +90,6 @@ Relation* RelationsManager::findRelation(QString titre){
 
 void RelationsManager::loadCouples(){
 
-    NotesManager& nm = NotesManager::instance();
     QSqlTableModel* couples = Couple::getTableModel(DbManager::instance().db);
     QSqlRecord rec;
 
@@ -194,9 +191,6 @@ void RelationsManager::supprimerRelation(Relation* r){
         bool suppression = DbManager::instance().deleteRelation(r);
         if (suppression){
             r->deleteCouples();
-
-            NotesManager& nm = NotesManager::instance();
-            int index = nm.getIndexId(titre);
 
             relations.erase(std::remove(begin(), end(), r), end());
             std::cout<<"Après suppression...\n";

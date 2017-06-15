@@ -113,7 +113,9 @@ bool DbManager::deleteNote(Note* n) {
         std::cout<<"Impossible de supprimer la note car elle est référencée : archivez-là.\n";
     }
     else{
+        qDebug()<<"TESTDEL1";
         QSqlQuery query = n->getDeleteQuery();
+        qDebug()<<"TESTDEL2";
         qDebug()<<getLastQuery(query);
 
         if(query.exec()) {
@@ -147,9 +149,10 @@ bool DbManager::deleteCouple(Couple* c, Relation* r) {
 bool DbManager::deleteRelation(Relation* r) {
     bool success = false;
     QString ref = "Reference";
+    /*
     if (r->getTitre() != ref){
 
-        /*// -- SUPPRESSION DES COUPLES DANS LA BASE DE DONNEES -- //
+        // -- SUPPRESSION DES COUPLES DANS LA BASE DE DONNEES -- //
         for (RelationIterator ri = r->begin(); ri != r->end(); ri++){
             bool succes = deleteCouple((*ri), r);
         }
@@ -163,14 +166,14 @@ bool DbManager::deleteRelation(Relation* r) {
         if(query.exec()) {
             success = true;
             qDebug() << "Relation supprimée dans la base de données.";
-        }*/
+        }
         else
             qDebug() << "Erreur - DbManager::deleteNote : "<< query.lastError();
         query.finish();
 
         // -- SUPPRESSION DE LA RELATION DANS LE RELATIONSMANAGER -- //
         if (success == true) RelationsManager::instance().supprimerRelation(r);
-    }
+    }*/
     return success;
 }
 

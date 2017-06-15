@@ -128,17 +128,17 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_relation.html#a8f8e0da29220d370336091703d18f1eb">deleteCouples</a> ()</td></tr>
 <tr class="memdesc:a8f8e0da29220d370336091703d18f1eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">deleteCouples supprime tous les couples contenus dans la relation. <br /></td></tr>
 <tr class="separator:a8f8e0da29220d370336091703d18f1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a27e3c835c0f10f183e67a1d69e9d07"><td class="memItemLeft" align="right" valign="top"><a id="a4a27e3c835c0f10f183e67a1d69e9d07"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>supprimerCouple</b> (<a class="el" href="class_couple.html">Couple</a> *c)</td></tr>
+<tr class="memitem:a4a27e3c835c0f10f183e67a1d69e9d07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_relation.html#a4a27e3c835c0f10f183e67a1d69e9d07">supprimerCouple</a> (<a class="el" href="class_couple.html">Couple</a> *c)</td></tr>
+<tr class="memdesc:a4a27e3c835c0f10f183e67a1d69e9d07"><td class="mdescLeft">&#160;</td><td class="mdescRight">supprimerCouple permet de supprimer le couple de la relation appelante.  <a href="#a4a27e3c835c0f10f183e67a1d69e9d07">More...</a><br /></td></tr>
 <tr class="separator:a4a27e3c835c0f10f183e67a1d69e9d07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9aae80097dcd80f33a3111bc6b83d1ad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_relation.html#a9aae80097dcd80f33a3111bc6b83d1ad">getNbCouples</a> ()</td></tr>
 <tr class="memdesc:a9aae80097dcd80f33a3111bc6b83d1ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">getNbCouples retourne le nombre de couples contenus dans la relation.  <a href="#a9aae80097dcd80f33a3111bc6b83d1ad">More...</a><br /></td></tr>
 <tr class="separator:a9aae80097dcd80f33a3111bc6b83d1ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab29506195e5072995ec47e6d9e2f3c1e"><td class="memItemLeft" align="right" valign="top"><a id="ab29506195e5072995ec47e6d9e2f3c1e"></a>
-<a class="el" href="class_couple.html">Couple</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>findCouple</b> (QString id1, QString id2)</td></tr>
+<tr class="memitem:ab29506195e5072995ec47e6d9e2f3c1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_couple.html">Couple</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_relation.html#ab29506195e5072995ec47e6d9e2f3c1e">findCouple</a> (QString id1, QString id2)</td></tr>
+<tr class="memdesc:ab29506195e5072995ec47e6d9e2f3c1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">findCouple retourne le couple (s'il existe) contenu dans la relation.  <a href="#ab29506195e5072995ec47e6d9e2f3c1e">More...</a><br /></td></tr>
 <tr class="separator:ab29506195e5072995ec47e6d9e2f3c1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a494ecc7b04878a2caa4bb9a1aae6cb9e"><td class="memItemLeft" align="right" valign="top"><a id="a494ecc7b04878a2caa4bb9a1aae6cb9e"></a>
-QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><b>getDeleteQueryCouples</b> ()</td></tr>
+<tr class="memitem:a494ecc7b04878a2caa4bb9a1aae6cb9e"><td class="memItemLeft" align="right" valign="top">QSqlQuery&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_relation.html#a494ecc7b04878a2caa4bb9a1aae6cb9e">getDeleteQueryCouples</a> ()</td></tr>
+<tr class="memdesc:a494ecc7b04878a2caa4bb9a1aae6cb9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">getDeleteQueryCouples récupère la requête nécessaire à la suppression de tous les couples de la relation dans la base de données.  <a href="#a494ecc7b04878a2caa4bb9a1aae6cb9e">More...</a><br /></td></tr>
 <tr class="separator:a494ecc7b04878a2caa4bb9a1aae6cb9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -320,6 +320,44 @@ static <a class="el" href="class_relation.html">Relation</a>&#160;</td><td class
 
 </div>
 </div>
+<a id="ab29506195e5072995ec47e6d9e2f3c1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab29506195e5072995ec47e6d9e2f3c1e">&#9670;&nbsp;</a></span>findCouple()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_couple.html">Couple</a> * Relation::findCouple </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>id1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>id2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>findCouple retourne le couple (s'il existe) contenu dans la relation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id1</td><td>: ID de la note1 du couple à trouver </td></tr>
+    <tr><td class="paramname">id2</td><td>: ID de la note2 du couple à trouver </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Retourne un pointeur sur le couple trouvé. </dd></dl>
+
+</div>
+</div>
 <a id="ad1c9e385dd2a755dd18333b971451c9b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad1c9e385dd2a755dd18333b971451c9b">&#9670;&nbsp;</a></span>getDeleteQuery()</h2>
 
@@ -337,6 +375,26 @@ static <a class="el" href="class_relation.html">Relation</a>&#160;</td><td class
 
 <p>getDeleteQuery retourne la requête de suppression de la note. </p>
 <dl class="section return"><dt>Returns</dt><dd>getDeleteQuery retourne la requête de suppression de la note dans la BDD. </dd></dl>
+
+</div>
+</div>
+<a id="a494ecc7b04878a2caa4bb9a1aae6cb9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a494ecc7b04878a2caa4bb9a1aae6cb9e">&#9670;&nbsp;</a></span>getDeleteQueryCouples()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QSqlQuery Relation::getDeleteQueryCouples </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getDeleteQueryCouples récupère la requête nécessaire à la suppression de tous les couples de la relation dans la base de données. </p>
+<dl class="section return"><dt>Returns</dt><dd>Retourne la requête sous forme de QSqlQuery. </dd></dl>
 
 </div>
 </div>
@@ -506,6 +564,32 @@ static <a class="el" href="class_relation.html">Relation</a>&#160;</td><td class
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">setDescription</td><td>prend en paramètre un QString d correspondant à la nouvelle description de la relation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4a27e3c835c0f10f183e67a1d69e9d07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a27e3c835c0f10f183e67a1d69e9d07">&#9670;&nbsp;</a></span>supprimerCouple()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Relation::supprimerCouple </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_couple.html">Couple</a> *&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>supprimerCouple permet de supprimer le couple de la relation appelante. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>: pointeur du couple à supprimer. </td></tr>
   </table>
   </dd>
 </dl>

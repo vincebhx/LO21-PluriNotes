@@ -29,7 +29,6 @@ var hierarchy =
       [ "MainWindow", "class_main_window.html", null ]
     ] ],
     [ "QWidget", null, [
-      [ "NoteViewer", "class_note_viewer.html", null ],
       [ "NoteViewer", "class_note_viewer.html", null ]
     ] ],
     [ "Relation", "class_relation.html", null ],

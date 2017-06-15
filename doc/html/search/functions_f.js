@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['versionindex',['VersionIndex',['../class_version_index.html#a0b6f6b386c349d6feb21fc168e52a527',1,'VersionIndex']]]
+  ['tache',['Tache',['../class_tache.html#a7fdccd1855370c0f1b59fc34e12c255f',1,'Tache::Tache(const QString id, unsigned int version, QString titre, QDateTime dateCreat=QDateTime::currentDateTime(), QDateTime dateModif=QDateTime::currentDateTime(), QString action=&quot;&quot;, unsigned int priorite=0, QDateTime dateEch=QDateTime::currentDateTime(), Statut statut=EN_ATTENTE)'],['../class_tache.html#a042201b9fd2c8e3f166a365882b16ca9',1,'Tache::Tache(unsigned int version, QString titre, QDateTime dateCreat=QDateTime::currentDateTime(), QDateTime dateModif=QDateTime::currentDateTime(), QString action=&quot;&quot;, unsigned int priorite=0, QDateTime dateEch=QDateTime::currentDateTime(), Statut statut=EN_ATTENTE)']]]
 ];

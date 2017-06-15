@@ -145,7 +145,7 @@ void MainWindow::onClose()
     NotesManager::instance().free();
     DbManager::instance().free();
     RelationsManager::instance().free();
-    std::cout<<"Fin de l'execution."<<std::endl;
+    qDebug()<<"Fin de l'exécution.";
 }
 
 void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index) //NOTES ACTIVES
@@ -344,7 +344,6 @@ void MainWindow::on_enregistrer_clicked()
 }
 
 void MainWindow::receiveMessage() {
-    std::cout << "msg recu par mainwindow \n";
     loadTableWidgetActives();
     loadTableTache();
     Note* note= nm.getNote(nm.nbNotes((Etat)0) -1)->currentVersion();
@@ -352,7 +351,6 @@ void MainWindow::receiveMessage() {
     loadNote(note, type);
     loadVersion(nm.getNote(nm.nbNotes((Etat)0) -1));
     ui->tableWidget->setCurrentCell(nm.nbNotes((Etat)0) -1, 0);
-
 }
 
 void MainWindow::on_tableWidget_3_doubleClicked(const QModelIndex &index) //TACHES

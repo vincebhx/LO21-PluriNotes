@@ -11,7 +11,6 @@ Mediator* Mediator::_instance = 0;
 
 void Mediator::addComponent(Widget* w) {
     component.push_back(w);
-    std::cout << "ok";
 }
 
 Mediator *Mediator::instance() {

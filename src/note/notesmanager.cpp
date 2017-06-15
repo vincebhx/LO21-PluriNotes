@@ -30,6 +30,7 @@ NotesManager::~NotesManager() {
 NotesManager& NotesManager::instance() {
     if(_instance == 0) {
         _instance = new NotesManager;
+        _instance->load();
     }
     return *_instance;
 }
@@ -126,7 +127,6 @@ std::vector<VersionIndex*> NotesManager::getTasks() {
     for(NMIterator it = this->begin(ACTIVES); it!= this->end(ACTIVES); it++){
         if((*it)->currentVersion()->getClassName() == "tache") {
             listTask.push_back(*it);
-            std::cout << (*it)->currentVersion()->getId().toStdString();
         }
     }
 

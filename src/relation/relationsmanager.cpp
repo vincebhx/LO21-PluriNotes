@@ -20,14 +20,14 @@ RelationsManager& RelationsManager::instance() {
 }
 
 RelationsManager::RelationsManager() {
-    std::cout<<"Construction du RelationsManager."<<std::endl;
+    qDebug()<<"Construction du RelationsManager.";
     DbManager::instance();
     RelationsManager::load();
 }
 
 RelationsManager::~RelationsManager() {
     relations.clear();
-    std::cout<<"RelationsManager détruit."<<std::endl;
+    qDebug()<<"Destruction du RelationsManager.";
 }
 
 void RelationsManager::free() {
@@ -35,16 +35,16 @@ void RelationsManager::free() {
 }
 
 void RelationsManager::load() {
-    std::cout<<"Chargement des relations et de leurs couples..."<<std::endl;
+    qDebug()<<"\nChargement des relations et de leurs couples...";
 
     RelationsManager::loadRelations();
     RelationsManager::loadCouples();
 
-    std::cout<<"Chargement des relations et de leurs couples effectué.\n\n"<<std::endl;
+    qDebug()<<"Chargement des relations et de leurs couples effectué.\n";
 }
 
 void RelationsManager::loadRelations() {
-    qDebug()<<"\nChargement des relations...";
+    qDebug()<<"Chargement des relations...";
     Relation* r;
     QSqlQuery query;
 
@@ -63,7 +63,7 @@ void RelationsManager::loadRelations() {
 }
 
 void RelationsManager::loadCouples() {
-    qDebug()<<"\nChargement des couples...";
+    qDebug()<<"Chargement des couples...";
     Relation* rel;
     Couple* couple;
     QSqlQuery query;
@@ -209,8 +209,8 @@ void RelationsManager::supprimerRelation(Relation* r){
         bool suppression = DbManager::instance().deleteRelation(r);
         if (suppression){
             r->deleteCouples();
-            relations.erase(std::remove(begin(), end(), r), end());
-            std::cout<<"Après suppression...\n";
+            RMIterator it = find(begin(), end(), r);
+            relations.erase(it);
         }
         else {
             qDebug()<<"Problème dans la suppression de la relation";

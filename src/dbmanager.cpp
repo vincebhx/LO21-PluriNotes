@@ -109,7 +109,7 @@ bool DbManager::deleteNote(Note* n) {
     bool success = false;
     // -- LA NOTE EST-ELLE REFERENCEE ? -- //
     if (n->referencee()){
-        std::cout<<"Impossible de supprimer la note car elle est référencée : archivez-là.\n";
+        qDebug()<<"Impossible de supprimer la note car elle est référencée : archivez-la.\n";
     }
     else{
         QSqlQuery query = n->getDeleteQuery();

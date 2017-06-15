@@ -63,8 +63,13 @@ void ModifierRelation::on_buttonBox_clicked(QAbstractButton *button)
 void ModifierRelation::on_pushButton_2_clicked()
 {
     Relation* relation = RM.findRelation(ui->comboBox->currentText());
+    qDebug()<<"TEST0";
+    ui->comboBox->setCurrentIndex(0);
+    qDebug()<<"TEST1";
     RM.supprimerRelation(relation);
-    loadTable();
+    qDebug()<<"TEST2";
+    loadRelations();
+    qDebug()<<"TEST3";
 }
 
 void ModifierRelation::on_pushButton_3_clicked()

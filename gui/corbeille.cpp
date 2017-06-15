@@ -75,7 +75,6 @@ void Corbeille::supprimerNote() {
     if (ui->tableWidget->currentItem()) {
         QString id = ui->tableWidget->item(ui->tableWidget->currentRow(), 0)->text();
         VersionIndex* vClicked = nm.findVersionIndex(id);
-        std::cout << "test supprimer note" << vClicked->currentVersion()->getId().toStdString() << "\n";
         nm.deleteNote(vClicked);
     }
 }

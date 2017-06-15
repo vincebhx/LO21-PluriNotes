@@ -56,7 +56,7 @@ protected :
     Mediator* med;
 
 public:
-    Widget() : med(Mediator::instance()){};
+    Widget() : med(Mediator::instance()){}
     /*!
      * \brief sendMessage : distribue le message a tous les composants
      * \param msg
@@ -66,22 +66,22 @@ public:
      * \brief receiveMessage : instructions à executer lorsque le message "Ajout Note" est reçue, s'il n'y
      * pas d'instructions particulières à exécuter la fonction ne sera pas redéfinies dans les classes filles
      */
-    virtual void receiveMessage(){};
+    virtual void receiveMessage(){}
     /*!
      * \brief receiveMessageCorbeille : instructions à executer lorsque le message "Corbeille" est reçue, s'il n'y
      * pas d'instructions particulières à exécuter la fonction ne sera pas redéfinies dans les classes filles
      */
-    virtual void receiveMessageCorbeille(){};
+    virtual void receiveMessageCorbeille(){}
     /*!
      * \brief receiveMessageARelation : instructions à executer lorsque le message "Ajout Relation" est reçue, s'il n'y
      * pas d'instructions particulières à exécuter la fonction ne sera pas redéfinies dans les classes filles
      */
-    virtual void receiveMessageARelation() {};
+    virtual void receiveMessageARelation() {}
     /*!
      * \brief receiveMessageMRelation : instructions à executer lorsque le message "Modification Note" est reçue, s'il n'y
      * pas d'instructions particulières à exécuter la fonction ne sera pas redéfinies dans les classes filles
      */
-    virtual void receiveMessageMRelation() {};
+    virtual void receiveMessageMRelation() {}
     /*!
      * \brief getCode : retourne un code qui sera utilisée lors de la distribution des messages, elle sera réimplémentée dans chaque classe fille
      * \return le code au format QString

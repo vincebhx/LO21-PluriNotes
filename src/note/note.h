@@ -56,6 +56,15 @@ protected:
     virtual QSqlQuery prepareInsertQuery() = 0;
 
 public:
+    /**
+     * @brief dateDisplayFormat : format d'affichage des dates.
+     */
+    static const QString dateDisplayFormat;
+
+    /**
+     * @brief dateStorageFormat : format de stockage des dates dans la BDD.
+     */
+    static const QString dateStorageFormat;
 
     /**
      * @brief getClassName : permet d'accéder au nom de la classe fille courante.
@@ -83,16 +92,6 @@ public:
      * @return  Retourne un pointeur sur l'index de versions parent de la Note.
      */
     const VersionIndex* getParent() { return parent; }
-
-    /**
-     * @brief dateDisplayFormat : format d'affichage des dates.
-     */
-    static const QString dateDisplayFormat;
-
-    /**
-     * @brief dateStorageFormat : format de stockage des dates dans la BDD.
-     */
-    static const QString dateStorageFormat;
 
     /**
      * @brief setVersion est le setter de l'attribut version.

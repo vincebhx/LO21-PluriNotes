@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>415</width>
+    <width>426</width>
     <height>394</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>300</x>
      <y>200</y>
      <width>101</width>
      <height>61</height>
@@ -55,9 +55,9 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>270</x>
      <y>110</y>
-     <width>101</width>
+     <width>151</width>
      <height>23</height>
     </rect>
    </property>
@@ -117,9 +117,9 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>270</x>
      <y>150</y>
-     <width>101</width>
+     <width>151</width>
      <height>23</height>
     </rect>
    </property>
@@ -127,7 +127,7 @@
     <string>Supprimer le couple</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>

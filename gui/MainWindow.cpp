@@ -21,9 +21,6 @@ MainWindow::MainWindow(QWidget *parent) : Widget(),
     ui(new Ui::MainWindow), nm(NotesManager::instance())
 {
     ui->setupUi(this);
-    //setCentralWidget(ui->stackedWidget);
-    //NoteTableModel* model = new NoteTableModel;
-
 
     ui->tableWidget->setColumnCount(4); //notes actives
     ui->tableWidget_2->setColumnCount(1); //version
@@ -139,8 +136,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    //Dialog* createnote = new Dialog;
-    //createnote->show();
     sendMessage("Note");
 }
 
@@ -149,7 +144,8 @@ void MainWindow::onClose()
 {
     NotesManager::instance().free();
     DbManager::instance().free();
-    std::cout<<"Fin de l'exécution."<<std::endl;
+    RelationsManager::instance().free();
+    std::cout<<"Fin de l'execution."<<std::endl;
 }
 
 void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
@@ -347,14 +343,6 @@ void MainWindow::on_enregistrer_clicked()
 
 }
 
-
-
-
-void MainWindow::on_pushButton_5_clicked()
-{
-    loadTableWidgetActives();
-}
-
 void MainWindow::receiveMessage() {
     std::cout << "msg recu par mainwindow \n";
     loadTableWidgetActives();
@@ -373,13 +361,9 @@ void MainWindow::on_tableWidget_3_doubleClicked(const QModelIndex &index)
         ui->tableWidget_3->setCurrentCell(index.row(), 0);
     }
     QString id = ui->tableWidget_3->currentItem()->text();
-    std::cout << "cell id : "<<id.toStdString() << "\n";
     VersionIndex* vClicked = nm.findVersionIndex(id);
     Note* clicked = vClicked->currentVersion();
-    std::cout << "clicked : " <<clicked->getId().toStdString() << "\n";
     QString type = clicked->getClassName();
-    std::cout << "clicked type : " <<type.toStdString() << "\n";
-    //loadClicked(clicked, type);
     loadClicked(clicked, type);
     loadVersion(vClicked);
 }
@@ -422,7 +406,8 @@ void MainWindow::loadRelation(Note* n) {
 void MainWindow::changeStateButton(Etat etat) {
     if (nm.nbNotes(ACTIVES) != 0 && ui->tableWidget->currentItem()) {
         unsigned short index = ui->stackedWidget->currentIndex(); //Pour le cas où c'est une tâche
-        QString id = nm.getNote(ui->tableWidget->currentRow())->firstVersion()->getId();
+        //QString id = nm.getNote(ui->tableWidget->currentRow())->firstVersion()->getId();
+        QString id = nm.findNote(ui->tableWidget->itemAt(ui->tableWidget->currentRow(),0)->text())->getId();
         VersionIndex* vClicked = nm.findVersionIndex(id);
 
         nm.changeState(etat, vClicked); //Changement d'état !

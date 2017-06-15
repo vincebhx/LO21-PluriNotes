@@ -87,6 +87,9 @@ public:
      */
     bool noteImpliqueeDansRelation(Note* note);
 
+    void supprimerCouple(Relation* r, Couple* c);
+    void supprimerCouples(Relation* r);
+
     QSqlTableModel* getTableModel(QSqlDatabase db);
     QTableView* getCoupleView(QSqlTableModel *table);
 

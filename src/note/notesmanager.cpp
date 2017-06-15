@@ -50,6 +50,8 @@ void NotesManager::addNote(Etat e, VersionIndex* n) {
 
 void NotesManager::changeState(Etat targetState, VersionIndex* vIndex) {
     Etat etat = static_cast<Etat>(vIndex->getEtat());
+    for (VersionIterator it1 = vIndex->begin(); it1 != vIndex->end(); it1++) //DEBUG
+        qDebug()<<(*it1)->getId();
     if (targetState == CORBEILLE && RelationsManager::instance().noteImpliqueeDansRelation(vIndex->currentVersion()))
         qDebug()<<"Impossible de mettre à la corbeille une note impliquée dans une relation !";
     else if (etat == targetState) //Note déjà dans l'état cible

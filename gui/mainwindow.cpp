@@ -408,6 +408,7 @@ void MainWindow::changeStateButton(Etat etat) {
         unsigned short index = ui->stackedWidget->currentIndex(); //Pour le cas où c'est une tâche
         //QString id = nm.getNote(ui->tableWidget->currentRow())->firstVersion()->getId();
         QString id = nm.findNote(ui->tableWidget->itemAt(ui->tableWidget->currentRow(),0)->text())->getId();
+        qDebug()<<id<<"INTERFACE";
         VersionIndex* vClicked = nm.findVersionIndex(id);
 
         nm.changeState(etat, vClicked); //Changement d'état !

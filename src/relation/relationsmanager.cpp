@@ -6,6 +6,7 @@
 #include <QSqlRecord>
 #include <QSqlTableModel>
 #include <QVariant>
+#include <QSqlError>
 
 #include <algorithm>
 
@@ -43,15 +44,20 @@ void RelationsManager::load() {
 }
 
 void RelationsManager::loadRelations(){
-    QSqlRecord rec;
-    QSqlTableModel* rel = Relation::getTableModel(DbManager::instance().db);
+    qDebug()<<"\nChargement des relations...";
+    Relation* r;
+    QSqlQuery query;
 
-    for (int i = 0; i < rel->rowCount(); i++){
-        rec = rel->record(i);
-        QString titre = rec.value(0).toString();
-        Relation* r = new Relation(titre,
-                         rec.value(1).toString(),
-                         rec.value(2).toBool());
+    query.prepare("SELECT * FROM Relation ORDER BY titre");
+    if(query.exec()) qDebug() << "Récupération des relations ok.";
+    else qDebug() << "Erreur - RelationsManager::loadRelations : "<< query.lastError();
+
+    while(query.next()) {
+        r = new Relation(
+                    query.value(0).toString(),
+                    query.value(1).toString(),
+                    query.value(2).toBool()
+                    );
         relations.push_back(r);
     }
 }
@@ -90,32 +96,28 @@ Relation* RelationsManager::findRelation(QString titre){
 
 void RelationsManager::loadCouples(){
 
-    QSqlTableModel* couples = Couple::getTableModel(DbManager::instance().db);
-    QSqlRecord rec;
+    qDebug()<<"\nChargement des couples...";
+    Relation* rel;
+    Couple* couple;
+    QSqlQuery query;
 
-    std::cout<<"\n\nOn va charger "<<couples->rowCount()<<" tuples."<<std::endl;
+    query.prepare("SELECT * FROM RelationNote ORDER BY relation, note1, note2");
+    if(query.exec()) qDebug() << "Récupération des couples ok.";
+    else qDebug() << "Erreur - RelationsManager::loadCouples : "<< query.lastError();
 
-    for (int i = 0; i < couples->rowCount(); i++){
-        rec = couples->record(i);
+    while(query.next()) {
+        rel = findRelation(query.value(0).toString());
+        QString note1 = query.value(1).toString();
+        QString note2 = query.value(2).toString();
+        QString label = query.value(3).toString();
 
-        // -- RECUPERATION DU TUPLE RELATION/NOTE1/NOTE2 -- //
-        QString relation = rec.value(0).toString();
-        QString note1 = rec.value(1).toString();
-        QString note2 = rec.value(2).toString();
-        QString label = rec.value(3).toString();
+        couple = new Couple(note1, note2, label);
+        rel->addCouple(couple);
 
-        std::cout<<"--->"<<relation.toStdString()<<"(("<<note1.toStdString()<<", "<<note2.toStdString()<<")"<<label.toStdString()<<")\n";
-        //std::cout<<note1.toStdString()<<std::endl;
-        //std::cout<<note2.toStdString()<<std::endl;
-
-        // -- RECUPERATION DE LA RELATION IMPLIQUEE -- //
-        Relation* rel = findRelation(relation);
-        //std::cout<<"Couples de la relation = "<<rel->getTitre().toStdString()<<std::endl;
-
-        Couple* nouveauCouple = new Couple(note1, note2, label);
-        rel->addCouple(nouveauCouple);
-        Couple* nouveauCouple2 = new Couple(note2, note1, label);
-        if (!rel->estOriente()) rel->addCouple(nouveauCouple2);
+        if(!rel->estOriente()) {
+            couple = new Couple(note2, note1, label);
+            rel->addCouple(couple);
+        }
     }
 }
 

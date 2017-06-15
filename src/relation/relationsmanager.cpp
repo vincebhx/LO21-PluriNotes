@@ -43,7 +43,7 @@ void RelationsManager::load() {
     std::cout<<"Chargement des relations et de leurs couples effectué.\n\n"<<std::endl;
 }
 
-void RelationsManager::loadRelations(){
+void RelationsManager::loadRelations() {
     qDebug()<<"\nChargement des relations...";
     Relation* r;
     QSqlQuery query;
@@ -61,6 +61,34 @@ void RelationsManager::loadRelations(){
         relations.push_back(r);
     }
 }
+
+void RelationsManager::loadCouples() {
+    qDebug()<<"\nChargement des couples...";
+    Relation* rel;
+    Couple* couple;
+    QSqlQuery query;
+
+    query.prepare("SELECT * FROM RelationNote ORDER BY relation, note1, note2");
+    if(query.exec()) qDebug() << "Récupération des couples ok.";
+    else qDebug() << "Erreur - RelationsManager::loadCouples : "<< query.lastError();
+
+    while(query.next()) {
+        rel = findRelation(query.value(0).toString());
+        QString note1 = query.value(1).toString();
+        QString note2 = query.value(2).toString();
+        QString label = query.value(3).toString();
+
+        couple = new Couple(note1, note2, label);
+        rel->addCouple(couple);
+
+        if(!rel->estOriente()) {
+            couple = new Couple(note2, note1, label);
+            rel->addCouple(couple);
+        }
+    }
+}
+
+/*****TOUT CE QUI EST AU DESSUS DE CE COMMENTAIRE EST OK *****/
 
 bool RelationsManager::addRelation(Relation* r){
     QString rel = r->getTitre();
@@ -91,34 +119,6 @@ Relation* RelationsManager::findRelation(QString titre){
         }
     }
     return resultat;
-}
-
-
-void RelationsManager::loadCouples(){
-
-    qDebug()<<"\nChargement des couples...";
-    Relation* rel;
-    Couple* couple;
-    QSqlQuery query;
-
-    query.prepare("SELECT * FROM RelationNote ORDER BY relation, note1, note2");
-    if(query.exec()) qDebug() << "Récupération des couples ok.";
-    else qDebug() << "Erreur - RelationsManager::loadCouples : "<< query.lastError();
-
-    while(query.next()) {
-        rel = findRelation(query.value(0).toString());
-        QString note1 = query.value(1).toString();
-        QString note2 = query.value(2).toString();
-        QString label = query.value(3).toString();
-
-        couple = new Couple(note1, note2, label);
-        rel->addCouple(couple);
-
-        if(!rel->estOriente()) {
-            couple = new Couple(note2, note1, label);
-            rel->addCouple(couple);
-        }
-    }
 }
 
 
@@ -185,15 +185,15 @@ bool RelationsManager::addCouple(QString titreRelation, Couple* c){
 }
 
 void RelationsManager::supprimerCouples(Relation* r){
-    for(RelationIterator ri = r->begin(); ri != r->end(); ri++){
+    for(RelationIterator ri = r->begin(); ri != r->end(); ri++) {
         supprimerCouple(r, (*ri));
     }
     r->deleteCouples();
 }
 
-void RelationsManager::supprimerCouple(Relation* r, Couple* c){
+void RelationsManager::supprimerCouple(Relation* r, Couple* c) {
     bool supp = DbManager::instance().deleteCouple(c, r);
-    if (supp){
+    if (supp) {
         r->supprimerCouple(c);
     }
 }

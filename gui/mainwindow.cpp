@@ -148,7 +148,7 @@ void MainWindow::onClose()
     std::cout<<"Fin de l'execution."<<std::endl;
 }
 
-void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
+void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index) //NOTES ACTIVES
 {
     if (index.column() != 0) {
         ui->tableWidget->setCurrentCell(index.row(), 0);
@@ -355,7 +355,7 @@ void MainWindow::receiveMessage() {
 
 }
 
-void MainWindow::on_tableWidget_3_doubleClicked(const QModelIndex &index)
+void MainWindow::on_tableWidget_3_doubleClicked(const QModelIndex &index) //TACHES
 {
     if (index.column() != 0) {
         ui->tableWidget_3->setCurrentCell(index.row(), 0);

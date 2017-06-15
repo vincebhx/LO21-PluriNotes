@@ -20,12 +20,20 @@ private:
     std::vector<Relation*> relations;
     RelationsManager();
     ~RelationsManager();
-
+    /**
+     * @brief loadCouples charge les couples depuis la base de données.
+     */
     void loadCouples();
+    /**
+     * @brief loadRelations charge les relations depuis la base de données.
+     */
     void loadRelations();
 public:
     ///Singleton accessor
     static RelationsManager& instance();
+    /**
+     * @brief load permet, à la création du RelationsManager, de charger les relations et couples depuis la base de données.
+     */
     void load();
     void free();
 

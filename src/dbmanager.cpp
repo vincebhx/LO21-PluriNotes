@@ -149,7 +149,7 @@ bool DbManager::deleteRelation(Relation* r) {
     QString ref = "Reference";
     if (r->getTitre() != ref){
 
-        // -- SUPPRESSION DES COUPLES DANS LA BASE DE DONNEES -- //
+        /*// -- SUPPRESSION DES COUPLES DANS LA BASE DE DONNEES -- //
         for (RelationIterator ri = r->begin(); ri != r->end(); ri++){
             bool succes = deleteCouple((*ri), r);
         }
@@ -163,7 +163,7 @@ bool DbManager::deleteRelation(Relation* r) {
         if(query.exec()) {
             success = true;
             qDebug() << "Relation supprimée dans la base de données.";
-        }
+        }*/
         else
             qDebug() << "Erreur - DbManager::deleteNote : "<< query.lastError();
         query.finish();

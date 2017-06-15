@@ -52,7 +52,7 @@ QSqlQuery Relation::getInsertQuery(){
     QString t = getTitre();
     QString d = getDescription();
 
-    QString str = "INSERT INTO Relation (titre, description, oriente) VALUES ('" + getTitre() + "', '" + getDescription() + "', " + estOriente() + ")";
+    QString str = "INSERT INTO Relation (titre, description, oriente) VALUES ('" + getTitre() + "', '" + getDescription() + "', " + QString::number(orientation) + ")";
     //query.prepare("INSERT INTO Relation (titre, description, oriente) VALUES (:titre, :description, :orientation");
     //query.bindValue(":titre", getTitre());
     //query.bindValue(":description", getDescription());

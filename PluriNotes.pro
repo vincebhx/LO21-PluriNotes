@@ -25,7 +25,6 @@ HEADERS += \
     gui/modifierrelation.h
 
 SOURCES += \
-    gui/NoteSelector.cpp \
     gui/mainwindow.cpp \
     gui/dialog.cpp \
     src/main.cpp \

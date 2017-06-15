@@ -466,3 +466,34 @@ void MainWindow::on_treeWidget_doubleClicked(const QModelIndex &index)
     }
 }
 
+
+void MainWindow::on_archive_doubleClicked(const QModelIndex &index)
+{
+    if (index.column() != 0) {
+        ui->archive->setCurrentCell(index.row(), 0);
+    }
+    QString id = ui->archive->currentItem()->text();
+    VersionIndex* vClicked = nm.findVersionIndex(id);
+    Note* clicked = vClicked->currentVersion();
+    QString type = clicked->getClassName();
+    loadClicked(clicked, type);
+    loadVersion(vClicked);
+    ui->treeWidget->clear();
+    loadRelation(clicked);
+}
+
+void MainWindow::on_restaure_archive_clicked()
+{
+    if (ui->archive->currentItem()) {
+        unsigned short index = ui->stackedWidget->currentIndex(); //Pour le cas où c'est une tâche
+        QString id = nm.findNote(ui->archive->itemAt(ui->archive->currentRow(),0)->text())->getId();
+        VersionIndex* vClicked = nm.findVersionIndex(id);
+
+        nm.changeState(ACTIVES, vClicked); //Changement d'état !
+
+        /*Reload des tables à gauche*/
+        loadTableWidgetActives();
+        if (index == 1) loadTableTache(); //On ne recharge la table des tâches que si on a édité une tâche
+        loadTableWidgetArchive();
+    }
+}

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>279</width>
-    <height>296</height>
+    <width>333</width>
+    <height>362</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>-90</x>
-     <y>221</y>
+     <x>-80</x>
+     <y>291</y>
      <width>341</width>
      <height>21</height>
     </rect>
@@ -35,7 +35,7 @@
      <x>20</x>
      <y>21</y>
      <width>227</width>
-     <height>191</height>
+     <height>241</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
@@ -49,7 +49,7 @@
     <item row="0" column="1">
      <widget class="QLineEdit" name="nomRelation"/>
     </item>
-    <item row="1" column="0">
+    <item row="2" column="0">
      <spacer name="verticalSpacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -62,48 +62,48 @@
       </property>
      </spacer>
     </item>
-    <item row="2" column="0" colspan="2">
+    <item row="3" column="0" colspan="2">
      <widget class="QLabel" name="label_2">
       <property name="text">
        <string>Ajouter un couple à la relation</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="0">
+    <item row="6" column="0">
      <widget class="QLabel" name="label_3">
       <property name="text">
        <string>Note 1</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
+    <item row="6" column="1">
      <widget class="QComboBox" name="Note1"/>
     </item>
-    <item row="6" column="0">
+    <item row="7" column="0">
      <widget class="QLabel" name="label_4">
       <property name="text">
        <string>Note 2</string>
       </property>
      </widget>
     </item>
-    <item row="6" column="1">
+    <item row="7" column="1">
      <widget class="QComboBox" name="Note2"/>
     </item>
-    <item row="8" column="0">
+    <item row="9" column="0">
      <widget class="QLabel" name="label_5">
       <property name="text">
        <string>Orienté ?</string>
       </property>
      </widget>
     </item>
-    <item row="8" column="1">
+    <item row="9" column="1">
      <widget class="QCheckBox" name="checkBox">
       <property name="text">
        <string/>
       </property>
      </widget>
     </item>
-    <item row="7" column="0">
+    <item row="8" column="0">
      <spacer name="verticalSpacer_2">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -116,23 +116,33 @@
       </property>
      </spacer>
     </item>
-    <item row="4" column="0">
+    <item row="5" column="0">
      <widget class="QLabel" name="label_6">
       <property name="text">
        <string>Nom du couple</string>
       </property>
      </widget>
     </item>
-    <item row="4" column="1">
+    <item row="5" column="1">
      <widget class="QLineEdit" name="lineEdit"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>Description</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEdit_2"/>
     </item>
    </layout>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>220</y>
+     <x>30</x>
+     <y>290</y>
      <width>75</width>
      <height>21</height>
     </rect>

@@ -187,6 +187,10 @@ private slots:
      */
     void on_treeWidget_doubleClicked(const QModelIndex &index);
 
+    void on_archive_doubleClicked(const QModelIndex &index);
+
+    void on_restaure_archive_clicked();
+
 private:
     Ui::MainWindow *ui;
     NotesManager& nm;

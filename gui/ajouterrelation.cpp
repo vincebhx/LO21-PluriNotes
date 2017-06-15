@@ -25,13 +25,14 @@ void AjouterRelation::on_pushButton_clicked()
 {
     QString titre = ui->nomRelation->text();
     QString cLabel = ui->lineEdit->text();
+    QString desc = ui->lineEdit_2->text();
     Note* n1 = nm.findNote(ui->Note1->currentText());
     Note* n2 = nm.findNote(ui->Note2->currentText());
     bool oriented = false;
     if (ui->checkBox->isChecked())
         oriented = true;
     Couple* couple = new Couple(n1->getId(), n2->getId());
-    Relation* relation = new Relation(titre, "", oriented);
+    Relation* relation = new Relation(titre, desc, oriented);
     RelationsManager::instance().addRelation(relation);
     relation->addCouple(couple);
 

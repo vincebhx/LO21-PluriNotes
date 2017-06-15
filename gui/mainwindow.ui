@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>865</width>
-    <height>704</height>
+    <height>724</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -773,6 +773,22 @@
        <width>201</width>
        <height>131</height>
       </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="restaure_archive">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>140</y>
+       <width>201</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Restaurer Note Archivée</string>
      </property>
     </widget>
    </widget>

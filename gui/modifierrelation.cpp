@@ -8,15 +8,14 @@ ModifierRelation::ModifierRelation(QWidget *parent) : Widget(),
     ui(new Ui::ModifierRelation), nm(NotesManager::instance()), RM(RelationsManager::instance())
 {
     ui->setupUi(this);
-    ui->tableWidget->setColumnCount(2);
+    ui->tableWidget->setColumnCount(3);
     QStringList headerTable;
-    headerTable << "ID Note 1" << "ID Note 2";
+    headerTable << "ID Note 1" << "ID Note 2" << "Label Couple";
     ui->tableWidget->setHorizontalHeaderLabels(headerTable);
     loadRelations();
 }
 
 void ModifierRelation::loadRelations() {
-
     for(RMIterator it = RM.begin(); it!= RM.end(); it++){
         ui->comboBox->addItem((*it)->getTitre());
     }
@@ -30,6 +29,7 @@ void ModifierRelation::loadTable() {
         for (unsigned int i =0; i< ui->tableWidget->rowCount(); i++) {
             ui->tableWidget->setItem(i, 0, new QTableWidgetItem((*it)->getNote1()));
             ui->tableWidget->setItem(i, 1, new QTableWidgetItem((*it)->getNote2()));
+            ui->tableWidget->setItem(i, 2, new QTableWidgetItem((*it)->getLabel()));
         }
     }
 }
@@ -45,6 +45,7 @@ void ModifierRelation::on_comboBox_currentIndexChanged(int index)
 }
 
 void ModifierRelation::receiveMessageMRelation() {
+    //ui->comboBox->clear();
     for(NMIterator it = nm.begin(ACTIVES); it!= nm.end(ACTIVES); it++){
          ui->Note1->addItem((*it)->currentVersion()->getId());
          ui->Note2->addItem((*it)->currentVersion()->getId());

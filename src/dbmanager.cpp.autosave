@@ -96,7 +96,7 @@ bool DbManager::changeNoteState(Note *n) {
 
     if(query.exec()) {
         success = true;
-        qDebug() << "État de la note"<<n->getId()<<"version"<<n->getVersion()<<"mis à jour dans la base de données.";
+        qDebug() << "État de la note"<<n->getId()<<"version"<<n->getVersion()<<"amis à jour dans la base de données.";
     }
     else
         qDebug() << "Erreur - DbManager::updateNoteState : "<< query.lastError();

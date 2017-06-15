@@ -57,10 +57,11 @@ int main(int argc, char *argv[])
             //Article(id, version, titre, dateCreation, dateModification, texte);
 
         }
-/*
-        QString titre12 = "mon apprentissage du c++";
+
+        /*
+        QString titre12 = "premiers contenu que jai vu sur internet";
         Relation* rel = rm.findRelation(titre12);
-        rm.supprimerCouples(rel);
+        rm.supprimerRelation(rel);*/
 
         std::cout<<"Relations et couples dispo après suppression: \n";
         for (RMIterator rmi = rm.begin(); rmi != rm.end(); rmi++){
@@ -69,8 +70,6 @@ int main(int argc, char *argv[])
                 std::cout<<"Couple: "<<(*rit)->getLabel().toStdString()<<" "<<(*rit)->getNote1().toStdString()<<" "<<(*rit)->getNote2().toStdString()<<std::endl;
             }
          }
-
-*/
 
         QSqlTableModel* modelTache = Tache::getTableModel(dbM.db);
         QTableView* viewTache = Tache::getTableView(modelTache);

@@ -70,6 +70,13 @@ QSqlQuery Relation::getDeleteQuery() {
     return query;
 }
 
+QSqlQuery Relation::getDeleteQueryCouples() {
+    QSqlQuery query;
+    QString str = "DELETE FROM Relationnote WHERE relation = '" + titre +"'";
+    query.prepare(str);
+    return query;
+}
+
 Couple* Relation::findCouple(QString id1, QString id2) {
     for (RelationIterator it = this->begin(); it != this->end(); it++) {
         QString note1 =(*it)->getNote1();

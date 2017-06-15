@@ -30,6 +30,7 @@ public:
 
     bool deleteRelation(Relation* r);
     bool deleteCouple(Couple* c, Relation* r);
+    bool deleteCouples(Relation* r);
 
     QString getLastQuery(const QSqlQuery& query);
 };

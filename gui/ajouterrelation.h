@@ -8,7 +8,9 @@
 namespace Ui {
 class AjouterRelation;
 }
-
+/*!
+ * \brief The AjouterRelation class : correspond à la fenêtre d'ajout de relation
+ */
 class AjouterRelation : public QDialog, public Widget
 {
     Q_OBJECT

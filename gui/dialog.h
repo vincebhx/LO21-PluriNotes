@@ -11,7 +11,9 @@
 namespace Ui {
 class Dialog;
 }
-
+/*!
+ * \brief The Dialog class : correspond à la fenêtre permettant de créer une note
+ */
 class Dialog : public QDialog, public Widget
 {
     Q_OBJECT

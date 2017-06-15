@@ -70,4 +70,16 @@ QSqlQuery Relation::getDeleteQuery() {
     return query;
 }
 
+Couple* Relation::findCouple(QString id1, QString id2) {
+    for (RelationIterator it = this->begin(); it != this->end(); it++) {
+        QString note1 =(*it)->getNote1();
+        QString note2 =(*it)->getNote2();
+        if (note1==id1 && note2==id2) {
+            return (*it);
+        }
+    }
+
+    return NULL;
+}
+
 

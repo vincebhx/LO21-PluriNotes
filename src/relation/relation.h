@@ -106,6 +106,8 @@ public:
      * @return getNbCouples retourne le nombre de couples contenus dans la relation sous forme de int.
      */
     int getNbCouples() {return couples.size();}
+
+    Couple* findCouple(QString id1, QString id2);
 };
 
 

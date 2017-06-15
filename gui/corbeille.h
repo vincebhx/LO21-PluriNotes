@@ -9,7 +9,9 @@
 namespace Ui {
 class Corbeille;
 }
-
+/*!
+ * \brief The Corbeille class : correspond à la fenêtre de corbeille
+ */
 class Corbeille : public QMainWindow, public Widget
 {
     Q_OBJECT

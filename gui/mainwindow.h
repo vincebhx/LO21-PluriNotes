@@ -11,6 +11,9 @@
 namespace Ui {
 class MainWindow;
 }
+/*!
+ * \brief The MainWindow class : comporte les différentes fonctionnalités et éléments de la fenêtre principale
+ */
 
 class MainWindow : public QMainWindow, public Widget
 {
@@ -187,8 +190,15 @@ private slots:
      */
     void on_treeWidget_doubleClicked(const QModelIndex &index);
 
+    /*!
+     * \brief on_archive_doubleClicked : charge la note sélectionnée dans les archives
+     * \param index
+     */
     void on_archive_doubleClicked(const QModelIndex &index);
 
+    /*!
+     * \brief on_restaure_archive_clicked : restaure la note courrante et la déplace dans les notes actives
+     */
     void on_restaure_archive_clicked();
 
 private:
